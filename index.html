@@ -28,8 +28,14 @@
   <!-- yes로 두면 사파리 주소창 없이 전체 화면으로 열립니다 -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <!-- 홈 화면 아이콘 이미지 -->
-  <link rel="apple-touch-icon" href="icon.png">
+  <!-- 홈 화면 아이콘 이미지.
+       기기마다 쓰는 크기가 달라서 여러 개를 두면 더 또렷하게 나옵니다.
+       sizes 로 크기를 알려주면 iOS가 알맞은 것을 골라 씁니다. -->
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="icons/apple-touch-icon-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-touch-icon-152.png">
+  <!-- 브라우저 탭에 뜨는 작은 아이콘 -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
   <!-- 브라우저 주소창 색깔 (안드로이드 등) -->
   <meta name="theme-color" content="#1c5d7a">
 
