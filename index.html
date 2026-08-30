@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  index.html  =  이 웹페이지의 "뼈대"
+  ------------------------------------------------------------
+  HTML은 "무엇이 있는가"를 적는 언어입니다.
+  <태그> 내용 </태그>  형태로 씁니다. 여는 태그와 닫는 태그가 짝을 이룹니다.
+  <!-- 이렇게 감싼 부분은 "주석"이며 화면에 나오지 않습니다. -->
+  ============================================================
+-->
+<html lang="ko">
+<head>
+  <!-- head 안의 내용은 화면에 안 보입니다. 브라우저에게 주는 설명서입니다. -->
+
+  <!-- 한글이 깨지지 않게 하는 설정. 반드시 있어야 합니다. -->
+  <meta charset="UTF-8">
+
+  <!-- 휴대폰에서도 화면 크기에 맞게 보이도록 하는 설정 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 브라우저 탭에 표시되는 이름 -->
+  <title>오늘의 정신의학 논문</title>
+
+  <!-- 우리가 만든 디자인 파일(style.css)을 불러옵니다 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- body 안의 내용이 실제로 화면에 보이는 부분입니다. -->
+
+  <!-- ========== 1) 맨 위 머리말 ========== -->
+  <header class="site-header">
+    <div class="wrap">
+      <p class="eyebrow">Psychiatry Daily Digest</p>
+      <h1>오늘의 정신의학 논문</h1>
+      <p class="lede">
+        공신력 있는 학술지에 최근 발표된 논문 중 <strong>3편</strong>을 매일 골라 드립니다.
+      </p>
+      <!-- id가 붙은 곳은 나중에 app.js가 내용을 채워 넣는 자리입니다 -->
+      <p class="today" id="todayLabel"></p>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- ========== 2) 검색 조건 고르는 곳 ========== -->
+    <section class="controls" aria-label="검색 조건">
+
+      <div class="control">
+        <label for="topicSelect">관심 분야</label>
+        <!-- select = 여러 개 중 하나를 고르는 드롭다운 메뉴 -->
+        <select id="topicSelect">
+          <option value="all">전체 (정신의학 전반)</option>
+          <option value="mood">우울 · 불안</option>
+          <option value="psychosis">조현병 · 정신병</option>
+          <option value="bipolar">양극성 장애</option>
+          <option value="child">소아 · 청소년</option>
+          <option value="geriatric">노인 · 인지장애</option>
+          <option value="addiction">중독 · 물질사용</option>
+          <option value="sleep">수면</option>
+          <option value="trauma">트라우마 · PTSD</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <label for="daysSelect">발표 시기</label>
+        <select id="daysSelect">
+          <option value="30">최근 30일</option>
+          <option value="7">최근 7일</option>
+          <option value="90">최근 90일</option>
+          <option value="365">최근 1년</option>
+        </select>
+      </div>
+
+      <!-- button = 누를 수 있는 버튼 -->
+      <button id="refreshBtn" class="btn-primary" type="button">
+        다른 논문 보기
+      </button>
+    </section>
+
+    <!-- ========== 3) 상태 메시지 자리 (불러오는 중 / 오류) ========== -->
+    <!-- hidden 을 붙이면 평소엔 숨어 있고, 필요할 때 app.js가 보여줍니다 -->
+    <div id="statusBox" class="status" hidden></div>
+
+    <!-- ========== 4) 논문 카드가 들어갈 자리 ========== -->
+    <!-- 지금은 비어 있고, app.js가 여기에 논문 3개를 만들어 넣습니다 -->
+    <section id="paperList" class="paper-list"></section>
+
+  </main>
+
+  <!-- ========== 5) 맨 아래 꼬리말 ========== -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>
+        데이터 출처: 미국 국립의학도서관
+        <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">PubMed</a>
+        (E-utilities API) · 요약은 논문 초록(abstract) 원문을 그대로 보여줍니다.
+      </p>
+      <p class="disclaimer">
+        본 도구는 문헌 탐색을 돕기 위한 것이며, 진료 판단의 근거로 쓰기 전에
+        반드시 원문을 직접 확인하시기 바랍니다.
+      </p>
+    </div>
+  </footer>
+
+  <!-- 동작을 담당하는 app.js를 불러옵니다.
+       body 맨 끝에 두는 이유: 위의 내용이 모두 만들어진 다음에 실행되도록 하기 위해서입니다. -->
+  <script src="app.js"></script>
+</body>
+</html>
