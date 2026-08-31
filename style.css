@@ -359,3 +359,64 @@ details.abstract[open] summary::before {
   .paper { padding: 18px 16px; }
   .btn-primary { width: 100%; }   /* 버튼을 가로 전체로 늘려 누르기 쉽게 */
 }
+
+/* ---------- 9) 마우스를 쓰는 기기에서만 ----------
+   (hover: hover) = "마우스처럼 올려놓을 수 있는 기기" 라는 뜻입니다.
+   터치 화면에서는 적용되지 않아, 손가락으로 눌렀을 때 색이 남는 문제가 없습니다. */
+@media (hover: hover) {
+  .paper {
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .paper:hover {
+    border-color: var(--accent);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.07);
+  }
+}
+
+/* ---------- 10) 화면이 넓을 때(데스크탑) 조정 ----------
+   1180px 이상이면 논문 3편을 나란히 놓아 한눈에 비교할 수 있게 합니다. */
+@media (min-width: 1180px) {
+  .wrap {
+    max-width: 1160px;
+  }
+
+  /* 설명글까지 1160px로 늘어나면 한 줄이 너무 길어 읽기 힘듭니다.
+     글줄은 적당한 폭으로 묶어둡니다. */
+  .site-header .lede,
+  .site-header .today,
+  .site-footer p {
+    max-width: 640px;
+  }
+
+  /* display: grid = 격자로 배치하기.
+     repeat(3, 1fr) = 같은 너비의 칸 3개를 만든다는 뜻입니다. */
+  .paper-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: stretch;   /* 세 카드의 높이를 같게 맞춥니다 */
+  }
+
+  /* 카드 안을 세로 배치로 바꾸고 버튼을 맨 아래로 밀어,
+     제목 길이가 달라도 버튼 줄이 가지런히 놓이게 합니다. */
+  .paper {
+    display: flex;
+    flex-direction: column;
+  }
+  .paper-actions {
+    margin-top: auto;       /* 위쪽 여백을 자동으로 채워 아래로 밀어냄 */
+  }
+
+  /* 선택창은 적당한 너비로 두고, 버튼은 오른쪽 끝으로 밀어냅니다 */
+  .control {
+    flex: 0 1 230px;
+  }
+  .btn-primary {
+    margin-left: auto;     /* 왼쪽 여백을 자동으로 채워 오른쪽으로 밀어냄 */
+  }
+}
+
+/* 아주 넓은 화면(2560px 모니터 등)에서도 지나치게 퍼지지 않게 합니다 */
+@media (min-width: 1700px) {
+  .wrap { max-width: 1400px; }
+}

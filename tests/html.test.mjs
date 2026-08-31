@@ -70,7 +70,7 @@ for (const 주소 of [...걸린주소, ...스크립트]) {
 }
 
 // ---- 5. 아이콘 그림 파일이 올바른 PNG인가 ----
-const png검사 = (이름) => {
+function png검사(이름) {
   const d = fs.readFileSync(path.join(뿌리, 이름));
   if (d.subarray(0, 8).toString("hex") !== "89504e470d0a1a0a") return "PNG 서명 틀림";
   const 폭 = d.readUInt32BE(16), 높이 = d.readUInt32BE(20);
@@ -88,12 +88,41 @@ const png검사 = (이름) => {
   const raw = zlib.inflateSync(Buffer.concat(idat));
   if (raw.length !== 높이 * (폭 * 3 + 1)) return "픽셀 수가 맞지 않음";
   return null;
-};
+}
 
 for (const 이름 of fs.readdirSync(path.join(뿌리, "icons"))) {
   const 문제 = png검사(path.join("icons", 이름));
   검사(`아이콘 그림이 올바른가 — ${이름}`, 문제 === null, 문제);
 }
+
+// ---- 6. 데스크탑 앱 설치 정보(manifest) 검사 ----
+검사("manifest.json 이 head 안에서 연결되어 있는가",
+  !!문서.head.querySelector('link[rel="manifest"]'));
+
+const manifest = JSON.parse(fs.readFileSync(path.join(뿌리, "manifest.json"), "utf8"));
+검사("앱 이름이 들어 있는가", !!manifest.name && !!manifest.short_name);
+검사("시작 주소와 범위가 상대 경로인가 (하위 폴더 배포에 필요)",
+  manifest.start_url === "./" && manifest.scope === "./", [manifest.start_url, manifest.scope]);
+검사("창 모양이 앱처럼(standalone) 설정되어 있는가", manifest.display === "standalone", manifest.display);
+검사("설치에 필요한 192·512 크기 아이콘이 모두 있는가",
+  ["192x192", "512x512"].every((크기) => manifest.icons.some((아이콘) => 아이콘.sizes === 크기)),
+  manifest.icons.map((아이콘) => 아이콘.sizes));
+검사("둥글게 잘려도 괜찮은 maskable 아이콘이 있는가",
+  manifest.icons.some((아이콘) => 아이콘.purpose === "maskable"));
+for (const 아이콘 of manifest.icons) {
+  검사(`manifest가 가리키는 파일이 실제로 있는가 — ${아이콘.src}`,
+    fs.existsSync(path.join(뿌리, 아이콘.src)));
+  const 문제 = png검사(아이콘.src);
+  검사(`그 아이콘이 올바른 PNG인가 — ${아이콘.src.split("/").pop()}`, 문제 === null, 문제);
+}
+
+// ---- 7. 데스크탑 화면 규칙 검사 ----
+const css = 읽기("style.css");
+검사("넓은 화면용 규칙이 있는가", /@media \(min-width: 1180px\)/.test(css));
+검사("넓은 화면에서 논문을 3열로 배치하는가",
+  /grid-template-columns:\s*repeat\(3,\s*1fr\)/.test(css));
+검사("마우스 있는 기기에서만 강조 효과가 적용되는가", /@media \(hover: hover\)/.test(css));
+검사("좁은 화면(휴대폰)용 규칙도 그대로 남아 있는가", /@media \(max-width: 560px\)/.test(css));
 
 console.log(실패 === 0 ? "\n🎉 전체 통과 — 페이지 구조에 이상 없음" : `\n⚠️  ${실패}건 실패`);
 process.exit(실패 === 0 ? 0 : 1);
