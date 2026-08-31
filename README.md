@@ -298,14 +298,16 @@ women: ["perinatal", "postpartum", "premenstrual", "menopause"],
 
 ```bash
 npm install jsdom
-node tests/logic.test.mjs    # 동작 검사 20개
-node tests/html.test.mjs     # 구조 검사 20개
+node tests/logic.test.mjs    # 동작 검사
+node tests/html.test.mjs     # 구조 검사
+node tests/flow.test.mjs     # 전체 흐름 검사
 ```
 
 | 파일 | 검사하는 것 |
 |---|---|
-| `logic.test.mjs` | 초록 파싱, 저자 표기, 검색어 조립, 날짜별 논문 선정, 특수문자 처리 |
+| `logic.test.mjs` | 초록 파싱, 저자 표기, 검색어 조립, 학술지 다양성(30일치), 특수문자 처리 |
 | `html.test.mjs` | 주석 중첩, `<head>` 구조, 아이콘 위치와 크기, 연결된 파일의 존재 여부 |
+| `flow.test.mjs` | 가짜 PubMed로 검색부터 화면 그리기까지 끝까지 이어서 확인 |
 
 `html.test.mjs` 는 실제로 겪은 문제 때문에 만들어졌습니다.
 주석 안에 주석을 넣는 실수로 `<head>` 가 통째로 비어버려 아이콘이 무시됐는데,

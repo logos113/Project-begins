@@ -65,7 +65,8 @@ const 걸린주소 = [
 const 스크립트 = [...문서.querySelectorAll("script[src]")].map((el) => el.getAttribute("src"));
 
 for (const 주소 of [...걸린주소, ...스크립트]) {
-  검사(`연결된 파일이 실제로 있는가 — ${주소}`, fs.existsSync(path.join(뿌리, 주소)));
+  const 파일 = 주소.split("?")[0];   // ?v=2 같은 버전 표시는 떼고 확인합니다
+  검사(`연결된 파일이 실제로 있는가 — ${주소}`, fs.existsSync(path.join(뿌리, 파일)));
 }
 
 // ---- 5. 아이콘 그림 파일이 올바른 PNG인가 ----

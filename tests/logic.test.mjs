@@ -59,7 +59,7 @@ global.console = console;
 let code = fs.readFileSync("/home/user/Project-begins/app.js", "utf8");
 code = code.replace("논문_불러오기();", "// 자동 실행은 테스트에서 생략");
 // 검사할 함수들을 밖으로 꺼냅니다
-code += "\nglobal.T = { 논문정보_정리, 검색어_만들기, 오늘의_논문_고르기, 카드_만들기, 안전한글자로 };";
+code += "\nglobal.T = { 논문정보_정리, 검색어_만들기, 오늘의_논문_고르기, 카드_만들기, 안전한글자로, 학술지_순서_섞기 };";
 new Function(code)();
 
 const T = global.T;
@@ -151,6 +151,66 @@ const 부족결과 = T.오늘의_논문_고르기(만들기(["A지", "A지", "B�
 const 부족 = T.오늘의_논문_고르기(만들기(["A지", "B지"]));
 검사("논문이 2편뿐이면 중복 없이 2편만 보여주는가",
   부족.length === 2 && new Set(부족.map((p) => p.pmid)).size === 2, 부족);
+
+// ---- 5. 여러 날에 걸친 다양성 검사 (가장 중요) ----
+/*
+  실제 상황을 그대로 재현합니다.
+  J Affect Disord 가 120편 중 절반 이상을 차지하고,
+  Lancet Psychiatry · JAMA Psychiatry 처럼 권위 높은 학술지는 편수가 적습니다.
+  발행량이 적다고 계속 밀려나면 안 됩니다.
+*/
+const 실제분포 = 만들기([
+  ...Array(62).fill("J Affect Disord"),
+  ...Array(18).fill("Transl Psychiatry"),
+  ...Array(12).fill("Psychol Med"),
+  ...Array(9).fill("Sleep"),
+  ...Array(7).fill("Mol Psychiatry"),
+  ...Array(5).fill("Lancet Psychiatry"),
+  ...Array(4).fill("JAMA Psychiatry"),
+  ...Array(3).fill("World Psychiatry"),
+]);
+
+// 날짜를 바꿔가며 30일치를 뽑아봅니다
+const 원래Date = Date;
+const 날짜별결과 = [];
+for (let 일 = 1; 일 <= 30; 일++) {
+  const 그날 = `2026-09-${String(일).padStart(2, "0")}T09:00:00Z`;
+  global.Date = class extends 원래Date {
+    constructor(...인자) { super(...(인자.length ? 인자 : [그날])); }
+  };
+  날짜별결과.push(T.오늘의_논문_고르기(실제분포).map((p) => p.학술지));
+}
+global.Date = 원래Date;
+
+const 매일_세종류 = 날짜별결과.every((하루) => new Set(하루).size === 3);
+검사("30일 내내 매일 서로 다른 3개 학술지가 나오는가", 매일_세종류,
+  날짜별결과.find((하루) => new Set(하루).size < 3));
+
+const 등장횟수 = {};
+날짜별결과.flat().forEach((j) => { 등장횟수[j] = (등장횟수[j] || 0) + 1; });
+const 등장한학술지수 = Object.keys(등장횟수).length;
+검사("30일 동안 여러 학술지가 골고루 등장하는가 (6종 이상)",
+  등장한학술지수 >= 6, 등장횟수);
+
+const 최다등장 = Math.max(...Object.values(등장횟수));
+검사("한 학술지가 30일을 독점하지 않는가 (25일 이하)",
+  최다등장 <= 25, `최다 등장 ${최다등장}일 / 30일`);
+
+검사("편수가 적은 최상위 학술지도 등장하는가 (Lancet Psychiatry)",
+  (등장횟수["Lancet Psychiatry"] || 0) > 0, 등장횟수);
+
+// 같은 날 여러 번 호출해도 순서가 바뀌지 않아야 합니다
+const 순서1 = T.학술지_순서_섞기(["가지", "나지", "다지", "라지"], 12345);
+const 순서2 = T.학술지_순서_섞기(["가지", "나지", "다지", "라지"], 12345);
+const 순서3 = T.학술지_순서_섞기(["가지", "나지", "다지", "라지"], 99999);
+검사("같은 날에는 학술지 순서가 항상 같은가",
+  JSON.stringify(순서1) === JSON.stringify(순서2), [순서1, 순서2]);
+검사("날이 바뀌면 학술지 순서도 바뀌는가",
+  JSON.stringify(순서1) !== JSON.stringify(순서3), [순서1, 순서3]);
+
+console.log("\n  [참고] 30일 동안 학술지별 등장 횟수");
+Object.entries(등장횟수).sort((가, 나) => 나[1] - 가[1])
+  .forEach(([j, n]) => console.log(`     ${j.padEnd(20)} ${String(n).padStart(2)}일 ${"█".repeat(n)}`));
 
 console.log(실패 === 0 ? "\n🎉 전체 통과 — 모든 검사 성공" : `\n⚠️  ${실패}건 실패`);
 process.exit(실패 === 0 ? 0 : 1);

@@ -48,7 +48,7 @@
   <meta name="theme-color" content="#1c5d7a">
 
   <!-- 우리가 만든 디자인 파일(style.css)을 불러옵니다 -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 
 <body>
@@ -131,6 +131,10 @@
 
   <!-- 동작을 담당하는 app.js를 불러옵니다.
        body 맨 끝에 두는 이유: 위의 내용이 모두 만들어진 다음에 실행되도록 하기 위해서입니다. -->
-  <script src="app.js"></script>
+  <!-- ?v=2 는 "이 파일이 바뀌었다"고 브라우저에 알리는 표시입니다.
+       브라우저는 한 번 받은 파일을 한동안 저장해두고 다시 받지 않는데(캐시),
+       주소가 달라지면 새 파일로 보고 다시 받아옵니다.
+       코드를 크게 고친 뒤에는 이 숫자를 올려주세요. -->
+  <script src="app.js?v=2"></script>
 </body>
 </html>
