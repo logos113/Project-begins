@@ -48,7 +48,7 @@
   <meta name="theme-color" content="#1c5d7a">
 
   <!-- 우리가 만든 디자인 파일(style.css)을 불러옵니다 -->
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 
 <body>
@@ -98,6 +98,14 @@
         </select>
       </div>
 
+      <div class="control">
+        <label for="rankSelect">학술지 우선순위</label>
+        <select id="rankSelect">
+          <option value="rank">권위 높은 학술지 우선</option>
+          <option value="even">여러 학술지 골고루</option>
+        </select>
+      </div>
+
       <!-- button = 누를 수 있는 버튼 -->
       <button id="refreshBtn" class="btn-primary" type="button">
         다른 논문 보기
@@ -135,6 +143,6 @@
        브라우저는 한 번 받은 파일을 한동안 저장해두고 다시 받지 않는데(캐시),
        주소가 달라지면 새 파일로 보고 다시 받아옵니다.
        코드를 크게 고친 뒤에는 이 숫자를 올려주세요. -->
-  <script src="app.js?v=2"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>

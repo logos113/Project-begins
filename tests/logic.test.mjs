@@ -48,6 +48,7 @@ const dom = new JSDOM(`<!DOCTYPE html><body>
   <div id="paperList"></div><div id="statusBox"></div><p id="todayLabel"></p>
   <select id="topicSelect"><option value="all">전체</option></select>
   <select id="daysSelect"><option value="30">30</option></select>
+  <select id="rankSelect"><option value="rank">권위</option><option value="even">골고루</option></select>
   <button id="refreshBtn"></button>
 </body>`, { runScripts: "outside-only" });
 
@@ -59,7 +60,7 @@ global.console = console;
 let code = fs.readFileSync("/home/user/Project-begins/app.js", "utf8");
 code = code.replace("논문_불러오기();", "// 자동 실행은 테스트에서 생략");
 // 검사할 함수들을 밖으로 꺼냅니다
-code += "\nglobal.T = { 논문정보_정리, 검색어_만들기, 오늘의_논문_고르기, 카드_만들기, 안전한글자로, 학술지_순서_섞기 };";
+code += "\nglobal.T = { 논문정보_정리, 검색어_만들기, 오늘의_논문_고르기, 카드_만들기, 안전한글자로, 학술지_순서_섞기, 섞기값, 학술지_등급_가져오기 };";
 new Function(code)();
 
 const T = global.T;
@@ -211,6 +212,66 @@ const 순서3 = T.학술지_순서_섞기(["가지", "나지", "다지", "라지
 console.log("\n  [참고] 30일 동안 학술지별 등장 횟수");
 Object.entries(등장횟수).sort((가, 나) => 나[1] - 가[1])
   .forEach(([j, n]) => console.log(`     ${j.padEnd(20)} ${String(n).padStart(2)}일 ${"█".repeat(n)}`));
+
+// ---- 6. 학술지 등급 우선순위 검사 ----
+검사("등급표에서 등급을 올바르게 읽는가",
+  T.학술지_등급_가져오기("JAMA") === 5 && T.학술지_등급_가져오기("Lancet Psychiatry") === 4,
+  [T.학술지_등급_가져오기("JAMA"), T.학술지_등급_가져오기("Lancet Psychiatry")]);
+검사("등급표에 없는 학술지는 1등급으로 처리하는가",
+  T.학술지_등급_가져오기("듣도 보도 못한 학술지") === 1);
+
+/*
+  섞기값이 고르게 퍼지는지 확인합니다.
+  날짜가 하루 넘어가면 글자 하나만 바뀌는데, 계산이 약하면
+  어떤 학술지는 1년 내내 낮은 값만 나와 거의 보이지 않게 됩니다.
+  (실제로 그런 문제가 있었습니다)
+*/
+const 학술지11 = ["J Affect Disord", "Transl Psychiatry", "Psychol Med", "Sleep",
+  "Mol Psychiatry", "Biol Psychiatry", "Lancet Psychiatry", "JAMA Psychiatry",
+  "Am J Psychiatry", "World Psychiatry", "JAMA"];
+
+// 실제와 같은 조건 — 365일 연속
+const 하루씩시드 = [];
+for (let d = 0; d < 365; d++) {
+  const t = new Date(2026, 0, 1 + d);
+  하루씩시드.push(
+    `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`
+      .split("").reduce((값, 글자) => (값 * 31 + 글자.charCodeAt(0)) % 1000000007, 0));
+}
+
+const 등장 = (등급반영) => {
+  const 횟수 = Object.fromEntries(학술지11.map((n) => [n, 0]));
+  for (const 시드 of 하루씩시드) {
+    T.학술지_순서_섞기(학술지11, 시드, 등급반영).slice(0, 3).forEach((n) => 횟수[n]++);
+  }
+  return 횟수;
+};
+
+// 기대값 99.5회, ±3σ = 74~125회
+const 골고루횟수 = Object.values(등장(false));
+검사("등급을 반영하지 않으면 365일 동안 모든 학술지가 고르게 나오는가 (74~125회)",
+  Math.min(...골고루횟수) >= 74 && Math.max(...골고루횟수) <= 125,
+  `최소 ${Math.min(...골고루횟수)}회 / 최대 ${Math.max(...골고루횟수)}회`);
+
+const 권위횟수 = 등장(true);
+const 등급별 = {};
+for (const [이름, 수] of Object.entries(권위횟수)) {
+  const 등급 = T.학술지_등급_가져오기(이름);
+  등급별[등급] = (등급별[등급] || 0) + 수;
+}
+검사("등급을 반영하면 5등급이 1등급보다 훨씬 자주 나오는가",
+  (등급별[5] || 0) > (등급별[1] || 0) * 3, 등급별);
+검사("등급을 반영해도 1등급 학술지가 완전히 사라지지는 않는가",
+  (등급별[1] || 0) > 0, 등급별);
+검사("등급이 높을수록 자주 나오는 순서가 지켜지는가",
+  권위횟수["JAMA"] > 권위횟수["Psychol Med"] &&
+  권위횟수["Psychol Med"] > 권위횟수["J Affect Disord"],
+  { JAMA: 권위횟수["JAMA"], "Psychol Med": 권위횟수["Psychol Med"],
+    "J Affect Disord": 권위횟수["J Affect Disord"] });
+
+console.log("\n  [참고] 365일 · 등급 반영 시 학술지별 등장 횟수");
+Object.entries(권위횟수).sort((가, 나) => 나[1] - 가[1]).forEach(([n, v]) =>
+  console.log(`     ${String(T.학술지_등급_가져오기(n))}급  ${n.padEnd(20)} ${String(v).padStart(3)}회`));
 
 console.log(실패 === 0 ? "\n🎉 전체 통과 — 모든 검사 성공" : `\n⚠️  ${실패}건 실패`);
 process.exit(실패 === 0 ? 0 : 1);

@@ -259,6 +259,30 @@ select {
   font-size: 15px;
 }
 
+/* 학술지 등급이 높을수록 배지를 진하게 해서 한눈에 알아보게 합니다.
+   숫자가 붙은 class(tier-5 등)는 app.js가 등급에 맞춰 붙여줍니다. */
+.journal.tier-5,
+.journal.tier-4 {
+  background: var(--accent);
+  color: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  .journal.tier-5,
+  .journal.tier-4 { color: #10171b; }
+}
+.journal.tier-3 { background: var(--accent-bg); }
+
+/* '최상위' 라벨 */
+.tier-note {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 1px 7px;
+}
+
 /* details/summary = 클릭하면 펼쳐지는 접이식 영역 (자바스크립트 없이 동작) */
 details.abstract {
   border-top: 1px solid var(--line);
