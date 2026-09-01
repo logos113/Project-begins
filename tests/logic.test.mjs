@@ -79,6 +79,24 @@ const p = T.논문정보_정리(문서.querySelector("PubmedArticle"));
 검사("제목을 뽑는가", p.제목.includes("Ketamine vs ECT"), p.제목);
 검사("저자 4명 중 3명 + et al. 로 줄이는가", p.저자표기 === "Kim SY, Park JH, Lee M, et al.", p.저자표기);
 검사("발표일을 뽑는가", p.발표일 === "2026. Aug", p.발표일);
+
+/*
+  같은 논문에 ArticleDate(온라인 공개일)와 PubDate(호 배정일)가 함께 있으면
+  실제로 읽을 수 있게 된 날인 ArticleDate 를 써야 합니다.
+  PubDate 는 미래 날짜인 경우가 많습니다.
+*/
+const 두날짜XML = `<?xml version="1.0"?><PubmedArticleSet><PubmedArticle><MedlineCitation>
+  <PMID>40999999</PMID><Article>
+    <Journal><ISOAbbreviation>J Affect Disord</ISOAbbreviation>
+      <JournalIssue><PubDate><Year>2026</Year><Month>Dec</Month></PubDate></JournalIssue></Journal>
+    <ArticleTitle>Test</ArticleTitle>
+    <Abstract><AbstractText>Only one sentence here.</AbstractText></Abstract>
+    <ArticleDate DateType="Electronic"><Year>2026</Year><Month>08</Month><Day>21</Day></ArticleDate>
+  </Article></MedlineCitation></PubmedArticle></PubmedArticleSet>`;
+const 두날짜 = T.논문정보_정리(
+  new DOMParser().parseFromString(두날짜XML, "text/xml").querySelector("PubmedArticle"));
+검사("온라인 공개일(ArticleDate)을 호 배정일(PubDate)보다 우선하는가",
+  두날짜.발표일 === "2026. Aug", 두날짜.발표일);
 검사("초록 4문단을 모두 뽑는가", p.초록문단들.length === 4, p.초록문단들.length);
 검사("핵심 결론으로 INTERPRETATION 문단을 고르는가", p.핵심 === "Ketamine was non-inferior to ECT at 6 months.", p.핵심);
 검사("DOI를 뽑는가", p.doi === "10.1016/S2215-0366(26)00123-4", p.doi);
@@ -90,14 +108,19 @@ const 카드 = T.카드_만들기(p);
   !T.안전한글자로('<script>alert(1)</script>').includes("<script"), T.안전한글자로('<script>alert(1)</script>'));
 
 // ---- 3. 검색어 생성 검사 ----
-const q전체 = T.검색어_만들기("all", 30);
+const q전체 = T.검색어_만들기("all");
 검사("검색어에 학술지 조건이 들어가는가", q전체.includes('"JAMA Psychiatry"[jour]'));
-검사("검색어에 기간 조건이 들어가는가", q전체.includes('"last 30 days"[dp]'));
+/*
+  기간 조건은 검색어가 아니라 요청 파라미터(datetype=edat, reldate)로 넘깁니다.
+  [dp](발행일)는 저널 호 배정일이라 미래 날짜가 붙는 경우가 많아,
+  그것으로 정렬하면 미래 날짜를 크게 붙이는 학술지가 목록을 독차지합니다.
+*/
+검사("검색어에 발행일 기준 기간 조건이 들어있지 않은가", !q전체.includes("[dp]"), q전체.slice(-140));
 검사("검색어에 초록 필수 조건이 들어가는가", q전체.includes("hasabstract"));
 검사("사설/독자편지를 제외하는가", q전체.includes("NOT (editorial[pt]"));
 검사("'전체' 선택 시 분야 조건이 붙지 않는가", !q전체.includes("[tiab]) AND ("), q전체.slice(-120));
 
-const q수면 = T.검색어_만들기("sleep", 7);
+const q수면 = T.검색어_만들기("sleep");
 검사("'수면' 선택 시 관련 조건이 추가되는가", q수면.includes("insomnia[tiab]"));
 
 // ---- 4. 매일 3편 선정 로직 검사 ----

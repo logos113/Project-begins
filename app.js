@@ -557,7 +557,7 @@ function 핵심결론_뽑기(초록문단들) {
        "last 30 days"[dp]           -> 최근 30일 내 발표
    ========================================================== */
 
-function 검색어_만들기(분야, 기간일수) {
+function 검색어_만들기(분야) {
   // .map() = 목록의 각 항목을 정해진 모양으로 바꾸기
   // .join(" OR ") = 바뀐 항목들을 " OR " 로 이어붙이기
   const 정신의학저널_조건 = 정신의학_학술지
@@ -584,8 +584,9 @@ function 검색어_만들기(분야, 기간일수) {
     검색어 += ` AND (${분야조건})`;
   }
 
-  // 발표 시기 제한
-  검색어 += ` AND ("last ${기간일수} days"[dp])`;
+  // 기간 조건은 여기에 넣지 않습니다.
+  // [dp](발행일)는 저널 호 배정일이라 미래 날짜가 붙는 경우가 많아,
+  // 아래 논문번호_받아오기() 에서 'PubMed 등록일' 기준으로 따로 지정합니다.
 
   // 초록이 있는 논문만 (요약을 보여줘야 하므로)
   검색어 += ` AND hasabstract`;
@@ -607,14 +608,27 @@ function 검색어_만들기(분야, 기간일수) {
    ========================================================== */
 
 // (1단계) 조건에 맞는 논문 "번호(PMID)" 목록을 받아옵니다
-async function 논문번호_받아오기(검색어) {
+/*
+  ※ 여기서 '최근'의 기준이 중요합니다.
+
+  PubMed 에는 날짜가 두 가지 있습니다.
+    발행일(publication date) — 저널 호에 배정된 날짜. **미래 날짜인 경우가 많습니다.**
+                               월간지는 온라인 공개 후 몇 달 뒤 호에 배정되기 때문입니다.
+    등록일(Entrez date)      — PubMed 에 실제로 올라온 날짜.
+
+  발행일로 정렬하면 미래 날짜를 크게 붙이는 학술지가 목록 위쪽을 독차지합니다.
+  실제로 그 탓에 120편이 단 두 학술지에서만 나온 적이 있습니다.
+  그래서 datetype=edat 으로 등록일 기준을 쓰고, 정렬은 기본값(최근 등록순)에 맡깁니다.
+*/
+async function 논문번호_받아오기(검색어, 기간일수) {
   // encodeURIComponent = 한글이나 공백, 따옴표가 주소에 안전하게 들어가도록 변환
   const 주소 =
     `${PUBMED_API}/esearch.fcgi` +
     `?db=pubmed` +                             // pubmed 데이터베이스에서
     `&term=${encodeURIComponent(검색어)}` +     // 이 조건으로
     `&retmax=120` +                            // 최대 120개까지 (후보가 넓어야 학술지가 다양해집니다)
-    `&sort=pub_date` +                         // 최신순으로 정렬
+    `&datetype=edat` +                         // 날짜 기준: PubMed 등록일
+    `&reldate=${기간일수}` +                    // 최근 며칠 이내
     `&retmode=json` +                          // 결과를 JSON 형식으로
     `&tool=psychiatry-daily-digest`;           // 우리 도구 이름 (NCBI 권장 사항)
 
@@ -706,8 +720,17 @@ function 논문정보_정리(논문) {
     : `${저자들.slice(0, 3).join(", ")}, et al.`;
 
   // --- 발표일 ---
-  const 연 = 글자꺼내기("PubDate Year") || 글자꺼내기("ArticleDate Year");
-  const 월 = 글자꺼내기("PubDate Month") || 글자꺼내기("ArticleDate Month");
+  // ArticleDate 는 '온라인에 공개된 날', PubDate 는 '저널 호에 배정된 날' 입니다.
+  // 후자는 미래 날짜인 경우가 많아, 실제 공개일인 ArticleDate 를 먼저 씁니다.
+  const 연 = 글자꺼내기("ArticleDate Year") || 글자꺼내기("PubDate Year");
+  let 월 = 글자꺼내기("ArticleDate Month") || 글자꺼내기("PubDate Month");
+
+  // ArticleDate 의 월은 "11" 같은 숫자, PubDate 는 "Nov" 같은 글자입니다.
+  // 보기 좋게 글자 형태로 통일합니다.
+  const 월이름 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  if (/^\d+$/.test(월)) 월 = 월이름[Number(월) - 1] || 월;
+
   const 발표일 = [연, 월].filter(Boolean).join(". ") || "발표일 미상";
 
   // --- 초록: 여러 문단으로 나뉘어 있고 각 문단에 Label(배경/방법/결과/결론)이 붙기도 합니다 ---
@@ -859,9 +882,9 @@ async function 논문_불러오기() {
   try {
     const 분야   = 분야_선택창.value;          // .value = 선택창에서 고른 값
     const 기간   = 기간_선택창.value;
-    const 검색어 = 검색어_만들기(분야, 기간);
+    const 검색어 = 검색어_만들기(분야);
 
-    const 번호목록 = await 논문번호_받아오기(검색어);
+    const 번호목록 = await 논문번호_받아오기(검색어, 기간);
 
     if (번호목록.length === 0) {
       상태표시("조건에 맞는 논문이 없습니다. 기간을 늘리거나 분야를 '전체'로 바꿔보세요.", true);
