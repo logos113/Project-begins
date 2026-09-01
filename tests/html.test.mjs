@@ -124,5 +124,19 @@ const css = 읽기("style.css");
 검사("마우스 있는 기기에서만 강조 효과가 적용되는가", /@media \(hover: hover\)/.test(css));
 검사("좁은 화면(휴대폰)용 규칙도 그대로 남아 있는가", /@media \(max-width: 560px\)/.test(css));
 
+// ---- 8. 화면 버전 표시 검사 ----
+/*
+  "고쳤는데 왜 그대로지?" 를 확인할 수 있게 하는 장치입니다.
+  브라우저가 예전 파일을 계속 쓰고 있으면 이 숫자가 올라가지 않습니다.
+*/
+검사("꼬리말에 버전을 표시할 자리가 있는가", !!문서.getElementById("appVersion"));
+const 스크립트태그 = 문서.querySelector('script[src*="app.js"]');
+검사("app.js 를 부를 때 버전 번호가 붙어 있는가",
+  /v=\d+/.test(스크립트태그?.getAttribute("src") || ""), 스크립트태그?.getAttribute("src"));
+검사("style.css 에도 같은 버전 번호가 붙어 있는가",
+  (문서.querySelector('link[href*="style.css"]')?.getAttribute("href") || "").match(/v=(\d+)/)?.[1] ===
+  (스크립트태그?.getAttribute("src") || "").match(/v=(\d+)/)?.[1],
+  [문서.querySelector('link[href*="style.css"]')?.getAttribute("href"), 스크립트태그?.getAttribute("src")]);
+
 console.log(실패 === 0 ? "\n🎉 전체 통과 — 페이지 구조에 이상 없음" : `\n⚠️  ${실패}건 실패`);
 process.exit(실패 === 0 ? 0 : 1);
