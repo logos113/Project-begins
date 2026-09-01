@@ -472,6 +472,35 @@ function 길이맞춰_잇기(문장들, 최대길이) {
 }
 
 /*
+  PubMed 초록에는 수식이나 기호가 [Formula: see text] 같은 자리표시자로 바뀌어 들어옵니다.
+  화면에 그대로 두면 읽기만 어지러우므로 지웁니다.
+*/
+function 자리표시자_지우기(글) {
+  return String(글)
+    .replace(/\[(Formula|Image|Figure|See figure|Table): see text\]/gi, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
+/*
+  결론으로 쓸 만한 문장인지 판단합니다.
+
+  왜 필요한가요?
+    초록 맨 끝에 결론이 아닌 것이 붙는 학술지가 있습니다.
+    예를 들어 Annals of Internal Medicine 의 ACP Journal Club 은
+    편집자 평가 별점표를 끝에 붙이는데, PubMed 에서는 이렇게 보입니다.
+        "GIM/FP/GP: [Formula: see text] Public Health: [Formula: see text]"
+    단순히 "마지막 문장"을 가져오면 이런 것이 결론으로 잡힙니다.
+    실제 문장이라면 소문자 단어가 여럿 들어 있다는 점을 이용해 걸러냅니다.
+*/
+function 결론으로_쓸만한가(문장) {
+  const 정리 = 자리표시자_지우기(문장);
+  if (정리.length < 40) return false;
+  const 소문자단어 = 정리.match(/\b[a-z]{3,}\b/g) || [];
+  return 소문자단어.length >= 4;
+}
+
+/*
   초록 본문 안에서 "여기부터 결론"임을 알려주는 표현들입니다.
   라벨이 없는 한 덩어리 초록에서 결론을 찾아내는 데 씁니다.
 */
@@ -514,33 +543,42 @@ function 핵심결론_뽑기(초록문단들) {
   for (const 조건 of 라벨_우선순위) {
     const 찾은것 = 초록문단들.find((문단) => 문단.label && 조건(문단.label.toUpperCase()));
     if (찾은것) {
+      const 정리 = 자리표시자_지우기(찾은것.text);
       return {
-        글: 길이맞춰_잇기(문장으로_나누기(찾은것.text), 최대길이) || 찾은것.text.slice(0, 최대길이),
+        글: 길이맞춰_잇기(문장으로_나누기(정리), 최대길이) || 정리.slice(0, 최대길이),
         출처: 찾은것.label,
       };
     }
   }
 
   // (2) 한 덩어리 초록 — 전체를 이어붙인 뒤 결론 부분을 찾습니다.
-  const 전체 = 초록문단들.map((문단) => 문단.text).join(" ");
+  const 전체 = 자리표시자_지우기(초록문단들.map((문단) => 문단.text).join(" "));
   const 문장들 = 문장으로_나누기(전체);
 
   // (2-a) "In conclusion" 같은 표현이 나오는 문장부터 끝까지
   for (let i = 0; i < 문장들.length; i++) {
-    if (결론_시작표현.some((표현) => 표현.test(문장들[i]))) {
-      // 결론이 초록 맨 앞에 있을 리는 없으므로, 앞쪽 1/3 구간의 것은 무시합니다
-      if (i < Math.floor(문장들.length / 3)) continue;
-      return { 글: 길이맞춰_잇기(문장들.slice(i), 최대길이), 출처: "본문에서 찾음" };
+    if (!결론_시작표현.some((표현) => 표현.test(문장들[i]))) continue;
+    // 결론이 초록 맨 앞에 있을 리는 없으므로, 앞쪽 1/3 구간의 것은 무시합니다
+    if (i < Math.floor(문장들.length / 3)) continue;
+    const 담을것 = 문장들.slice(i).filter(결론으로_쓸만한가);
+    if (담을것.length > 0) {
+      return { 글: 길이맞춰_잇기(담을것, 최대길이), 출처: "본문에서 찾음" };
     }
   }
 
-  // (2-b) 표현을 못 찾으면 마지막 문장들을 씁니다. 결론은 대개 끝에 있습니다.
+  /*
+    (2-b) 표현을 못 찾으면 마지막 문장들을 씁니다. 결론은 대개 끝에 있습니다.
+    단, 편집자 평가표처럼 결론이 아닌 꼬리표는 건너뜁니다.
+  */
+  const 쓸만한문장들 = 문장들.filter(결론으로_쓸만한가);
+  if (쓸만한문장들.length === 0) return { 글: "", 출처: "" };
+
   const 뒤에서부터 = [];
   let 길이 = 0;
-  for (let i = 문장들.length - 1; i >= 0; i--) {
-    if (뒤에서부터.length > 0 && 길이 + 문장들[i].length > 최대길이) break;
-    뒤에서부터.unshift(문장들[i]);
-    길이 += 문장들[i].length + 1;
+  for (let i = 쓸만한문장들.length - 1; i >= 0; i--) {
+    if (뒤에서부터.length > 0 && 길이 + 쓸만한문장들[i].length > 최대길이) break;
+    뒤에서부터.unshift(쓸만한문장들[i]);
+    길이 += 쓸만한문장들[i].length + 1;
     if (뒤에서부터.length >= 2) break;      // 결론은 보통 마지막 한두 문장입니다
   }
   return { 글: 뒤에서부터.join(" "), 출처: "초록 마지막 부분" };
@@ -734,10 +772,18 @@ function 논문정보_정리(논문) {
   const 발표일 = [연, 월].filter(Boolean).join(". ") || "발표일 미상";
 
   // --- 초록: 여러 문단으로 나뉘어 있고 각 문단에 Label(배경/방법/결과/결론)이 붙기도 합니다 ---
-  const 초록문단들 = Array.from(논문.querySelectorAll("Abstract > AbstractText")).map((문단) => ({
+  /*
+    초록은 보통 <Abstract> 안에 있지만, 출판사가 따로 제공한 초록이
+    <OtherAbstract> 에만 들어 있는 경우가 있습니다. 그때도 읽어옵니다.
+  */
+  let 초록노드들 = Array.from(논문.querySelectorAll("Abstract > AbstractText"));
+  if (초록노드들.length === 0) {
+    초록노드들 = Array.from(논문.querySelectorAll("OtherAbstract > AbstractText"));
+  }
+  const 초록문단들 = 초록노드들.map((문단) => ({
     label: 문단.getAttribute("Label") || "",   // getAttribute = 태그의 속성값 읽기
-    text:  문단.textContent.trim(),
-  }));
+    text:  자리표시자_지우기(문단.textContent),
+  })).filter((문단) => 문단.text !== "");
 
   // --- 핵심 결론 뽑아내기 ---
   const 결론 = 핵심결론_뽑기(초록문단들);
@@ -822,7 +868,12 @@ function 카드_만들기(논문) {
         <span class="takeaway-label">핵심 결론${
           논문.핵심출처 ? ` <span class="takeaway-source">${안전한글자로(논문.핵심출처)}</span>` : ""
         }</span>
-        <p>${안전한글자로(논문.핵심 || "초록에서 결론 문단을 찾지 못했습니다. 아래에서 전문을 확인해 주세요.")}</p>
+        <p>${안전한글자로(
+          논문.핵심 ||
+          (초록있나
+            ? "초록에서 결론 부분을 자동으로 찾지 못했습니다. 아래에서 전문을 확인해 주세요."
+            : "이 논문은 PubMed에 초록이 등록되어 있지 않습니다. 아래 PubMed 링크에서 확인해 주세요.")
+        )}</p>
       </div>
 
       ${초록블록}

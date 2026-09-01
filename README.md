@@ -381,9 +381,10 @@ const 학술지_등급 = {
 
 ```bash
 npm install jsdom
-node tests/logic.test.mjs    # 동작 검사
-node tests/html.test.mjs     # 구조 검사
-node tests/flow.test.mjs     # 전체 흐름 검사
+node tests/logic.test.mjs       # 동작 검사
+node tests/html.test.mjs        # 구조 검사
+node tests/conclusion.test.mjs  # 결론 추출 검사
+node tests/flow.test.mjs        # 전체 흐름 검사
 ```
 
 | 파일 | 검사하는 것 |
