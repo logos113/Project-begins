@@ -167,12 +167,107 @@ const 분야_선택창     = document.getElementById("topicSelect");
 const 기간_선택창     = document.getElementById("daysSelect");
 const 우선순위_선택창 = document.getElementById("rankSelect");
 const 새로고침_버튼   = document.getElementById("refreshBtn");
+const 북마크_버튼     = document.getElementById("bookmarkBtn");
 
 /*
   "다른 논문 보기"를 누른 횟수를 세는 상자입니다.
   const 는 값을 바꿀 수 없지만, let 은 나중에 바꿀 수 있습니다.
 */
 let 넘긴_횟수 = 0;
+
+// 지금 화면에 무엇을 보여주고 있는지 — "오늘" 또는 "북마크"
+let 보기모드 = "오늘";
+
+// 지금 화면에 떠 있는 논문들. 저장 버튼을 눌렀을 때 정보를 찾기 위해 보관합니다.
+let 현재_논문들 = [];
+
+
+/* ==========================================================
+   [2-2] 저장한 논문(북마크) 다루기
+   ------------------------------------------------------------
+   localStorage = 브라우저가 제공하는 작은 저장 공간입니다.
+   이 기기의 이 브라우저에만 저장되며, 창을 닫아도 남아 있습니다.
+   서버로 전송되지 않으므로 다른 사람은 볼 수 없습니다.
+
+   주의: 사생활 보호 모드이거나 브라우저 설정에 따라 저장이 막힐 수 있어서,
+   읽고 쓰는 모든 곳을 try/catch 로 감싸야 합니다. 그렇지 않으면
+   저장이 막힌 순간 페이지 전체가 멈춥니다.
+   ========================================================== */
+
+const 북마크_보관함_이름 = "psychiatry-digest-bookmarks";
+
+// 저장해둔 논문 목록을 불러옵니다. 문제가 생기면 빈 목록을 돌려줍니다.
+function 북마크_불러오기() {
+  try {
+    const 글 = localStorage.getItem(북마크_보관함_이름);
+    const 목록 = 글 ? JSON.parse(글) : [];
+    return Array.isArray(목록) ? 목록 : [];
+  } catch {
+    return [];
+  }
+}
+
+// 목록을 저장합니다. 성공하면 true 를 돌려줍니다.
+function 북마크_저장하기(목록) {
+  try {
+    localStorage.setItem(북마크_보관함_이름, JSON.stringify(목록));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function 북마크에_있나(pmid) {
+  return 북마크_불러오기().some((논문) => 논문.pmid === pmid);
+}
+
+// 화면 위쪽 버튼의 글자를 지금 상황에 맞게 바꿉니다
+function 북마크_버튼_갱신() {
+  if (!북마크_버튼) return;
+  if (보기모드 === "북마크") {
+    북마크_버튼.textContent = "오늘의 논문 보기";
+    북마크_버튼.classList.add("active");
+  } else {
+    const 개수 = 북마크_불러오기().length;
+    북마크_버튼.textContent = 개수 > 0 ? `저장한 논문 ${개수}` : "저장한 논문";
+    북마크_버튼.classList.remove("active");
+  }
+}
+
+/*
+  저장 버튼을 눌렀을 때: 이미 저장돼 있으면 빼고, 없으면 넣습니다.
+  돌려주는 값은 저장된 상태인지 여부입니다.
+*/
+function 북마크_넣고빼기(논문) {
+  const 목록 = 북마크_불러오기();
+  const 자리 = 목록.findIndex((항목) => 항목.pmid === 논문.pmid);
+
+  if (자리 >= 0) {
+    목록.splice(자리, 1);              // splice = 해당 위치의 항목을 빼내기
+    북마크_저장하기(목록);
+    북마크_버튼_갱신();
+    return false;
+  }
+
+  // 화면에 다시 그릴 때 필요한 정보만 골라 저장합니다 (초록 전문은 용량이 커서 제외)
+  목록.unshift({
+    pmid: 논문.pmid,
+    제목: 논문.제목,
+    학술지: 논문.학술지,
+    저자표기: 논문.저자표기,
+    발표일: 논문.발표일,
+    핵심: 논문.핵심,
+    핵심출처: 논문.핵심출처,
+    doi: 논문.doi,
+    저장일: 오늘_날짜글자(),
+  });
+  const 됐나 = 북마크_저장하기(목록);
+  북마크_버튼_갱신();
+  if (!됐나) {
+    상태표시("저장 공간을 쓸 수 없습니다. 브라우저의 사생활 보호 모드에서는 저장이 안 됩니다.", true);
+  }
+  return 됐나;
+}
 
 
 /* ==========================================================
@@ -323,6 +418,132 @@ function 오늘의_논문_고르기(요약목록) {
   }
 
   return 고른것;
+}
+
+
+/*
+  마침표로 끝나지만 문장이 끝난 것이 아닌 표현들입니다.
+  논문 초록에 자주 나오므로 걸러주지 않으면 문장이 엉뚱하게 잘립니다.
+  마지막의 \b[A-Z]\. 는 "J. Smith" 같은 이름 이니셜을 뜻합니다.
+*/
+const 약어_끝 =
+  /(\b(et al|vs|cf|e\.g|i\.e|etc|Fig|Ref|Eq|Dr|Prof|No|approx|ca|Inc|Ltd|St|Mr|Ms|Mrs|Jr|Sr)|\b[A-Z])\.$/i;
+
+/*
+  영어 글을 문장 단위로 나눕니다.
+
+  단순히 마침표로 자르면 "et al." "vs." "Fig. 2" 같은 약어에서 잘못 끊깁니다.
+  그래서 두 가지 조건을 함께 봅니다.
+    (1) 마침표 다음에 공백이 오고, 그 다음이 대문자나 숫자일 것
+    (2) 마침표 앞이 위에 적어둔 약어가 아닐 것
+*/
+function 문장으로_나누기(글) {
+  const 문장들 = [];
+  let 시작 = 0;
+  for (let i = 0; i < 글.length; i++) {
+    if (!".!?".includes(글[i])) continue;
+
+    const 조각 = 글.slice(시작, i + 1).trim();
+    // 약어로 끝나면 아직 문장이 끝나지 않은 것입니다
+    if (글[i] === "." && 약어_끝.test(조각)) continue;
+
+    const 뒤 = 글.slice(i + 1);
+    const 문장끝인가 = /^\s+["'(\[]?[A-Z0-9]/.test(뒤) || i === 글.length - 1;
+    if (!문장끝인가) continue;
+
+    if (조각) 문장들.push(조각);
+    시작 = i + 1;
+  }
+  const 남은것 = 글.slice(시작).trim();
+  if (남은것) 문장들.push(남은것);
+  return 문장들;
+}
+
+// 문장들을 앞에서부터 담되, 정해진 길이를 넘지 않게 합니다 (문장 중간에서 자르지 않기 위해서)
+function 길이맞춰_잇기(문장들, 최대길이) {
+  const 담은것 = [];
+  let 길이 = 0;
+  for (const 문장 of 문장들) {
+    if (담은것.length > 0 && 길이 + 문장.length > 최대길이) break;
+    담은것.push(문장);
+    길이 += 문장.length + 1;
+  }
+  return 담은것.join(" ");
+}
+
+/*
+  초록 본문 안에서 "여기부터 결론"임을 알려주는 표현들입니다.
+  라벨이 없는 한 덩어리 초록에서 결론을 찾아내는 데 씁니다.
+*/
+const 결론_시작표현 = [
+  /\bin conclusions?\b/i,
+  /\bconclusions?\s*[:.\-–—]/i,
+  /\bin summary\b/i,
+  /\btaken together\b/i,
+  /\bcollectively\b/i,
+  /\boverall,/i,
+  /\bthese (findings|results|data|observations)\s+(suggest|indicate|highlight|support|demonstrate|provide|underscore)/i,
+  /\bour (findings|results|data)\s+(suggest|indicate|highlight|support|demonstrate|provide|underscore)/i,
+  /\bthis (study|trial|analysis|review)\s+(suggests|indicates|demonstrates|provides|highlights|supports)/i,
+  /\bthe (findings|results)\s+(suggest|indicate|highlight|support)/i,
+];
+
+/*
+  초록에서 '핵심 결론'을 뽑아냅니다.
+  돌려주는 것: { 글, 출처 }  — 출처는 어떻게 찾았는지를 화면에 알려주기 위한 것입니다.
+
+  왜 이렇게 복잡한가요?
+    초록에는 두 가지 형태가 있습니다.
+      (1) BACKGROUND / METHODS / CONCLUSIONS 처럼 항목이 나뉜 것
+      (2) 항목 구분 없이 한 덩어리로 이어진 것  ← 이런 저널이 많습니다
+    (2)의 경우 "마지막 문단"을 쓰면 초록 전체가 잡히고,
+    앞에서부터 잘라내면 결론이 아니라 도입부가 나옵니다.
+    실제로 그런 문제가 있었습니다.
+*/
+function 핵심결론_뽑기(초록문단들) {
+  const 최대길이 = 420;
+  if (초록문단들.length === 0) return { 글: "", 출처: "" };
+
+  // (1) 항목이 나뉜 초록 — 결론에 해당하는 항목을 찾습니다.
+  //     확실한 것부터 순서대로 찾습니다.
+  const 라벨_우선순위 = [
+    (라벨) => /CONCLUSION|INTERPRETATION/.test(라벨),
+    (라벨) => /IMPLICATION|SIGNIFICANCE|SUMMARY/.test(라벨),
+    (라벨) => /DISCUSSION/.test(라벨),
+  ];
+  for (const 조건 of 라벨_우선순위) {
+    const 찾은것 = 초록문단들.find((문단) => 문단.label && 조건(문단.label.toUpperCase()));
+    if (찾은것) {
+      return {
+        글: 길이맞춰_잇기(문장으로_나누기(찾은것.text), 최대길이) || 찾은것.text.slice(0, 최대길이),
+        출처: 찾은것.label,
+      };
+    }
+  }
+
+  // (2) 한 덩어리 초록 — 전체를 이어붙인 뒤 결론 부분을 찾습니다.
+  const 전체 = 초록문단들.map((문단) => 문단.text).join(" ");
+  const 문장들 = 문장으로_나누기(전체);
+
+  // (2-a) "In conclusion" 같은 표현이 나오는 문장부터 끝까지
+  for (let i = 0; i < 문장들.length; i++) {
+    if (결론_시작표현.some((표현) => 표현.test(문장들[i]))) {
+      // 결론이 초록 맨 앞에 있을 리는 없으므로, 앞쪽 1/3 구간의 것은 무시합니다
+      if (i < Math.floor(문장들.length / 3)) continue;
+      return { 글: 길이맞춰_잇기(문장들.slice(i), 최대길이), 출처: "본문에서 찾음" };
+    }
+  }
+
+  // (2-b) 표현을 못 찾으면 마지막 문장들을 씁니다. 결론은 대개 끝에 있습니다.
+  const 뒤에서부터 = [];
+  let 길이 = 0;
+  for (let i = 문장들.length - 1; i >= 0; i--) {
+    if (뒤에서부터.length > 0 && 길이 + 문장들[i].length > 최대길이) break;
+    뒤에서부터.unshift(문장들[i]);
+    길이 += 문장들[i].length + 1;
+    if (뒤에서부터.length >= 2) break;      // 결론은 보통 마지막 한두 문장입니다
+  }
+  return { 글: 뒤에서부터.join(" "), 출처: "초록 마지막 부분" };
 }
 
 
@@ -496,16 +717,9 @@ function 논문정보_정리(논문) {
   }));
 
   // --- 핵심 결론 뽑아내기 ---
-  // 결론에 해당하는 Label 을 먼저 찾고, 없으면 마지막 문단을 씁니다.
-  const 결론라벨 = ["CONCLUSION", "CONCLUSIONS", "INTERPRETATION",
-                    "CONCLUSIONS AND RELEVANCE", "DISCUSSION"];
-  const 결론문단 =
-    초록문단들.find((문단) => 결론라벨.includes(문단.label.toUpperCase())) ||
-    초록문단들[초록문단들.length - 1];
-
-  let 핵심 = 결론문단 ? 결론문단.text : "";
-  // 결론이 너무 길면 앞부분만 잘라 보여줍니다
-  if (핵심.length > 420) 핵심 = 핵심.slice(0, 420).trim() + "…";
+  const 결론 = 핵심결론_뽑기(초록문단들);
+  const 핵심 = 결론.글;
+  const 핵심출처 = 결론.출처;
 
   // --- DOI (논문의 고유 주소) ---
   const doi =
@@ -514,7 +728,7 @@ function 논문정보_정리(논문) {
     "";
 
   // 정리한 내용을 하나의 객체로 묶어 돌려줍니다
-  return { pmid, 제목, 학술지, 저자표기, 발표일, 초록문단들, 핵심, doi };
+  return { pmid, 제목, 학술지, 저자표기, 발표일, 초록문단들, 핵심, 핵심출처, doi };
 }
 
 
@@ -539,13 +753,28 @@ function 안전한글자로(글) {
 function 카드_만들기(논문) {
   // 학술지 등급에 따라 배지 모양을 달리해 한눈에 구분되게 합니다
   const 등급 = 학술지_등급_가져오기(논문.학술지);
-  // 초록 전문을 문단별로 조립합니다
-  const 초록HTML = 논문.초록문단들
-    .map((문단) => {
-      const 제목줄 = 문단.label ? `<h4>${안전한글자로(문단.label)}</h4>` : "";
-      return `${제목줄}<p>${안전한글자로(문단.text)}</p>`;
-    })
-    .join("");
+  // 초록 전문을 문단별로 조립합니다.
+  // 저장해둔 논문에는 초록 전문이 없으므로(용량 절약) 그때는 이 부분을 생략합니다.
+  const 초록있나 = Array.isArray(논문.초록문단들) && 논문.초록문단들.length > 0;
+  const 초록블록 = !초록있나 ? "" : `
+      <details class="abstract">
+        <summary>초록 전문 보기</summary>
+        <div class="abstract-body">${논문.초록문단들
+          .map((문단) => {
+            const 제목줄 = 문단.label ? `<h4>${안전한글자로(문단.label)}</h4>` : "";
+            return `${제목줄}<p>${안전한글자로(문단.text)}</p>`;
+          })
+          .join("")}</div>
+      </details>`;
+
+  // 이미 저장한 논문인지 확인해 버튼 모양을 정합니다
+  const 저장됨 = 북마크에_있나(논문.pmid);
+  const 저장버튼 = `<button class="btn-small btn-save${저장됨 ? " saved" : ""}" type="button"
+      data-save="${안전한글자로(논문.pmid)}">${저장됨 ? "★ 저장됨" : "☆ 저장"}</button>`;
+
+  // 저장한 날짜 (북마크 목록에서만 표시)
+  const 저장일표시 = 논문.저장일
+    ? `<span class="saved-on">${안전한글자로(논문.저장일)} 저장</span>` : "";
 
   // DOI가 있을 때만 링크 버튼을 만듭니다 (없으면 빈 글자)
   const doi버튼 = 논문.doi
@@ -560,22 +789,23 @@ function 카드_만들기(논문) {
         ${등급 >= 4 ? '<span class="tier-note">최상위</span>' : ""}
         <span>${안전한글자로(논문.발표일)}</span>
         <span>· PMID ${안전한글자로(논문.pmid)}</span>
+        ${저장일표시}
       </div>
 
       <h2>${안전한글자로(논문.제목)}</h2>
       <p class="authors">${안전한글자로(논문.저자표기)}</p>
 
       <div class="takeaway">
-        <span class="takeaway-label">핵심 결론</span>
+        <span class="takeaway-label">핵심 결론${
+          논문.핵심출처 ? ` <span class="takeaway-source">${안전한글자로(논문.핵심출처)}</span>` : ""
+        }</span>
         <p>${안전한글자로(논문.핵심 || "초록에서 결론 문단을 찾지 못했습니다. 아래에서 전문을 확인해 주세요.")}</p>
       </div>
 
-      <details class="abstract">
-        <summary>초록 전문 보기</summary>
-        <div class="abstract-body">${초록HTML}</div>
-      </details>
+      ${초록블록}
 
       <div class="paper-actions">
+        ${저장버튼}
         <a class="btn-small" href="https://pubmed.ncbi.nlm.nih.gov/${안전한글자로(논문.pmid)}/"
            target="_blank" rel="noopener">PubMed에서 보기</a>
         ${doi버튼}
@@ -589,10 +819,38 @@ function 카드_만들기(논문) {
 
 
 /* ==========================================================
+   [7-2] 저장한 논문 목록 보여주기
+   ========================================================== */
+
+function 북마크_보여주기() {
+  보기모드 = "북마크";
+  넘긴_횟수 = 0;
+  북마크_버튼_갱신();
+
+  const 목록 = 북마크_불러오기();
+  현재_논문들 = 목록;
+  논문목록_자리.innerHTML = "";
+
+  if (목록.length === 0) {
+    오늘날짜_자리.textContent = "";
+    상태표시("아직 저장한 논문이 없습니다.\n논문 카드 아래의 '☆ 저장' 버튼을 누르면 여기에 모입니다.");
+    return;
+  }
+
+  상태숨김();
+  논문목록_자리.innerHTML = 목록.map(카드_만들기).join("");
+  오늘날짜_자리.textContent =
+    `저장한 논문 ${목록.length}편 · 최근에 저장한 것부터 보여드립니다`;
+}
+
+
+/* ==========================================================
    [8] 전체를 순서대로 실행하는 함수
    ========================================================== */
 
 async function 논문_불러오기() {
+  보기모드 = "오늘";
+  북마크_버튼_갱신();
   새로고침_버튼.disabled = true;              // 불러오는 동안 버튼 잠그기 (중복 클릭 방지)
   논문목록_자리.innerHTML = "";               // 이전 결과 지우기
   상태표시("PubMed에서 논문을 찾는 중입니다…");
@@ -616,6 +874,7 @@ async function 논문_불러오기() {
     const 논문들 = await 논문상세_받아오기(오늘의논문.map((논문) => 논문.pmid));
 
     // .map() 으로 각 논문을 카드 HTML로 바꾼 뒤 .join("") 으로 이어붙여 한 번에 넣습니다
+    현재_논문들 = 논문들;                    // 저장 버튼이 정보를 찾을 수 있도록 보관
     논문목록_자리.innerHTML = 논문들.map(카드_만들기).join("");
 
     상태숨김();
@@ -655,6 +914,18 @@ async function 논문_불러오기() {
   논문_불러오기();
 });
 
+// "저장한 논문" 버튼 -> 저장 목록과 오늘의 논문을 오갑니다
+if (북마크_버튼) {
+  북마크_버튼.addEventListener("click", () => {
+    if (보기모드 === "북마크") {
+      넘긴_횟수 = 0;
+      논문_불러오기();          // 이 안에서 보기모드가 "오늘"로 돌아갑니다
+    } else {
+      북마크_보여주기();
+    }
+  });
+}
+
 // 분야나 기간을 바꾸면 -> 처음부터 다시 불러옵니다
 분야_선택창.addEventListener("change", () => {
   넘긴_횟수 = 0;
@@ -676,6 +947,29 @@ if (우선순위_선택창) {
   카드는 나중에 만들어지므로 버튼에 직접 연결할 수 없습니다.
   그래서 목록 전체에 한 번만 연결해두고, 클릭된 것이 복사 버튼인지 확인합니다.
 */
+논문목록_자리.addEventListener("click", (사건) => {
+  const 저장버튼 = 사건.target.closest("[data-save]");
+  if (!저장버튼) return;
+
+  const pmid = 저장버튼.dataset.save;
+  const 논문 = 현재_논문들.find((항목) =>항목.pmid === pmid);
+  if (!논문) return;
+
+  const 저장됨 = 북마크_넣고빼기(논문);
+  저장버튼.textContent = 저장됨 ? "★ 저장됨" : "☆ 저장";
+  저장버튼.classList.toggle("saved", 저장됨);
+
+  // 저장 목록을 보고 있는 중에 해제했다면, 그 카드를 화면에서 바로 치웁니다
+  if (보기모드 === "북마크" && !저장됨) {
+    const 카드 = 저장버튼.closest(".paper");
+    if (카드) 카드.remove();
+    현재_논문들 = 북마크_불러오기();
+    if (현재_논문들.length === 0) 북마크_보여주기();
+    else 오늘날짜_자리.textContent =
+      `저장한 논문 ${현재_논문들.length}편 · 최근에 저장한 것부터 보여드립니다`;
+  }
+});
+
 논문목록_자리.addEventListener("click", async (사건) => {
   const 버튼 = 사건.target.closest("[data-copy]");  // closest = 클릭 지점에서 위로 올라가며 찾기
   if (!버튼) return;                                 // 복사 버튼이 아니면 아무것도 안 함
@@ -702,4 +996,5 @@ if (우선순위_선택창) {
 /* ==========================================================
    [10] 페이지가 열리면 바로 한 번 실행
    ========================================================== */
+북마크_버튼_갱신();
 논문_불러오기();
