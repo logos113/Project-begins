@@ -86,6 +86,9 @@ body {
                system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.7;
+  /* 한국어가 단어 중간에서 잘리지 않게 합니다 (설명은 논문 앱 style.css 와 같습니다) */
+  word-break: keep-all;
+  overflow-wrap: anywhere;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -329,13 +332,20 @@ select {
 }
 
 /* 일본어 원문 — 이 앱에서 가장 중요한 줄이므로 가장 크게 */
+.jp,
+.kana,
+.quiz-option {
+  /* 일본어는 띄어쓰기가 없어 원래 아무 곳에서나 줄이 바뀝니다.
+     body 에 걸어둔 keep-all(띄어쓰기에서만 줄바꿈)을 여기서만 되돌립니다. */
+  word-break: normal;
+}
+
 .jp {
   margin: 0 0 8px;
   font-size: 26px;
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: 0.01em;
-  word-break: break-word;   /* 긴 문장이 화면 밖으로 넘치지 않게 */
 }
 
 /* 히라가나 읽기 */

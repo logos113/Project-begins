@@ -73,6 +73,19 @@ body {
                "Malgun Gothic", "맑은 고딕", system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.7;                /* 줄 간격. 논문 읽기엔 넉넉한 편이 좋습니다 */
+  /*
+    한국어가 단어 중간에서 잘리지 않게 합니다.
+
+    브라우저는 한글을 '글자 단위로 아무 데서나 끊어도 되는 글'로 취급합니다.
+    그래서 "그대로 보여줍니다." 가 "…보여줍니" / "다." 처럼 나뉘어
+    마지막 줄에 글자 하나만 남는 일이 생겼습니다.
+    keep-all 은 "띄어쓰기에서만 줄을 바꿔라" 라는 뜻입니다.
+
+    anywhere 는 그 예외입니다. 한 줄에 도저히 안 들어가는 아주 긴 낱말
+    (긴 영문 학술용어나 주소 같은 것)까지 밀어내지 않도록, 그때만 끊게 합니다.
+  */
+  word-break: keep-all;
+  overflow-wrap: anywhere;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -438,9 +451,15 @@ details.abstract[open] summary::before {
   /* 설명글까지 1160px로 늘어나면 한 줄이 너무 길어 읽기 힘듭니다.
      글줄은 적당한 폭으로 묶어둡니다. */
   .site-header .lede,
-  .site-header .today,
-  .site-footer p {
+  .site-header .today {
     max-width: 640px;
+  }
+
+  /* 꼬리말은 조금 더 넉넉하게 둡니다.
+     640px 로 묶으면 출처 문장이 두 줄로 갈라지면서
+     "보여줍니다." 만 다음 줄에 덩그러니 남습니다. */
+  .site-footer p {
+    max-width: 860px;
   }
 
   /* display: grid = 격자로 배치하기.

@@ -117,6 +117,21 @@ const q전체 = T.검색어_만들기("all");
 */
 검사("검색어에 발행일 기준 기간 조건이 들어있지 않은가", !q전체.includes("[dp]"), q전체.slice(-140));
 검사("검색어에 초록 필수 조건이 들어가는가", q전체.includes("hasabstract"));
+
+/*
+  종합 의학 학술지(NEJM·Lancet·JAMA·BMJ·Ann Intern Med)는 정신의학과 무관한
+  논문이 훨씬 많으므로, 정신건강 주제인지를 '제목'에서만 확인해야 합니다.
+
+  초록까지 보면([tiab]) 단어 하나만 스쳐도 통과합니다.
+  실제로 NEJM 의 스타틴 임상시험이 올라온 적이 있는데, 일차 결과가
+  '치매·장애 없는 생존' 이라 초록에 dementia 가 들어 있었을 뿐
+  내용은 심혈관 예방 연구였습니다.
+*/
+검사("종합 학술지 조건을 제목에서만 확인하는가",
+  q전체.includes("dementia[ti]") && !q전체.includes("dementia[tiab]"),
+  q전체.match(/dementia\[\w+\]/g));
+검사("정신건강 키워드가 모두 제목 조건으로 들어가는가",
+  (q전체.match(/\[tiab\]/g) || []).length === 0, q전체.match(/\w+\[tiab\]/g));
 검사("사설/독자편지를 제외하는가", q전체.includes("NOT (editorial[pt]"));
 검사("'전체' 선택 시 분야 조건이 붙지 않는가", !q전체.includes("[tiab]) AND ("), q전체.slice(-120));
 

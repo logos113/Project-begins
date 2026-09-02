@@ -156,6 +156,17 @@ const 없는설정아이콘 = 설정.icons
   실제로 복습 퀴즈를 열어도 표현 카드가 그대로 남아 있는 문제가 있었습니다.
   (jsdom 은 화면을 실제로 그리지 않아 이 문제를 잡지 못합니다. 그래서 규칙 자체를 확인합니다)
 */
+/*
+  한국어는 띄어쓰기에서만 줄을 바꿔야 마지막 줄에 글자 하나만 남지 않습니다.
+  다만 일본어는 띄어쓰기가 없어 원래 아무 곳에서나 바뀌므로,
+  일본어가 들어가는 자리(.jp · .kana · .quiz-option)에서는 그 규칙을 되돌려야 합니다.
+  되돌리지 않으면 긴 일본어 문장이 줄바꿈 없이 화면 밖으로 밀려납니다.
+*/
+검사("한국어를 단어 중간에서 끊지 않는 규칙이 있는가",
+  /word-break:\s*keep-all/.test(읽기("japanese/style.css")));
+검사("일본어가 들어가는 자리에서는 그 규칙을 되돌렸는가",
+  /\.jp,\s*\n\.kana,\s*\n\.quiz-option\s*\{[^}]*word-break:\s*normal/.test(읽기("japanese/style.css")));
+
 검사("style.css 에 [hidden] 을 확실히 감추는 규칙이 있는가",
   /\[hidden\]\s*\{[^}]*display:\s*none\s*!important/.test(읽기("japanese/style.css")));
 
