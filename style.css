@@ -397,6 +397,13 @@ details.abstract[open] summary::before {
 .site-footer p { margin: 0 0 6px; }
 .disclaimer { color: var(--text-mute); }
 
+/* 옆에 있는 다른 앱(일본어 회화)으로 건너가는 링크 */
+.sibling-app {
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
 /* 화면 버전 — 최신인지 확인할 때만 보면 되므로 아주 조용하게 */
 .version {
   margin-top: 10px;

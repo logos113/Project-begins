@@ -168,6 +168,21 @@ const 스크립트들 = [...문서.querySelectorAll("script")].map((칸) => 칸.
   스크립트들.findIndex((이름) => 이름.includes("phrases.js")) <
   스크립트들.findIndex((이름) => 이름.includes("app.js")), 스크립트들);
 
+/*
+  파일을 고친 뒤 ?v= 숫자를 올려야 브라우저가 새 파일을 받아옵니다.
+  style.css 와 app.js 의 숫자가 어긋나면 한쪽만 예전 것이 남아 화면이 깨질 수 있습니다.
+*/
+const 버전 = (골라낼것) =>
+  (문서.querySelector(골라낼것)?.getAttribute("href") ||
+   문서.querySelector(골라낼것)?.getAttribute("src") || "").match(/v=(\d+)/)?.[1];
+검사("style.css 와 app.js 의 버전 표시가 같은가",
+  버전('link[href*="style.css"]') === 버전('script[src*="app.js"]'),
+  [버전('link[href*="style.css"]'), 버전('script[src*="app.js"]')]);
+
+// 두 앱을 오갈 수 있어야 합니다 (한 브랜치에 함께 올라가 있으므로 주소만 다릅니다)
+검사("논문 앱으로 건너가는 링크가 있는가",
+  !!문서.querySelector('.sibling-app a[href="../"]'));
+
 // 논문 앱을 건드리지 않았는지 — 두 앱은 폴더로 완전히 분리되어 있어야 합니다
 검사("논문 앱의 index.html 은 그대로인가 (제목이 바뀌지 않았는가)",
   읽기("index.html").includes("오늘의 정신의학 논문"));
