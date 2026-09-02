@@ -1,0 +1,192 @@
+/*
+  ============================================================
+  점프 게임 - style.css
+
+  게임 화면의 "옷" 입니다. 색과 크기를 정합니다.
+  게임 안에 그려지는 로봇·장애물의 색은 여기가 아니라
+  game.js 맨 위의 설정에서 바꿉니다.
+  ============================================================
+*/
+
+:root {
+  --하늘위:   #1b2a4a;   /* 하늘 위쪽 (진한 남색) */
+  --하늘아래: #3d5a80;   /* 하늘 아래쪽 */
+  --글자:     #ffffff;
+  --포인트:   #ffd166;   /* 점수, 버튼에 쓰는 노란색 */
+  --버튼:     #06d6a0;   /* 시작 버튼 (민트) */
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;              /* 게임 중에 화면이 위아래로 밀리지 않게 */
+  background: var(--하늘위);
+  color: var(--글자);
+  font-family: -apple-system, "Apple SD Gothic Neo", "Pretendard",
+               "Malgun Gothic", "맑은 고딕", system-ui, sans-serif;
+  /* 길게 눌렀을 때 글자가 선택되거나 메뉴가 뜨는 것을 막습니다 */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;     /* 위아래로 당겨도 새로고침되지 않게 */
+}
+
+/* 게임이 그려지는 도화지 — 화면 전체를 채웁니다 */
+#gameCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;            /* 손가락 제스처를 브라우저가 가로채지 않게 */
+}
+
+/* ---------- 점수판 ---------- */
+.hud {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  /* 아이폰 노치(위쪽 튀어나온 부분)를 피해서 배치합니다 */
+  padding-top: max(14px, env(safe-area-inset-top));
+  pointer-events: none;          /* 점수판이 터치를 가로채지 않게 */
+}
+
+.score-box {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.28);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 20px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;   /* 숫자가 바뀌어도 폭이 흔들리지 않게 */
+}
+.score-box.best { color: var(--포인트); font-size: 17px; }
+.score-label {
+  font-size: 11px;
+  font-weight: 700;
+  opacity: 0.65;
+  letter-spacing: 0.05em;
+}
+
+.sound-btn {
+  margin-left: auto;
+  pointer-events: auto;          /* 이 버튼만 눌리게 */
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.28);
+  font-size: 19px;
+  cursor: pointer;
+  color: inherit;
+}
+.sound-btn.muted { opacity: 0.45; }
+
+/* ---------- 시작 / 게임오버 화면 ---------- */
+.overlay {
+  position: fixed;
+  inset: 0;                      /* 위·아래·좌·우를 0으로 = 화면 전체 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(12, 20, 38, 0.82);
+  backdrop-filter: blur(3px);    /* 뒤쪽 게임 화면을 살짝 흐리게 */
+  z-index: 10;
+}
+.overlay.hidden { display: none; }
+
+.panel {
+  width: 100%;
+  max-width: 340px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: 34px;
+  letter-spacing: -0.02em;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.25);
+}
+
+#overlayText {
+  margin: 0 0 22px;
+  font-size: 15px;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+/* 게임이 끝났을 때 나오는 점수표 */
+.result {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+}
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 5px 0;
+  font-size: 15px;
+}
+.result-row strong {
+  font-size: 24px;
+  font-variant-numeric: tabular-nums;
+}
+.result-row:last-of-type strong { color: var(--포인트); }
+
+.new-record {
+  margin: 10px 0 0;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--포인트);
+  /* 신기록일 때 통통 튀는 효과 */
+  animation: 통통 0.6s ease-in-out infinite alternate;
+}
+@keyframes 통통 {
+  from { transform: scale(1); }
+  to   { transform: scale(1.12); }
+}
+
+.start-btn {
+  font: inherit;
+  font-size: 20px;
+  font-weight: 800;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+  background: var(--버튼);
+  color: #062c22;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #05a87d;   /* 아래쪽 그림자로 입체감 */
+  transition: transform 0.08s, box-shadow 0.08s;
+}
+.start-btn:active {
+  transform: translateY(3px);    /* 누르면 버튼이 들어가는 느낌 */
+  box-shadow: 0 1px 0 #05a87d;
+}
+
+.hint {
+  margin: 18px 0 0;
+  font-size: 13px;
+  opacity: 0.65;
+  line-height: 1.6;
+}
+
+/* 화면이 낮을 때(가로로 눕혔을 때) 글자를 줄여 다 보이게 합니다 */
+@media (max-height: 480px) {
+  h1 { font-size: 26px; }
+  #overlayText { font-size: 13px; margin-bottom: 14px; }
+  .result { padding: 10px 14px; margin-bottom: 14px; }
+  .start-btn { padding: 13px; font-size: 18px; }
+  .hint { margin-top: 12px; }
+}

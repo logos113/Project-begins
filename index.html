@@ -44,6 +44,7 @@
       --line:      #e3e3df;
       --paper:     #1c5d7a;   /* 논문 앱 색 */
       --japan:     #b03a2e;   /* 일본어 앱 색 */
+      --game:      #0a8f70;   /* 게임 색 */
     }
 
     /* 기기를 다크 모드로 쓰고 있으면 색만 바꿉니다 */
@@ -57,6 +58,7 @@
         --line:      #33373b;
         --paper:     #7fc0dd;
         --japan:     #e88a7d;
+        --game:      #34e0b0;
       }
     }
 
@@ -123,8 +125,10 @@
     /* 왼쪽 굵은 세로선 색으로 두 앱을 구분합니다 */
     .app.paper { border-left-color: var(--paper); }
     .app.japan { border-left-color: var(--japan); }
+    .app.game { border-left-color: var(--game); }
     .app.paper:hover { border-color: var(--paper); }
     .app.japan:hover { border-color: var(--japan); }
+    .app.game:hover { border-color: var(--game); }
 
     .app .eyebrow {
       margin: 0 0 4px;
@@ -139,6 +143,7 @@
     }
     .app.paper h2 { color: var(--paper); }
     .app.japan h2 { color: var(--japan); }
+    .app.game h2 { color: var(--game); }
 
     .app p {
       margin: 0;
@@ -178,10 +183,16 @@
         <p>여행에서 바로 쓰는 표현을 매일 3개씩 익히고, 잊을 때쯤 다시 복습합니다.</p>
       </a>
 
+      <a class="app game" href="game/">
+        <p class="eyebrow">Jump! Robot</p>
+        <h2>점프! 로봇</h2>
+        <p>한 손가락으로 하는 점프 게임. 코드의 숫자를 바꿔 게임을 직접 고쳐볼 수 있습니다.</p>
+      </a>
+
     </div>
 
     <p class="note">
-      두 앱은 각각 <b>홈 화면에 추가</b>하거나 <b>앱으로 설치</b>할 수 있습니다.
+      각 앱은 <b>홈 화면에 추가</b>하거나 <b>앱으로 설치</b>할 수 있습니다.
       설치는 그때 열려 있는 주소를 기억하므로, 원하는 앱을 먼저 연 다음에 하시면 됩니다.
     </p>
 

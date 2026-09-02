@@ -1,0 +1,17 @@
+{
+  "name": "점프! 로봇",
+  "short_name": "점프로봇",
+  "description": "한 손가락으로 즐기는 점프 액션 게임",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#1b2a4a",
+  "theme_color": "#1b2a4a",
+  "icons": [
+    { "src": "icons/game-icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/game-icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/game-icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
