@@ -482,12 +482,6 @@ select {
 }
 .site-footer p { margin: 0 0 8px; }
 .site-footer .disclaimer { color: var(--text-soft); }
-/* 옆에 있는 다른 앱(정신의학 논문)으로 건너가는 링크 */
-.site-footer .sibling-app {
-  margin-top: 14px;
-  font-weight: 600;
-}
-
 .site-footer .version {
   margin-top: 14px;
   font-size: 12px;

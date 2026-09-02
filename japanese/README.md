@@ -27,8 +27,6 @@ GitHub Pages 는 브랜치 하나를 통째로 올리는데, 두 앱이 그 한 
 | 오늘의 정신의학 논문 | `https://logos113.github.io/Project-begins/psychiatry/` |
 | 오늘의 일본어 여행 회화 | `https://logos113.github.io/Project-begins/japanese/` |
 
-각 페이지 맨 아래에 서로 건너가는 링크도 있습니다.
-
 > **아직 안 열린다면** — **Settings → Pages** 에서 **Branch** 가 `main` 인지 확인하세요.
 > 바꾼 뒤 1~2분 기다렸다가 새로고침하면 나옵니다.
 

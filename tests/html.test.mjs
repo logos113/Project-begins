@@ -173,10 +173,23 @@ for (const 앱 of 앱들) {
     m.scope === "./" && m.start_url === "./", [m.scope, m.start_url]);
 }
 
-// 두 앱이 서로를 오갈 수 있는가 (폴더를 옮기면 여기서 어긋납니다)
-검사("논문 앱에 일본어 앱으로 가는 링크가 있는가",
-  !!문서.querySelector('.sibling-app a[href="../japanese/"]'),
-  문서.querySelector(".sibling-app a")?.getAttribute("href"));
+/*
+  두 앱은 서로 독립입니다. 한쪽 화면에서 다른 쪽으로 건너가는 링크를 두지 않습니다.
+  오갈 일이 있으면 루트의 앱 고르기 첫 화면을 쓰면 됩니다.
+  (앱을 하나 쓰는 동안 다른 앱이 화면에 끼어들지 않도록 하기 위한 것입니다)
+*/
+const 남의앱_링크 = (그문서, 남의폴더) =>
+  [...그문서.querySelectorAll("a[href]")]
+    .map((a) => a.getAttribute("href"))
+    .filter((주소) => 주소.includes(남의폴더));
+
+const 일본어문서 = new JSDOM(
+  fs.readFileSync(path.join(저장소, "japanese", "index.html"), "utf8")).window.document;
+
+검사("논문 앱에 일본어 앱으로 가는 링크가 없는가",
+  남의앱_링크(문서, "japanese").length === 0, 남의앱_링크(문서, "japanese"));
+검사("일본어 앱에 논문 앱으로 가는 링크가 없는가",
+  남의앱_링크(일본어문서, "psychiatry").length === 0, 남의앱_링크(일본어문서, "psychiatry"));
 
 // 아이콘이 서로 섞이지 않았는가 — 두 앱의 아이콘 파일은 각자의 폴더에 있어야 합니다
 for (const 앱 of 앱들) {

@@ -179,9 +179,12 @@ const 버전 = (골라낼것) =>
   버전('link[href*="style.css"]') === 버전('script[src*="app.js"]'),
   [버전('link[href*="style.css"]'), 버전('script[src*="app.js"]')]);
 
-// 두 앱을 오갈 수 있어야 합니다 (한 브랜치에 함께 올라가 있으므로 주소만 다릅니다)
-검사("논문 앱으로 건너가는 링크가 있는가",
-  !!문서.querySelector('.sibling-app a[href="../psychiatry/"]'));
+// 두 앱은 서로 독립입니다. 다른 앱으로 건너가는 링크를 두지 않습니다.
+// (오갈 일이 있으면 루트의 앱 고르기 첫 화면을 씁니다)
+const 논문앱_링크 = [...문서.querySelectorAll("a[href]")]
+  .map((a) => a.getAttribute("href"))
+  .filter((주소) => 주소.includes("psychiatry"));
+검사("논문 앱으로 건너가는 링크가 없는가", 논문앱_링크.length === 0, 논문앱_링크);
 
 // 논문 앱을 건드리지 않았는지 — 두 앱은 폴더로 완전히 분리되어 있어야 합니다
 검사("논문 앱의 index.html 은 그대로인가 (제목이 바뀌지 않았는가)",
