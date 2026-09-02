@@ -44,8 +44,10 @@ for (const 화면 of 화면들) {
   const page = await browser.newPage({ viewport: { width: 화면.폭, height: 화면.높이 } });
   await page.goto("http://127.0.0.1:8769/japanese/index.html");
   await page.waitForSelector(".phrase-card");
-  // 첫 카드는 답을 펼쳐 두어야 어떻게 보이는지 확인할 수 있습니다
-  await page.locator('[data-act="reveal"]').first().click();
+  // 첫 카드는 답이 펼쳐진 모습으로 찍습니다.
+  // 연습 방식 기본값이 '바로 다 보여주기' 라 이미 펼쳐져 있으면 누를 것이 없습니다.
+  const 펼치기 = page.locator('[data-act="reveal"]').first();
+  if (await 펼치기.count()) await 펼치기.click();
   await page.screenshot({ path: `${화면.이름}.png`, fullPage: true });
   console.log(`${화면.이름}.png 저장`);
   await page.close();
@@ -55,8 +57,9 @@ for (const 화면 of 화면들) {
 const page = await browser.newPage({ viewport: { width: 390, height: 1000 } });
 await page.goto("http://127.0.0.1:8769/japanese/index.html");
 await page.waitForSelector(".phrase-card");
-// '외웠어요' 버튼은 답을 펼쳐야 보입니다. 먼저 펼친 뒤 누릅니다.
-await page.locator('[data-act="reveal"]').first().click();
+// '외웠어요' 버튼은 답이 펼쳐져 있어야 보입니다. 감춰져 있으면 먼저 펼칩니다.
+const 펼치기2 = page.locator('[data-act="reveal"]').first();
+if (await 펼치기2.count()) await 펼치기2.click();
 await page.locator('[data-act="learned"]').first().click();   // 복습 대상 하나 만들기
 await page.locator("#quizBtn").click();
 await page.waitForSelector(".quiz-option");

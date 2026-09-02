@@ -175,6 +175,18 @@ const 없는설정아이콘 = 설정.icons
   불러오는 순서가 뒤집히면 화면이 텅 빈 채로 열립니다.
 */
 const 스크립트들 = [...문서.querySelectorAll("script")].map((칸) => 칸.getAttribute("src"));
+/*
+  처음 열었을 때의 기본값입니다.
+  카드를 뒤집는 연습보다 '오늘 표현 세 개를 한눈에 훑는' 쪽을 기본으로 둡니다.
+  (연습하고 싶을 때 화면에서 바꾸면 됩니다)
+*/
+검사("연습 방식 기본값이 '바로 다 보여주기' 인가",
+  문서.getElementById("modeSelect").value === "바로보기",
+  문서.getElementById("modeSelect").value);
+검사("상황 기본값이 '전체 상황' 인가",
+  문서.getElementById("sceneSelect").value === "all",
+  문서.getElementById("sceneSelect").value);
+
 검사("phrases.js 를 app.js 보다 먼저 불러오는가",
   스크립트들.findIndex((이름) => 이름.includes("phrases.js")) <
   스크립트들.findIndex((이름) => 이름.includes("app.js")), 스크립트들);
@@ -474,9 +486,15 @@ localStorage.clear();
 console.log("\n[12] 실제로 눌러보기");
 
 localStorage.clear();
-// 설정을 바꾸면 화면을 다시 그리도록 되어 있습니다. 그 동작까지 함께 확인합니다.
+/*
+  이 아래로는 '답을 펼쳐 보는' 흐름을 확인하므로 연습 방식을 뜻먼저로 맞춰둡니다.
+  화면의 기본값(바로 다 보여주기)에 기대어 검사를 짜면,
+  나중에 기본값을 바꿀 때 검사가 엉뚱한 이유로 깨집니다.
+  설정을 바꾸면 화면을 다시 그리도록 되어 있으므로 그 동작까지 함께 확인됩니다.
+*/
 document.getElementById("readingSelect").value = "all";
-document.getElementById("readingSelect").dispatchEvent(new dom.window.Event("change"));
+document.getElementById("modeSelect").value = "뜻먼저";
+document.getElementById("modeSelect").dispatchEvent(new dom.window.Event("change"));
 
 const 카드들 = document.querySelectorAll("#phraseList .phrase-card");
 검사("화면에 카드 3장이 그려졌는가", 카드들.length === 3, 카드들.length);

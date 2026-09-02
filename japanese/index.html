@@ -42,7 +42,7 @@
   <link rel="manifest" href="manifest.json">
 
   <!-- 우리가 만든 디자인 파일을 불러옵니다 -->
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 
 <body>
@@ -80,10 +80,12 @@
 
       <div class="control">
         <label for="modeSelect">연습 방식</label>
+        <!-- selected 를 붙인 것이 처음 열었을 때의 기본값입니다.
+             (아무 데도 안 붙이면 맨 위 항목이 기본값이 됩니다) -->
         <select id="modeSelect">
           <option value="뜻먼저">한국어 뜻 보고 → 일본어 떠올리기</option>
           <option value="일본어먼저">일본어 보고 → 뜻 떠올리기</option>
-          <option value="바로보기">바로 다 보여주기</option>
+          <option value="바로보기" selected>바로 다 보여주기</option>
         </select>
       </div>
 
@@ -136,7 +138,7 @@
        브라우저는 한 번 받은 파일을 한동안 저장해두고 다시 받지 않는데(캐시),
        주소가 달라지면 새 파일로 보고 다시 받아옵니다.
        코드를 크게 고친 뒤에는 이 숫자를 올려주세요. -->
-  <script src="phrases.js?v=5"></script>
-  <script src="app.js?v=5"></script>
+  <script src="phrases.js?v=6"></script>
+  <script src="app.js?v=6"></script>
 </body>
 </html>
