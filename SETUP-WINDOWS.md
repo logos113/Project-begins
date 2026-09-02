@@ -49,8 +49,8 @@
 
 이제 내 PC에 코드가 생겼습니다.
 
-> **중요** — 화면 위쪽 **Current branch** 가 `claude/work-helper-app-web-e2rwcl` 인지 확인하세요.
-> 다른 이름이면 눌러서 이 브랜치를 선택합니다. 우리가 작업해온 곳입니다.
+> **중요** — 화면 위쪽 **Current branch** 가 `main` 인지 확인하세요.
+> 다른 이름이면 눌러서 `main` 을 선택합니다. 인터넷에 올라가는 것이 이 브랜치입니다.
 
 ---
 
@@ -137,7 +137,7 @@ Live Server 로 열어둔 브라우저를 보세요. **저장하는 순간 색�
 2. 왼쪽에 `style.css` 가 뜨고, 오른쪽에 **바뀐 부분이 빨강/초록으로** 표시됩니다
    - 빨강 = 지운 줄, 초록 = 새로 넣은 줄
 3. 왼쪽 아래 칸에 무엇을 고쳤는지 적습니다. 예: `강조색을 자주색으로 변경`
-4. **Commit to claude/work-helper-app-web-e2rwcl** 버튼 클릭
+4. **Commit to main** 버튼 클릭
 5. 위쪽 **Push origin** 버튼 클릭
 6. 1~2분 뒤 `https://logos113.github.io/Project-begins/` 를 열면 반영돼 있습니다
 

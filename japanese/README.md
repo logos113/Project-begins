@@ -17,11 +17,19 @@
 https://logos113.github.io/Project-begins/japanese/
 ```
 
-> **아직 안 열린다면** — GitHub Pages 가 어느 브랜치를 내보낼지 정해져 있기 때문입니다.
-> 저장소 **Settings → Pages** 에서 **Branch** 를 이 폴더가 들어 있는 브랜치
-> (`claude/japanese-travel-phrases-m8f9g5`)로 바꾸고 **Save** 하시거나,
-> 이 브랜치를 기존 브랜치에 병합하시면 위 주소가 열립니다.
-> 1~2분 뒤 새로고침하면 나옵니다.
+논문 앱과 **동시에 항상 열려 있습니다.** 브랜치를 바꿔가며 쓸 필요가 없습니다.
+GitHub Pages 는 브랜치 하나를 통째로 올리는데, 두 앱이 그 한 브랜치(`main`) 안에
+폴더만 나뉘어 함께 들어 있기 때문입니다.
+
+| 앱 | 주소 |
+|---|---|
+| 오늘의 정신의학 논문 | `https://logos113.github.io/Project-begins/` |
+| 오늘의 일본어 여행 회화 | `https://logos113.github.io/Project-begins/japanese/` |
+
+각 페이지 맨 아래에 서로 건너가는 링크도 있습니다.
+
+> **아직 안 열린다면** — **Settings → Pages** 에서 **Branch** 가 `main` 인지 확인하세요.
+> 바꾼 뒤 1~2분 기다렸다가 새로고침하면 나옵니다.
 
 ### 홈 화면에 앱처럼 두기
 
