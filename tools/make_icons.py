@@ -92,7 +92,9 @@ def 아이콘_그리기(크기, 단순하게=False, 여백크게=False):
 
 
 if __name__ == "__main__":
-    폴더 = os.path.join(os.path.dirname(__file__), "..", "icons")
+    # 논문 앱은 psychiatry/ 폴더 안에 있습니다.
+    # (루트의 icons/ 는 앱 고르기 첫 화면 것이라 섞이면 안 됩니다)
+    폴더 = os.path.join(os.path.dirname(__file__), "..", "psychiatry", "icons")
     os.makedirs(폴더, exist_ok=True)
     만들목록 = [
         ("apple-touch-icon-180.png", 180, False, False),   # 아이폰

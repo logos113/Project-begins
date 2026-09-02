@@ -15,7 +15,9 @@ import { JSDOM } from "jsdom";
 import fs from "fs";
 import path from "path";
 
-const 뿌리 = path.join(import.meta.dirname, "..");
+// 논문 앱은 psychiatry/ 폴더 안에 있습니다.
+// (루트에 두면 설치 영역이 japanese/ 까지 삼켜버려, 일본어 앱이 논문 앱 창에서 열립니다)
+const 뿌리 = path.join(import.meta.dirname, "..", "psychiatry");
 
 // 실제 PubMed 목록처럼 한 학술지가 절반 이상을 덩어리로 차지하게 만듭니다
 const 저널분포 = [

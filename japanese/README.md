@@ -6,7 +6,7 @@
 - 인터넷: **필요 없음** — 한 번 열어두면 비행기 안에서도 그대로 동작합니다
 - 비용: **0원**
 
-논문 앱(`/Project-begins/`)과는 폴더로 완전히 분리되어 있습니다.
+논문 앱(`/Project-begins/psychiatry/`)과는 폴더로 완전히 분리되어 있습니다.
 서로 영향을 주지 않고, 홈 화면에도 따로 추가할 수 있습니다.
 
 ---
@@ -23,7 +23,8 @@ GitHub Pages 는 브랜치 하나를 통째로 올리는데, 두 앱이 그 한 
 
 | 앱 | 주소 |
 |---|---|
-| 오늘의 정신의학 논문 | `https://logos113.github.io/Project-begins/` |
+| 앱 고르기 첫 화면 | `https://logos113.github.io/Project-begins/` |
+| 오늘의 정신의학 논문 | `https://logos113.github.io/Project-begins/psychiatry/` |
 | 오늘의 일본어 여행 회화 | `https://logos113.github.io/Project-begins/japanese/` |
 
 각 페이지 맨 아래에 서로 건너가는 링크도 있습니다.

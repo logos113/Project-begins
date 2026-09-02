@@ -11,7 +11,9 @@ import { JSDOM } from "jsdom";
 import fs from "fs";
 import path from "path";
 
-const 뿌리 = path.join(import.meta.dirname, "..");
+// 논문 앱은 psychiatry/ 폴더 안에 있습니다.
+// (루트에 두면 설치 영역이 japanese/ 까지 삼켜버려, 일본어 앱이 논문 앱 창에서 열립니다)
+const 뿌리 = path.join(import.meta.dirname, "..", "psychiatry");
 const dom = new JSDOM(fs.readFileSync(path.join(뿌리, "index.html"), "utf8"));
 global.document = dom.window.document;
 global.DOMParser = dom.window.DOMParser;

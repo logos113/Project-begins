@@ -20,7 +20,9 @@ const 뿌리 = "/home/user/Project-begins";
 const 종류 = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript",
                ".json": "application/json", ".png": "image/png" };
 const 서버 = http.createServer((req, res) => {
-  const 경로 = path.join(뿌리, decodeURIComponent(req.url.split("?")[0]) === "/" ? "index.html" : req.url.split("?")[0]);
+  let 주소 = decodeURIComponent(req.url.split("?")[0]);
+  if (주소.endsWith("/")) 주소 += "index.html";   // 폴더 주소는 그 안의 index.html 로
+  const 경로 = path.join(뿌리, 주소);
   if (!fs.existsSync(경로)) { res.writeHead(404); return res.end(); }
   res.writeHead(200, { "Content-Type": 종류[path.extname(경로)] || "text/plain" });
   res.end(fs.readFileSync(경로));
@@ -81,7 +83,7 @@ const 찍기 = async (이름, 폭, 높이) => {
     }).join("")}</PubmedArticleSet>`;
     return route.fulfill({ contentType: "text/xml", body: xml });
   });
-  await page.goto("http://localhost:8765/", { waitUntil: "networkidle" });
+  await page.goto("http://localhost:8765/psychiatry/", { waitUntil: "networkidle" });
   await page.waitForSelector(".paper", { timeout: 8000 });
   await page.screenshot({ path: `${이름}.png`, fullPage: false });
   const 열수 = await page.evaluate(() =>

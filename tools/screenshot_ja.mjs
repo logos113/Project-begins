@@ -28,7 +28,7 @@ const 서버 = http.createServer((req, res) => {
   res.writeHead(200, { "Content-Type": 종류[path.extname(경로)] || "text/plain" });
   res.end(fs.readFileSync(경로));
 });
-await new Promise((r) => 서버.listen(8766, r));
+await new Promise((r) => 서버.listen(8769, r));
 
 // 브라우저 경로를 직접 지정해야 하는 환경이면 PW_CHROME 환경변수로 넘길 수 있습니다
 const browser = await chromium.launch(
@@ -42,7 +42,7 @@ const 화면들 = [
 
 for (const 화면 of 화면들) {
   const page = await browser.newPage({ viewport: { width: 화면.폭, height: 화면.높이 } });
-  await page.goto("http://127.0.0.1:8766/japanese/index.html");
+  await page.goto("http://127.0.0.1:8769/japanese/index.html");
   await page.waitForSelector(".phrase-card");
   // 첫 카드는 답을 펼쳐 두어야 어떻게 보이는지 확인할 수 있습니다
   await page.locator('[data-act="reveal"]').first().click();
@@ -53,7 +53,7 @@ for (const 화면 of 화면들) {
 
 // 퀴즈 화면도 한 장 남깁니다
 const page = await browser.newPage({ viewport: { width: 390, height: 1000 } });
-await page.goto("http://127.0.0.1:8766/japanese/index.html");
+await page.goto("http://127.0.0.1:8769/japanese/index.html");
 await page.waitForSelector(".phrase-card");
 // '외웠어요' 버튼은 답을 펼쳐야 보입니다. 먼저 펼친 뒤 누릅니다.
 await page.locator('[data-act="reveal"]').first().click();

@@ -57,7 +57,7 @@ global.DOMParser = dom.window.DOMParser;
 global.fetch = async () => { throw new Error("네트워크 차단됨(예상된 동작)"); };
 global.console = console;
 
-let code = fs.readFileSync("/home/user/Project-begins/app.js", "utf8");
+let code = fs.readFileSync(new URL("../psychiatry/app.js", import.meta.url), "utf8");
 code = code.replace("논문_불러오기();", "// 자동 실행은 테스트에서 생략");
 // 검사할 함수들을 밖으로 꺼냅니다
 code += "\nglobal.T = { 논문정보_정리, 검색어_만들기, 오늘의_논문_고르기, 카드_만들기, 안전한글자로, 학술지_순서_섞기, 섞기값, 학술지_등급_가져오기 };";

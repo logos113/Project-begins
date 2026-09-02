@@ -139,7 +139,7 @@ Live Server 로 열어둔 브라우저를 보세요. **저장하는 순간 색�
 3. 왼쪽 아래 칸에 무엇을 고쳤는지 적습니다. 예: `강조색을 자주색으로 변경`
 4. **Commit to main** 버튼 클릭
 5. 위쪽 **Push origin** 버튼 클릭
-6. 1~2분 뒤 `https://logos113.github.io/Project-begins/` 를 열면 반영돼 있습니다
+6. 1~2분 뒤 `https://logos113.github.io/Project-begins/psychiatry/` 를 열면 반영돼 있습니다
 
 **⑥ 되돌리고 싶으면**
 

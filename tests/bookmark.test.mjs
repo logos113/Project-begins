@@ -19,8 +19,9 @@ import http from "http"; import fs from "fs"; import path from "path";
 const 뿌리 = path.join(import.meta.dirname, "..");
 const 종류 = { ".html":"text/html", ".css":"text/css", ".js":"text/javascript", ".json":"application/json", ".png":"image/png" };
 const 서버 = http.createServer((req,res) => {
-  const u = req.url.split("?")[0];
-  const p = path.join(뿌리, u === "/" ? "index.html" : u);
+  let u = req.url.split("?")[0];
+  if (u.endsWith("/")) u += "index.html";        // 폴더 주소는 그 안의 index.html 로
+  const p = path.join(뿌리, u);
   if (!fs.existsSync(p)) { res.writeHead(404); return res.end(); }
   res.writeHead(200, { "Content-Type": 종류[path.extname(p)] || "text/plain" });
   res.end(fs.readFileSync(p));
@@ -68,7 +69,7 @@ const 검사 = (이름, 조건, 실제) => {
   if (!조건) 실패++;
 };
 
-await page.goto("http://localhost:8766/", { waitUntil:"networkidle" });
+await page.goto("http://localhost:8766/psychiatry/", { waitUntil:"networkidle" });
 await page.waitForSelector(".paper");
 
 // 1) 핵심 결론이 도입부가 아니라 결론인가

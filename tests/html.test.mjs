@@ -14,7 +14,10 @@ import fs from "fs";
 import path from "path";
 import zlib from "zlib";
 
-const 뿌리 = path.join(import.meta.dirname, "..");
+// 논문 앱은 psychiatry/ 폴더 안에 있습니다.
+// (루트에 두면 설치 영역이 japanese/ 까지 삼켜버려, 일본어 앱이 논문 앱 창에서 열립니다)
+const 저장소 = path.join(import.meta.dirname, "..");
+const 뿌리 = path.join(저장소, "psychiatry");
 const 읽기 = (이름) => fs.readFileSync(path.join(뿌리, 이름), "utf8");
 
 let 실패 = 0;
@@ -137,6 +140,56 @@ const 스크립트태그 = 문서.querySelector('script[src*="app.js"]');
   (문서.querySelector('link[href*="style.css"]')?.getAttribute("href") || "").match(/v=(\d+)/)?.[1] ===
   (스크립트태그?.getAttribute("src") || "").match(/v=(\d+)/)?.[1],
   [문서.querySelector('link[href*="style.css"]')?.getAttribute("href"), 스크립트태그?.getAttribute("src")]);
+
+
+/* ==========================================================
+   9. 첫 화면과 '앱 영역' 분리 검사
+   ------------------------------------------------------------
+   설치한 앱은 manifest 에 "여기서부터 아래는 내 영역(scope)"이라고 선언합니다.
+   논문 앱이 저장소 루트에 있던 동안에는 그 영역이 japanese/ 폴더까지 삼켜서,
+   일본어 앱 주소를 열어도 논문 앱 창에서 논문 앱 아이콘으로 열렸습니다.
+
+   그래서 두 앱을 각자의 폴더로 내리고, 루트에는 고르기 페이지만 두었습니다.
+   아래 검사는 그 구조가 흐트러지지 않았는지 확인합니다.
+   ========================================================== */
+
+const 첫화면 = new JSDOM(fs.readFileSync(path.join(저장소, "index.html"), "utf8")).window.document;
+
+// 루트에서 manifest 를 연결하면 그 순간 다시 영역이 겹칩니다. 가장 중요한 검사입니다.
+검사("첫 화면에는 manifest 가 연결되어 있지 않은가 (설치 대상이 아니어야 함)",
+  !첫화면.head.querySelector('link[rel="manifest"]'));
+검사("루트에 manifest.json 파일이 없는가",
+  !fs.existsSync(path.join(저장소, "manifest.json")));
+
+검사("첫 화면에서 두 앱으로 가는 링크가 있는가",
+  ["psychiatry/", "japanese/"].every((곳) => !!첫화면.querySelector(`a[href="${곳}"]`)),
+  [...첫화면.querySelectorAll("a[href]")].map((a) => a.getAttribute("href")));
+
+// 두 앱이 서로의 폴더를 침범하지 않는지 — 폴더가 나뉘어 있으면 자동으로 지켜집니다
+const 앱들 = ["psychiatry", "japanese"];
+for (const 앱 of 앱들) {
+  const m = JSON.parse(fs.readFileSync(path.join(저장소, 앱, "manifest.json"), "utf8"));
+  검사(`${앱}/manifest.json 의 영역이 자기 폴더로 한정되는가`,
+    m.scope === "./" && m.start_url === "./", [m.scope, m.start_url]);
+}
+
+// 두 앱이 서로를 오갈 수 있는가 (폴더를 옮기면 여기서 어긋납니다)
+검사("논문 앱에 일본어 앱으로 가는 링크가 있는가",
+  !!문서.querySelector('.sibling-app a[href="../japanese/"]'),
+  문서.querySelector(".sibling-app a")?.getAttribute("href"));
+
+// 아이콘이 서로 섞이지 않았는가 — 두 앱의 아이콘 파일은 각자의 폴더에 있어야 합니다
+for (const 앱 of 앱들) {
+  검사(`${앱}/icons 폴더에 아이콘이 들어 있는가`,
+    fs.existsSync(path.join(저장소, 앱, "icons", "icon-192.png")));
+}
+
+// 첫 화면도 탭 아이콘 정도는 있어야 합니다
+for (const 아이콘 of [...첫화면.querySelectorAll("link[rel*='icon']")]) {
+  const 파일 = 아이콘.getAttribute("href").split("?")[0];
+  검사(`첫 화면이 가리키는 아이콘이 실제로 있는가 — ${파일}`,
+    fs.existsSync(path.join(저장소, 파일)));
+}
 
 console.log(실패 === 0 ? "\n🎉 전체 통과 — 페이지 구조에 이상 없음" : `\n⚠️  ${실패}건 실패`);
 process.exit(실패 === 0 ? 0 : 1);
