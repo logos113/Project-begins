@@ -70,13 +70,16 @@
 
 ```
 Project-begins
-├── index.html      화면 뼈대
-├── style.css       디자인
-├── app.js          동작
-├── icons/          아이콘 그림
-├── tests/          자동 검사
+├── index.html      앱 고르기 첫 화면
+├── psychiatry/     오늘의 정신의학 논문   (index.html · style.css · app.js · icons/)
+├── japanese/       오늘의 일본어 여행 회화 (+ phrases.js — 표현 목록)
+├── game/           점프! 로봇
+├── tests/          자동 검사 (세 앱 것이 모두 여기 있습니다)
 └── tools/          아이콘·스크린샷 만드는 도구
 ```
+
+앱마다 폴더가 나뉘어 있습니다. 고치려는 앱의 폴더를 열면 그 안에
+`index.html`(뼈대) · `style.css`(디자인) · `app.js`(동작) 가 들어 있습니다.
 
 ---
 
@@ -87,10 +90,11 @@ Project-begins
 
 1. VS Code 왼쪽 **확장**(네모 4개) 클릭
 2. `Live Server` 검색 → **Live Server** (제작자: Ritwick Dey) **설치**
-3. 왼쪽 파일 목록에서 **index.html** 을 **마우스 오른쪽 클릭**
+3. 왼쪽 파일 목록에서 맨 바깥의 **index.html** 을 **마우스 오른쪽 클릭**
 4. **Open with Live Server** 선택
 
-브라우저가 열리고 논문 3편이 나타납니다.
+브라우저가 열리고 앱 고르기 첫 화면이 나타납니다. 거기서 원하는 앱을 누르면 됩니다.
+(특정 앱만 보려면 `psychiatry/index.html` 처럼 그 폴더의 index.html 을 열어도 됩니다)
 
 > **왜 이게 필요한가요?**
 > `index.html` 파일을 그냥 더블클릭해서 열면 브라우저가 PubMed 접속을 막습니다.
@@ -105,7 +109,7 @@ Project-begins
 
 **① 파일 열기**
 
-VS Code 왼쪽에서 **style.css** 를 클릭합니다.
+VS Code 왼쪽에서 **psychiatry** 폴더를 펼치고 그 안의 **style.css** 를 클릭합니다.
 
 **② 색 바꾸기**
 
@@ -134,7 +138,7 @@ Live Server 로 열어둔 브라우저를 보세요. **저장하는 순간 색�
 **⑤ 마음에 들면 GitHub에 올리기**
 
 1. GitHub Desktop 으로 갑니다
-2. 왼쪽에 `style.css` 가 뜨고, 오른쪽에 **바뀐 부분이 빨강/초록으로** 표시됩니다
+2. 왼쪽에 `psychiatry/style.css` 가 뜨고, 오른쪽에 **바뀐 부분이 빨강/초록으로** 표시됩니다
    - 빨강 = 지운 줄, 초록 = 새로 넣은 줄
 3. 왼쪽 아래 칸에 무엇을 고쳤는지 적습니다. 예: `강조색을 자주색으로 변경`
 4. **Commit to main** 버튼 클릭
@@ -176,12 +180,20 @@ Live Server 로 열어둔 브라우저를 보세요. **저장하는 순간 색�
 
 ```bash
 npm install jsdom
-node tests/logic.test.mjs
-node tests/html.test.mjs
-node tests/flow.test.mjs
+node tests/html.test.mjs        # 세 앱의 페이지 구조
+node tests/logic.test.mjs       # 논문 앱 동작
+node tests/japanese.test.mjs    # 일본어 앱 동작
 ```
 
 전부 `🎉 전체 통과` 가 나오면 정상입니다.
+검사 전체를 한 번에 돌리려면 아래처럼 하시면 됩니다.
+(브라우저를 실제로 띄우는 검사가 있어 `playwright` 도 필요합니다)
+
+```bash
+npm install jsdom playwright
+npx playwright install chromium
+for %f in (tests\*.test.mjs) do node %f
+```
 
 ---
 

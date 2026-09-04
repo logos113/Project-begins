@@ -1,2 +1,6 @@
 node_modules/
 .DS_Store
+
+# 확인용으로 잠깐 만든 파일 (스크린샷, 임시 스크립트)
+.tmp-*
+*.png.tmp

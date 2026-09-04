@@ -161,6 +161,18 @@ const 스크립트태그 = 문서.querySelector('script[src*="app.js"]');
    아래 검사는 그 구조가 흐트러지지 않았는지 확인합니다.
    ========================================================== */
 
+/*
+  앱 목록을 손으로 적지 않고 폴더에서 찾아옵니다.
+  manifest.json 이 있는 폴더 = 설치할 수 있는 앱 하나.
+  앱을 새로 만들어도 이 검사를 고칠 필요가 없고, 빠뜨릴 일도 없습니다.
+*/
+const 앱폴더들 = fs.readdirSync(저장소, { withFileTypes: true })
+  .filter((칸) => 칸.isDirectory() && !칸.name.startsWith(".") &&
+                  fs.existsSync(path.join(저장소, 칸.name, "manifest.json")))
+  .map((칸) => 칸.name)
+  .sort();
+검사("앱 폴더를 세 개 찾았는가", 앱폴더들.length === 3, 앱폴더들);
+
 const 첫화면 = new JSDOM(fs.readFileSync(path.join(저장소, "index.html"), "utf8")).window.document;
 
 // 루트에서 manifest 를 연결하면 그 순간 다시 영역이 겹칩니다. 가장 중요한 검사입니다.
@@ -170,12 +182,11 @@ const 첫화면 = new JSDOM(fs.readFileSync(path.join(저장소, "index.html"), 
   !fs.existsSync(path.join(저장소, "manifest.json")));
 
 검사("첫 화면에서 두 앱으로 가는 링크가 있는가",
-  ["psychiatry/", "japanese/"].every((곳) => !!첫화면.querySelector(`a[href="${곳}"]`)),
+  앱폴더들.map((앱) => 앱 + "/").every((곳) => !!첫화면.querySelector(`a[href="${곳}"]`)),
   [...첫화면.querySelectorAll("a[href]")].map((a) => a.getAttribute("href")));
 
 // 두 앱이 서로의 폴더를 침범하지 않는지 — 폴더가 나뉘어 있으면 자동으로 지켜집니다
-const 앱들 = ["psychiatry", "japanese"];
-for (const 앱 of 앱들) {
+for (const 앱 of 앱폴더들) {
   const m = JSON.parse(fs.readFileSync(path.join(저장소, 앱, "manifest.json"), "utf8"));
   검사(`${앱}/manifest.json 의 영역이 자기 폴더로 한정되는가`,
     m.scope === "./" && m.start_url === "./", [m.scope, m.start_url]);
@@ -199,10 +210,32 @@ const 일본어문서 = new JSDOM(
 검사("일본어 앱에 논문 앱으로 가는 링크가 없는가",
   남의앱_링크(일본어문서, "psychiatry").length === 0, 남의앱_링크(일본어문서, "psychiatry"));
 
-// 아이콘이 서로 섞이지 않았는가 — 두 앱의 아이콘 파일은 각자의 폴더에 있어야 합니다
-for (const 앱 of 앱들) {
-  검사(`${앱}/icons 폴더에 아이콘이 들어 있는가`,
-    fs.existsSync(path.join(저장소, 앱, "icons", "icon-192.png")));
+/*
+  아이콘이 서로 섞이지 않았는가 — 각 앱의 아이콘은 자기 폴더 안에 있어야 합니다.
+  파일 이름은 앱마다 다를 수 있으므로(게임은 game-icon-192.png),
+  이름을 정해놓고 찾지 않고 그 앱의 manifest 가 가리키는 파일을 확인합니다.
+*/
+for (const 앱 of 앱폴더들) {
+  const m = JSON.parse(fs.readFileSync(path.join(저장소, 앱, "manifest.json"), "utf8"));
+  const 없는것 = m.icons
+    .map((아이콘) => 아이콘.src)
+    .filter((이름) => !fs.existsSync(path.join(저장소, 앱, 이름)));
+  검사(`${앱} 의 아이콘 파일이 모두 자기 폴더에 있는가`, 없는것.length === 0, 없는것);
+  검사(`${앱} 의 아이콘이 다른 앱 폴더를 가리키지 않는가`,
+    m.icons.every((아이콘) => !아이콘.src.includes("..")),
+    m.icons.map((아이콘) => 아이콘.src));
+}
+
+/*
+  앱마다 자기 설명서를 갖고, 저장소 첫 문서가 그 셋을 모두 가리켜야 합니다.
+  앱을 하나 더 만들고 문서만 빠뜨리면 나중에 무엇이 무엇인지 알 수 없게 됩니다.
+*/
+const 루트문서 = 읽기 && fs.readFileSync(path.join(저장소, "README.md"), "utf8");
+for (const 앱 of 앱폴더들) {
+  검사(`${앱}/README.md 설명서가 있는가`,
+    fs.existsSync(path.join(저장소, 앱, "README.md")));
+  검사(`저장소 첫 문서가 ${앱} 설명서를 가리키는가`,
+    루트문서.includes(`${앱}/README.md`));
 }
 
 // 첫 화면도 탭 아이콘 정도는 있어야 합니다
