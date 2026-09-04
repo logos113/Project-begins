@@ -447,7 +447,75 @@ select {
   color: var(--text-mute);
 }
 
-/* ---------- 7) 복습 퀴즈 ---------- */
+/* 문법의 발음 — 이름 아래, 예문 아래에 조용히 붙습니다 */
+.g-read,
+.g-ex-read {
+  margin: 0 0 4px;
+  font-size: 13px;
+  color: var(--text-mute);
+}
+.g-ex-read { margin: 3px 0 0; }
+
+/* 예문 옆의 뜻 */
+.g-ex-mean {
+  margin-left: 4px;
+  font-size: 13px;
+  color: var(--text-mute);
+}
+
+/* '이 문법을 쓰는 표현 N개 보기' */
+.g-more {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 8px;
+  padding: 5px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--accent);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.g-more:hover {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+
+/* ---------- 7) 같은 문법을 쓰는 표현 모아보기 ---------- */
+.grammar-view {
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 18px 20px 20px;
+  margin-bottom: 20px;
+}
+
+.gv-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.gv-label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-mute);
+}
+
+/* 머리말 안에서는 왼쪽 세로선과 들여쓰기가 없는 편이 깔끔합니다 */
+.grammar-view .g-item {
+  margin-top: 6px;
+  padding-left: 0;
+  border-left: none;
+}
+.grammar-view .g-name { font-size: 20px; }
+
+/* ---------- 8) 복습 퀴즈 ---------- */
 .quiz { padding-bottom: 50px; }
 
 .quiz-card,
@@ -535,7 +603,7 @@ select {
 .quiz-done .note { border: none; padding-top: 0; }
 .quiz-done .btn-primary { margin-top: 18px; }
 
-/* ---------- 8) 맨 아래 꼬리말 ---------- */
+/* ---------- 9) 맨 아래 꼬리말 ---------- */
 .site-footer {
   border-top: 1px solid var(--line);
   background: var(--surface);
@@ -551,7 +619,7 @@ select {
   color: var(--text-mute);
 }
 
-/* ---------- 9) 화면이 좁을 때 (휴대폰) ----------
+/* ---------- 10) 화면이 좁을 때 (휴대폰) ----------
    @media = "화면 폭이 560px 이하일 때만 아래 규칙을 적용" 이라는 뜻입니다. */
 @media (max-width: 560px) {
   h1 { font-size: 25px; }
@@ -566,7 +634,7 @@ select {
   .card-actions .btn-secondary { flex: 1 1 auto; }
 }
 
-/* ---------- 10) 화면이 넓을 때 (데스크탑) ----------
+/* ---------- 11) 화면이 넓을 때 (데스크탑) ----------
    표현 3개를 나란히 놓아 한눈에 비교할 수 있게 합니다. */
 @media (min-width: 1000px) {
   .wrap { max-width: 1100px; }

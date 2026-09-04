@@ -42,7 +42,7 @@
   <link rel="manifest" href="manifest.json">
 
   <!-- 우리가 만든 디자인 파일을 불러옵니다 -->
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=8">
 </head>
 
 <body>
@@ -109,17 +109,21 @@
     <!-- hidden 을 붙이면 평소엔 숨어 있고, 필요할 때 app.js가 보여줍니다 -->
     <div id="statusBox" class="status" hidden></div>
 
-    <!-- ========== 4) 표현 카드가 들어갈 자리 ========== -->
+    <!-- ========== 4) '이 문법을 쓰는 표현' 을 볼 때의 머리말 자리 ========== -->
+    <!-- 평소엔 숨어 있고, 카드에서 문법을 눌렀을 때만 나타납니다 -->
+    <section id="grammarHeader" class="grammar-view" hidden></section>
+
+    <!-- ========== 5) 표현 카드가 들어갈 자리 ========== -->
     <!-- 지금은 비어 있고, app.js가 여기에 오늘의 표현 3개를 만들어 넣습니다 -->
     <section id="phraseList" class="phrase-list"></section>
 
-    <!-- ========== 5) 복습 퀴즈가 들어갈 자리 ========== -->
+    <!-- ========== 6) 복습 퀴즈가 들어갈 자리 ========== -->
     <!-- 평소엔 숨어 있다가 '복습 퀴즈' 버튼을 누르면 나타납니다 -->
     <section id="quizBox" class="quiz" hidden></section>
 
   </main>
 
-  <!-- ========== 6) 맨 아래 꼬리말 ========== -->
+  <!-- ========== 7) 맨 아래 꼬리말 ========== -->
   <footer class="site-footer">
     <div class="wrap">
       <p class="disclaimer">
@@ -138,7 +142,7 @@
        브라우저는 한 번 받은 파일을 한동안 저장해두고 다시 받지 않는데(캐시),
        주소가 달라지면 새 파일로 보고 다시 받아옵니다.
        코드를 크게 고친 뒤에는 이 숫자를 올려주세요. -->
-  <script src="phrases.js?v=7"></script>
-  <script src="app.js?v=7"></script>
+  <script src="phrases.js?v=8"></script>
+  <script src="app.js?v=8"></script>
 </body>
 </html>

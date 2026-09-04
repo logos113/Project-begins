@@ -55,6 +55,7 @@ const 상태메시지_자리 = document.getElementById("statusBox");
 const 오늘날짜_자리   = document.getElementById("todayLabel");
 const 통계_자리       = document.getElementById("statsBox");
 const 퀴즈_자리       = document.getElementById("quizBox");
+const 문법머리말_자리 = document.getElementById("grammarHeader");
 const 상황_선택창     = document.getElementById("sceneSelect");
 const 연습방식_선택창 = document.getElementById("modeSelect");
 const 발음표기_선택창 = document.getElementById("readingSelect");
@@ -78,6 +79,9 @@ let 현재_표현들 = [];
 
 // 퀴즈 진행 상태 (퀴즈를 열면 채워집니다)
 let 퀴즈 = null;
+
+// '이 문법을 쓰는 표현'을 보고 있을 때, 어떤 문법인지
+let 고른문법 = null;
 
 
 /* ==========================================================
@@ -437,22 +441,55 @@ function 발음줄_만들기(표현) {
   <details> 와 <summary> 는 브라우저가 기본으로 제공하는 '접기' 기능입니다.
   자바스크립트를 따로 붙이지 않아도 눌리면 알아서 펴집니다.
 */
-function 문법블록_만들기(표현) {
-  const 목록 = (표현.문법 || [])
-    .map((아이디) => 문법패턴들[아이디])
-    .filter(Boolean);            // 사전에 없는 아이디는 조용히 건너뜁니다
-  if (목록.length === 0) return "";
+/*
+  문법의 발음을 한 줄로 만듭니다 — 예: "てもらえますか · 테 모라에마스카"
+  표현 카드와 같은 규칙을 따릅니다. 화면 위 '발음 표기' 설정을 그대로 씁니다.
+
+  히라가나가 이름과 똑같으면(조사 は 처럼) 같은 글자를 두 번 보여주게 되므로 뺍니다.
+*/
+function 문법발음줄(이름, 카나, 한글) {
+  const 방식 = 발음표기_선택창 ? 발음표기_선택창.value : "all";
+  const 줄 = [];
+  if ((방식 === "all" || 방식 === "kana") && 카나 && 카나 !== 이름) 줄.push(카나);
+  if ((방식 === "all" || 방식 === "korean") && 한글) 줄.push(한글);
+  return 줄.join(" · ");
+}
+
+// 문법 하나를 설명 덩어리로 만듭니다 (카드 안에서도, 모아보기 머리말에서도 씁니다)
+function 문법하나_만들기(아이디, 칸, 쓰는표현수) {
+  const 이름발음 = 문법발음줄(칸.이름, 칸.이름읽기, 칸.이름한글);
+  const 예발음   = 문법발음줄(칸.예, 칸.예읽기, 칸.예한글);
 
   return `
-        <details class="grammar">
-          <summary>문법 ${목록.length}가지</summary>
-          ${목록.map((칸) => `
           <div class="g-item">
             <p class="g-name">${안전한글자로(칸.이름)}
               <span class="g-mean">${안전한글자로(칸.뜻)}</span></p>
+            ${이름발음 ? `<p class="g-read">${안전한글자로(이름발음)}</p>` : ""}
             <p class="g-desc">${안전한글자로(칸.설명)}</p>
-            <p class="g-ex">${안전한글자로(칸.예)}</p>
-          </div>`).join("")}
+            <p class="g-ex">${안전한글자로(칸.예)}
+              <span class="g-ex-mean">${안전한글자로(칸.예뜻)}</span></p>
+            ${예발음 ? `<p class="g-ex-read">${안전한글자로(예발음)}</p>` : ""}
+            ${쓰는표현수 == null ? "" : `
+            <button class="g-more" type="button" data-act="grammar"
+                    data-gid="${안전한글자로(아이디)}">이 문법을 쓰는 표현 ${쓰는표현수}개 보기</button>`}
+          </div>`;
+}
+
+// 이 문법을 쓰는 표현이 몇 개인지 셉니다
+function 문법_쓰는_표현들(아이디) {
+  return 표현들.filter((표현) => (표현.문법 || []).includes(아이디));
+}
+
+function 문법블록_만들기(표현) {
+  const 아이디들 = (표현.문법 || []).filter((아이디) => 문법패턴들[아이디]);
+  if (아이디들.length === 0) return "";   // 사전에 없는 아이디는 조용히 건너뜁니다
+
+  return `
+        <details class="grammar">
+          <summary>문법 ${아이디들.length}가지</summary>
+          ${아이디들.map((아이디) =>
+            문법하나_만들기(아이디, 문법패턴들[아이디], 문법_쓰는_표현들(아이디).length)
+          ).join("")}
         </details>`;
 }
 
@@ -520,9 +557,41 @@ function 통계_그리기() {
   if (퀴즈_버튼) 퀴즈_버튼.textContent = 복습수 > 0 ? `복습 퀴즈 (${복습수})` : "복습 퀴즈";
 }
 
-// 오늘의 표현 또는 저장한 표현을 화면에 그립니다
+/*
+  '이 문법을 쓰는 표현' 을 볼 때 목록 위에 붙는 머리말입니다.
+  그 문법의 설명을 한 번 더 보여주고, 돌아가는 길을 둡니다.
+*/
+function 문법머리말_그리기(아이디, 표현수) {
+  const 칸 = 문법패턴들[아이디];
+  if (!문법머리말_자리 || !칸) return;
+  문법머리말_자리.hidden = false;
+  문법머리말_자리.innerHTML = `
+    <div class="gv-head">
+      <p class="gv-label">이 문법을 쓰는 표현 ${표현수}개</p>
+      <button class="btn-secondary" data-act="closeGrammar" type="button">← 오늘의 표현으로</button>
+    </div>
+    ${문법하나_만들기(아이디, 칸, null)}`;
+}
+
+function 문법머리말_숨김() {
+  if (!문법머리말_자리) return;
+  문법머리말_자리.hidden = true;
+  문법머리말_자리.innerHTML = "";
+}
+
+// 오늘의 표현 · 저장한 표현 · 같은 문법을 쓰는 표현을 화면에 그립니다
 function 표현_그리기() {
   const 기록 = 기록_불러오기();
+
+  if (보기모드 === "문법") {
+    현재_표현들 = 문법_쓰는_표현들(고른문법);
+    저장목록_버튼.textContent = "저장한 표현";
+    문법머리말_그리기(고른문법, 현재_표현들.length);
+    상태숨김();
+    표현목록_자리.innerHTML = 현재_표현들.map((표현) => 카드_만들기(표현, 기록)).join("\n");
+    return;
+  }
+  문법머리말_숨김();
 
   if (보기모드 === "저장") {
     현재_표현들 = 표현들.filter((표현) => 기록.저장.includes(표현.아이디));
@@ -583,6 +652,18 @@ function 표현_그리기() {
 
   if (하는일 === "speak") {
     발음_듣기(표현);
+    return;
+  }
+
+  // 문법 이름 아래의 '이 문법을 쓰는 표현 N개 보기'
+  if (하는일 === "grammar") {
+    고른문법 = 버튼.dataset.gid;
+    보기모드 = "문법";
+    if (퀴즈) 퀴즈_닫기();
+    표현_그리기();
+    if (문법머리말_자리.scrollIntoView) {
+      문법머리말_자리.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
     return;
   }
 
@@ -648,6 +729,7 @@ function 퀴즈_열기() {
   퀴즈 = { 문제들, 번호: 0, 맞은수: 0, 답했나: false };
   퀴즈_자리.hidden = false;
   표현목록_자리.hidden = true;
+  문법머리말_숨김();
   퀴즈_버튼.textContent = "퀴즈 닫기";
   상태숨김();
   퀴즈_그리기();
@@ -697,6 +779,15 @@ function 퀴즈_그리기() {
       <div class="quiz-feedback" hidden></div>
     </div>`;
 }
+
+// 문법 모아보기 머리말의 버튼 (돌아가기)
+문법머리말_자리.addEventListener("click", (사건) => {
+  const 버튼 = 사건.target.closest('button[data-act="closeGrammar"]');
+  if (!버튼) return;
+  보기모드 = "오늘";
+  고른문법 = null;
+  표현_그리기();
+});
 
 퀴즈_자리.addEventListener("click", (사건) => {
   const 버튼 = 사건.target.closest("button[data-act]");
