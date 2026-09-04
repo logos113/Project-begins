@@ -387,6 +387,66 @@ select {
   margin-top: 16px;
 }
 
+/* 이 표현에 쓰인 문법 — 평소엔 접혀 있고 눌러야 펴집니다 */
+.grammar {
+  margin-top: 14px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+/* summary = 접혀 있을 때 보이는 줄 */
+.grammar summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  list-style: none;          /* 브라우저 기본 삼각형을 숨기고 */
+}
+.grammar summary::-webkit-details-marker { display: none; }
+.grammar summary::before {
+  content: "▸";              /* 직접 그린 삼각형으로 바꿉니다 */
+  display: inline-block;
+  /* inline-block 은 뒤의 공백을 삼켜버려서, 간격은 margin 으로 줍니다 */
+  margin-right: 5px;
+  transition: transform 0.15s;
+}
+/* [open] = 펼쳐진 상태. 삼각형을 아래로 돌립니다 */
+.grammar[open] summary::before { transform: rotate(90deg); }
+
+.g-item {
+  margin-top: 12px;
+  padding-left: 12px;
+  border-left: 2px solid var(--accent-bg);
+}
+
+.g-name {
+  margin: 0 0 3px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* 문법 이름 옆의 짧은 뜻 */
+.g-mean {
+  margin-left: 6px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-mute);
+}
+
+.g-desc {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+/* 예문 — 본문과 구별되게 조금 다르게 */
+.g-ex {
+  margin: 5px 0 0;
+  font-size: 13.5px;
+  color: var(--text-mute);
+}
+
 /* ---------- 7) 복습 퀴즈 ---------- */
 .quiz { padding-bottom: 50px; }
 

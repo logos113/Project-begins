@@ -426,6 +426,36 @@ function 발음줄_만들기(표현) {
   return 줄들.join("\n");
 }
 
+/*
+  이 표현에 쓰인 문법을 접었다 펼 수 있는 형태로 만듭니다.
+
+  펼친 채로 두지 않는 이유 —
+  오늘의 표현 세 개를 훑는 것이 이 앱의 기본 쓰임인데,
+  문법 설명이 늘 펼쳐져 있으면 화면이 길어져 그 흐름이 끊깁니다.
+  궁금할 때만 눌러서 보게 했습니다.
+
+  <details> 와 <summary> 는 브라우저가 기본으로 제공하는 '접기' 기능입니다.
+  자바스크립트를 따로 붙이지 않아도 눌리면 알아서 펴집니다.
+*/
+function 문법블록_만들기(표현) {
+  const 목록 = (표현.문법 || [])
+    .map((아이디) => 문법패턴들[아이디])
+    .filter(Boolean);            // 사전에 없는 아이디는 조용히 건너뜁니다
+  if (목록.length === 0) return "";
+
+  return `
+        <details class="grammar">
+          <summary>문법 ${목록.length}가지</summary>
+          ${목록.map((칸) => `
+          <div class="g-item">
+            <p class="g-name">${안전한글자로(칸.이름)}
+              <span class="g-mean">${안전한글자로(칸.뜻)}</span></p>
+            <p class="g-desc">${안전한글자로(칸.설명)}</p>
+            <p class="g-ex">${안전한글자로(칸.예)}</p>
+          </div>`).join("")}
+        </details>`;
+}
+
 // 표현 하나를 카드 모양 HTML 글자로 만듭니다
 function 카드_만들기(표현, 기록) {
   const 방식 = 연습방식_선택창 ? 연습방식_선택창.value : "뜻먼저";
@@ -466,6 +496,7 @@ function 카드_만들기(표현, 기록) {
         ${발음줄_만들기(표현)}
         ${일본어먼저 ? `<p class="meaning">${안전한글자로(표현.뜻)}</p>` : ""}
         <p class="note">${안전한글자로(표현.메모)}</p>
+        ${문법블록_만들기(표현)}
         <div class="card-actions">
           <button class="btn-secondary" data-act="speak" type="button">🔊 발음 듣기</button>
           <button class="btn-primary" data-act="learned" type="button">외웠어요</button>
