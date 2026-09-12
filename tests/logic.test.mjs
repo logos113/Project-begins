@@ -70,7 +70,8 @@ let code = fs.readFileSync(new URL("../psychiatry/app.js", import.meta.url), "ut
 code = code.replace("논문_불러오기();", "// 자동 실행은 테스트에서 생략");
 // 검사할 함수들을 밖으로 꺼냅니다
 code += "\nglobal.T = { 논문정보_정리, 검색어_만들기, 오늘의_논문_고르기, 카드_만들기, 안전한글자로, 학술지_순서_섞기, 섞기값, 학술지_등급_가져오기,"
-      + " 본논문_불러오기, 본논문_저장하기, 본논문_기록하기, 본논문_정리, 오래된_날짜인가, 안_본_논문만, 오늘_날짜글자, 본논문_최대개수 };";
+      + " 본논문_불러오기, 본논문_저장하기, 본논문_기록하기, 본논문_정리, 오래된_날짜인가, 안_본_논문만, 오늘_날짜글자, 본논문_최대개수,"
+      + " 구독_불러오기, 구독_저장하기, 구독_추가하기, 구독_지우기, 구독값_다듬기, 구독검색어_만들기, 구독_최대_개수 };";
 new Function(code)();
 
 const T = global.T;
@@ -383,6 +384,85 @@ global.localStorage = { getItem() { throw new Error("막힘"); },
   JSON.stringify(T.본논문_불러오기()) === "{}");
 검사("저장이 막혀도 오류를 던지지 않는가", T.본논문_저장하기({ "1": "2026-01-01" }) === false);
 global.localStorage = 원래;
+localStorage.clear();
+
+
+/* ==========================================================
+   저자 · 키워드 구독
+   ------------------------------------------------------------
+   브라우저로 눌러보는 검사(tests/subscribe.test.mjs)는 화면 흐름을 봅니다.
+   여기서는 PubMed 로 나갈 검색어가 제대로 조립되는지를 자세히 봅니다.
+   검색어 문법이 깨지면 검색 자체가 실패하는데, 화면에는 그냥
+   "논문을 불러오지 못했습니다" 라고만 나와 원인을 알기 어렵습니다.
+   ========================================================== */
+console.log("\n---- 저자 · 키워드 구독 ----");
+
+localStorage.clear();
+
+검사("저자는 [au] 로 조립되는가",
+  T.구독검색어_만들기([{ 종류: "author", 값: "Kim SY" }]).includes("Kim SY[au]"),
+  T.구독검색어_만들기([{ 종류: "author", 값: "Kim SY" }]));
+검사("키워드는 [tiab] 로 조립되는가",
+  T.구독검색어_만들기([{ 종류: "keyword", 값: "ketamine" }]).includes("ketamine[tiab]"));
+검사("여러 개는 OR 로 묶는가",
+  T.구독검색어_만들기([{ 종류: "author", 값: "Kim SY" },
+                      { 종류: "keyword", 값: "ketamine" }])
+    .includes("Kim SY[au] OR ketamine[tiab]"));
+검사("빈 목록이면 검색어를 만들지 않는가", T.구독검색어_만들기([]) === "");
+검사("사설·편집자 글은 구독 검색에서도 빼는가",
+  T.구독검색어_만들기([{ 종류: "author", 값: "Kim" }]).includes("editorial[pt]"));
+
+/*
+  사용자가 적은 글이 그대로 검색어에 들어가면 문법이 깨집니다.
+  예를 들어 "Kim [au]" 라고 적으면 대괄호가 두 번 들어가 검색이 실패합니다.
+*/
+검사("대괄호를 걸러내는가", !T.구독값_다듬기("Kim SY[au]").includes("["),
+  T.구독값_다듬기("Kim SY[au]"));
+검사("따옴표를 걸러내는가", !T.구독값_다듬기('"ketamine"').includes('"'),
+  T.구독값_다듬기('"ketamine"'));
+검사("괄호를 걸러내는가", !T.구독값_다듬기("(Kim OR Park)").includes("("),
+  T.구독값_다듬기("(Kim OR Park)"));
+검사("앞뒤 공백과 겹친 공백을 정리하는가",
+  T.구독값_다듬기("  Kim   SY  ") === "Kim SY", T.구독값_다듬기("  Kim   SY  "));
+검사("지나치게 긴 입력은 잘라내는가", T.구독값_다듬기("가".repeat(200)).length === 60);
+검사("빈 값이나 이상한 값도 안전하게 다루는가",
+  T.구독값_다듬기(null) === "" && T.구독값_다듬기(undefined) === "");
+
+/* 등록 규칙 */
+localStorage.clear();
+검사("등록이 되는가", T.구독_추가하기("author", "Kim SY").됐나 === true);
+검사("같은 것을 두 번 등록하면 막는가",
+  T.구독_추가하기("author", "Kim SY").됐나 === false);
+검사("대소문자만 다른 것도 같은 것으로 보는가",
+  T.구독_추가하기("author", "kim sy").됐나 === false);
+검사("종류가 다르면 따로 등록되는가",
+  T.구독_추가하기("keyword", "Kim SY").됐나 === true);
+검사("빈 내용은 등록하지 않는가", T.구독_추가하기("keyword", "   ").됐나 === false);
+
+localStorage.clear();
+for (let i = 0; i < T.구독_최대_개수; i++) T.구독_추가하기("keyword", `단어${i}`);
+검사("정해둔 개수를 넘겨 등록하지 않는가",
+  T.구독_추가하기("keyword", "하나더").됐나 === false &&
+  T.구독_불러오기().length === T.구독_최대_개수,
+  T.구독_불러오기().length);
+
+/* 지우기 */
+localStorage.clear();
+T.구독_추가하기("author", "Kim SY");
+T.구독_추가하기("keyword", "ketamine");
+T.구독_지우기("author", "Kim SY");
+검사("지우면 그 항목만 빠지는가",
+  T.구독_불러오기().length === 1 && T.구독_불러오기()[0].값 === "ketamine",
+  T.구독_불러오기());
+
+/* 저장된 내용이 망가져 있어도 멈추지 않아야 합니다 */
+localStorage.setItem("psychiatry-digest-subscriptions", "이건 JSON 이 아닙니다");
+검사("저장된 내용이 깨져 있어도 빈 목록으로 넘어가는가",
+  Array.isArray(T.구독_불러오기()) && T.구독_불러오기().length === 0);
+localStorage.setItem("psychiatry-digest-subscriptions",
+  JSON.stringify([{ 종류: "author" }, null, { 종류: "author", 값: "Kim" }]));
+검사("모양이 어긋난 칸은 걸러내는가", T.구독_불러오기().length === 1,
+  T.구독_불러오기());
 localStorage.clear();
 
 console.log(실패 === 0 ? "\n🎉 전체 통과 — 모든 검사 성공" : `\n⚠️  ${실패}건 실패`);

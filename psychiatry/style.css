@@ -227,6 +227,122 @@ select {
   color: var(--accent);
 }
 
+/* ---------- 4-2) 저자·키워드 구독 ---------- */
+.subs {
+  margin: -6px 0 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 12px 16px;
+}
+
+/* summary = 접혀 있을 때 보이는 줄 */
+.subs summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  list-style: none;                 /* 브라우저 기본 삼각형을 숨기고 */
+}
+.subs summary::-webkit-details-marker { display: none; }
+.subs summary::before {
+  content: "▸";                     /* 직접 그린 삼각형으로 바꿉니다 */
+  display: inline-block;
+  margin-right: 5px;
+  transition: transform 0.15s;
+}
+.subs[open] summary::before { transform: rotate(90deg); }
+
+.subs-body { margin-top: 14px; }
+
+.subs-help {
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text-soft);
+}
+
+.subs-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.subs-form select { flex: 0 0 auto; }
+.subs-form input {
+  flex: 1 1 200px;
+  font: inherit;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+}
+.subs-form input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+/* 등록해둔 목록 */
+.subs-list {
+  list-style: none;                 /* 글머리 기호 없애기 */
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.subs-empty {
+  font-size: 13px;
+  color: var(--text-mute);
+}
+
+/* 등록한 항목 하나 — 알약 모양 */
+.subs-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 8px 5px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  font-size: 13px;
+}
+
+.subs-kind {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-mute);
+}
+
+.subs-value { font-weight: 600; }
+
+.subs-del {
+  font: inherit;
+  font-size: 12px;
+  line-height: 1;
+  padding: 3px 5px;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: var(--text-mute);
+  cursor: pointer;
+}
+.subs-del:hover { color: var(--warn); }
+
+/* 구독으로 걸려 나온 논문임을 알리는 카드 배지 */
+.sub-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  .sub-badge { color: #10171b; }
+}
+
 /* ---------- 5) 상태 메시지 ---------- */
 .status {
   padding: 14px 16px;

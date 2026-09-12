@@ -169,6 +169,12 @@ const 우선순위_선택창 = document.getElementById("rankSelect");
 const 새로고침_버튼   = document.getElementById("refreshBtn");
 const 북마크_버튼     = document.getElementById("bookmarkBtn");
 const 본논문_선택창   = document.getElementById("seenSelect");
+const 구독_상자       = document.getElementById("subsBox");
+const 구독_요약줄     = document.getElementById("subsSummary");
+const 구독_입력폼     = document.getElementById("subsForm");
+const 구독_종류창     = document.getElementById("subsKind");
+const 구독_입력칸     = document.getElementById("subsInput");
+const 구독_목록자리   = document.getElementById("subsList");
 
 /*
   "다른 논문 보기"를 누른 횟수를 세는 상자입니다.
@@ -362,21 +368,155 @@ function 본논문_기록하기(번호들) {
   ※ 빼고 나서 3편이 안 되면 빼지 않습니다.
      새 논문이 없다고 화면을 비워두는 것보다, 봤던 것이라도 보여주는 편이 낫습니다.
 */
-function 안_본_논문만(요약목록) {
+function 본것_빼기(요약목록) {
   const 설정 = 본논문_선택창 ? 본논문_선택창.value : "exclude";
-  if (설정 !== "exclude") return { 목록: 요약목록, 제외수: 0, 모자랐나: false };
+  if (설정 !== "exclude") return 요약목록;
 
   const 기록 = 본논문_불러오기();
   const 오늘 = 오늘_날짜글자();
-  const 남은것 = 요약목록.filter((논문) =>
+  return 요약목록.filter((논문) =>
     !이번에_본_번호.has(논문.pmid) &&
     // 오늘 본 것은 빼지 않습니다 (같은 날 다시 열면 같은 3편이 나와야 하므로)
     !(기록[논문.pmid] && 기록[논문.pmid] !== 오늘));
+}
 
+function 안_본_논문만(요약목록) {
+  const 남은것 = 본것_빼기(요약목록);
+  if (남은것.length === 요약목록.length) {
+    return { 목록: 요약목록, 제외수: 0, 모자랐나: false };
+  }
   if (남은것.length < 보여줄_편수) {
     return { 목록: 요약목록, 제외수: 0, 모자랐나: true };
   }
   return { 목록: 남은것, 제외수: 요약목록.length - 남은것.length, 모자랐나: false };
+}
+
+
+/* ==========================================================
+   [2-4] 저자 · 키워드 구독
+   ------------------------------------------------------------
+   쫓고 있는 연구자나 주제를 등록해두면 그 논문을 먼저 챙겨 보여줍니다.
+
+   ※ 왜 기존 검색어에 조건을 붙이지 않고 따로 검색하나
+      - AND 로 묶으면 구독한 것만 나옵니다. 매일 3편을 채울 수 없습니다.
+      - OR 로 묶으면 학술지 제한이 풀려 아무 저널 논문이나 들어옵니다.
+      그래서 구독은 검색을 한 번 더 돌려 따로 찾고, 그중 몇 편만 앞에 넣습니다.
+
+   ※ 구독 검색에는 학술지 제한을 걸지 않습니다.
+      쫓는 연구자가 늘 같은 학술지에만 쓰지는 않기 때문입니다.
+      대신 카드에 '구독' 표시를 달아 왜 이 논문이 나왔는지 알 수 있게 합니다.
+      학술지 제한을 걸고 싶다면 아래 구독검색어_만들기() 에 저널 조건을 더하면 됩니다.
+   ========================================================== */
+
+const 구독_보관함_이름 = "psychiatry-digest-subscriptions";
+
+// 구독 논문이 하루 3편을 다 차지하면 '오늘의 논문'이 단조로워집니다
+const 구독_최대_편수 = 2;
+
+// 등록할 수 있는 개수 (검색어가 지나치게 길어지지 않도록)
+const 구독_최대_개수 = 20;
+
+function 구독_불러오기() {
+  try {
+    const 글 = localStorage.getItem(구독_보관함_이름);
+    const 목록 = 글 ? JSON.parse(글) : [];
+    if (!Array.isArray(목록)) return [];
+    // 모양이 어긋난 칸은 조용히 걸러냅니다
+    return 목록.filter((칸) => 칸 && typeof 칸.값 === "string" && 칸.값.trim());
+  } catch {
+    return [];
+  }
+}
+
+function 구독_저장하기(목록) {
+  try {
+    localStorage.setItem(구독_보관함_이름, JSON.stringify(목록));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/*
+  사용자가 적은 글을 PubMed 검색어에 넣어도 안전하게 다듬습니다.
+
+  대괄호나 따옴표, 괄호가 섞이면 검색어 문법이 깨져 검색 자체가 실패합니다.
+  (예: "Kim [au]" 라고 적으면 대괄호가 두 번 들어갑니다)
+*/
+function 구독값_다듬기(글) {
+  return String(글 || "")
+    .replace(/["'()\[\]]/g, " ")   // 문법을 깨뜨리는 기호 제거
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 60);
+}
+
+// 같은 것을 두 번 등록하지 않도록 비교용 열쇠를 만듭니다
+const 구독_열쇠 = (종류, 값) => `${종류}:${값.toLowerCase()}`;
+
+function 구독_추가하기(종류, 값) {
+  const 다듬은값 = 구독값_다듬기(값);
+  if (!다듬은값) return { 됐나: false, 까닭: "내용을 입력해 주세요." };
+
+  const 목록 = 구독_불러오기();
+  if (목록.length >= 구독_최대_개수) {
+    return { 됐나: false, 까닭: `구독은 ${구독_최대_개수}개까지 등록할 수 있습니다.` };
+  }
+  if (목록.some((칸) => 구독_열쇠(칸.종류, 칸.값) === 구독_열쇠(종류, 다듬은값))) {
+    return { 됐나: false, 까닭: "이미 등록되어 있습니다." };
+  }
+  목록.push({ 종류, 값: 다듬은값 });
+  구독_저장하기(목록);
+  return { 됐나: true, 값: 다듬은값 };
+}
+
+function 구독_지우기(종류, 값) {
+  const 남은것 = 구독_불러오기()
+    .filter((칸) => 구독_열쇠(칸.종류, 칸.값) !== 구독_열쇠(종류, 값));
+  구독_저장하기(남은것);
+}
+
+/*
+  구독 목록으로 PubMed 검색어를 만듭니다.
+    저자   -> Kim SY[au]
+    키워드 -> ketamine[tiab]   (제목과 초록에서 찾습니다)
+*/
+function 구독검색어_만들기(목록) {
+  const 조건들 = 목록
+    .map((칸) => {
+      const 값 = 구독값_다듬기(칸.값);
+      if (!값) return null;
+      return 칸.종류 === "author" ? `${값}[au]` : `${값}[tiab]`;
+    })
+    .filter(Boolean);
+  if (조건들.length === 0) return "";
+
+  return `(${조건들.join(" OR ")}) AND hasabstract` +
+    ` NOT (editorial[pt] OR comment[pt] OR letter[pt] OR news[pt] OR "retracted publication"[pt])`;
+}
+
+// 접혀 있는 줄에 지금 몇 개를 구독 중인지 적어 둡니다
+function 구독_화면_갱신() {
+  const 목록 = 구독_불러오기();
+  if (구독_요약줄) {
+    구독_요약줄.textContent =
+      목록.length > 0 ? `저자 · 키워드 구독 ${목록.length}개` : "저자 · 키워드 구독";
+  }
+  if (!구독_목록자리) return;
+
+  if (목록.length === 0) {
+    구독_목록자리.innerHTML =
+      `<li class="subs-empty">아직 등록한 것이 없습니다.</li>`;
+    return;
+  }
+  구독_목록자리.innerHTML = 목록.map((칸) => `
+    <li class="subs-item">
+      <span class="subs-kind">${칸.종류 === "author" ? "저자" : "키워드"}</span>
+      <span class="subs-value">${안전한글자로(칸.값)}</span>
+      <button type="button" class="subs-del" title="지우기"
+              data-kind="${안전한글자로(칸.종류)}"
+              data-value="${안전한글자로(칸.값)}">✕</button>
+    </li>`).join("");
 }
 
 
@@ -980,6 +1120,7 @@ function 카드_만들기(논문) {
       <div class="paper-meta">
         <span class="journal tier-${등급}">${안전한글자로(논문.학술지)}</span>
         ${등급 >= 4 ? '<span class="tier-note">최상위</span>' : ""}
+        ${논문.구독으로 ? '<span class="sub-badge">구독</span>' : ""}
         <span>${안전한글자로(논문.발표일)}</span>
         <span>· PMID ${안전한글자로(논문.pmid)}</span>
         ${저장일표시}
@@ -1047,11 +1188,37 @@ function 북마크_보여주기() {
    ========================================================== */
 
 /*
+  등록해둔 저자·키워드에 해당하는 논문을 찾아 최대 몇 편만 돌려줍니다.
+
+  ※ 구독 검색이 실패해도 오늘의 논문은 나와야 합니다.
+     그래서 실패를 이 안에서 삼키고 빈 목록을 돌려줍니다.
+     (여기서 오류를 던지면 구독 하나 때문에 화면 전체가 비어버립니다)
+*/
+async function 구독논문_찾기(기간) {
+  const 목록 = 구독_불러오기();
+  if (목록.length === 0) return [];
+
+  const 검색어 = 구독검색어_만들기(목록);
+  if (!검색어) return [];
+
+  try {
+    const 번호들 = await 논문번호_받아오기(검색어, 기간);
+    if (번호들.length === 0) return [];
+    const 요약 = await 논문요약_받아오기(번호들);
+    // 구독 논문도 이미 본 것은 뺍니다 (여기서는 '3편 미만이면 봐준다' 규칙을 쓰지 않습니다)
+    return 본것_빼기(요약).slice(0, 구독_최대_편수);
+  } catch (오류) {
+    console.warn("구독 검색에 실패했습니다. 오늘의 논문만 보여줍니다.", 오류);
+    return [];
+  }
+}
+
+/*
   화면 맨 위의 한 줄을 그립니다.
   이미 본 논문을 뺐다면 그 편수와, 기록을 지우는 길을 함께 보여줍니다.
   (기록을 지울 방법이 없으면 "처음부터 다시 보고 싶다"는 요구에 답할 수 없습니다)
 */
-function 날짜줄_그리기(요약목록, 후보수, 선정수, 제외수) {
+function 날짜줄_그리기(요약목록, 후보수, 선정수, 제외수, 구독수 = 0) {
   if (!오늘날짜_자리) return;
   const 학술지수 = new Set(요약목록.map((논문) => 논문.학술지)).size;
   const 기록수 = Object.keys(본논문_불러오기()).length;
@@ -1060,6 +1227,7 @@ function 날짜줄_그리기(요약목록, 후보수, 선정수, 제외수) {
     `${오늘_날짜글자()} 기준 · ${학술지수}개 학술지의 ${후보수}편 중 ` +
     `${선정수}편 선정 (학술지가 겹치지 않게)`);
 
+  if (구독수 > 0) 글 += ` · 구독 ${구독수}편 포함`;
   if (제외수 > 0) 글 += ` · 이미 본 ${제외수}편 제외`;
   if (기록수 > 0) {
     글 += ` · <button type="button" id="forgetSeen" class="link-btn">` +
@@ -1088,11 +1256,24 @@ async function 논문_불러오기() {
       return;   // return = 여기서 함수를 끝내기
     }
 
-    // 학술지 이름을 먼저 확인한 뒤, 이미 본 논문을 빼고, 학술지가 겹치지 않게 3편을 고릅니다
+    /*
+      등록해둔 저자·키워드가 있으면 그쪽을 먼저 찾아 최대 2편까지 자리를 내줍니다.
+      구독 검색이 실패하더라도 평소 논문은 그대로 나와야 하므로 따로 감싸둡니다.
+    */
+    const 구독선정 = await 구독논문_찾기(기간);
+
+    // 학술지 이름을 먼저 확인한 뒤, 이미 본 논문을 빼고, 학술지가 겹치지 않게 채웁니다
     const 요약목록 = await 논문요약_받아오기(번호목록);
-    const 걸러낸것 = 안_본_논문만(요약목록);
-    const 오늘의논문 = 오늘의_논문_고르기(걸러낸것.목록);
-    const 논문들 = await 논문상세_받아오기(오늘의논문.map((논문) => 논문.pmid));
+    const 이미고른번호 = new Set(구독선정.map((논문) => 논문.pmid));
+    const 걸러낸것 = 안_본_논문만(요약목록.filter((논문) => !이미고른번호.has(논문.pmid)));
+    const 남은자리 = 보여줄_편수 - 구독선정.length;
+    const 오늘의논문 = 오늘의_논문_고르기(걸러낸것.목록).slice(0, 남은자리);
+
+    const 뽑은것 = [...구독선정, ...오늘의논문];
+    const 논문들 = await 논문상세_받아오기(뽑은것.map((논문) => 논문.pmid));
+
+    // 어떤 것이 구독으로 걸려 나온 논문인지 표시해 둡니다 (카드에 배지로 나옵니다)
+    for (const 논문 of 논문들) 논문.구독으로 = 이미고른번호.has(논문.pmid);
 
     // .map() 으로 각 논문을 카드 HTML로 바꾼 뒤 .join("") 으로 이어붙여 한 번에 넣습니다
     현재_논문들 = 논문들;                    // 저장 버튼이 정보를 찾을 수 있도록 보관
@@ -1109,7 +1290,8 @@ async function 논문_불러오기() {
     } else {
       상태숨김();
     }
-    날짜줄_그리기(요약목록, 번호목록.length, 논문들.length, 걸러낸것.제외수);
+    날짜줄_그리기(요약목록, 번호목록.length, 논문들.length, 걸러낸것.제외수,
+      논문들.filter((논문) => 논문.구독으로).length);
 
   } catch (오류) {
     // 무슨 문제가 생겼는지 콘솔(개발자 도구)에도 남겨둡니다
@@ -1196,6 +1378,36 @@ if (오늘날짜_자리) {
   });
 }
 
+/* ---------- 저자·키워드 구독 ---------- */
+
+if (구독_입력폼) {
+  구독_입력폼.addEventListener("submit", (사건) => {
+    // form 은 그냥 두면 페이지를 새로 불러옵니다. 그것을 막습니다.
+    사건.preventDefault();
+    const 결과 = 구독_추가하기(구독_종류창.value, 구독_입력칸.value);
+    if (!결과.됐나) {
+      상태표시(결과.까닭, true);
+      return;
+    }
+    구독_입력칸.value = "";
+    구독_화면_갱신();
+    넘긴_횟수 = 0;
+    논문_불러오기();
+  });
+}
+
+// 지우기 단추는 목록을 다시 그릴 때마다 새로 만들어지므로 목록 전체에 연결해 둡니다
+if (구독_목록자리) {
+  구독_목록자리.addEventListener("click", (사건) => {
+    const 단추 = 사건.target.closest(".subs-del");
+    if (!단추) return;
+    구독_지우기(단추.dataset.kind, 단추.dataset.value);
+    구독_화면_갱신();
+    넘긴_횟수 = 0;
+    논문_불러오기();
+  });
+}
+
 /*
   "인용 정보 복사" 버튼 처리.
   카드는 나중에 만들어지므로 버튼에 직접 연결할 수 없습니다.
@@ -1271,5 +1483,6 @@ function 버전_표시() {
 }
 
 버전_표시();
+구독_화면_갱신();
 북마크_버튼_갱신();
 논문_불러오기();

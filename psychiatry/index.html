@@ -52,7 +52,7 @@
   <link rel="manifest" href="manifest.json">
 
   <!-- 우리가 만든 디자인 파일(style.css)을 불러옵니다 -->
-  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="stylesheet" href="style.css?v=13">
 </head>
 
 <body>
@@ -127,17 +127,45 @@
       </button>
     </section>
 
-    <!-- ========== 3) 상태 메시지 자리 (불러오는 중 / 오류) ========== -->
+    <!-- ========== 3) 저자·키워드 구독 ==========
+         평소엔 접혀 있고, 눌러야 펴집니다.
+         매일 보는 화면에 늘 펼쳐져 있을 내용은 아니기 때문입니다. -->
+    <details id="subsBox" class="subs">
+      <summary id="subsSummary">저자 · 키워드 구독</summary>
+
+      <div class="subs-body">
+        <p class="subs-help">
+          쫓고 있는 연구자나 주제를 등록해두면, 그 논문이 나왔을 때
+          오늘의 3편 안에 <strong>최대 2편까지</strong> 먼저 넣어 드립니다.
+          등록한 것이 없으면 평소대로 동작합니다.
+        </p>
+
+        <form id="subsForm" class="subs-form">
+          <select id="subsKind" aria-label="구독 종류">
+            <option value="author">저자</option>
+            <option value="keyword">키워드</option>
+          </select>
+          <input id="subsInput" type="text" autocomplete="off"
+                 placeholder="예: Kim SY  또는  ketamine">
+          <button class="btn-secondary" type="submit">추가</button>
+        </form>
+
+        <!-- 등록한 목록이 app.js 에 의해 여기에 채워집니다 -->
+        <ul id="subsList" class="subs-list"></ul>
+      </div>
+    </details>
+
+    <!-- ========== 4) 상태 메시지 자리 (불러오는 중 / 오류) ========== -->
     <!-- hidden 을 붙이면 평소엔 숨어 있고, 필요할 때 app.js가 보여줍니다 -->
     <div id="statusBox" class="status" hidden></div>
 
-    <!-- ========== 4) 논문 카드가 들어갈 자리 ========== -->
+    <!-- ========== 5) 논문 카드가 들어갈 자리 ========== -->
     <!-- 지금은 비어 있고, app.js가 여기에 논문 3개를 만들어 넣습니다 -->
     <section id="paperList" class="paper-list"></section>
 
   </main>
 
-  <!-- ========== 5) 맨 아래 꼬리말 ========== -->
+  <!-- ========== 6) 맨 아래 꼬리말 ========== -->
   <footer class="site-footer">
     <div class="wrap">
       <p>
@@ -161,6 +189,6 @@
        브라우저는 한 번 받은 파일을 한동안 저장해두고 다시 받지 않는데(캐시),
        주소가 달라지면 새 파일로 보고 다시 받아옵니다.
        코드를 크게 고친 뒤에는 이 숫자를 올려주세요. -->
-  <script src="app.js?v=12"></script>
+  <script src="app.js?v=13"></script>
 </body>
 </html>

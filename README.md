@@ -230,6 +230,7 @@ for f in tests/*.test.mjs; do node "$f"; done
 | `flow.test.mjs` | 논문 앱 — 가짜 PubMed로 검색부터 화면 그리기까지 |
 | `bookmark.test.mjs` | 논문 앱 — 실제 브라우저로 저장 버튼 눌러보기 |
 | `seen.test.mjs` | 논문 앱 — 이미 본 논문을 빼는 규칙 (하루 지난 상황까지) |
+| `subscribe.test.mjs` | 논문 앱 — 저자·키워드 구독 (검색어 조립, 실패했을 때까지) |
 | `japanese.test.mjs` | 일본어 앱 — 표현 자료, 선정 규칙, 복습 일정, 퀴즈, 실제 조작 |
 | `game.test.mjs` | 게임 — 구조와 동작 |
 
