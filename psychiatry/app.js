@@ -169,6 +169,7 @@ const 우선순위_선택창 = document.getElementById("rankSelect");
 const 새로고침_버튼   = document.getElementById("refreshBtn");
 const 북마크_버튼     = document.getElementById("bookmarkBtn");
 const 본논문_선택창   = document.getElementById("seenSelect");
+const 번역_선택창     = document.getElementById("transSelect");
 const 구독_상자       = document.getElementById("subsBox");
 const 구독_요약줄     = document.getElementById("subsSummary");
 const 구독_입력폼     = document.getElementById("subsForm");
@@ -517,6 +518,144 @@ function 구독_화면_갱신() {
               data-kind="${안전한글자로(칸.종류)}"
               data-value="${안전한글자로(칸.값)}">✕</button>
     </li>`).join("");
+}
+
+
+/* ==========================================================
+   [2-5] 핵심 결론 한국어로 옮기기
+   ------------------------------------------------------------
+   핵심 결론은 영문 초록에서 그대로 뽑아온 문장이라 읽는 데 시간이 걸립니다.
+   그 아래에 한국어 번역을 덧붙여 뜻을 빠르게 훑을 수 있게 합니다.
+
+   ※ 원문을 치우지 않고 '덧붙입니다'.
+      기계 번역은 의학 용어를 곧잘 틀립니다. 번역만 남기면 잘못된 내용을
+      그대로 믿게 되므로, 영문 원문이 언제나 위에 그대로 남아 있어야 합니다.
+      화면에도 '기계 번역' 이라고 표시합니다.
+
+   ※ 번역에는 MyMemory 를 씁니다.
+      키 없이 브라우저에서 바로 부를 수 있는 몇 안 되는 무료 번역 서비스입니다.
+      하루 5,000자까지 무료이고(핵심 결론 3편이면 1,000자 남짓), 그 이상은
+      아래 번역_알림메일 에 메일 주소를 적어두면 50,000자까지 늘어납니다.
+      (적어둔 주소는 번역 요청과 함께 그 회사로 전송됩니다. 비워두면 보내지 않습니다)
+
+   ※ 다른 번역 서비스로 바꾸려면 결론_번역_받아오기() 한 곳만 고치면 됩니다.
+   ========================================================== */
+
+const 번역_주소 = "https://api.mymemory.translated.net/get";
+
+// 하루 한도를 늘리고 싶을 때만 메일 주소를 적으세요. 비워두면 아무것도 보내지 않습니다.
+const 번역_알림메일 = "";
+
+// 너무 긴 글은 보내지 않습니다 (한도를 아끼고, 긴 문장은 번역 품질도 떨어집니다)
+const 번역_최대_글자 = 500;
+
+const 번역_보관함_이름 = "psychiatry-digest-translations";
+const 번역_보관_최대개수 = 300;
+
+function 번역_모음_불러오기() {
+  try {
+    const 글 = localStorage.getItem(번역_보관함_이름);
+    const 값 = 글 ? JSON.parse(글) : {};
+    return 값 && typeof 값 === "object" && !Array.isArray(값) ? 값 : {};
+  } catch {
+    return {};
+  }
+}
+
+function 번역_모음_저장하기(모음) {
+  try {
+    let 칸들 = Object.entries(모음);
+    // 오래된 것부터 버려 저장 공간이 무한정 늘지 않게 합니다
+    if (칸들.length > 번역_보관_최대개수) 칸들 = 칸들.slice(-번역_보관_최대개수);
+    localStorage.setItem(번역_보관함_이름, JSON.stringify(Object.fromEntries(칸들)));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/*
+  번역 서비스가 돌려준 값이 쓸 만한 번역인지 확인합니다.
+
+  ※ MyMemory 는 하루 한도를 넘겨도 오류를 내지 않고,
+     번역문 자리에 "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS..."
+     같은 안내문을 담아 보냅니다. 그대로 화면에 넣으면 그게 번역인 줄 알게 됩니다.
+*/
+function 쓸만한_번역인가(글, 원문) {
+  if (typeof 글 !== "string") return false;
+  const 다듬은 = 글.trim();
+  if (!다듬은) return false;
+  if (/MYMEMORY WARNING|QUERY LENGTH LIMIT|INVALID (EMAIL|LANGUAGE)|ALL AVAILABLE FREE/i.test(다듬은)) return false;
+  // 원문을 그대로 돌려준 경우도 번역이 아닙니다
+  if (다듬은.toLowerCase() === String(원문).trim().toLowerCase()) return false;
+  return true;
+}
+
+/*
+  영어 한 덩어리를 한국어로 옮겨 옵니다.
+  실패하면 null 을 돌려줍니다 — 번역이 없다고 카드가 안 나오면 안 되니까요.
+*/
+async function 결론_번역_받아오기(원문) {
+  const 보낼글 = String(원문 || "").trim().slice(0, 번역_최대_글자);
+  if (!보낼글) return null;
+
+  // langpair 의 '|' 는 주소에 그대로 쓸 수 없는 글자라 함께 변환합니다
+  const 주소 = `${번역_주소}?q=${encodeURIComponent(보낼글)}` +
+    `&langpair=${encodeURIComponent("en|ko")}` +
+    (번역_알림메일 ? `&de=${encodeURIComponent(번역_알림메일)}` : "");
+
+  const 응답 = await fetch(주소);
+  if (!응답.ok) return null;
+  const 자료 = await 응답.json();
+  const 글 = 자료 && 자료.responseData && 자료.responseData.translatedText;
+  return 쓸만한_번역인가(글, 보낼글) ? String(글).trim() : null;
+}
+
+/*
+  한 논문의 번역을 가져옵니다. 한 번 받아온 것은 기기에 저장해 두고 다시 씁니다.
+  같은 논문을 다시 열 때 기다릴 필요가 없고, 무료 한도도 아낄 수 있습니다.
+*/
+async function 결론_번역_가져오기(pmid, 원문) {
+  const 모음 = 번역_모음_불러오기();
+  const 저장된 = 모음[pmid];
+  // 결론 추출 방식이 바뀌어 원문이 달라졌다면 다시 번역합니다
+  if (저장된 && 저장된.원문 === 원문 && 저장된.번역) return 저장된.번역;
+
+  const 번역 = await 결론_번역_받아오기(원문);
+  if (!번역) return null;
+
+  모음[pmid] = { 원문, 번역 };
+  번역_모음_저장하기(모음);
+  return 번역;
+}
+
+/*
+  화면에 그려진 카드들에 번역을 하나씩 채워 넣습니다.
+
+  카드를 그릴 때 함께 기다리지 않고 나중에 채우는 이유 —
+  번역 서비스가 느리거나 멎어 있을 때 논문 자체가 늦게 뜨면 안 되기 때문입니다.
+  번역은 되면 나타나고, 안 되면 그냥 없는 채로 둡니다.
+*/
+async function 번역_채우기(논문들) {
+  if (!번역_선택창 || 번역_선택창.value !== "on") return;
+
+  for (const 논문 of 논문들) {
+    if (!논문.핵심) continue;
+    try {
+      const 번역 = await 결론_번역_가져오기(논문.pmid, 논문.핵심);
+      if (!번역) continue;
+
+      // 기다리는 사이에 화면이 바뀌었을 수 있으므로 그 자리가 아직 있는지 확인합니다
+      const 자리 = 논문목록_자리.querySelector(`[data-ko="${논문.pmid}"]`);
+      if (!자리 || !자리.isConnected) continue;
+
+      자리.querySelector(".ko-text").textContent = 번역;
+      자리.hidden = false;
+    } catch (오류) {
+      // 번역 실패는 조용히 넘어갑니다. 논문은 이미 화면에 떠 있습니다.
+      console.warn("결론 번역에 실패했습니다.", 오류);
+    }
+  }
 }
 
 
@@ -1109,6 +1248,18 @@ function 카드_만들기(논문) {
   const 저장일표시 = 논문.저장일
     ? `<span class="saved-on">${안전한글자로(논문.저장일)} 저장</span>` : "";
 
+  /*
+    한국어 번역이 들어갈 자리입니다.
+    번역은 카드를 그린 뒤에 따로 받아오므로, 지금은 비워두고 감춰둡니다.
+    '기계 번역' 표시를 함께 두어 사람이 옮긴 것으로 오해하지 않게 합니다.
+  */
+  const 번역켜짐 = !번역_선택창 || 번역_선택창.value === "on";
+  const 번역자리 = (번역켜짐 && 논문.핵심)
+    ? `<p class="takeaway-ko" data-ko="${안전한글자로(논문.pmid)}" hidden>
+         <span class="ko-label">기계 번역</span> <span class="ko-text"></span>
+       </p>`
+    : "";
+
   // DOI가 있을 때만 링크 버튼을 만듭니다 (없으면 빈 글자)
   const doi버튼 = 논문.doi
     ? `<a class="btn-small" href="https://doi.org/${안전한글자로(논문.doi)}"
@@ -1139,6 +1290,7 @@ function 카드_만들기(논문) {
             ? "초록에서 결론 부분을 자동으로 찾지 못했습니다. 아래에서 전문을 확인해 주세요."
             : "이 논문은 PubMed에 초록이 등록되어 있지 않습니다. 아래 PubMed 링크에서 확인해 주세요.")
         )}</p>
+        ${번역자리}
       </div>
 
       ${초록블록}
@@ -1178,6 +1330,7 @@ function 북마크_보여주기() {
 
   상태숨김();
   논문목록_자리.innerHTML = 목록.map(카드_만들기).join("");
+  번역_채우기(목록);       // 이미 받아둔 번역이 있으면 기다림 없이 바로 채워집니다
   오늘날짜_자리.textContent =
     `저장한 논문 ${목록.length}편 · 최근에 저장한 것부터 보여드립니다`;
 }
@@ -1279,6 +1432,8 @@ async function 논문_불러오기() {
     현재_논문들 = 논문들;                    // 저장 버튼이 정보를 찾을 수 있도록 보관
     논문목록_자리.innerHTML = 논문들.map(카드_만들기).join("");
 
+    번역_채우기(논문들);      // 기다리지 않습니다. 번역은 되는 대로 채워집니다.
+
     // 화면에 띄웠으니 '본 것'으로 적어둡니다 (다음부터 후보에서 빠집니다)
     본논문_기록하기(논문들.map((논문) => 논문.pmid));
 
@@ -1351,6 +1506,16 @@ if (우선순위_선택창) {
     논문_불러오기();
   });
 }
+if (번역_선택창) {
+  번역_선택창.addEventListener("change", () => {
+    // 번역만 껐다 켜는 것이라 논문을 다시 고를 필요는 없습니다. 화면만 다시 그립니다.
+    if (현재_논문들.length > 0) {
+      논문목록_자리.innerHTML = 현재_논문들.map(카드_만들기).join("");
+      번역_채우기(현재_논문들);
+    }
+  });
+}
+
 if (본논문_선택창) {
   본논문_선택창.addEventListener("change", () => {
     넘긴_횟수 = 0;

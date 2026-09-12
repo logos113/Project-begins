@@ -36,6 +36,12 @@ const 호출기록 = [];
 global.fetch = async (주소) => {
   호출기록.push(주소.split("/").pop().split("?")[0]);
 
+  // 핵심 결론을 한국어로 옮겨오는 요청. 검사에서는 가짜로 답합니다.
+  if (주소.includes("mymemory")) {
+    return { ok: true, json: async () => ({
+      responseData: { translatedText: "옮긴 문장입니다." } }) };
+  }
+
   if (주소.includes("esearch")) {
     const retmax = Number(주소.match(/retmax=(\d+)/)?.[1] ?? 0);
     return { ok: true, json: async () => ({
@@ -83,9 +89,11 @@ const 검사 = (이름, 조건, 실제) => {
 const 카드들 = [...document.querySelectorAll(".paper")];
 const 저널들 = 카드들.map((c) => c.querySelector(".journal").textContent.trim());
 
+// 번역 요청은 PubMed 와 별개이므로 빼고 봅니다 (결론을 한국어로 옮기는 데 씁니다)
+const pubmed호출 = [...new Set(호출기록)].filter((이름) => 이름.endsWith(".fcgi"));
 검사("PubMed의 세 창구를 순서대로 호출하는가",
-  JSON.stringify([...new Set(호출기록)]) ===
-  JSON.stringify(["esearch.fcgi", "esummary.fcgi", "efetch.fcgi"]), [...new Set(호출기록)]);
+  JSON.stringify(pubmed호출) ===
+  JSON.stringify(["esearch.fcgi", "esummary.fcgi", "efetch.fcgi"]), pubmed호출);
 검사("논문 카드가 3장 그려지는가", 카드들.length === 3, 카드들.length);
 검사("서로 다른 3개 학술지에서 한 편씩 나오는가", new Set(저널들).size === 3, 저널들);
 검사("한 학술지가 목록의 절반을 차지해도 독점하지 않는가",

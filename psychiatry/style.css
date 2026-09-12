@@ -343,6 +343,29 @@ select {
   .sub-badge { color: #10171b; }
 }
 
+/* 핵심 결론 아래에 붙는 한국어 번역 */
+.takeaway-ko {
+  margin: 10px 0 0;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--text-soft);
+}
+
+/* '기계 번역' 표시 — 사람이 옮긴 것으로 오해하지 않도록 분명히 둡니다 */
+.ko-label {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 7px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-mute);
+  vertical-align: 1px;
+}
+
 /* ---------- 5) 상태 메시지 ---------- */
 .status {
   padding: 14px 16px;

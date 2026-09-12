@@ -49,6 +49,11 @@ const browser = await chromium.launch(
   process.env.PW_CHROME ? { executablePath: process.env.PW_CHROME } : {});
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
 
+await page.route("**/api.mymemory.translated.net/**", (route) =>
+  // 검사가 바깥 번역 서버에 기대지 않도록 가짜로 답합니다
+  route.fulfill({ contentType: "application/json",
+    body: JSON.stringify({ responseData: { translatedText: "옮긴 문장입니다." } }) }));
+
 await page.route("**/eutils.ncbi.nlm.nih.gov/**", async (route) => {
   const u = route.request().url();
   const 후보 = 전체후보.slice(0, 후보수);
