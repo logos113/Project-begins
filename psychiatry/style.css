@@ -36,6 +36,7 @@
   --warn:      #8a4b2a;   /* 오류 메시지 색 */
   --warn-bg:   #faf0e8;
   --radius:    10px;      /* 모서리 둥글기 */
+  --field-h:   40px;      /* 선택창·버튼·입력칸의 공통 높이 */
 }
 
 /* 사용자가 기기를 "다크 모드"로 쓰고 있으면 색만 바꿔줍니다.
@@ -149,42 +150,73 @@ h1 {
 }
 .link-btn:hover { opacity: 0.75; }
 
-/* ---------- 4) 검색 조건 영역 ---------- */
+/* ---------- 4) 검색 조건 영역 ----------
+   예전에는 flex(가로로 늘어놓고 넘치면 줄바꿈)를 썼는데,
+   선택칸이 다섯 개로 늘어나면서 문제가 생겼습니다.
+   flex 는 남는 공간을 마지막 줄에 있는 것들끼리 나눠 갖기 때문에,
+   윗줄에는 세 개, 아랫줄에는 두 개가 놓이면 아랫줄 칸만 유난히
+   넓어져서 세로선이 어긋나 보입니다.
+
+   그래서 grid(격자)로 바꿨습니다. 격자는 줄마다 칸 너비가 똑같으므로
+   두 줄이 되어도 위아래 칸의 좌우 끝이 정확히 맞아떨어집니다. */
 .controls {
-  display: flex;        /* 안의 요소들을 가로로 나란히 배치 */
-  flex-wrap: wrap;      /* 자리가 부족하면 다음 줄로 넘김 (휴대폰 대응) */
-  gap: 12px;            /* 요소 사이 간격 */
-  align-items: flex-end;/* 아래쪽 기준선을 맞춤 */
+  display: grid;
+  /* minmax(0, 1fr) = "남는 공간을 똑같이 나눠 갖되, 내용이 길어도
+     칸 밖으로 삐져나오지 않게" 라는 뜻입니다.
+     그냥 1fr 로 두면 긴 글자 때문에 칸이 불쑥 넓어질 수 있습니다. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 16px;        /* 세로 간격 14px, 가로 간격 16px */
+  align-items: end;      /* 각 칸의 내용을 아래쪽 기준선에 맞춤 */
   margin: 28px 0 24px;
 }
 
 .control {
   display: flex;
   flex-direction: column;  /* 라벨과 선택창을 세로로 쌓음 */
-  gap: 5px;
-  flex: 1 1 170px;         /* 남는 공간을 나눠 갖되 최소 170px */
+  gap: 6px;
+  min-width: 0;            /* 긴 글자가 칸을 밀어내지 못하게 막습니다 */
 }
 
 .control label {
   font-size: 12px;
   font-weight: 600;
   color: var(--text-soft);
+  letter-spacing: 0.01em;
+  /* 라벨이 두 줄로 접히면 그 칸의 선택창만 아래로 내려가 어긋납니다.
+     칸 너비보다 길면 줄바꿈 대신 "..." 으로 줄여서 높이를 지킵니다. */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 버튼 두 개가 들어가는 칸. 선택창과 같은 줄에 아래쪽을 맞춰 놓습니다. */
+.control-actions {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  justify-content: flex-end;  /* 오른쪽 끝에 붙입니다 */
 }
 
 select {
   font: inherit;                    /* body의 글꼴을 그대로 물려받음 */
-  padding: 9px 11px;
+  padding: 0 11px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
+  width: 100%;
+  /* 선택창과 버튼의 높이를 같은 값으로 못박아 둡니다.
+     안쪽 여백으로만 맞추면 글꼴이나 기기에 따라 1~2px 씩 어긋나서,
+     나란히 놓았을 때 아랫선이 미세하게 틀어져 보입니다. */
+  height: var(--field-h);
 }
 
 .btn-primary {
   font: inherit;
   font-weight: 600;
-  padding: 10px 18px;
+  padding: 0 18px;
+  height: var(--field-h);   /* 선택창과 아랫선을 정확히 맞춥니다 */
   border: 1px solid var(--accent);
   border-radius: var(--radius);
   background: var(--accent);
@@ -207,7 +239,8 @@ select {
 .btn-secondary {
   font: inherit;
   font-weight: 600;
-  padding: 10px 16px;
+  padding: 0 16px;
+  height: var(--field-h);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
@@ -267,11 +300,17 @@ select {
   flex-wrap: wrap;
   gap: 8px;
 }
-.subs-form select { flex: 0 0 auto; }
+/* 구독 상자 안의 선택창은 위쪽 조건칸과 달리 폭을 꽉 채울 필요가 없습니다.
+   위에서 select 전체에 width:100% 를 줬으므로 여기서만 되돌립니다. */
+.subs-form select {
+  flex: 0 0 auto;
+  width: auto;
+}
 .subs-form input {
   flex: 1 1 200px;
   font: inherit;
-  padding: 9px 11px;
+  padding: 0 11px;
+  height: var(--field-h);   /* 선택창·버튼과 높이를 맞춥니다 */
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--bg);
@@ -576,11 +615,10 @@ details.abstract[open] summary::before {
 @media (max-width: 560px) {
   h1 { font-size: 25px; }
   .paper { padding: 18px 16px; }
-  /* 선택창은 한 줄에 하나씩 — 넷 중 하나만 좁으면 어긋나 보입니다 */
-  .control { flex: 1 1 100%; }
-  /* 버튼 두 개를 한 줄에 반씩 나눠 놓습니다 */
-  .btn-primary,
-  .btn-secondary { flex: 1 1 45%; }
+  /* 선택창은 한 줄에 하나씩 — 둘씩 놓기엔 글자가 잘립니다 */
+  .controls { grid-template-columns: minmax(0, 1fr); }
+  /* 버튼 두 개는 한 줄을 반씩 나눠 갖습니다 */
+  .control-actions > button { flex: 1 1 0; }
 }
 
 /* ---------- 9) 마우스를 쓰는 기기에서만 ----------
@@ -636,12 +674,13 @@ details.abstract[open] summary::before {
     margin-top: auto;       /* 위쪽 여백을 자동으로 채워 아래로 밀어냄 */
   }
 
-  /* 선택창은 적당한 너비로 두고, 버튼은 오른쪽 끝으로 밀어냅니다 */
-  .control {
-    flex: 0 1 230px;
-  }
-  .btn-primary {
-    margin-left: auto;     /* 왼쪽 여백을 자동으로 채워 오른쪽으로 밀어냄 */
+  /* 화면이 넓으면 한 줄에 셋씩 놓습니다.
+     선택칸 다섯 개 + 버튼 묶음 하나 = 여섯 칸이라,
+     3칸씩 정확히 두 줄로 떨어져 빈 칸이 생기지 않습니다.
+       1줄: 관심 분야 · 발표 시기 · 학술지 우선순위
+       2줄: 결론 번역 · 이미 본 논문 · [버튼 두 개]  */
+  .controls {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
