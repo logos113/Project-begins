@@ -135,6 +135,20 @@ h1 {
   color: var(--text-mute);
 }
 
+/* 글 속에 섞여 있는 작은 단추 (본 기록 지우기).
+   단추처럼 보이면 이 줄이 시끄러워지므로 링크처럼 보이게 합니다. */
+.link-btn {
+  font: inherit;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.link-btn:hover { opacity: 0.75; }
+
 /* ---------- 4) 검색 조건 영역 ---------- */
 .controls {
   display: flex;        /* 안의 요소들을 가로로 나란히 배치 */
@@ -423,6 +437,8 @@ details.abstract[open] summary::before {
 @media (max-width: 560px) {
   h1 { font-size: 25px; }
   .paper { padding: 18px 16px; }
+  /* 선택창은 한 줄에 하나씩 — 넷 중 하나만 좁으면 어긋나 보입니다 */
+  .control { flex: 1 1 100%; }
   /* 버튼 두 개를 한 줄에 반씩 나눠 놓습니다 */
   .btn-primary,
   .btn-secondary { flex: 1 1 45%; }

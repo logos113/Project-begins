@@ -49,18 +49,28 @@ const dom = new JSDOM(`<!DOCTYPE html><body>
   <select id="topicSelect"><option value="all">전체</option></select>
   <select id="daysSelect"><option value="30">30</option></select>
   <select id="rankSelect"><option value="rank">권위</option><option value="even">골고루</option></select>
+  <select id="seenSelect"><option value="exclude">빼기</option><option value="include">포함</option></select>
   <button id="refreshBtn"></button>
 </body>`, { runScripts: "outside-only" });
 
 global.document = dom.window.document;
 global.DOMParser = dom.window.DOMParser;
 global.fetch = async () => { throw new Error("네트워크 차단됨(예상된 동작)"); };
+// 브라우저의 저장 공간을 흉내 냅니다 (이미 본 논문 기록을 확인하는 데 씁니다)
+const 가짜저장소 = new Map();
+global.localStorage = {
+  getItem: (k) => (가짜저장소.has(k) ? 가짜저장소.get(k) : null),
+  setItem: (k, v) => 가짜저장소.set(k, String(v)),
+  removeItem: (k) => 가짜저장소.delete(k),
+  clear: () => 가짜저장소.clear(),
+};
 global.console = console;
 
 let code = fs.readFileSync(new URL("../psychiatry/app.js", import.meta.url), "utf8");
 code = code.replace("논문_불러오기();", "// 자동 실행은 테스트에서 생략");
 // 검사할 함수들을 밖으로 꺼냅니다
-code += "\nglobal.T = { 논문정보_정리, 검색어_만들기, 오늘의_논문_고르기, 카드_만들기, 안전한글자로, 학술지_순서_섞기, 섞기값, 학술지_등급_가져오기 };";
+code += "\nglobal.T = { 논문정보_정리, 검색어_만들기, 오늘의_논문_고르기, 카드_만들기, 안전한글자로, 학술지_순서_섞기, 섞기값, 학술지_등급_가져오기,"
+      + " 본논문_불러오기, 본논문_저장하기, 본논문_기록하기, 본논문_정리, 오래된_날짜인가, 안_본_논문만, 오늘_날짜글자, 본논문_최대개수 };";
 new Function(code)();
 
 const T = global.T;
@@ -310,6 +320,70 @@ for (const [이름, 수] of Object.entries(권위횟수)) {
 console.log("\n  [참고] 365일 · 등급 반영 시 학술지별 등장 횟수");
 Object.entries(권위횟수).sort((가, 나) => 나[1] - 가[1]).forEach(([n, v]) =>
   console.log(`     ${String(T.학술지_등급_가져오기(n))}급  ${n.padEnd(20)} ${String(v).padStart(3)}회`));
+
+
+/* ==========================================================
+   이미 본 논문 기록
+   ------------------------------------------------------------
+   브라우저로 눌러보는 검사(tests/seen.test.mjs)는 '어제 본 것이 오늘 안 나오는가'
+   같은 흐름을 확인합니다. 여기서는 그것으로 확인하기 어려운 것을 봅니다 —
+   기록이 무한정 쌓이지 않게 정리되는지.
+   ========================================================== */
+console.log("\n---- 이미 본 논문 기록 ----");
+
+const 날짜글자 = (며칠전) =>
+  new Date(Date.now() - 며칠전 * 86400000).toISOString().slice(0, 10);
+
+검사("오늘 날짜는 오래된 것이 아닌가", !T.오래된_날짜인가(날짜글자(0), 400));
+검사("399일 전은 아직 남겨두는가", !T.오래된_날짜인가(날짜글자(399), 400));
+검사("401일 전은 오래된 것으로 보는가", T.오래된_날짜인가(날짜글자(401), 400));
+// 날짜 칸이 깨져 있으면 버려야 합니다. 남겨두면 영영 사라지지 않습니다.
+검사("이상한 값은 버리는가", T.오래된_날짜인가("어제", 400) && T.오래된_날짜인가(undefined, 400));
+
+const 섞인기록 = { "1": 날짜글자(0), "2": 날짜글자(500), "3": 날짜글자(10) };
+const 정리됨 = T.본논문_정리(섞인기록);
+검사("오래된 기록만 골라 버리는가",
+  Object.keys(정리됨).sort().join() === "1,3", Object.keys(정리됨));
+
+// 상한을 넘으면 최근에 본 것부터 남겨야 합니다
+const 많은기록 = {};
+for (let i = 0; i < T.본논문_최대개수 + 50; i++) 많은기록[String(i)] = 날짜글자(i % 300);
+const 줄인것 = T.본논문_정리(많은기록);
+검사("기록이 상한을 넘지 않게 줄이는가",
+  Object.keys(줄인것).length === T.본논문_최대개수, Object.keys(줄인것).length);
+
+/* 후보에서 빼는 규칙 */
+localStorage.clear();
+const 후보목록 = [
+  { pmid: "100", 학술지: "A" }, { pmid: "200", 학술지: "B" },
+  { pmid: "300", 학술지: "C" }, { pmid: "400", 학술지: "D" },
+  { pmid: "500", 학술지: "E" }, { pmid: "600", 학술지: "F" },
+];
+T.본논문_저장하기({ "100": 날짜글자(1), "200": T.오늘_날짜글자() });
+const 걸러진 = T.안_본_논문만(후보목록);
+검사("어제 본 논문은 후보에서 빠지는가",
+  !걸러진.목록.some((논문) => 논문.pmid === "100"), 걸러진.목록.map((칸) => 칸.pmid));
+검사("오늘 본 논문은 남겨두는가 (같은 날 같은 3편이 나와야 하므로)",
+  걸러진.목록.some((논문) => 논문.pmid === "200"), 걸러진.목록.map((칸) => 칸.pmid));
+검사("뺀 편수를 알려주는가", 걸러진.제외수 === 1, 걸러진.제외수);
+
+// 빼고 나면 3편이 안 될 때는 빼지 않아야 합니다
+localStorage.clear();
+T.본논문_저장하기({ "100": 날짜글자(1), "200": 날짜글자(1), "300": 날짜글자(1), "400": 날짜글자(1) });
+const 모자랄때 = T.안_본_논문만(후보목록);
+검사("빼면 3편이 안 될 때는 빼지 않는가",
+  모자랄때.목록.length === 후보목록.length && 모자랄때.모자랐나 === true,
+  [모자랄때.목록.length, 모자랄때.모자랐나]);
+
+// 저장 공간이 막힌 기기에서도 멈추지 않아야 합니다
+const 원래 = global.localStorage;
+global.localStorage = { getItem() { throw new Error("막힘"); },
+                        setItem() { throw new Error("막힘"); } };
+검사("저장이 막힌 기기에서도 빈 기록으로 넘어가는가",
+  JSON.stringify(T.본논문_불러오기()) === "{}");
+검사("저장이 막혀도 오류를 던지지 않는가", T.본논문_저장하기({ "1": "2026-01-01" }) === false);
+global.localStorage = 원래;
+localStorage.clear();
 
 console.log(실패 === 0 ? "\n🎉 전체 통과 — 모든 검사 성공" : `\n⚠️  ${실패}건 실패`);
 process.exit(실패 === 0 ? 0 : 1);
