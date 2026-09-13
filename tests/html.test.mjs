@@ -195,6 +195,38 @@ const 첫화면 = new JSDOM(fs.readFileSync(path.join(저장소, "index.html"), 
   첫화면.querySelector("title").textContent.includes("Dr. Y's Archive"),
   첫화면.querySelector("title").textContent);
 
+/*
+  머리말 아래에는 아이콘만 늘어놓은 '바로가기' 줄이 있습니다.
+  아래 서가와 같은 곳으로 가지만, 설명을 읽지 않고 바로 누를 때 쓰는 줄입니다.
+
+  두 곳 모두 손으로 적기 때문에 한쪽만 고치고 다른 쪽을 빠뜨리기 쉽습니다.
+  그러면 아이콘 줄에는 없는데 서가에는 있는(혹은 그 반대) 앱이 생깁니다.
+  그래서 개수와 가는 곳이 서로 맞는지 확인합니다.
+*/
+const 바로가기 = [...첫화면.querySelectorAll(".dock a")];
+검사("바로가기 아이콘 수가 실제 앱 폴더 수와 같은가",
+  바로가기.length === 앱폴더들.length, [바로가기.length, 앱폴더들.length]);
+검사("바로가기가 모든 앱 폴더를 가리키는가",
+  앱폴더들.every((앱) => 바로가기.some((a) => a.getAttribute("href") === 앱 + "/")),
+  바로가기.map((a) => a.getAttribute("href")));
+
+for (const 칸 of 바로가기) {
+  const 곳 = 칸.getAttribute("href");
+  /*
+    글자가 하나도 없는 링크는 화면 낭독기가 "링크" 라고만 읽습니다.
+    어디로 가는지 알 수 없으므로 aria-label 로 이름을 붙여두어야 합니다.
+  */
+  검사(`바로가기 ${곳} 에 읽어줄 이름이 있는가`,
+    !!(칸.getAttribute("aria-label") || "").trim(), 칸.getAttribute("aria-label"));
+  const 그림 = 칸.querySelector("img");
+  검사(`바로가기 ${곳} 아이콘 파일이 실제로 있는가`,
+    !!그림 && fs.existsSync(path.join(저장소, 그림.getAttribute("src"))),
+    그림 && 그림.getAttribute("src"));
+  검사(`바로가기 ${곳} 아이콘이 그 앱 폴더의 것인가`,
+    !!그림 && 그림.getAttribute("src").startsWith(곳),
+    [곳, 그림 && 그림.getAttribute("src")]);
+}
+
 const 서가칸들 = [...첫화면.querySelectorAll("a.item")];
 검사("서가에 걸린 앱 수가 실제 앱 폴더 수와 같은가",
   서가칸들.length === 앱폴더들.length, [서가칸들.length, 앱폴더들.length]);
