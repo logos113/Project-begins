@@ -16,6 +16,11 @@
   ※ 앱을 새로 만들면 아래 '서가' 부분에 <a class="item"> 한 칸을 복사해 넣으면 됩니다.
      자세한 방법은 그 자리에 적어두었습니다.
 
+  ※ 화면에는 앱 목록만 둡니다.
+     '설치하는 법' 이나 '왜 이 페이지는 설치 대상이 아닌가' 같은 이야기는
+     한 번 읽으면 그만인 내용이라, 화면에 계속 붙여두지 않고
+     이 주석과 저장소 안내서(../README.md)에만 적어둡니다.
+
   ※ 이 페이지에는 일부러 manifest.json 을 연결하지 않았습니다.
      manifest 는 "여기서부터 아래는 내 앱의 영역"이라고 선언하는 파일인데,
      루트에서 선언하면 그 영역이 하위 폴더를 전부 삼켜버립니다.
@@ -125,7 +130,8 @@
 
     /* ---------- 서가 ---------- */
     .shelf {
-      padding-block: 28px 8px;
+      /* 꼬리말이 없으므로 아래 여백은 여기서 줍니다 */
+      padding-block: 28px 64px;
     }
     .shelf-label {
       margin: 0 0 14px;
@@ -235,49 +241,12 @@
       outline-offset: 2px;
     }
 
-    /* ---------- 다음 칸 자리 ---------- */
-    /*
-      아직 비어 있는 자리를 하나 두었습니다.
-      '여기에 더 들어올 수 있다'는 것이 보이는 편이 서가답습니다.
-    */
-    .next {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      padding: 20px;
-      border: 1px dashed var(--line);
-      border-radius: 14px;
-      color: var(--text-mute);
-      font-size: 14px;
-    }
-    .next .slot {
-      flex: 0 0 auto;
-      width: 60px;
-      height: 60px;
-      border-radius: 14px;
-      border: 1px dashed var(--line);
-    }
-
-    /* ---------- 꼬리말 ---------- */
-    .site-footer {
-      margin-top: 36px;
-      padding-block: 22px 48px;
-      border-top: 1px solid var(--line);
-      font-size: 13px;
-      color: var(--text-mute);
-    }
-    .site-footer p { margin: 0 0 8px; }
-    .site-footer p:last-child { margin-bottom: 0; }
-    .site-footer b { color: var(--text-soft); }
-    .site-footer a { color: inherit; }
-
     /* ---------- 화면이 좁을 때 ---------- */
     @media (max-width: 480px) {
       .site-header { padding-block: 40px 26px; }
       h1 { font-size: 28px; }
       .item { gap: 14px; padding: 16px; }
       .item .icon { width: 48px; height: 48px; border-radius: 11px; }
-      .next .slot { width: 48px; height: 48px; }
     }
   </style>
 </head>
@@ -372,30 +341,9 @@
           </div>
         </a>
 
-        <!-- 아직 비어 있는 자리 — 앱을 추가하면 위에 한 칸을 더하고 이 자리는 그대로 두시면 됩니다 -->
-        <div class="next">
-          <div class="slot" aria-hidden="true"></div>
-          <span>다음 칸은 비어 있습니다.</span>
-        </div>
-
       </div>
     </section>
   </main>
-
-  <!-- ========== 3) 꼬리말 ========== -->
-  <footer class="site-footer">
-    <div class="wrap">
-      <p>
-        각 앱은 <b>홈 화면에 추가</b>하거나 <b>앱으로 설치</b>할 수 있습니다.
-        설치는 그때 열려 있는 주소를 기억하므로, 원하는 앱을 먼저 연 다음에 하시면 됩니다.
-      </p>
-      <p>
-        이 첫 화면은 일부러 설치 대상에서 빼 두었습니다.
-        여기서 설치하면 그 영역이 아래 폴더들을 전부 삼켜, 어느 앱을 열어도
-        같은 창에서 열리게 되기 때문입니다.
-      </p>
-    </div>
-  </footer>
 
 </body>
 </html>
