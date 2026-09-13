@@ -23,7 +23,7 @@ GitHub Pages 는 브랜치 하나를 통째로 올리는데, 두 앱이 그 한 
 
 | 앱 | 주소 |
 |---|---|
-| 앱 고르기 첫 화면 | `https://logos113.github.io/Project-begins/` |
+| Dr. Y's Archive (앱 목록) | `https://logos113.github.io/Project-begins/` |
 | 오늘의 정신의학 논문 | `https://logos113.github.io/Project-begins/psychiatry/` |
 | 오늘의 일본어 여행 회화 | `https://logos113.github.io/Project-begins/japanese/` |
 

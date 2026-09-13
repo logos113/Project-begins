@@ -70,7 +70,7 @@
 
 ```
 Project-begins
-├── index.html      앱 고르기 첫 화면
+├── index.html      Dr. Y's Archive 첫 화면
 ├── psychiatry/     오늘의 정신의학 논문   (index.html · style.css · app.js · icons/)
 ├── japanese/       오늘의 일본어 여행 회화 (+ phrases.js — 표현 목록)
 ├── game/           점프! 로봇
@@ -93,7 +93,7 @@ Project-begins
 3. 왼쪽 파일 목록에서 맨 바깥의 **index.html** 을 **마우스 오른쪽 클릭**
 4. **Open with Live Server** 선택
 
-브라우저가 열리고 앱 고르기 첫 화면이 나타납니다. 거기서 원하는 앱을 누르면 됩니다.
+브라우저가 열리고 Dr. Y's Archive 첫 화면이 나타납니다. 거기서 원하는 앱을 누르면 됩니다.
 (특정 앱만 보려면 `psychiatry/index.html` 처럼 그 폴더의 index.html 을 열어도 됩니다)
 
 > **왜 이게 필요한가요?**

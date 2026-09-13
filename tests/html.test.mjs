@@ -181,9 +181,46 @@ const 첫화면 = new JSDOM(fs.readFileSync(path.join(저장소, "index.html"), 
 검사("루트에 manifest.json 파일이 없는가",
   !fs.existsSync(path.join(저장소, "manifest.json")));
 
-검사("첫 화면에서 두 앱으로 가는 링크가 있는가",
+검사("첫 화면에서 모든 앱으로 가는 링크가 있는가",
   앱폴더들.map((앱) => 앱 + "/").every((곳) => !!첫화면.querySelector(`a[href="${곳}"]`)),
   [...첫화면.querySelectorAll("a[href]")].map((a) => a.getAttribute("href")));
+
+/*
+  첫 화면은 'Dr. Y's Archive' — 지금까지 만든 것을 모아 두는 서가입니다.
+  앱을 새로 만들면 여기에 한 칸을 더해야 하는데, 그것을 빠뜨리면
+  만들어 놓고도 아무도 찾아갈 수 없는 앱이 됩니다.
+  그래서 '폴더에 있는 앱' 과 '서가에 걸린 앱' 의 수가 맞는지 확인합니다.
+*/
+검사("첫 화면 이름이 Dr. Y's Archive 인가",
+  첫화면.querySelector("title").textContent.includes("Dr. Y's Archive"),
+  첫화면.querySelector("title").textContent);
+
+const 서가칸들 = [...첫화면.querySelectorAll("a.item")];
+검사("서가에 걸린 앱 수가 실제 앱 폴더 수와 같은가",
+  서가칸들.length === 앱폴더들.length, [서가칸들.length, 앱폴더들.length]);
+
+// 화면에 적힌 개수도 함께 맞아야 합니다. 칸만 더하고 숫자를 안 고치기 쉽습니다.
+const 개수표시 = 첫화면.querySelector(".shelf-label");
+검사("'만든 것 N' 의 숫자가 실제 개수와 맞는가",
+  !!개수표시 && 개수표시.textContent.includes(String(앱폴더들.length)),
+  개수표시 && 개수표시.textContent.trim());
+
+// 각 칸이 가리키는 아이콘 그림이 실제로 있어야 합니다 (없으면 깨진 그림이 나옵니다)
+for (const 칸 of 서가칸들) {
+  const 곳 = 칸.getAttribute("href");
+  const 그림 = 칸.querySelector("img.icon");
+  검사(`서가의 ${곳} 칸에 아이콘 그림이 있는가`, !!그림);
+  if (그림) {
+    const 주소 = 그림.getAttribute("src");
+    검사(`서가의 ${곳} 아이콘 파일이 실제로 있는가 — ${주소}`,
+      fs.existsSync(path.join(저장소, 주소)), 주소);
+    // 남의 앱 아이콘을 잘못 가리키면 서가에서 앱이 뒤바뀌어 보입니다
+    검사(`서가의 ${곳} 아이콘이 그 앱 폴더의 것인가`,
+      주소.startsWith(곳), [곳, 주소]);
+  }
+  검사(`서가의 ${곳} 칸에 제목과 설명이 있는가`,
+    !!칸.querySelector("h2") && !!칸.querySelector(".desc"));
+}
 
 // 두 앱이 서로의 폴더를 침범하지 않는지 — 폴더가 나뉘어 있으면 자동으로 지켜집니다
 for (const 앱 of 앱폴더들) {
@@ -194,7 +231,7 @@ for (const 앱 of 앱폴더들) {
 
 /*
   두 앱은 서로 독립입니다. 한쪽 화면에서 다른 쪽으로 건너가는 링크를 두지 않습니다.
-  오갈 일이 있으면 루트의 앱 고르기 첫 화면을 쓰면 됩니다.
+  오갈 일이 있으면 루트의 Dr. Y's Archive 첫 화면을 쓰면 됩니다.
   (앱을 하나 쓰는 동안 다른 앱이 화면에 끼어들지 않도록 하기 위한 것입니다)
 */
 const 남의앱_링크 = (그문서, 남의폴더) =>

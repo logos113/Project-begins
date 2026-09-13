@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <!--
   ============================================================
-  index.html  =  첫 화면 (어느 앱으로 갈지 고르는 곳)
+  index.html  =  Dr. Y's Archive (지금까지 만든 것들을 모아 두는 첫 화면)
   ------------------------------------------------------------
-  이 저장소에는 앱이 두 개 있습니다.
+  이 저장소에는 앱이 세 개 있습니다.
 
       /psychiatry/  →  오늘의 정신의학 논문
       /japanese/    →  오늘의 일본어 여행 회화
+      /game/        →  점프! 로봇
 
-  이 페이지는 그 둘로 가는 갈림길일 뿐, 하는 일이 따로 없습니다.
-  그래서 CSS 파일을 따로 두지 않고 아래 <style> 안에 함께 적었습니다.
+  이 페이지는 그 셋으로 가는 갈림길이자 목록입니다.
+  하는 일이 따로 없어서 CSS 파일을 따로 두지 않고 아래 <style> 안에 함께 적었습니다.
   (파일 하나로 끝나는 작은 페이지라면 이렇게 두는 편이 오히려 보기 편합니다)
+
+  ※ 앱을 새로 만들면 아래 '서가' 부분에 <a class="item"> 한 칸을 복사해 넣으면 됩니다.
+     자세한 방법은 그 자리에 적어두었습니다.
 
   ※ 이 페이지에는 일부러 manifest.json 을 연결하지 않았습니다.
      manifest 는 "여기서부터 아래는 내 앱의 영역"이라고 선언하는 파일인데,
      루트에서 선언하면 그 영역이 하위 폴더를 전부 삼켜버립니다.
      실제로 그 탓에 일본어 앱을 열어도 논문 앱 창에서 논문 앱 아이콘으로
      열리는 문제가 있었습니다. 이 페이지를 '설치 대상이 아닌' 상태로 두면
-     두 앱의 영역이 서로 겹치지 않습니다.
+     앱들의 영역이 서로 겹치지 않습니다.
 
   ※ 주의 — 주석 안에 또 주석을 넣으면 안 됩니다.
      가장 먼저 나오는 닫는 표시에서 끝나버려 뒤의 글자가 화면에 노출됩니다.
@@ -27,7 +31,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>내가 만든 앱들</title>
+  <title>Dr. Y's Archive</title>
 
   <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180.png">
@@ -42,9 +46,15 @@
       --text-soft: #5c5c58;
       --text-mute: #8a8a85;
       --line:      #e3e3df;
+      --line-soft: #efefec;
       --paper:     #1c5d7a;   /* 논문 앱 색 */
       --japan:     #b03a2e;   /* 일본어 앱 색 */
-      --game:      #0a8f70;   /* 게임 색 */
+      /*
+        게임 아이콘의 노란색(#d9a441)을 그대로 글자에 쓰면 흰 바탕에서 너무 흐립니다.
+        재보니 대비가 2.25:1 로, 글자에 필요한 4.5:1 에 한참 못 미쳤습니다.
+        같은 계열이되 충분히 진한 색으로 바꿨습니다 (5.58:1).
+      */
+      --game:      #8a6010;   /* 게임 색 */
     }
 
     /* 기기를 다크 모드로 쓰고 있으면 색만 바꿉니다 */
@@ -56,9 +66,10 @@
         --text-soft: #b3b1ab;
         --text-mute: #86847f;
         --line:      #33373b;
+        --line-soft: #282c30;
         --paper:     #7fc0dd;
         --japan:     #e88a7d;
-        --game:      #34e0b0;
+        --game:      #f0c46a;
       }
     }
 
@@ -66,10 +77,6 @@
 
     body {
       margin: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       background: var(--bg);
       color: var(--text);
       font-family: -apple-system, "Apple SD Gothic Neo", "Pretendard",
@@ -77,125 +84,318 @@
       font-size: 16px;
       line-height: 1.7;
       -webkit-text-size-adjust: 100%;
+      /* 한국어는 단어 중간에서 줄이 바뀌면 읽기 불편합니다 */
+      word-break: keep-all;
+      overflow-wrap: anywhere;
     }
 
     .wrap {
       width: 100%;
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto;
-      padding: 48px 20px;
+      padding-inline: 20px;
     }
 
+    /* ---------- 머리말 ---------- */
+    .site-header {
+      padding-block: 56px 32px;
+      border-bottom: 1px solid var(--line);
+    }
+    .site-header .mark {
+      margin: 0 0 10px;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+    }
     h1 {
-      margin: 0 0 6px;
-      font-size: 26px;
-      letter-spacing: -0.01em;
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      /* 이름은 영어라 keep-all 이 필요 없고, 오히려 붙여 쓰는 편이 낫습니다 */
+      word-break: normal;
     }
-
-    .lede {
-      margin: 0 0 32px;
+    .site-header .lede {
+      margin: 0;
+      max-width: 560px;
       color: var(--text-soft);
       font-size: 15px;
     }
 
-    /* 앱 두 개를 나란히 놓습니다. 화면이 좁으면 자동으로 아래로 쌓입니다. */
-    .apps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
+    /* ---------- 서가 ---------- */
+    .shelf {
+      padding-block: 28px 8px;
+    }
+    .shelf-label {
+      margin: 0 0 14px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-mute);
     }
 
-    /* 카드 전체가 하나의 큰 링크입니다 */
-    .app {
-      display: block;
-      padding: 24px 22px;
+    .items {
+      display: grid;
+      gap: 12px;
+    }
+
+    /*
+      칸 하나가 통째로 링크입니다. 가로로 [아이콘][글] 두 덩어리로 놓고,
+      화면이 좁아지면 아이콘을 조금 줄여 글자 자리를 확보합니다.
+    */
+    .item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 20px;
       border: 1px solid var(--line);
-      border-left: 4px solid var(--line);
-      border-radius: 12px;
+      border-radius: 14px;
       background: var(--surface);
       color: inherit;
       text-decoration: none;
       transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
     }
-    .app:hover {
-      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.07);
-      transform: translateY(-1px);
+
+    .item .icon {
+      flex: 0 0 auto;
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      /* 아이콘 그림이 칸에 딱 맞게 들어가도록 합니다 */
+      object-fit: cover;
+      /* 밝은 배경 위에서 아이콘 가장자리가 흐릿해 보이지 않도록 얇은 테두리를 둡니다 */
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06) inset;
     }
 
-    /* 왼쪽 굵은 세로선 색으로 두 앱을 구분합니다 */
-    .app.paper { border-left-color: var(--paper); }
-    .app.japan { border-left-color: var(--japan); }
-    .app.game { border-left-color: var(--game); }
-    .app.paper:hover { border-color: var(--paper); }
-    .app.japan:hover { border-color: var(--japan); }
-    .app.game:hover { border-color: var(--game); }
+    .item .body { min-width: 0; }   /* 긴 글자가 칸을 밀어내지 못하게 */
 
-    .app .eyebrow {
-      margin: 0 0 4px;
+    .item .eyebrow {
+      margin: 0 0 3px;
       font-size: 12px;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.06em;
       color: var(--text-mute);
+      word-break: normal;
     }
-    .app h2 {
-      margin: 0 0 8px;
+    .item h2 {
+      margin: 0 0 6px;
       font-size: 19px;
       line-height: 1.35;
     }
-    .app.paper h2 { color: var(--paper); }
-    .app.japan h2 { color: var(--japan); }
-    .app.game h2 { color: var(--game); }
-
-    .app p {
-      margin: 0;
+    .item .desc {
+      margin: 0 0 10px;
       font-size: 14px;
       color: var(--text-soft);
     }
 
-    .note {
-      margin: 32px 0 0;
-      padding-top: 20px;
+    /* 아래 줄 — 만든 때와 무엇으로 만들었는지 */
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0;
+      list-style: none;
+      padding: 0;
+    }
+    .meta li {
+      padding: 2px 9px;
+      border: 1px solid var(--line-soft);
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--text-mute);
+      background: var(--bg);
+      word-break: normal;
+    }
+
+    /* 왼쪽 테두리 색과 제목 색으로 앱을 구분합니다 */
+    .item.paper { border-left: 4px solid var(--paper); }
+    .item.japan { border-left: 4px solid var(--japan); }
+    .item.game  { border-left: 4px solid var(--game); }
+    .item.paper h2 { color: var(--paper); }
+    .item.japan h2 { color: var(--japan); }
+    .item.game  h2 { color: var(--game); }
+    .item.paper:hover { border-color: var(--paper); }
+    .item.japan:hover { border-color: var(--japan); }
+    .item.game:hover  { border-color: var(--game); }
+
+    /*
+      마우스를 쓰는 기기에서만 떠오르는 효과를 줍니다.
+      터치 화면에서는 손가락을 뗀 뒤에도 효과가 남아 눌린 것처럼 보입니다.
+    */
+    @media (hover: hover) {
+      .item:hover {
+        box-shadow: 0 3px 16px rgba(0, 0, 0, 0.08);
+        transform: translateY(-1px);
+      }
+    }
+
+    /* 키보드로 이동할 때 지금 어디에 있는지 보이게 합니다 */
+    .item:focus-visible {
+      outline: 2px solid var(--paper);
+      outline-offset: 2px;
+    }
+
+    /* ---------- 다음 칸 자리 ---------- */
+    /*
+      아직 비어 있는 자리를 하나 두었습니다.
+      '여기에 더 들어올 수 있다'는 것이 보이는 편이 서가답습니다.
+    */
+    .next {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 20px;
+      border: 1px dashed var(--line);
+      border-radius: 14px;
+      color: var(--text-mute);
+      font-size: 14px;
+    }
+    .next .slot {
+      flex: 0 0 auto;
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      border: 1px dashed var(--line);
+    }
+
+    /* ---------- 꼬리말 ---------- */
+    .site-footer {
+      margin-top: 36px;
+      padding-block: 22px 48px;
       border-top: 1px solid var(--line);
       font-size: 13px;
       color: var(--text-mute);
     }
-    .note b { color: var(--text-soft); }
+    .site-footer p { margin: 0 0 8px; }
+    .site-footer p:last-child { margin-bottom: 0; }
+    .site-footer b { color: var(--text-soft); }
+    .site-footer a { color: inherit; }
+
+    /* ---------- 화면이 좁을 때 ---------- */
+    @media (max-width: 480px) {
+      .site-header { padding-block: 40px 26px; }
+      h1 { font-size: 28px; }
+      .item { gap: 14px; padding: 16px; }
+      .item .icon { width: 48px; height: 48px; border-radius: 11px; }
+      .next .slot { width: 48px; height: 48px; }
+    }
   </style>
 </head>
 
 <body>
-  <main class="wrap">
 
-    <h1>내가 만든 앱들</h1>
-    <p class="lede">쓰실 앱을 골라주세요.</p>
-
-    <div class="apps">
-
-      <!-- a 태그 = 다른 주소로 가는 링크. href 에 갈 곳을 적습니다. -->
-      <a class="app paper" href="psychiatry/">
-        <p class="eyebrow">Psychiatry Daily Digest</p>
-        <h2>오늘의 정신의학 논문</h2>
-        <p>공신력 있는 학술지의 최신 논문 3편을 매일 골라 핵심 결론과 함께 보여줍니다.</p>
-      </a>
-
-      <a class="app japan" href="japanese/">
-        <p class="eyebrow">旅の日本語 · Travel Japanese</p>
-        <h2>오늘의 일본어 여행 회화</h2>
-        <p>여행에서 바로 쓰는 표현을 매일 3개씩 익히고, 잊을 때쯤 다시 복습합니다.</p>
-      </a>
-
-      <a class="app game" href="game/">
-        <p class="eyebrow">Jump! Robot</p>
-        <h2>점프! 로봇</h2>
-        <p>한 손가락으로 하는 점프 게임. 코드의 숫자를 바꿔 게임을 직접 고쳐볼 수 있습니다.</p>
-      </a>
-
+  <!-- ========== 1) 머리말 ========== -->
+  <header class="site-header">
+    <div class="wrap">
+      <p class="mark">Archive</p>
+      <h1>Dr. Y's Archive</h1>
+      <p class="lede">
+        직접 만들어 쓰고 있는 웹앱들을 모아 둔 곳입니다.
+        전부 무료로 돌아가고, 기록은 각자의 기기 안에만 남습니다.
+      </p>
     </div>
+  </header>
 
-    <p class="note">
-      각 앱은 <b>홈 화면에 추가</b>하거나 <b>앱으로 설치</b>할 수 있습니다.
-      설치는 그때 열려 있는 주소를 기억하므로, 원하는 앱을 먼저 연 다음에 하시면 됩니다.
-    </p>
+  <!-- ========== 2) 서가 ========== -->
+  <main class="wrap">
+    <section class="shelf" aria-labelledby="shelfLabel">
+      <h2 class="shelf-label" id="shelfLabel">만든 것 3</h2>
 
+      <div class="items">
+
+        <!--
+          ========== 새 앱을 추가하려면 ==========
+          아래 <a class="item ..."> 한 덩어리를 통째로 복사해서 고치시면 됩니다.
+
+            1. class 의 둘째 이름(paper·japan·game)을 새로 하나 정하고,
+               위 <style> 의 '왼쪽 테두리 색' 부분에 같은 이름으로 네 줄을 더합니다.
+            2. href 를 새 폴더 이름으로 (예: "recipe/")
+            3. src 를 그 폴더의 아이콘 파일로
+            4. 제목·설명·아래 꼬리표(meta)를 고칩니다
+            5. 위 '만든 것 3' 의 숫자도 함께 올려주세요
+
+          ※ alt 는 그림을 못 볼 때 대신 읽히는 글입니다.
+             여기서는 바로 옆에 같은 이름이 글로 적혀 있으므로 비워 둡니다.
+             비워 두면 화면 낭독기가 같은 말을 두 번 읽지 않습니다.
+        -->
+
+        <a class="item paper" href="psychiatry/">
+          <img class="icon" src="psychiatry/icons/icon-192.png" alt="" width="192" height="192">
+          <div class="body">
+            <p class="eyebrow">Psychiatry Daily Digest</p>
+            <h2>오늘의 정신의학 논문</h2>
+            <p class="desc">
+              공신력 있는 학술지의 최신 논문 3편을 매일 골라, 핵심 결론과 한국어 번역을 함께 보여줍니다.
+              저자·키워드를 구독해 두면 그 논문을 먼저 챙겨 줍니다.
+            </p>
+            <ul class="meta">
+              <li>2026.08~</li>
+              <li>PubMed</li>
+              <li>매일 3편</li>
+              <li>설치 가능</li>
+            </ul>
+          </div>
+        </a>
+
+        <a class="item japan" href="japanese/">
+          <img class="icon" src="japanese/icons/icon-192.png" alt="" width="192" height="192">
+          <div class="body">
+            <p class="eyebrow">旅の日本語 · Travel Japanese</p>
+            <h2>오늘의 일본어 여행 회화</h2>
+            <p class="desc">
+              여행에서 바로 쓰는 표현을 매일 3개씩 익히고, 잊어버릴 때쯤 다시 물어봅니다.
+              표현마다 문법 설명과 발음이 붙어 있습니다.
+            </p>
+            <ul class="meta">
+              <li>2026.09~</li>
+              <li>표현 92개</li>
+              <li>인터넷 없이도</li>
+              <li>설치 가능</li>
+            </ul>
+          </div>
+        </a>
+
+        <a class="item game" href="game/">
+          <img class="icon" src="game/icons/game-icon-192.png" alt="" width="192" height="192">
+          <div class="body">
+            <p class="eyebrow">Jump! Robot</p>
+            <h2>점프! 로봇</h2>
+            <p class="desc">
+              한 손가락으로 하는 점프 게임. 코드 안의 숫자를 바꿔 가며
+              게임이 어떻게 달라지는지 직접 만져볼 수 있습니다.
+            </p>
+            <ul class="meta">
+              <li>2026.09~</li>
+              <li>고쳐보기 좋음</li>
+              <li>설치 가능</li>
+            </ul>
+          </div>
+        </a>
+
+        <!-- 아직 비어 있는 자리 — 앱을 추가하면 위에 한 칸을 더하고 이 자리는 그대로 두시면 됩니다 -->
+        <div class="next">
+          <div class="slot" aria-hidden="true"></div>
+          <span>다음 칸은 비어 있습니다.</span>
+        </div>
+
+      </div>
+    </section>
   </main>
+
+  <!-- ========== 3) 꼬리말 ========== -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>
+        각 앱은 <b>홈 화면에 추가</b>하거나 <b>앱으로 설치</b>할 수 있습니다.
+        설치는 그때 열려 있는 주소를 기억하므로, 원하는 앱을 먼저 연 다음에 하시면 됩니다.
+      </p>
+      <p>
+        이 첫 화면은 일부러 설치 대상에서 빼 두었습니다.
+        여기서 설치하면 그 영역이 아래 폴더들을 전부 삼켜, 어느 앱을 열어도
+        같은 창에서 열리게 되기 때문입니다.
+      </p>
+    </div>
+  </footer>
+
 </body>
 </html>
