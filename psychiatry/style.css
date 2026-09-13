@@ -713,3 +713,48 @@ details.abstract[open] summary::before {
 @media (min-width: 1700px) {
   .wrap { max-width: 1400px; }
 }
+
+/* ---------- 새 버전 알림 줄 ----------
+   sw.js 가 새 버전을 받아 두면 app.js 가 화면 아래에 이 줄을 띄웁니다.
+   보고 있는 도중에 파일이 바뀌면 화면이 어긋날 수 있어서,
+   곧바로 갈아끼우지 않고 눌러주실 때를 기다립니다. */
+.sw-update {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  /* env(safe-area-inset-bottom) = 아이폰 아래쪽 가로줄에 가리지 않게 하는 값 */
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100% - 32px);
+  padding: 10px 12px 10px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  background: #1c2a31;
+  color: #f2f1ee;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+.sw-update span { white-space: nowrap; }
+.sw-update button {
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.sw-update-btn {
+  padding: 6px 14px;
+  border: none;
+  background: #7fc0dd;
+  color: #10171b;
+}
+.sw-update-close {
+  padding: 6px 8px;
+  border: none;
+  background: none;
+  color: inherit;
+  opacity: 0.6;
+}
+.sw-update-close:hover { opacity: 1; }

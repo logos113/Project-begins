@@ -1651,3 +1651,118 @@ function 버전_표시() {
 구독_화면_갱신();
 북마크_버튼_갱신();
 논문_불러오기();
+
+
+/* ==========================================================
+   [10] 오프라인 준비와 새 버전 알림
+   ------------------------------------------------------------
+   sw.js(서비스 워커)를 브라우저에 등록합니다.
+   등록해 두면 한 번 열어본 뒤로는 인터넷 없이도 앱이 열립니다.
+
+   새 버전이 올라왔을 때는 곧바로 갈아끼우지 않고 화면에 물어봅니다.
+   보고 있는 도중에 파일이 바뀌면 화면이 어긋날 수 있기 때문입니다.
+   그동안 "고쳤는데 왜 그대로지?" 싶을 때 강제 새로고침을 해야 했는데,
+   이제 버튼 한 번으로 끝납니다.
+   ========================================================== */
+
+function 새버전_알림띄우기(교대하기) {
+  // 이미 떠 있으면 또 만들지 않습니다
+  if (document.querySelector(".sw-update")) return;
+
+  const 줄 = document.createElement("div");
+  줄.className = "sw-update";
+  줄.innerHTML =
+    '<span>새 버전이 있습니다.</span>' +
+    '<button type="button" class="sw-update-btn">지금 받기</button>' +
+    '<button type="button" class="sw-update-close" aria-label="닫기">✕</button>';
+  document.body.appendChild(줄);
+
+  줄.querySelector(".sw-update-btn").addEventListener("click", () => {
+    줄.querySelector(".sw-update-btn").textContent = "받는 중…";
+    교대하기();
+  });
+  줄.querySelector(".sw-update-close").addEventListener("click", () => 줄.remove());
+}
+
+function 오프라인_준비() {
+  // 아주 예전 브라우저에는 이 기능이 없습니다. 없으면 그냥 지금처럼 동작합니다.
+  if (!("serviceWorker" in navigator)) return;
+
+  /*
+    지금 이 화면을 담당하는 워커가 이미 있는가를 먼저 적어둡니다.
+
+    이게 없으면 실제로 문제가 생깁니다 —
+    맨 처음 방문했을 때는 담당 워커가 없다가, 설치가 끝나면서 새 워커가
+    화면을 넘겨받습니다. 그때도 controllerchange 가 울리기 때문에,
+    구분하지 않으면 앱을 처음 열 때마다 화면이 한 번 새로고침됩니다.
+    (검사를 돌리다가 실제로 이 증상이 나와서 잡았습니다)
+
+    '원래 담당이 있었는데 바뀐 경우' 만 진짜 교대입니다.
+  */
+  const 처음부터_담당있었나 = !!navigator.serviceWorker.controller;
+
+  /*
+    사용자가 '지금 받기' 를 눌렀는지 적어둡니다.
+
+    위의 '처음부터 담당이 있었나' 하나만으로 판단하면 안 됩니다.
+    앱을 처음 연 날에는 그 값이 false 인데, 그 상태로 페이지를 열어둔 채
+    새 버전이 올라와 '지금 받기' 를 누르면 교대는 되지만 화면이 새로 그려지지
+    않습니다. 낡은 화면에 새 파일이 물린 어정쩡한 상태가 됩니다.
+    (검사에서 실제로 이 증상이 나와서 잡았습니다)
+
+    직접 누른 교대는 언제나 새로고침해야 합니다.
+  */
+  let 교대를_요청했나 = false;
+
+  /*
+    file:// 로 파일을 직접 열었을 때는 등록할 수 없습니다.
+    보안상 http(s) 주소에서만 쓸 수 있기 때문입니다. 오류 대신 조용히 넘어갑니다.
+  */
+  if (location.protocol === "file:") return;
+
+  navigator.serviceWorker.register("sw.js").then((등록) => {
+    const 교대하기 = (일꾼) => () => {
+      교대를_요청했나 = true;
+      일꾼.postMessage({ 하는일: "지금교대" });
+    };
+
+    // 이미 새것이 대기 중인 경우 (다른 탭에서 받아 두었을 때 등)
+    if (등록.waiting && navigator.serviceWorker.controller) {
+      새버전_알림띄우기(교대하기(등록.waiting));
+    }
+
+    // 새것이 도착하는 것을 지켜봅니다
+    등록.addEventListener("updatefound", () => {
+      const 새일꾼 = 등록.installing;
+      if (!새일꾼) return;
+      새일꾼.addEventListener("statechange", () => {
+        /*
+          controller 가 있다는 것은 '이미 담당하는 워커가 있다' 는 뜻,
+          즉 처음 설치가 아니라 갱신이라는 뜻입니다.
+          처음 설치 때는 알림을 띄우지 않습니다. 새 버전이 아니니까요.
+        */
+        if (새일꾼.state === "installed" && navigator.serviceWorker.controller) {
+          새버전_알림띄우기(교대하기(새일꾼));
+        }
+      });
+    });
+  }).catch((오류) => {
+    // 등록에 실패해도 앱은 지금까지처럼 그대로 동작해야 합니다
+    console.warn("[sw] 등록하지 못했습니다:", 오류);
+  });
+
+  /*
+    교대가 끝나면 화면을 새로 그립니다.
+    한 번만 하도록 표시를 남깁니다 — 안 그러면 계속 새로고침이 돕니다.
+  */
+  let 새로고침했나 = false;
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    // 첫 설치일 뿐이고 직접 누른 것도 아니라면 새로고침할 이유가 없습니다
+    if (!처음부터_담당있었나 && !교대를_요청했나) return;
+    if (새로고침했나) return;
+    새로고침했나 = true;
+    location.reload();
+  });
+}
+
+오프라인_준비();
