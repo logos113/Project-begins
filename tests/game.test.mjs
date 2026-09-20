@@ -441,6 +441,81 @@ for (let i = 0; i < 120; i++) {
 검사("아이템을 모으고 점수를 넘기면 보스가 스스로 나타나는가", 스스로나옴);
 
 /* ==========================================================
+   7-2) 멈추고 이어서 하기
+   ------------------------------------------------------------
+   게임이 시작되면 화면을 가득 채우기 때문에, 예전에는 죽기 전까지
+   빠져나올 방법이 없었습니다. 그만두려면 일부러 부딪혀야 했습니다.
+
+   멈춘 동안 시간이 흐르면 안 되고, 이어서 할 때 로봇이 튀어도 안 됩니다.
+   한 장면에 흐른 시간(dt)을 '지난번에 그린 시각' 으로 재기 때문에,
+   시계를 다시 맞춰주지 않으면 멈춰 있던 시간이 한꺼번에 흘러
+   로봇과 장애물이 화면 끝까지 날아갑니다. 그 부분도 함께 봅니다.
+   ========================================================== */
+{
+  await page.reload({ waitUntil: "networkidle" });
+  검사("시작 전에는 멈춤 버튼이 안 보이는가", !(await page.locator("#pauseBtn").isVisible()));
+
+  await page.locator("#startBtn").click();
+  await page.waitForTimeout(600);
+  검사("게임 중에는 멈춤 버튼이 보이는가", await page.locator("#pauseBtn").isVisible());
+
+  await page.locator("#pauseBtn").click();
+  await page.waitForTimeout(250);
+  const 멈춘뒤 = await 상태();
+  검사("멈춤을 누르면 게임이 멈추는가", !멈춘뒤.진행중 && 멈춘뒤.멈춤중, 멈춘뒤);
+  검사("멈추면 화면이 뜨는가", await page.locator("#overlay").isVisible());
+  검사("멈춤 화면 제목이 '잠깐 멈췄어요' 인가",
+    (await page.locator("#overlayTitle").textContent()).includes("멈췄"),
+    await page.locator("#overlayTitle").textContent());
+  검사("멈추면 '이어서 하기' 로 바뀌는가",
+    (await page.locator("#startBtn").textContent()).includes("이어서"),
+    await page.locator("#startBtn").textContent());
+  검사("'그만두기' 가 나타나는가", await page.locator("#quitBtn").isVisible());
+  검사("멈춤 화면에서 아카이브로 갈 수 있는가", await page.locator(".back-home a").isVisible());
+  검사("멈추면 멈춤 버튼은 감춰지는가", !(await page.locator("#pauseBtn").isVisible()));
+
+  // 멈춘 동안에는 시간이 흐르면 안 됩니다
+  await page.waitForTimeout(1800);
+  const 기다린뒤 = await 상태();
+  검사("멈춘 동안에는 점수가 오르지 않는가",
+    기다린뒤.점수 === 멈춘뒤.점수, [멈춘뒤.점수, 기다린뒤.점수]);
+
+  // 이어서 하기
+  await page.locator("#startBtn").click();
+  await page.waitForTimeout(400);
+  const 이어서 = await 상태();
+  검사("'이어서 하기' 를 누르면 다시 달리는가", 이어서.진행중 && !이어서.멈춤중, 이어서);
+  검사("이어서 하면 점수가 이어지는가",
+    이어서.점수 >= 기다린뒤.점수 && 이어서.점수 < 기다린뒤.점수 + 40,
+    [기다린뒤.점수, 이어서.점수]);
+  /*
+    멈춰 있던 시간이 한꺼번에 흐르면 로봇이 땅속이나 화면 밖으로 튑니다.
+    땅 위에 얌전히 있는지로 확인합니다.
+  */
+  검사("이어서 해도 로봇이 튀지 않는가",
+    이어서.로봇y > 0 && 이어서.로봇y <= 이어서.땅위치 + 1, 이어서);
+  검사("이어서 하면 멈춤 버튼이 다시 나오는가", await page.locator("#pauseBtn").isVisible());
+
+  // 멈춘 뒤 그만두기
+  await page.locator("#pauseBtn").click();
+  await page.waitForTimeout(200);
+  await page.locator("#quitBtn").click();
+  await page.waitForTimeout(300);
+  const 그만둠 = await 상태();
+  검사("'그만두기' 를 누르면 판이 끝나는가", !그만둠.진행중 && !그만둠.멈춤중, 그만둠);
+  검사("그만두면 결과가 나오는가", await page.locator("#resultBox").isVisible());
+  검사("그만둬도 점수가 남는가",
+    Number(await page.locator("#finalScore").textContent()) > 0,
+    await page.locator("#finalScore").textContent());
+  검사("그만두면 '다시 하기' 로 바뀌는가",
+    (await page.locator("#startBtn").textContent()).includes("다시"),
+    await page.locator("#startBtn").textContent());
+  검사("그만두면 '그만두기' 단추는 사라지는가", !(await page.locator("#quitBtn").isVisible()));
+  검사("그만두면 멈춤 버튼도 사라지는가", !(await page.locator("#pauseBtn").isVisible()));
+}
+
+
+/* ==========================================================
    8) 결과 화면이 낮은 화면에서도 잘리지 않는가
    ------------------------------------------------------------
    휴대폰을 가로로 눕히면 높이가 390px 밖에 안 됩니다.

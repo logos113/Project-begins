@@ -86,8 +86,37 @@ html, body {
   letter-spacing: 0.05em;
 }
 
-.sound-btn {
+/* 오른쪽 끝 버튼 묶음 (멈춤 · 소리).
+   묶어두면 멈춤 버튼이 숨어도 소리 버튼이 오른쪽 끝에 그대로 남습니다. */
+.hud-buttons {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;          /* 점수판과 달리 이 안의 버튼은 눌려야 합니다 */
+}
+
+/* 게임 중에만 나오는 멈춤 버튼.
+   아이콘 대신 글자로 둔 이유 — 아이가 봐도 바로 알 수 있어야 하고,
+   ⏸ 같은 기호는 기기마다 그림처럼 나오기도 해서 모양이 들쭉날쭉합니다. */
+.pause-btn {
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 9px 15px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.28);
+  color: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+.pause-btn:active { transform: scale(0.94); }
+
+.sound-btn {
   pointer-events: auto;          /* 이 버튼만 눌리게 */
   width: 42px;
   height: 42px;
@@ -252,6 +281,24 @@ h1 {
   box-shadow: 0 1px 0 #05a87d;
 }
 
+/* 멈췄을 때만 나오는 '그만두기'.
+   시작 버튼보다 조용한 모양이어야 합니다. 이어서 하는 쪽이 기본이니까요. */
+.quit-btn {
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  width: 100%;
+  margin-top: 10px;
+  padding: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 14px;
+  background: transparent;
+  color: inherit;
+  opacity: 0.8;
+  cursor: pointer;
+}
+.quit-btn:active { transform: translateY(2px); }
+
 .hint {
   margin: 18px 0 0;
   font-size: 13px;
@@ -287,6 +334,7 @@ h1 {
   .result { padding: 9px 14px; margin-bottom: 12px; }
   .start-btn { padding: 12px; font-size: 18px; }
   .hint { margin-top: 10px; font-size: 12px; line-height: 1.5; }
+  .quit-btn { padding: 10px; font-size: 15px; margin-top: 8px; }
   .overlay { padding: 12px; }
   .back-home { margin-top: 14px; }
 }

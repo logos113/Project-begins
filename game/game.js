@@ -185,6 +185,7 @@ let 점수 = 0;
 let 최고점수 = 0;
 let 다음장애물까지 = 420;
 let 진행중 = false;
+let 멈춤중 = false;      // 멈춤 버튼으로 잠시 세워둔 상태
 let 지난시각 = 0;
 
 /* ---------- 아이템과 보스에 쓰는 값들 ----------
@@ -253,6 +254,8 @@ const 하트_자리   = document.getElementById("hearts");
 const 미사일상자  = document.getElementById("ammoBox");
 const 미사일_자리 = document.getElementById("ammo");
 const 발사버튼    = document.getElementById("fireBtn");
+const 멈춤버튼    = document.getElementById("pauseBtn");
+const 그만두기버튼 = document.getElementById("quitBtn");
 
 
 /* ---------- 최고 점수 저장 ----------
@@ -354,6 +357,52 @@ function 로봇_맞음() {
 }
 
 
+/* ---------- 멈추고 이어서 하기 ----------
+   게임이 시작되면 화면을 가득 채우기 때문에, 예전에는 죽기 전까지
+   빠져나올 방법이 없었습니다. 그만두려면 일부러 부딪혀야 했습니다.
+
+   멈춤 버튼을 누르면 그 자리에서 멈추고 처음 화면이 뜹니다.
+   거기서 이어서 하거나, 그만두거나, 아카이브로 돌아갈 수 있습니다.
+   (아카이브로 가는 줄은 이 화면 맨 아래에 이미 있습니다) */
+
+function 게임_멈추기() {
+  if (!진행중) return;
+
+  진행중 = false;
+  멈춤중 = true;
+  멈춤버튼.hidden = true;
+  미사일_화면갱신();          // 발사 버튼도 함께 감춥니다
+
+  덮개제목.textContent = "잠깐 멈췄어요";
+  덮개설명.textContent = `지금까지 ${Math.floor(점수)}점\n이어서 할까요?`;
+  결과상자.hidden = true;
+  신기록.hidden = true;
+  시작버튼.textContent = "이어서 하기";
+  그만두기버튼.hidden = false;
+  덮개.classList.remove("hidden");
+}
+
+function 이어서_하기() {
+  if (!멈춤중) return;
+
+  멈춤중 = false;
+  그만두기버튼.hidden = true;
+  덮개.classList.add("hidden");
+  진행중 = true;
+  멈춤버튼.hidden = false;
+  미사일_화면갱신();
+
+  /*
+    ※ 이 줄이 없으면 안 됩니다.
+       한 장면에 흐른 시간(dt)은 '지난번에 그린 시각' 과의 차이로 구합니다.
+       멈춰 있던 30초가 그대로 dt 에 들어오면 로봇과 장애물이 한 번에
+       화면 끝까지 튀어나갑니다. 다시 시작할 때 시계를 맞춰줍니다.
+  */
+  지난시각 = performance.now();
+  requestAnimationFrame(한장면_그리기);
+}
+
+
 /* ---------- 게임 시작 / 끝 ---------- */
 
 function 게임_시작() {
@@ -383,6 +432,9 @@ function 게임_시작() {
   하트_그리기();
 
   진행중 = true;
+  멈춤중 = false;
+  그만두기버튼.hidden = true;
+  멈춤버튼.hidden = false;
   덮개.classList.add("hidden");
   점수_자리.textContent = "0";
 
@@ -390,11 +442,15 @@ function 게임_시작() {
   requestAnimationFrame(한장면_그리기);
 }
 
-function 게임_끝() {
+function 게임_끝(부딪혀서 = true) {
   진행중 = false;
+  멈춤중 = false;
   보스 = null;
+  멈춤버튼.hidden = true;
+  그만두기버튼.hidden = true;
   미사일_화면갱신();
-  부딪힘소리();
+  // 스스로 그만둔 경우에는 '쿵' 소리를 내지 않습니다
+  if (부딪혀서) 부딪힘소리();
 
   const 딴점수 = Math.floor(점수);
   const 신기록인가 = 딴점수 > 최고점수;
@@ -1162,6 +1218,12 @@ window.addEventListener("keydown", (사건) => {
     if (진행중) 점프하기();
     else if (!덮개.classList.contains("hidden")) 게임_시작();
   }
+  // Esc 또는 P 로 멈춥니다 (멈춘 상태에서 다시 누르면 이어서)
+  if (사건.code === "Escape" || 사건.code === "KeyP") {
+    사건.preventDefault();
+    if (진행중) 게임_멈추기();
+    else if (멈춤중) 이어서_하기();
+  }
   // 아래 화살표 또는 F 로 미사일을 쏩니다 (보스와 싸울 때만 씁니다)
   if (사건.code === "ArrowDown" || 사건.code === "KeyF") {
     사건.preventDefault();
@@ -1185,7 +1247,30 @@ if (발사버튼) {
   });
 }
 
-시작버튼.addEventListener("click", () => 게임_시작());
+/*
+  시작 버튼은 상황에 따라 하는 일이 다릅니다.
+    멈춘 상태 → 이어서 하기
+    그 밖      → 새로 시작하기
+  글자도 그때그때 바뀝니다 ("시작하기" / "다시 하기" / "이어서 하기").
+*/
+시작버튼.addEventListener("click", () => {
+  if (멈춤중) 이어서_하기();
+  else 게임_시작();
+});
+
+if (멈춤버튼) {
+  멈춤버튼.addEventListener("click", (사건) => {
+    사건.stopPropagation();
+    게임_멈추기();
+  });
+}
+
+if (그만두기버튼) {
+  그만두기버튼.addEventListener("click", () => {
+    멈춤중 = false;
+    게임_끝(false);      // 부딪힌 게 아니므로 소리 없이 결과만 보여줍니다
+  });
+}
 
 소리버튼.addEventListener("click", () => {
   소리켬 = !소리켬;
@@ -1204,6 +1289,7 @@ if (발사버튼) {
    로봇이 지금 어디 있는지, 속도가 얼마인지 숫자로 볼 수 있습니다. */
 window.게임상태 = () => ({
   진행중,
+  멈춤중,
   점수: Math.floor(점수),
   속도: Number(속도.toFixed(2)),
   스테이지,
