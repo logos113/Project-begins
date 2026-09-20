@@ -14,9 +14,20 @@
   --글자:     #ffffff;
   --포인트:   #ffd166;   /* 점수, 버튼에 쓰는 노란색 */
   --버튼:     #06d6a0;   /* 시작 버튼 (민트) */
+  --아이템:   #4cc9f0;   /* 보스와 싸울 때 쓰는 아이템 (하늘색) */
+  --보스:     #ff5d73;   /* 보스 관련 (붉은 분홍) */
 }
 
 * { box-sizing: border-box; }
+
+/*
+  hidden 을 붙인 것은 반드시 감춰지게 합니다.
+
+  브라우저에도 hidden 규칙이 있지만, 우리가 class 로 적은 display 가 그것을 이깁니다.
+  실제로 .score-box { display: flex } 때문에 미사일 개수가 0 인데도 화면에 남아 있었고,
+  일본어 앱에서도 똑같은 일로 퀴즈 중에 카드가 안 사라진 적이 있습니다.
+*/
+[hidden] { display: none !important; }
 
 html, body {
   margin: 0;
@@ -88,6 +99,51 @@ html, body {
   color: inherit;
 }
 .sound-btn.muted { opacity: 0.45; }
+
+/* 모은 아이템(미사일) 개수. 아이템 색과 맞춰 한눈에 구분되게 합니다. */
+.score-box.ammo { color: var(--아이템); font-size: 17px; }
+
+/* ---------- 발사 버튼 ----------
+   보스와 싸울 때만 나타납니다.
+   이 게임은 화면 아무 데나 누르면 점프라서, 쏘는 것만 따로 버튼을 두었습니다.
+
+   오른쪽 아래에 두는 이유 — 오른손 엄지가 자연스럽게 닿는 자리입니다.
+   점프는 화면 어디서나 되므로 왼손·오른손 어느 쪽으로도 누를 수 있습니다. */
+.fire-btn {
+  position: fixed;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(22px, env(safe-area-inset-bottom));
+  z-index: 5;
+  width: 78px;
+  height: 78px;
+  border: 3px solid rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
+  background: var(--보스);
+  color: #ffffff;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  /* 길게 눌렀을 때 글자가 선택되거나 확대창이 뜨지 않게 합니다 */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+.fire-btn:active { transform: scale(0.94); }
+
+/* 미사일이 다 떨어지면 눌러도 소용없다는 것을 흐리게 보여줍니다 */
+.fire-btn.empty {
+  background: rgba(255, 93, 115, 0.35);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 화면이 낮을 때(가로로 눕혔을 때)는 버튼을 조금 줄입니다 */
+@media (max-height: 480px) {
+  .fire-btn { width: 64px; height: 64px; font-size: 15px; bottom: max(14px, env(safe-area-inset-bottom)); }
+}
 
 /* ---------- 시작 / 게임오버 화면 ---------- */
 .overlay {

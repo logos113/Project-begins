@@ -48,9 +48,18 @@
       <span class="score-label">최고</span>
       <span id="best">0</span>
     </div>
+    <!-- 모은 아이템(미사일) 개수. 하나도 없으면 감춥니다. -->
+    <div class="score-box ammo" id="ammoBox" hidden>
+      <span class="score-label">미사일</span>
+      <span id="ammo">0</span>
+    </div>
     <!-- 소리 켜고 끄는 버튼 -->
     <button id="soundBtn" class="sound-btn" type="button" aria-label="소리 켜기/끄기">🔊</button>
   </div>
+
+  <!-- 보스와 싸울 때만 나타나는 발사 버튼.
+       화면 아무 데나 누르면 점프이므로, 쏘는 것만 버튼을 따로 두었습니다. -->
+  <button id="fireBtn" class="fire-btn" type="button" hidden>발사</button>
 
   <!-- 시작 화면 / 게임오버 화면.
        평소엔 숨어 있다가 game.js 가 필요할 때 보여줍니다. -->
@@ -68,7 +77,8 @@
       <button id="startBtn" class="start-btn" type="button">시작하기</button>
 
       <p class="hint">
-        공중에서 한 번 더 누르면 <strong>두 번 점프</strong>할 수 있어요
+        공중에서 한 번 더 누르면 <strong>두 번 점프</strong>할 수 있어요<br>
+        파란 <strong>아이템 3개</strong>를 모으면 보스가 나타납니다
       </p>
 
       <!-- 브라우저에서 열었을 때 목록 화면으로 돌아가는 줄.
