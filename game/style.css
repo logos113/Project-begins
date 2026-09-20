@@ -129,8 +129,14 @@ html, body {
 }
 .sound-btn.muted { opacity: 0.45; }
 
-/* 모은 아이템(미사일) 개수. 아이템 색과 맞춰 한눈에 구분되게 합니다. */
-.score-box.ammo { color: var(--아이템); font-size: 17px; }
+/* 지금 걸려 있는 효과 (강화 · 무적). 숫자가 아니라 글이라 조금 작게 둡니다. */
+.score-box.buffs {
+  color: var(--아이템);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 13px;
+  white-space: nowrap;
+}
 
 /* 남은 체력. 숫자가 아니라 ♥ 라서 자릿수 맞춤(tabular-nums)은 필요 없습니다. */
 .score-box.hearts {
@@ -171,7 +177,7 @@ html, body {
 }
 .fire-btn:active { transform: scale(0.94); }
 
-/* 미사일이 다 떨어지면 눌러도 소용없다는 것을 흐리게 보여줍니다 */
+/* 미사일을 채우는 중에는 눌러도 소용없다는 것을 흐리게 보여줍니다 */
 .fire-btn.empty {
   background: rgba(255, 93, 115, 0.35);
   border-color: rgba(255, 255, 255, 0.3);
