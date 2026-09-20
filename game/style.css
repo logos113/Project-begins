@@ -103,6 +103,14 @@ html, body {
 /* 모은 아이템(미사일) 개수. 아이템 색과 맞춰 한눈에 구분되게 합니다. */
 .score-box.ammo { color: var(--아이템); font-size: 17px; }
 
+/* 남은 체력. 숫자가 아니라 ♥ 라서 자릿수 맞춤(tabular-nums)은 필요 없습니다. */
+.score-box.hearts {
+  color: var(--보스);
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  padding: 7px 12px;
+}
+
 /* ---------- 발사 버튼 ----------
    보스와 싸울 때만 나타납니다.
    이 게임은 화면 아무 데나 누르면 점프라서, 쏘는 것만 따로 버튼을 두었습니다.

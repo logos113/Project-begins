@@ -28,7 +28,7 @@
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#1b2a4a">
 
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 
 <body>
@@ -48,6 +48,8 @@
       <span class="score-label">최고</span>
       <span id="best">0</span>
     </div>
+    <!-- 남은 체력. ♥ 가 남은 것, ♡ 가 잃은 것입니다. -->
+    <div class="score-box hearts" id="hearts">♥♥♥</div>
     <!-- 모은 아이템(미사일) 개수. 하나도 없으면 감춥니다. -->
     <div class="score-box ammo" id="ammoBox" hidden>
       <span class="score-label">미사일</span>
@@ -78,6 +80,7 @@
 
       <p class="hint">
         공중에서 한 번 더 누르면 <strong>두 번 점프</strong>할 수 있어요<br>
+        ♥ 가 <strong>세 칸</strong> 있어요. 세 번 맞으면 끝납니다<br>
         파란 <strong>아이템 3개</strong>를 모으면 보스가 나타납니다
       </p>
 
@@ -87,6 +90,6 @@
     </div>
   </div>
 
-  <script src="game.js?v=3"></script>
+  <script src="game.js?v=4"></script>
 </body>
 </html>

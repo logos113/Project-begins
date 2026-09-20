@@ -55,7 +55,8 @@ const 점수1 = Number(await page.locator("#score").textContent());
 
 
 // 3) 아무것도 안 하면 장애물에 부딪혀 끝나는가
-await page.waitForTimeout(9000);
+// 체력이 3칸이라 세 번 부딪혀야 끝납니다. 보통 7~8초쯤 걸립니다.
+await page.waitForTimeout(13000);
 const 끝났나 = await page.locator("#overlay").isVisible();
 검사("점프하지 않으면 부딪혀서 게임이 끝나는가", 끝났나);
 if (끝났나) {
@@ -115,6 +116,87 @@ const 세로폭 = (await page.evaluate(() => window.게임상태())).화면폭;
 await page.setViewportSize({ width: 844, height: 390 });
 
 /* ==========================================================
+   6-2) 로봇의 체력
+   ------------------------------------------------------------
+   예전에는 한 번만 부딪혀도 끝났습니다. 보스가 쏘는 것까지 한 방이면
+   너무 야박해서 체력 세 칸을 두었습니다.
+
+   맞은 뒤에는 잠깐 무적이 됩니다. 이게 없으면 장애물 하나에 몸이 겹쳐 있는
+   몇 장면 동안 세 칸이 순식간에 사라집니다. 그래서 무적도 함께 확인합니다.
+   ========================================================== */
+const 새판 = async () => {
+  await page.reload({ waitUntil: "networkidle" });
+  await page.locator("#startBtn").click();
+  await page.waitForTimeout(250);
+};
+const 상태 = () => page.evaluate(() => window.게임상태());
+const 장애물_치우기 = () => page.evaluate(() => {
+  장애물들 = [];
+  설정.장애물_최소간격 = 100000;
+  설정.장애물_최대간격 = 100000;
+  다음장애물까지 = 100000;
+});
+
+await 새판();
+검사("시작하면 체력이 세 칸인가", (await 상태()).로봇체력 === 3, await 상태());
+검사("화면에 하트가 세 개 나오는가",
+  (await page.locator("#hearts").textContent()) === "♥♥♥",
+  await page.locator("#hearts").textContent());
+
+await 장애물_치우기();
+const 한대맞은뒤 = await page.evaluate(() => {
+  로봇_맞음();
+  return { 체력: 로봇.체력, 무적: 로봇.무적 > 0 };
+});
+검사("한 번 맞으면 체력이 한 칸 줄어드는가", 한대맞은뒤.체력 === 2, 한대맞은뒤);
+검사("맞으면 잠깐 무적이 되는가", 한대맞은뒤.무적, 한대맞은뒤);
+검사("하트 표시도 함께 줄어드는가",
+  (await page.locator("#hearts").textContent()) === "♥♥♡",
+  await page.locator("#hearts").textContent());
+
+// 무적인 동안 여러 번 때려도 더 깎이면 안 됩니다
+const 무적중 = await page.evaluate(() => {
+  for (let i = 0; i < 5; i++) 로봇_맞음();
+  return 로봇.체력;
+});
+검사("무적인 동안에는 더 맞지 않는가", 무적중 === 2, 무적중);
+
+// 무적이 풀린 뒤에는 다시 맞아야 합니다
+await page.evaluate(() => { 로봇.무적 = 0; });
+const 두대째 = await page.evaluate(() => { 로봇_맞음(); return 로봇.체력; });
+검사("무적이 풀리면 다시 맞는가", 두대째 === 1, 두대째);
+
+// 세 번째에 끝나야 합니다
+await page.evaluate(() => { 로봇.무적 = 0; });
+await page.evaluate(() => { 로봇_맞음(); });
+await page.waitForTimeout(200);
+const 끝난뒤 = await 상태();
+검사("세 번 맞으면 게임이 끝나는가", !끝난뒤.진행중 && 끝난뒤.로봇체력 === 0, 끝난뒤);
+검사("끝나면 결과 화면이 나오는가", await page.locator("#overlay").isVisible());
+
+// 다시 시작하면 체력이 돌아와야 합니다
+await page.locator("#startBtn").click();
+await page.waitForTimeout(250);
+검사("다시 시작하면 체력이 세 칸으로 돌아오는가", (await 상태()).로봇체력 === 3, await 상태());
+검사("하트 표시도 되돌아오는가",
+  (await page.locator("#hearts").textContent()) === "♥♥♥");
+
+// 보스가 쏘는 것도 한 발에 한 칸이어야 합니다
+await 새판();
+await 장애물_치우기();
+await page.evaluate(() => { 설정.보스_공격간격 = 45; });
+await page.evaluate(() => window.보스시험(9));   // 미사일을 넉넉히 줘서 보스가 안 물러가게
+let 보스탄에_맞음 = false;
+for (let i = 0; i < 120; i++) {
+  await page.waitForTimeout(80);
+  const st = await 상태();
+  if (st.로봇체력 === 2) { 보스탄에_맞음 = true; break; }
+  if (!st.진행중) break;
+}
+검사("보스가 쏜 것에 맞으면 한 칸만 줄어드는가", 보스탄에_맞음, await 상태());
+
+
+/* ==========================================================
    7) 아이템과 보스
    ------------------------------------------------------------
    달리다가 파란 아이템을 모으면 미사일이 되고,
@@ -124,12 +206,6 @@ await page.setViewportSize({ width: 844, height: 390 });
    그래서 game.js 가 열어둔 보스시험() 으로 바로 불러서 확인합니다.
    '스스로 나타나는지' 는 아래 마지막 항목에서 문턱을 낮춰 따로 봅니다.
    ========================================================== */
-const 새판 = async () => {
-  await page.reload({ waitUntil: "networkidle" });
-  await page.locator("#startBtn").click();
-  await page.waitForTimeout(250);
-};
-const 상태 = () => page.evaluate(() => window.게임상태());
 const 발사누르기 = () => page.evaluate(() =>
   document.getElementById("fireBtn").dispatchEvent(
     new PointerEvent("pointerdown", { bubbles: true })));
