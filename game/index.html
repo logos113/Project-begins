@@ -28,7 +28,7 @@
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#1b2a4a">
 
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=11">
 </head>
 
 <body>
@@ -67,6 +67,18 @@
        화면 아무 데나 누르면 점프이므로, 쏘는 것만 버튼을 따로 두었습니다. -->
   <button id="fireBtn" class="fire-btn" type="button" hidden>발사</button>
 
+  <!-- 마법사가 무기를 내어주는 화면.
+       성 앞에 멈춰 섰을 때만 나옵니다. game.js 가 선택지를 만들어 넣습니다.
+       시작 화면(#overlay)과 따로 둔 이유는, 둘이 겹쳐 뜰 일이 없고
+       각자 필요한 것만 담는 편이 고치기 쉽기 때문입니다. -->
+  <div id="shopOverlay" class="overlay shop" hidden>
+    <div class="panel shop-panel">
+      <h2 class="shop-title">🧙 마법사가 무기를 내어줍니다</h2>
+      <p class="shop-sub">하나를 고르세요 · <strong>다치면 원래 무기로 돌아갑니다</strong></p>
+      <div id="weaponList" class="weapon-list"></div>
+    </div>
+  </div>
+
   <!-- 시작 화면 / 게임오버 화면.
        평소엔 숨어 있다가 game.js 가 필요할 때 보여줍니다. -->
   <div id="overlay" class="overlay">
@@ -90,7 +102,8 @@
         ♥ 가 <strong>세 칸</strong> 있어요. 세 번 맞으면 끝납니다<br>
         <strong>300점</strong>마다 보스가 찾아와요<br>
         아이템 — 🔷 미사일 강화 · ⭐ 무적 · 💗 체력 회복<br>
-        높이 뜬 아이템은 <strong>두 번 점프</strong>해야 닿아요
+        높이 뜬 아이템은 <strong>두 번 점프</strong>해야 닿아요<br>
+        가는 길에 <strong>성</strong>이 나오면 마법사가 무기를 줘요
       </p>
 
       <!-- 브라우저에서 열었을 때 목록 화면으로 돌아가는 줄.
@@ -99,6 +112,6 @@
     </div>
   </div>
 
-  <script src="game.js?v=10"></script>
+  <script src="game.js?v=11"></script>
 </body>
 </html>

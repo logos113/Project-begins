@@ -71,6 +71,13 @@ html, body {
   display: flex;
   align-items: baseline;
   gap: 6px;
+  /*
+    '점수' 같은 글자가 두 줄로 접히지 않게 합니다.
+    무기 표시가 한 칸 늘면서 세로로 든 휴대폰(360px)에서 자리가 빠듯해졌는데,
+    접힌 글자는 읽기 나쁘고 점수판 높이까지 들쭉날쭉해집니다.
+  */
+  white-space: nowrap;
+  flex-shrink: 0;
   background: rgba(0, 0, 0, 0.28);
   border-radius: 999px;
   padding: 6px 14px;
@@ -333,9 +340,91 @@ h1 {
   .back-home { display: none; }
 }
 
+/* ---------- 마법사가 무기를 내어주는 화면 ----------
+   성 앞에 멈춰 섰을 때만 나옵니다.
+   고르기 전에는 게임이 완전히 멈춰 있으니, 서두를 필요 없이 읽고 고르면 됩니다.
+
+   ※ .overlay 를 같이 쓰기 때문에 넘칠 때 스크롤되는 성질과
+      margin:auto 로 가운데를 맞추는 성질을 그대로 물려받습니다.
+      가로로 눕힌 휴대폰(높이 390px)에서 카드 세 장이 들어가야 해서,
+      아래 낮은 화면용 규칙에서 한 번 더 줄입니다. */
+.shop-panel { max-width: 380px; }
+
+.shop-title {
+  margin: 0 0 6px;
+  font-size: 20px;
+  color: #ffd166;
+}
+.shop-sub {
+  margin: 0 0 16px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+}
+.shop-sub strong { color: #ff9fb0; }
+
+.weapon-list {
+  display: grid;
+  gap: 10px;
+}
+
+/* 카드 한 장 = 무기 하나. 통째로 누를 수 있게 button 으로 만듭니다. */
+.weapon-card {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #eaf0ff;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  /* 빠르게 두 번 눌러도 화면이 확대되지 않게 */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.weapon-card:hover { background: rgba(255, 255, 255, 0.13); }
+.weapon-card:active { transform: scale(0.98); }
+
+.weapon-icon { font-size: 30px; text-align: center; }
+.weapon-name { font-size: 16px; font-weight: 700; }
+.weapon-desc {
+  margin-top: 2px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.7);
+}
+/* 위력·연사 같은 숫자. 글자보다 한 단계 작고 흐리게. */
+.weapon-stat {
+  margin-top: 3px;
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.5);
+}
+/* 지금 들고 있는 무기에는 표시를 해둡니다 */
+.weapon-card.now { border-color: rgba(255, 209, 102, 0.55); }
+.weapon-card.now .weapon-name::after {
+  content: " · 지금 무기";
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #ffd166;
+}
+
 /* 화면이 낮을 때(가로로 눕혔을 때) 글자를 줄여 다 보이게 합니다 */
 @media (max-height: 480px) {
   h1 { font-size: 26px; }
+  .shop-title { font-size: 17px; }
+  .shop-sub { margin-bottom: 10px; font-size: 12px; }
+  .weapon-list { gap: 7px; }
+  .weapon-card { padding: 8px 12px; grid-template-columns: 34px 1fr; gap: 10px; }
+  .weapon-icon { font-size: 23px; }
+  .weapon-name { font-size: 14.5px; }
+  .weapon-desc { font-size: 11.5px; }
+  .weapon-stat { font-size: 11px; }
   #overlayText { font-size: 13px; margin-bottom: 10px; }
   .result { padding: 9px 14px; margin-bottom: 12px; }
   .start-btn { padding: 12px; font-size: 18px; }
