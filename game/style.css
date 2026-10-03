@@ -211,6 +211,57 @@ html, body {
 }
 .fire-btn:active { transform: scale(0.94); }
 
+/* ---------- 거인과 싸울 때 쓰는 좌우 걷기 버튼 ----------
+   이 게임은 '화면 아무 데나 누르면 점프' 가 규칙입니다.
+   그래서 걷는 것도 발사처럼 버튼을 따로 두었습니다. 왼쪽 아래에 둔 것은
+   오른손으로 발사(오른쪽 아래)를 누르면서 왼손으로 걸을 수 있게 하려는 것입니다. */
+.move-btns {
+  position: fixed;
+  left: max(18px, env(safe-area-inset-left));
+  bottom: max(22px, env(safe-area-inset-bottom));
+  z-index: 5;
+  display: flex;
+  gap: 10px;
+}
+/*
+  반투명하게 둡니다.
+
+  싸우는 동안 로봇이 왼쪽 끝까지 걸어오면 이 버튼 자리와 겹칩니다.
+  세로로 든 휴대폰에서는 버튼이 바닥의 왼쪽 140px 을 차지하는데,
+  로봇이 걸어 다닐 수 있는 폭이 그만큼도 안 되기 때문에
+  '겹치지 않게 막는' 방법은 쓸 수가 없습니다. 대신 비쳐 보이게 했습니다.
+*/
+.move-btn {
+  width: 58px;
+  height: 58px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  background: rgba(32, 46, 78, 0.5);
+  color: #eaf0ff;
+  font: inherit;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+/* 누르고 있는 동안 켜진 것처럼 보이게 합니다 */
+.move-btn:active,
+.move-btn.on {
+  background: var(--보스);
+  transform: scale(0.94);
+}
+
+/* 화면이 낮으면(가로로 눕혔을 때) 버튼도 조금 줄입니다 */
+@media (max-height: 480px) {
+  .move-btn { width: 52px; height: 52px; font-size: 18px; }
+  .fire-btn { width: 70px; height: 70px; font-size: 16px; }
+}
+
 /* 미사일을 채우는 중에는 눌러도 소용없다는 것을 흐리게 보여줍니다 */
 .fire-btn.empty {
   background: rgba(255, 93, 115, 0.35);
@@ -439,6 +490,37 @@ h1 {
   font-size: 11.5px;
   font-weight: 500;
   color: #ffd166;
+}
+
+/*
+  가로가 좁을 때(세로로 든 휴대폰) 점수판을 조금씩 줄입니다.
+
+  점수가 두 자리만 되어도 점수판 한 줄이 390px 을 넘겨서,
+  오른쪽 끝의 멈춤·소리 버튼이 아래 줄로 떨어졌습니다.
+  네 자리 점수(9999)까지 한 줄에 들어가도록 재서 맞춘 값들입니다.
+*/
+@media (max-width: 430px) {
+  .hud { gap: 6px; padding-left: 10px; padding-right: 10px; }
+  .score-box { padding: 5px 10px; font-size: 17px; }
+  .score-label { font-size: 10px; }
+  .score-box.hearts { font-size: 13px; padding: 6px 9px; }
+  .score-box.buffs { padding: 0; }
+  #buffs { font-size: 13px; padding: 6px 11px; }
+  .pause-btn { padding: 6px 11px; font-size: 13px; }
+  .sound-btn { width: 36px; height: 36px; font-size: 16px; }
+  .hud-buttons { gap: 6px; }
+}
+
+/* 아주 좁은 휴대폰(360px)에서는 한 번 더 줄입니다 */
+@media (max-width: 400px) {
+  .hud { gap: 5px; padding-left: 8px; padding-right: 8px; }
+  .score-box { padding: 4px 8px; font-size: 16px; }
+  .score-label { font-size: 9.5px; }
+  .score-box.hearts { font-size: 12px; padding: 5px 8px; }
+  #buffs { font-size: 12px; padding: 5px 10px; }
+  .pause-btn { padding: 5px 9px; font-size: 12.5px; }
+  .sound-btn { width: 33px; height: 33px; font-size: 15px; }
+  .hud-buttons { gap: 5px; }
 }
 
 /* 화면이 낮을 때(가로로 눕혔을 때) 글자를 줄여 다 보이게 합니다 */
