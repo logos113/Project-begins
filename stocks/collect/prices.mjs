@@ -147,8 +147,14 @@ async function yahoo에서(심볼) {
   const 마지막 = 거래일[거래일.length - 1];
   const 직전칸 = 거래일.length >= 2 ? 거래일[거래일.length - 2] : null;
 
-  const 종가 = 마지막.종가;
-  const 직전 = 직전칸 ? 직전칸.종가 : null;
+  /*
+    소수점을 둘째 자리에서 끊습니다.
+    야후가 주는 값은 5451.81982421875 처럼 길게 옵니다.
+    화면에 그대로 내보내면 읽기 나쁘고, 지수에 소수 열 자리는
+    아무 뜻도 없습니다. 변동률은 끊기 전 값으로 계산합니다.
+  */
+  const 종가 = Number(마지막.종가.toFixed(2));
+  const 직전 = 직전칸 ? Number(직전칸.종가.toFixed(2)) : null;
 
   let 변동률 = (직전 && 직전 !== 0)
     ? Number((((종가 - 직전) / 직전) * 100).toFixed(2))
@@ -169,14 +175,6 @@ async function yahoo에서(심볼) {
     기준일: 마지막.날,
     출처: "Yahoo",
     거래일수: 거래일.length,
-    /* ※ 확인용. 맞는지 재보고 나면 뺍니다. */
-    _원본: {
-      마지막세칸: 거래일.slice(-3),
-      meta_지금값: 알맹이.meta?.regularMarketPrice ?? null,
-      meta_때: 알맹이.meta?.regularMarketTime
-        ? new Date(알맹이.meta.regularMarketTime * 1000).toISOString()
-        : null,
-    },
   };
 }
 
