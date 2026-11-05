@@ -1,0 +1,91 @@
+{
+ "다녀온시각": "2026-11-05T04:18:36.060Z",
+ "결과": [
+  {
+   "이름": "BLS 소식 RSS",
+   "주소": "https://www.bls.gov/feed/bls_latest.rss",
+   "상태": 403,
+   "성공": false,
+   "종류": "text/html",
+   "길이": 1325,
+   "앞머리": "<!DOCTYPE HTML> <html lang=\"en-us\"> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /> <title>Access Denied</title> </head> <style type=\"text/css\"> .centerDiv { width: 60%; h"
+  },
+  {
+   "이름": "BLS CPI RSS",
+   "주소": "https://www.bls.gov/feed/cpi.rss",
+   "상태": 403,
+   "성공": false,
+   "종류": "text/html",
+   "길이": 1325,
+   "앞머리": "<!DOCTYPE HTML> <html lang=\"en-us\"> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /> <title>Access Denied</title> </head> <style type=\"text/css\"> .centerDiv { width: 60%; h"
+  },
+  {
+   "이름": "BLS 2026 일정",
+   "주소": "https://www.bls.gov/schedule/2026/02_sched.htm",
+   "상태": 403,
+   "성공": false,
+   "종류": "text/html",
+   "길이": 1325,
+   "앞머리": "<!DOCTYPE HTML> <html lang=\"en-us\"> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /> <title>Access Denied</title> </head> <style type=\"text/css\"> .centerDiv { width: 60%; h"
+  },
+  {
+   "이름": "BLS 일정 메인",
+   "주소": "https://www.bls.gov/schedule/",
+   "상태": 403,
+   "성공": false,
+   "종류": "text/html",
+   "길이": 1325,
+   "앞머리": "<!DOCTYPE HTML> <html lang=\"en-us\"> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /> <title>Access Denied</title> </head> <style type=\"text/css\"> .centerDiv { width: 60%; h"
+  },
+  {
+   "이름": "Investing 경제캘린더",
+   "주소": "https://www.investing.com/economic-calendar/",
+   "상태": 403,
+   "성공": false,
+   "종류": "text/plain",
+   "길이": 3,
+   "앞머리": "403"
+  },
+  {
+   "이름": "Trading Economics",
+   "주소": "https://tradingeconomics.com/united-states/calendar",
+   "상태": 200,
+   "성공": true,
+   "종류": "text/html; charset=utf-8",
+   "길이": 1385366,
+   "CPI둘레": [
+    "6% 2.5% 01:30 PM US Inflation Rate MoM OCT 0.6% 0.2% 01:30 PM US Inflation Rate YoY OCT 3.7% 3.7% 01:30 PM US CPI OCT 336.94 337 01:30 PM US CPI s.a OCT 336.30 337 01:55 PM US Redbook YoY NOV/07 10.4% 9.3% 04:00 PM US Total Household Debt Q3 $18.8T 04:00 PM US",
+    "ate MoM OCT 0.6% 0.2% 01:30 PM US Inflation Rate YoY OCT 3.7% 3.7% 01:30 PM US CPI OCT 336.94 337 01:30 PM US CPI s.a OCT 336.30 337 01:55 PM US Redbook YoY NOV/07 10.4% 9.3% 04:00 PM US Total Household Debt Q3 $18.8T 04:00 PM US WASDE Report 05:00 PM US EIA S"
+   ],
+   "앞머리": "United States Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Indicators Countries Forecasts Commodities Indexes Currencies Crypto Bonds Countries Indicators Members DATA PLANS Download historical data for 2"
+  },
+  {
+   "이름": "FXStreet 캘린더",
+   "주소": "https://www.fxstreet.com/economic-calendar",
+   "상태": 403,
+   "성공": false,
+   "종류": "text/html; charset=UTF-8",
+   "길이": 5745,
+   "앞머리": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"><meta nam"
+  },
+  {
+   "이름": "FRED 발표일(키 없이)",
+   "주소": "https://api.stlouisfed.org/fred/release/dates?release_id=10&file_type=json",
+   "상태": 400,
+   "성공": false,
+   "종류": "application/json; charset=UTF-8",
+   "길이": 162,
+   "앞머리": "{\"error_code\":400,\"error_message\":\"Bad Request. Variable api_key is not set. Read https:\\/\\/fred.stlouisfed.org\\/docs\\/api\\/api_key.html for more information.\"}"
+  },
+  {
+   "이름": "FRED 공개 캘린더 페이지",
+   "주소": "https://fred.stlouisfed.org/releases/calendar",
+   "상태": 200,
+   "성공": true,
+   "종류": "text/html; charset=UTF-8",
+   "길이": 79866,
+   "CPI둘레": [],
+   "앞머리": "Economic Release Calendar | FRED | St. Louis Fed --> Skip to main content Explore Our Apps FRED Tools and resources to find and use economic data worldwide FRASER U.S. financial, economic, and banking history ALFRED Vintages of economic data from spe"
+  }
+ ]
+}
