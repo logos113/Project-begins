@@ -1,48 +1,49 @@
 {
- "다녀온시각": "2026-11-05T07:44:05.322Z",
+ "다녀온시각": "2026-11-05T07:45:56.459Z",
  "물어본날": "2026-11-06",
  "결과": [
   {
-   "이름": "나스닥 실적캘린더",
+   "이름": "나스닥 실적캘린더(재시도)",
    "주소": "https://api.nasdaq.com/api/calendar/earnings?date=2026-11-06",
    "성공": false,
    "까닭": "The operation was aborted due to timeout"
   },
   {
-   "이름": "야후 실적 화면(종목별)",
-   "주소": "https://query1.finance.yahoo.com/v10/finance/quoteSummary/AAPL?modules=calendarEvents",
-   "상태": 401,
+   "이름": "stockanalysis 실적",
+   "주소": "https://stockanalysis.com/markets/earnings/",
+   "상태": 404,
    "성공": false,
-   "종류": "application/json;charset=utf-8",
-   "길이": 89,
-   "앞머리": "{\"finance\":{\"result\":null,\"error\":{\"code\":\"Unauthorized\",\"description\":\"Invalid Crumb\"}}}"
+   "종류": "text/html",
+   "길이": 48537,
+   "앞머리": "<!doctype html> <html lang=\"en\"> <head> <meta charset=\"utf-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" /> <!--12qhfyh--><!--[0--><link rel=\"preconnect\" href=\"https://securepubads.g.doubleclick.net\"/> <link rel=\"preconnect\" href=\"https://u5.investingchannel.com\"/><!--]--"
   },
   {
-   "이름": "야후 실적 화면(v7)",
-   "주소": "https://query1.finance.yahoo.com/v7/finance/quote?symbols=AAPL&fields=earningsTimestamp",
-   "상태": 401,
-   "성공": false,
-   "종류": "application/json;charset=utf-8",
-   "길이": 157,
-   "앞머리": "{\"finance\":{\"result\":null,\"error\":{\"code\":\"Unauthorized\",\"description\":\"User is unable to access this feature - https://bit.ly/yahoo-finance-api-feedback\"}}}"
-  },
-  {
-   "이름": "네이버 금융 실적",
-   "주소": "https://finance.naver.com/sise/sise_rise.naver",
+   "이름": "야후 실적 캘린더(화면)",
+   "주소": "https://finance.yahoo.com/calendar/earnings?day=2026-11-06",
    "상태": 200,
    "성공": true,
    "종류": "text/html; charset=utf-8",
-   "길이": 129487,
-   "앞머리": "<!DOCTYPE html><html lang=\"ko\" class=\"\" data-theme=\"light\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=1366, initial-scale=1.0, user-scalable=yes\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"https://ssl.pstatic.net/imgstock"
+   "길이": 1083572,
+   "앞머리": "<!doctype html> <html lang=\"en-US\" theme=\"auto\" data-color-theme-enabled=\"true\" data-color-scheme=\"auto\" class=\"desktop neo-green dock-upscale failsafe\"> <head> <meta charset=\"utf-8\"> <meta name=\"oath:guce:consent-host\" content=\"guce.yahoo.com\"> <link rel=\"preconnect\" href=\"//s.yimg.com\" crossorigin"
   },
   {
-   "이름": "한국거래소 공시",
-   "주소": "https://kind.krx.co.kr/disclosure/todaydisclosure.do",
+   "이름": "Finnhub (키 없이)",
+   "주소": "https://finnhub.io/api/v1/calendar/earnings?from=2026-11-06&to=2026-11-06",
+   "상태": 401,
+   "성공": false,
+   "종류": "application/json; charset=utf-8",
+   "길이": 34,
+   "앞머리": "{\"error\":\"Please use an API key.\"}"
+  },
+  {
+   "이름": "DART 한국공시 (키 없이)",
+   "주소": "https://opendart.fss.or.kr/api/list.json?bgn_de=20261105&end_de=20261112",
    "상태": 200,
    "성공": true,
-   "종류": "text/html; charset=UTF-8",
-   "길이": 1618,
-   "앞머리": " <!DOCTYPE html> <html> <head> <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /> <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" /> <meta http-equiv=\"content-language\" content=\"kr\" /> <meta http-equiv=\"content-style-type\" content=\"text/css\" /> <meta http-equiv=\"pragma\" conte"
+   "종류": "text/html",
+   "길이": 4382,
+   "앞머리": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no\" />\n<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />\n<title>OpenDART시스템</title>\n<style>\n/* default */\nhtml {height:10",
+   "json아님": true
   }
  ]
 }
