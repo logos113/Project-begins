@@ -40,38 +40,30 @@ const 머리말 = {
 const 내일 = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
 
 const 볼곳 = [
-  {
-    이름: "나스닥 실적캘린더",
+  // 1차에서 타임아웃이었습니다. 느린 것일 수 있어 넉넉히 기다려 봅니다.
+  { 이름: "나스닥 실적캘린더(재시도)",
     주소: `https://api.nasdaq.com/api/calendar/earnings?date=${내일}`,
-    json: true,
-  },
-  {
-    이름: "야후 실적 화면(종목별)",
-    주소: "https://query1.finance.yahoo.com/v10/finance/quoteSummary/AAPL?modules=calendarEvents",
-    json: true,
-  },
-  {
-    이름: "야후 실적 화면(v7)",
-    주소: "https://query1.finance.yahoo.com/v7/finance/quote?symbols=AAPL&fields=earningsTimestamp",
-    json: true,
-  },
-  {
-    이름: "네이버 금융 실적",
-    주소: "https://finance.naver.com/sise/sise_rise.naver",
-    json: false,
-  },
-  {
-    이름: "한국거래소 공시",
-    주소: "https://kind.krx.co.kr/disclosure/todaydisclosure.do",
-    json: false,
-  },
+    json: true, 기다림: 40000 },
+
+  // 무료로 실적 일정을 보여주는 곳으로 알려진 데들
+  { 이름: "stockanalysis 실적",
+    주소: "https://stockanalysis.com/markets/earnings/", json: false },
+  { 이름: "야후 실적 캘린더(화면)",
+    주소: `https://finance.yahoo.com/calendar/earnings?day=${내일}`, json: false },
+
+  // 키가 필요한지 확인만 — 필요하다고 하면 그 자체가 답입니다
+  { 이름: "Finnhub (키 없이)",
+    주소: `https://finnhub.io/api/v1/calendar/earnings?from=${내일}&to=${내일}`, json: true },
+  { 이름: "DART 한국공시 (키 없이)",
+    주소: "https://opendart.fss.or.kr/api/list.json?bgn_de=20261105&end_de=20261112",
+    json: true },
 ];
 
 async function 두드리기(하나) {
   try {
     const 답 = await fetch(하나.주소, {
       headers: 머리말,
-      signal: AbortSignal.timeout(20000),
+      signal: AbortSignal.timeout(하나.기다림 || 20000),
       redirect: "follow",
     });
     const 글 = await 답.text();
