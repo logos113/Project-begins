@@ -118,34 +118,37 @@ async function yahoo에서(심볼) {
   const 때들 = 알맹이.timestamp || [];
   const 종가들 = 알맹이.indicators?.quote?.[0]?.close || [];
 
-  // 값이 있는 날만 (날짜, 종가) 로 추려냅니다
+  /*
+    값이 있는 날만 (날짜, 종가) 로 추려냅니다.
+    휴장일은 close 가 null 로 들어오므로 여기서 빠집니다.
+  */
   const 거래일 = [];
   for (let i = 0; i < 종가들.length; i += 1) {
     const ㄱ = Number(종가들[i]);
-    if (Number.isFinite(ㄱ) && ㄱ !== 0) 거래일.push({ 때: 때들[i], 종가: ㄱ });
+    if (Number.isFinite(ㄱ) && ㄱ !== 0) {
+      거래일.push({
+        날: 때들[i] ? new Date(때들[i] * 1000).toISOString().slice(0, 10) : null,
+        종가: ㄱ,
+      });
+    }
   }
-
-  // 장중이면 meta 의 지금 값이 배열보다 새 것일 수 있습니다
-  const 지금값 = Number(알맹이.meta?.regularMarketPrice);
-  const 마지막 = 거래일.length ? 거래일[거래일.length - 1] : null;
-  const 종가 = Number.isFinite(지금값) ? 지금값 : (마지막 ? 마지막.종가 : NaN);
-  if (!Number.isFinite(종가)) throw new Error("값 없음");
+  if (거래일.length === 0) throw new Error("값 없음");
 
   /*
-    '직전 거래일 종가' 를 고릅니다.
+    마지막 두 칸을 그대로 씁니다. 그게 전부입니다.
 
-    배열의 마지막이 오늘 값이면 그 앞이 어제입니다.
-    아직 장이 안 열려 배열의 마지막이 어제 값이면, 그게 곧 지금 값과
-    같으므로 역시 그 앞을 봐야 합니다. 두 경우를 한 번에 다루려고
-    '지금 값과 거의 같은 마지막 칸' 은 건너뜁니다.
+    ※ 처음에는 meta 의 '지금 값' 을 섞어서, '지금 값과 같은 칸은 건너뛴다'
+       는 규칙을 넣었습니다. 그랬더니 모든 지수가 +0% 로 나왔습니다 —
+       meta 값과 배열 마지막이 아주 조금 달라서 건너뛰지 않았고,
+       결국 '오늘 값을 어제 값으로' 삼아 비교한 셈이 됐습니다.
+       영리하게 굴다 틀렸습니다. 배열만 보는 쪽이 단순하고 맞습니다.
+       야후는 장중에도 일봉 배열의 마지막 칸을 갱신해 줍니다.
   */
-  let 직전 = null;
-  for (let i = 거래일.length - 1; i >= 0; i -= 1) {
-    const ㄱ = 거래일[i].종가;
-    if (Math.abs(ㄱ - 종가) < 1e-9) continue;   // 지금 값과 같은 칸은 건너뜀
-    직전 = ㄱ;
-    break;
-  }
+  const 마지막 = 거래일[거래일.length - 1];
+  const 직전칸 = 거래일.length >= 2 ? 거래일[거래일.length - 2] : null;
+
+  const 종가 = 마지막.종가;
+  const 직전 = 직전칸 ? 직전칸.종가 : null;
 
   let 변동률 = (직전 && 직전 !== 0)
     ? Number((((종가 - 직전) / 직전) * 100).toFixed(2))
@@ -163,11 +166,17 @@ async function yahoo에서(심볼) {
     변동률,
     전날종가: 직전,
     수상한가,
-    기준일: 마지막?.때
-      ? new Date(마지막.때 * 1000).toISOString().slice(0, 10)
-      : null,
+    기준일: 마지막.날,
     출처: "Yahoo",
     거래일수: 거래일.length,
+    /* ※ 확인용. 맞는지 재보고 나면 뺍니다. */
+    _원본: {
+      마지막세칸: 거래일.slice(-3),
+      meta_지금값: 알맹이.meta?.regularMarketPrice ?? null,
+      meta_때: 알맹이.meta?.regularMarketTime
+        ? new Date(알맹이.meta.regularMarketTime * 1000).toISOString()
+        : null,
+    },
   };
 }
 
