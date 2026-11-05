@@ -47,17 +47,28 @@ async function stooq에서(심볼) {
   if (줄들.length < 2) throw new Error("줄이 모자람");
 
   const 칸 = 줄들[1].split(",");
-  const 연값 = Number(칸[3]);     // Open
   const 종가 = Number(칸[6]);     // Close
 
   if (!Number.isFinite(종가) || 종가 === 0) throw new Error("값 없음(N/D)");
 
   return {
     종가,
-    // 전날 종가를 따로 안 주므로, 그날 시가 대비 움직임으로 대신합니다
-    변동률: Number.isFinite(연값) && 연값 !== 0
-      ? Number((((종가 - 연값) / 연값) * 100).toFixed(2))
-      : null,
+    /*
+      변동률은 비워둡니다.
+
+      Stooq 의 이 주소는 '어제 종가' 를 주지 않습니다. 한 줄에 오는 것은
+      그날의 시가·고가·저가·종가뿐입니다.
+      처음에는 '시가 대비 종가' 를 변동률 자리에 넣었는데, 그건
+      '어제보다 얼마나' 가 아니라 '오늘 장 중에 얼마나' 입니다.
+      이름은 같아도 뜻이 다른 숫자를 슬쩍 끼워 넣는 것이라,
+      차라리 비워두고 화면에 '—' 로 보이게 했습니다.
+
+      Stooq 는 야후가 실패했을 때만 쓰는 예비입니다.
+      그때는 '값은 보이고 변동률만 모름' 이 됩니다.
+    */
+    변동률: null,
+    전날종가: null,
+    수상한가: false,
     기준일: 칸[1] || null,
     출처: "Stooq",
   };
@@ -69,60 +80,94 @@ async function stooq에서(심볼) {
   이쪽은 전날 종가(chartPreviousClose)를 함께 주기 때문에
   '어제보다 얼마나' 를 제대로 계산할 수 있습니다. 그래서 이쪽을 먼저 씁니다.
 */
+/*
+  지수가 하루에 이만큼 넘게 움직였다고 나오면 뭔가 잘못 읽은 것입니다.
+
+  역사적으로 코스피 하루 최대 낙폭이 -12% 정도입니다(2008년).
+  15%가 넘으면 '진짜 폭락' 보다 '내가 잘못 계산했을' 확률이 훨씬 높습니다.
+  그럴 때는 변동률을 비워서 안 보여줍니다 — 틀린 숫자를 자신 있게
+  보여주는 것보다 "모름" 이 낫습니다.
+*/
+const 말이되는_변동폭 = 15;
+
 async function yahoo에서(심볼) {
   /*
-    range 를 2d 로 둡니다.
+    meta 의 '전날 종가' 를 믿지 않고, 실제 종가 배열에서 직접 셉니다.
 
-    처음에 5d 로 두었더니 코스피가 하루에 -8.95% 떨어진 것으로 나왔습니다.
-    야후가 주는 chartPreviousClose 는 '어제 종가' 가 아니라
-    '요청한 기간이 시작되기 직전의 종가' 입니다. 5일치를 달라고 했으니
-    5일 전과 비교한 값이 나온 것입니다.
+    왜 이렇게 하나 — 재보고 알았습니다.
+      regularMarketPreviousClose  →  null (이 주소는 안 줍니다)
+      previousClose               →  null (역시 안 줍니다)
+      chartPreviousClose          →  '요청한 기간이 시작되기 직전' 의 종가
 
-    그래서 두 가지를 함께 고쳤습니다.
-      - 기간을 2d 로 줄이고
-      - regularMarketPreviousClose(진짜 '어제 종가')를 먼저 봅니다
+    쓸 수 있는 것이 chartPreviousClose 뿐인데, 이건 기간을 며칠로
+    달라고 했느냐에 따라 값이 달라집니다. 처음에 5일치를 달라고 했더니
+    코스피가 하루에 -8.95% 떨어진 것으로 나왔습니다(= 5일치 변동).
+
+    대신 종가 배열의 마지막 둘을 비교하면 '직전 거래일 대비' 가
+    정확히 나옵니다. 휴장일이 끼어도 상관없습니다 — 값이 없는 날은
+    아예 배열에 null 로 들어오고, 그걸 빼고 세기 때문입니다.
+    그래서 기간은 넉넉히 10일을 달라고 합니다.
   */
   const 답 = await 가져오기(
-    `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(심볼)}?interval=1d&range=2d`,
+    `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(심볼)}?interval=1d&range=10d`,
     "json",
   );
-  const 알맹이 = 답?.chart?.result?.[0]?.meta;
+  const 알맹이 = 답?.chart?.result?.[0];
   if (!알맹이) throw new Error("모양이 다름");
 
-  const 종가 = Number(알맹이.regularMarketPrice);
+  const 때들 = 알맹이.timestamp || [];
+  const 종가들 = 알맹이.indicators?.quote?.[0]?.close || [];
+
+  // 값이 있는 날만 (날짜, 종가) 로 추려냅니다
+  const 거래일 = [];
+  for (let i = 0; i < 종가들.length; i += 1) {
+    const ㄱ = Number(종가들[i]);
+    if (Number.isFinite(ㄱ) && ㄱ !== 0) 거래일.push({ 때: 때들[i], 종가: ㄱ });
+  }
+
+  // 장중이면 meta 의 지금 값이 배열보다 새 것일 수 있습니다
+  const 지금값 = Number(알맹이.meta?.regularMarketPrice);
+  const 마지막 = 거래일.length ? 거래일[거래일.length - 1] : null;
+  const 종가 = Number.isFinite(지금값) ? 지금값 : (마지막 ? 마지막.종가 : NaN);
   if (!Number.isFinite(종가)) throw new Error("값 없음");
 
-  // 앞에 적은 것부터 씁니다. 뒤로 갈수록 '어제' 에서 멀어집니다.
-  const 전날후보 = [
-    알맹이.regularMarketPreviousClose,
-    알맹이.previousClose,
-    알맹이.chartPreviousClose,
-  ];
-  const 전날 = Number(전날후보.find((ㄱ) => Number.isFinite(Number(ㄱ)) && Number(ㄱ) !== 0));
+  /*
+    '직전 거래일 종가' 를 고릅니다.
 
-  const 변동률 = Number.isFinite(전날) && 전날 !== 0
-    ? Number((((종가 - 전날) / 전날) * 100).toFixed(2))
+    배열의 마지막이 오늘 값이면 그 앞이 어제입니다.
+    아직 장이 안 열려 배열의 마지막이 어제 값이면, 그게 곧 지금 값과
+    같으므로 역시 그 앞을 봐야 합니다. 두 경우를 한 번에 다루려고
+    '지금 값과 거의 같은 마지막 칸' 은 건너뜁니다.
+  */
+  let 직전 = null;
+  for (let i = 거래일.length - 1; i >= 0; i -= 1) {
+    const ㄱ = 거래일[i].종가;
+    if (Math.abs(ㄱ - 종가) < 1e-9) continue;   // 지금 값과 같은 칸은 건너뜀
+    직전 = ㄱ;
+    break;
+  }
+
+  let 변동률 = (직전 && 직전 !== 0)
+    ? Number((((종가 - 직전) / 직전) * 100).toFixed(2))
     : null;
+
+  // 말이 안 되게 크면 잘못 읽은 것으로 보고 안 보여줍니다
+  let 수상한가 = false;
+  if (변동률 !== null && Math.abs(변동률) > 말이되는_변동폭) {
+    수상한가 = true;
+    변동률 = null;
+  }
 
   return {
     종가,
     변동률,
-    전날종가: Number.isFinite(전날) ? 전날 : null,
-    기준일: 알맹이.regularMarketTime
-      ? new Date(알맹이.regularMarketTime * 1000).toISOString().slice(0, 10)
+    전날종가: 직전,
+    수상한가,
+    기준일: 마지막?.때
+      ? new Date(마지막.때 * 1000).toISOString().slice(0, 10)
       : null,
     출처: "Yahoo",
-    /*
-      ※ 확인용. 야후가 주는 세 가지 '전날 값' 을 그대로 적어둡니다.
-         어느 것이 진짜 어제 종가인지 재보려고 넣었습니다.
-         확인이 끝나면 뺍니다.
-    */
-    _원본: {
-      regularMarketPreviousClose: 알맹이.regularMarketPreviousClose ?? null,
-      previousClose: 알맹이.previousClose ?? null,
-      chartPreviousClose: 알맹이.chartPreviousClose ?? null,
-      regularMarketPrice: 알맹이.regularMarketPrice ?? null,
-    },
+    거래일수: 거래일.length,
   };
 }
 
