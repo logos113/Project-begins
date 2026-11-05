@@ -1,0 +1,48 @@
+{
+ "다녀온시각": "2026-11-05T07:44:05.322Z",
+ "물어본날": "2026-11-06",
+ "결과": [
+  {
+   "이름": "나스닥 실적캘린더",
+   "주소": "https://api.nasdaq.com/api/calendar/earnings?date=2026-11-06",
+   "성공": false,
+   "까닭": "The operation was aborted due to timeout"
+  },
+  {
+   "이름": "야후 실적 화면(종목별)",
+   "주소": "https://query1.finance.yahoo.com/v10/finance/quoteSummary/AAPL?modules=calendarEvents",
+   "상태": 401,
+   "성공": false,
+   "종류": "application/json;charset=utf-8",
+   "길이": 89,
+   "앞머리": "{\"finance\":{\"result\":null,\"error\":{\"code\":\"Unauthorized\",\"description\":\"Invalid Crumb\"}}}"
+  },
+  {
+   "이름": "야후 실적 화면(v7)",
+   "주소": "https://query1.finance.yahoo.com/v7/finance/quote?symbols=AAPL&fields=earningsTimestamp",
+   "상태": 401,
+   "성공": false,
+   "종류": "application/json;charset=utf-8",
+   "길이": 157,
+   "앞머리": "{\"finance\":{\"result\":null,\"error\":{\"code\":\"Unauthorized\",\"description\":\"User is unable to access this feature - https://bit.ly/yahoo-finance-api-feedback\"}}}"
+  },
+  {
+   "이름": "네이버 금융 실적",
+   "주소": "https://finance.naver.com/sise/sise_rise.naver",
+   "상태": 200,
+   "성공": true,
+   "종류": "text/html; charset=utf-8",
+   "길이": 129487,
+   "앞머리": "<!DOCTYPE html><html lang=\"ko\" class=\"\" data-theme=\"light\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=1366, initial-scale=1.0, user-scalable=yes\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"https://ssl.pstatic.net/imgstock"
+  },
+  {
+   "이름": "한국거래소 공시",
+   "주소": "https://kind.krx.co.kr/disclosure/todaydisclosure.do",
+   "상태": 200,
+   "성공": true,
+   "종류": "text/html; charset=UTF-8",
+   "길이": 1618,
+   "앞머리": " <!DOCTYPE html> <html> <head> <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /> <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" /> <meta http-equiv=\"content-language\" content=\"kr\" /> <meta http-equiv=\"content-style-type\" content=\"text/css\" /> <meta http-equiv=\"pragma\" conte"
+  }
+ ]
+}
