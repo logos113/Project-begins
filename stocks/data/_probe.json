@@ -1,163 +1,68 @@
 {
- "다녀온시각": "2026-11-05T03:36:35.258Z",
+ "다녀온시각": "2026-11-05T03:39:33.111Z",
+ "차수": 2,
  "결과": [
   {
-   "이름": "FOMC (연준)",
+   "이름": "FOMC — 덩어리와 연도 제목",
    "주소": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
-   "성공": true,
    "상태": 200,
-   "걸린시간": 139,
-   "내용종류": "text/html",
-   "html길이": 168450,
-   "글자길이": 20973,
-   "쓸만한_클래스": [
-    "fomc-meeting (57번)",
-    "fomc-meeting__month (57번)",
-    "fomc-meeting__date (57번)",
-    "fomc-meeting__minutes (57번)",
-    "fomc-meeting--shaded (55번)"
+   "성공": true,
+   "종류": "text/html",
+   "길이": 168450,
+   "연도제목": [
+    "<h3> Meeting calendars, statements, and minutes (2021-2027)",
+    "<h4> 2026 FOMC Meetings",
+    "<h4> 2025 FOMC Meetings",
+    "<h4> 2024 FOMC Meetings",
+    "<h4> 2023 FOMC Meetings",
+    "<h4> 2022 FOMC Meetings",
+    "<h4> 2021 FOMC Meetings",
+    "<h4> 2027 FOMC Meetings"
    ],
-   "표개수": 0,
-   "날짜조각": [
-    {
-     "걸린글": "February 18, 2026",
-     "둘레": " and Monetary Policy Strategy Minutes: PDF | HTML (Released February 18, 2026) March 17-18* Statement: PDF | HTML Implementation Note Pre"
-    },
-    {
-     "걸린글": "April 08, 2026",
-     "둘레": "ojection Materials PDF | HTML Minutes: PDF | HTML (Released April 08, 2026) April 28-29 Statement: PDF | HTML Implementation Note Pres"
-    },
-    {
-     "걸린글": "May 20, 2026",
-     "둘레": "ntation Note Press Conference Minutes: PDF | HTML (Released May 20, 2026) June 16-17* Statement: PDF | HTML Implementation Note Pres"
-    },
-    {
-     "걸린글": "July 08, 2026",
-     "둘레": "ojection Materials PDF | HTML Minutes: PDF | HTML (Released July 08, 2026) July 28-29 Statement: PDF | HTML Implementation Note Press"
-    },
-    {
-     "걸린글": "August 19, 2026",
-     "둘레": "ntation Note Press Conference Minutes: PDF | HTML (Released August 19, 2026) September 15-16* Statement: PDF | HTML Implementation Note"
-    },
-    {
-     "걸린글": "October 07, 2026",
-     "둘레": "ojection Materials PDF | HTML Minutes: PDF | HTML (Released October 07, 2026) October 27-28 Statement: PDF | HTML Implementation Note Pr"
-    },
-    {
-     "걸린글": "February 19, 2025",
-     "둘레": "ntation Note Press Conference Minutes: PDF | HTML (Released February 19, 2025) March 18-19* Statement: PDF | HTML Implementation Note Pre"
-    },
-    {
-     "걸린글": "April 09, 2025",
-     "둘레": "ojection Materials PDF | HTML Minutes: PDF | HTML (Released April 09, 2025) May 6-7 Statement: PDF | HTML Implementation Note Press Co"
-    },
-    {
-     "걸린글": "May 28, 2025",
-     "둘레": "ntation Note Press Conference Minutes: PDF | HTML (Released May 28, 2025) June 17-18* Statement: PDF | HTML Implementation Note Pres"
-    },
-    {
-     "걸린글": "July 09, 2025",
-     "둘레": "ojection Materials PDF | HTML Minutes: PDF | HTML (Released July 09, 2025) July 29-30 Statement: PDF | HTML Implementation Note Press"
-    },
-    {
-     "걸린글": "August 20, 2025",
-     "둘레": "ntation Note Press Conference Minutes: PDF | HTML (Released August 20, 2025) August 22 (notation vote) Statement on Longer-Run Goals an"
-    },
-    {
-     "걸린글": "October 08, 2025",
-     "둘레": "ojection Materials PDF | HTML Minutes: PDF | HTML (Released October 08, 2025) October 28-29 Statement: PDF | HTML Implementation Note Pr"
-    }
+   "meeting덩어리": [
+    "div class=\"panel panel-default\"><div class=\"panel-heading\"><h4><a id=\"42828\">2026 FOMC Meetings</a></h4></div> <div class=\"row fomc-meeting\" \"> <div class=\"fomc-meeting__month col-xs-5 col-sm-3 col-md-2\"><strong>January</strong></div> <div class=\"fomc-meeting__date col-xs-4 col-sm-9 col-md-10 col-lg-1\">27-28</div> <div class=\"col-xs-12 col-md-4 col-lg-2\"> <strong>Statement:</strong><br> <a href=\"/monetarypolicy/files/monetary20260128a1.pdf\">PDF</a> | <a href=\"/newsevents/pressreleases/monetary20260128a.htm\">HTML</a><br> <a href=\"/newsevents/pressreleases/monetary20260128a1.htm\">Implementation N",
+    " </div> </div> <div class=\"fomc-meeting--shaded row fomc-meeting\" \"> <div class=\"fomc-meeting--shaded fomc-meeting__month col-xs-5 col-sm-3 col-md-2\"><strong>March</strong></div> <div class=\"fomc-meeting__date col-xs-4 col-sm-9 col-md-10 col-lg-1\">17-18*</div> <div class=\"col-xs-12 col-md-4 col-lg-2\"> <strong>Statement:</strong><br> <a href=\"/monetarypolicy/files/monetary20260318a1.pdf\">PDF</a> | <a href=\"/newsevents/pressreleases/monetary20260318a.htm\">HTML</a><br> <a href=\"/newsevents/pressreleases/monetary20260318a1.htm\">Implementation No",
+    " <br> (Released April 08, 2026) </div> </div> <div class=\"row fomc-meeting\" \"> <div class=\"fomc-meeting__month col-xs-5 col-sm-3 col-md-2\"><strong>April</strong></div> <div class=\"fomc-meeting__date col-xs-4 col-sm-9 col-md-10 col-lg-1\">28-29</div> <div class=\"col-xs-12 col-md-4 col-lg-2\"> <strong>Statement:</strong><br> <a href=\"/monetarypolicy/files/monetary20260429a1.pdf\">PDF</a> | <a href=\"/newsevents/pressreleases/monetary20260429a.htm\">HTML</a><br> <a href=\"/newsevents/pressreleases/monetary20260429a1.htm\">Implementation Not"
    ],
-   "글_앞머리": "The Fed - Meeting calendars and information Skip to main content An official website of the United States Government Here&#x27;s how you know Official websites use .gov A .gov website belongs to an official government organization in the United States. Secure .gov websites use HTTPS A lock ( Lock Locked padlock icon ) or https:// means you&#x27;ve safely connected to the .gov website. Share sensit"
+   "panel덩어리": [
+    " <div id=\"floatRightRail\" class=\"col-xs-12 col-sm-12 col-md-5 pull-right\"> <div class=\"panel panel-related\"> <div class=\"panel-heading\"><h5 class=\"panel-title text-capitalize\">FOMC Search</h5></div> <div class=\"panel-body\" style=\"padding-bottom:5px;\"> <ul class=\"panel__list list-unstyled\"> <li class=\"panel__listItem\">Search all FOMC materials</li> <li class=\"panel__listItem\" style=\"padding-bottom: 20px;\"> <form class=\"form-inline ng-pristine ng-valid\" action=\"//www.fedsearch.org/fomc-docs/search\" me",
+    "\">2022</a> | <a href=\"#27443\">2021</a><br /> Future Year: <a href=\"#45694\">2027</a> <!--Next year: --></p> <div class=\"panel panel-default\"><div class=\"panel-heading\"><h4><a id=\"42828\">2026 FOMC Meetings</a></h4></div> <div class=\"row fomc-meeting\" \"> <div class=\"fomc-meeting__month col-xs-5 col-sm-3 col-md-2\"><strong>January</strong></div> <div class=\"fomc-meeting__date col-xs-4 col-sm-9 col-md-10 col-lg-1\">27-28</div> <div class=\"col-xs-12 col-md-4 col-lg-2\"> <strong>Statement:</strong><br> <a href"
+   ]
   },
   {
-   "이름": "미국 CPI 발표일 (BLS)",
-   "주소": "https://www.bls.gov/schedule/news_release/cpi.htm",
-   "성공": false,
-   "상태": 403,
-   "걸린시간": 159,
-   "내용종류": "text/html",
-   "html길이": 1325,
-   "글자길이": 551,
-   "쓸만한_클래스": [],
-   "표개수": 0,
-   "날짜조각": [],
-   "글_앞머리": "Access Denied Bureau of Labor Statistics Access Denied The BLS is committed to providing data promptly and according to established schedules. Automated retrieval programs (commonly called \"robots\" or \"bots\") can cause delays and interfere with other customers' timely access to information. Therefore, bot activity that doesn't conform to BLS usage policy is prohibited. We apologize for any inconve"
-  },
-  {
-   "이름": "BLS 전체 발표일정",
-   "주소": "https://www.bls.gov/schedule/2026/home.htm",
-   "성공": false,
-   "상태": 403,
-   "걸린시간": 158,
-   "내용종류": "text/html",
-   "html길이": 1325,
-   "글자길이": 551,
-   "쓸만한_클래스": [],
-   "표개수": 0,
-   "날짜조각": [],
-   "글_앞머리": "Access Denied Bureau of Labor Statistics Access Denied The BLS is committed to providing data promptly and according to established schedules. Automated retrieval programs (commonly called \"robots\" or \"bots\") can cause delays and interfere with other customers' timely access to information. Therefore, bot activity that doesn't conform to BLS usage policy is prohibited. We apologize for any inconve"
-  },
-  {
-   "이름": "한국은행 금통위",
+   "이름": "한국은행 금통위 — 표 안쪽과 연도",
    "주소": "https://www.bok.or.kr/portal/singl/crncyPolicyDrcMtg/listYear.do?mtgSe=A&menuNo=200755",
-   "성공": true,
    "상태": 200,
-   "걸린시간": 1684,
-   "내용종류": "text/html;charset=utf-8",
-   "html길이": 487122,
-   "글자길이": 12267,
-   "쓸만한_클래스": [],
-   "표개수": 1,
-   "날짜조각": [
-    {
-     "걸린글": "01월 15일",
-     "둘레": " 2000년 1999년 이동 통화정책방향 회의 회의일자 결정문 기자간담회 의사록 1) 금융·경제 이슈 1) 01월 15일(목) 첨부파일 있습니다 다운로드할 파일을 선택하세요. 국문보도자료(2601).hwp 국문보도자료(2601)"
-    },
-    {
-     "걸린글": "02월 26일",
-     "둘레": "자금유입 현황 및 평가.pdf 4. 주요국 통화정책 차별화 배경 및 국제금융시장 영향.pdf 레이어창 닫기 02월 26일(목) 첨부파일 있습니다 다운로드할 파일을 선택하세요. 국문보도자료(2602).hwp 국문보도자료(2602)"
-    },
-    {
-     "걸린글": "04월 10일",
-     "둘레": " 본 現소비국면 판단과 향후 전망.pdf 2. 부문별 성장차별화가 물가에 미치는 영향.pdf 레이어창 닫기 04월 10일(금) 첨부파일 있습니다 다운로드할 파일을 선택하세요. 국문보도자료(2604).hwp 국문보도자료(2604)"
-    },
-    {
-     "걸린글": "05월 28일",
-     "둘레": "동차산업 성장의 핵심동인 점검.pdf 3. 글로벌 반도체 경기 확장세 지속가능성 점검.pdf 레이어창 닫기 05월 28일(목) 첨부파일 있습니다 다운로드할 파일을 선택하세요. 국문보도자료(2605).hwp 국문보도자료(2605)"
-    },
-    {
-     "걸린글": "07월 16일",
-     "둘레": "자 현황 및 평가.pdf 4. 주요국 시장지표에 내재된 기대인플레이션 평가 및 시사점.pdf 레이어창 닫기 07월 16일(목) 첨부파일 있습니다 다운로드할 파일을 선택하세요. 국문보도자료(2607).hwp 국문보도자료(2607)"
-    },
-    {
-     "걸린글": "08월 27일",
-     "둘레": " 상황.pdf 3. Warsh 의장 취임 이후 미 통화정책 및 국제금융시장 영향 평가.pdf 레이어창 닫기 08월 27일(목) 첨부파일 있습니다 다운로드할 파일을 선택하세요. 국문보도자료(2608).hwp 국문보도자료(2608)"
-    },
-    {
-     "걸린글": "10월 22일",
-     "둘레": " 물가압력이 근원물가에 미치는 영향.pdf 3. 최근 외국인 국내 채권투자 부진 배경.pdf 레이어창 닫기 10월 22일(목) 첨부파일 있습니다 다운로드할 파일을 선택하세요. 국문보도자료(2610).hwp 국문보도자료(2610)"
-    },
-    {
-     "걸린글": "11월 26일",
-     "둘레": "영향 점검.pdf 4. 미 금리상승·고금리 시기의 거주자 해외채권투자 특징 및 시사점.pdf 레이어창 닫기 11월 26일(목) 주 : 1) 금융·경제 이슈는 통화정책방향 결정회의 D+7일, 의사록은 회의일로부터 2주 경과 후 첫"
-    }
+   "성공": true,
+   "종류": "text/html;charset=utf-8",
+   "길이": 487122,
+   "연도제목": [
+    "<h3> 2026년"
    ],
-   "글_앞머리": "| 통화정책방향 결정회의(목록) | 통화정책방향 결정회의 일정 및 자료 | 통화정책 | 정책/업무 | 한국은행 홈페이지 본문내용 바로가기 주메뉴 바로가기 --> --> 한국은행 --> 경제연구원 화폐박물관 지역본부 경제통계시스템(ECOS) 금융·경제 스냅샷 전자도서관 디지털아카이브 채용 전자계약시스템 관련사이트 바로가기 한국은행 화폐박물관 경제연구원 지역본부 경제통계시스템(ECOS) 금융·경제 스냅샷 전자도서관 디지털아카이브 채용 전자계약시스템 본인인증 ENGLISH 한국은행 BANK OF KOREA 한국은행 한국은행이 하는 일 설립목적 및 역사 한국은행법의 변천 역대총재 금융통화위원회 금융통화위원회 금융통화위원회의 역사 조직도 운영 및 법규 전략 및 조직가치 경영정보 계약정보 평판조사 윤리경영 법규정보 사"
+   "표덩어리": [
+    "0년</option> <option value=\"1999\" >1999년</option> </select> <a href=\"javascript:void(0)\" onclick=\"yearMove();\" class=\"go\">이동</a> </div> </div> <div class=\"table tac mt0 scrollX1\"> <table id=\"tableId\"> <caption>통화정책방향 회의</caption> <colgroup> <col style=\"width: 15%;\"> <col style=\"width: 12% ;\"> <col> <col style=\"width: 12% ;\"> <col style=\"width: 20% ;\"> </colgroup> <thead> <tr> <th scope=\"col\">회의일자</th> <th scope=\"col\" class=\"cellDown\">결정문</th> <th scope=\"col\">기자간담회</th> <th scope=\"col\" class=\"cellDown\">의사록<sup title=\"테이블 하단 각주설명 참고\">1)</sup></th> <th scope=\"col\">금융·경제 이슈<sup title=\"테이블 하단 각주설명 참고\">1)</sup></th> </tr> </thead> <tbody> <tr> <th scope=\"row\">01월 15일(목)</th> <td> <div class=\"fileGroupSet\"> <a href=\"javascript:void"
+   ],
+   "날짜덩어리": [
+    " <tr> <th scope=\"row\">01월 15일(목)</th> <td> <div class=\"fileGroupSet\"> <a href=\"javascript:void(0);\" title=\"첨부파일 레이어창열기\" class=\"i-download\"><span class=\"hidden\">첨부파일 있습니다</span></a> <div class=\"fileGoupBox\"> <h3>다운로드할 파일을 선택하세요.</h3> <ul> <li> <a href=\"/portal/cmmn/file/fileDown.do?menuNo=200755&amp;atchFileId=f514048c945f4e19ba9688a0a3ecb105&amp;fileSn=1\" title=",
+    " <tr> <th scope=\"row\">02월 26일(목)</th> <td> <div class=\"fileGroupSet\"> <a href=\"javascript:void(0);\" title=\"첨부파일 레이어창열기\" class=\"i-download\"><span class=\"hidden\">첨부파일 있습니다</span></a> <div class=\"fileGoupBox\"> <h3>다운로드할 파일을 선택하세요.</h3> <ul> <li> <a href=\"/portal/cmmn/file/fileDown.do?menuNo=200755&amp;atchFileId=c8d9eed3100140ba91842ab52723870e&amp;fileSn=1\" title=",
+    "닫기</span></button> </div> </div> </td> </tr> <tr> <th scope=\"row\">11월 26일(목)</th> <td> </td> <td class=\"tal\"> <div class=\"listText\"> </div> <div class=\"listText\"> </div> </td> <td> </td> <td> </td> </tr> </tbody> </table> </div> <ol class=\"fnote\"> <li><span class=\"tit"
+   ],
+   "연도링크": [
+    "/portal/singl/crncyPolicyDrcMtg/listYear.do?mtgSe=A&amp;menuNo=200755",
+    "/portal/singl/crncyPolicyDrcMtg/listYear.do?mtgSe=A&amp;menuNo=200755",
+    "/portal/singl/crncyPolicyDrcMtg/listYear.do?mtgSe=A&amp;menuNo=200755",
+    "/portal/singl/crncyPolicyDrcMtg/listYear.do?mtgSe=A&amp;menuNo=200755",
+    "/portal/singl/crncyPolicyDrcMtg/listYear.do?mtgSe=A&amp;menuNo=200755"
+   ]
   },
   {
-   "이름": "한국은행 금통위(영문)",
-   "주소": "https://www.bok.or.kr/eng/singl/crncyPolicyDrcMtg/listYear.do?mtgSe=A&menuNo=400069",
-   "성공": true,
-   "상태": 200,
-   "걸린시간": 1899,
-   "내용종류": "text/html;charset=utf-8",
-   "html길이": 221534,
-   "글자길이": 8912,
-   "쓸만한_클래스": [],
-   "표개수": 0,
-   "날짜조각": [],
-   "글_앞머리": "| (목록) | Bank of Korea Skip to content --> --> Economic Research Institute Economic Statistics System(ECOS) Financial and Economic Snapshot Family site Economic Research Institute Economic Statistics System(ECOS) Financial and Economic Snapshot KOREAN About History and Mission History and Mission Former Governors Organization Organizational Chart Monetary Policy Board Executive Auditor Vision, Val"
+   "이름": "BLS 공개 캘린더(ics)",
+   "주소": "https://www.bls.gov/schedule/news_release/bls.ics",
+   "상태": 403,
+   "성공": false,
+   "종류": "text/html",
+   "길이": 1325,
+   "앞머리": "<!DOCTYPE HTML> <html lang=\"en-us\"> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /> <title>Access Denied</title> </head> <style type=\"text/css\"> .centerDiv { width: 60%; height:200px; margin: 0 auto; background-color:#FFFFFF ; } </style> <body> <div class=\"centerDiv\"> <h"
   }
  ]
 }
