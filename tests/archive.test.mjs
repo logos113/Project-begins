@@ -23,6 +23,9 @@
 import { chromium } from "playwright";
 import http from "http"; import fs from "fs"; import path from "path"; import os from "os";
 
+// CSS 파일을 직접 읽어볼 때 쓰는 저장소 경로
+const 집폴더 = path.join(import.meta.dirname, "..");
+
 const 뿌리 = path.join(import.meta.dirname, "..");
 const 종류 = { ".html":"text/html", ".css":"text/css", ".js":"text/javascript",
                ".json":"application/json", ".png":"image/png" };
@@ -110,37 +113,80 @@ for (const 앱 of 앱들) {
 /* ==========================================================
    3. 설치한 앱으로 열면 감춰지는가
    ------------------------------------------------------------
-   --app=주소 로 띄우면 브라우저 UI 없이 열리고,
-   홈 화면에 설치한 앱과 같은 상태(display-mode: standalone)가 됩니다.
+   돌아가는 줄에는 "설치한 앱으로 열었을 때는 감춘다" 는 조건이 붙어 있습니다.
+   설치한 앱은 자기 폴더까지가 '내 영역' 이라, 한 칸 위인 아카이브로 가면
+   앱 창이 아니라 브라우저가 따로 열립니다. 갑자기 다른 창으로 튀면 당황스럽고,
+   설치해서 쓰는 분에게는 홈 화면이 이미 아카이브 역할을 합니다.
+
+   ⚠️ 이 부분만은 진짜 브라우저로 확인하지 못합니다. 솔직히 적어둡니다.
+
+      예전에는 --app=주소 로 앱 창을 띄워서 봤습니다. 그런데 크로미움이
+      1194 에서 1243 으로 올라가면서 그렇게 띄운 창이 잡히지 않습니다
+      (about:blank 만 돌아옵니다). CDP 의 Emulation.setEmulatedMedia 로
+      display-mode 를 흉내내는 것도 시도했지만 먹지 않았습니다 —
+      셋 다 standalone:false 였습니다.
+
+      그래서 두 가지로 나눠서 지킵니다.
+        (1) 보통 브라우저에서 줄이 보이는가  → 진짜 브라우저로 확인
+        (2) 앱 모양일 때 감추는 규칙이 있는가 → CSS 를 읽어서 확인
+
+      (2)는 '규칙이 적혀 있다' 까지만 보증합니다. 그 규칙이 실제 아이폰에서
+      먹는지는 못 봅니다. 그래도 규칙을 실수로 지우거나 선택자를 잘못 쓰면
+      여기서 잡힙니다. 할 수 있는 만큼은 지키는 셈입니다.
    ========================================================== */
 console.log("\n[3] 설치한 앱으로 열었을 때");
 
 for (const 앱 of 앱들) {
-  const 임시방 = fs.mkdtempSync(path.join(os.tmpdir(), "pw-app-"));
-  const ctx = await chromium.launchPersistentContext(임시방, {
-    ...실행파일,
-    headless: true,
-    args: [`--app=${집}/${앱}/`],
-  });
-  try {
-    // 창이 뜨고 페이지가 그려질 때까지 잠깐 기다립니다
-    let page = null;
-    for (let i = 0; i < 40 && !page; i++) {
-      page = ctx.pages().find((p) => p.url().includes(`/${앱}/`)) || null;
-      if (!page) await new Promise((r) => setTimeout(r, 100));
-    }
-    if (!page) { 검사(`${앱} — 앱 모양 창이 열렸는가`, false, ctx.pages().map((p) => p.url())); continue; }
-    await page.waitForSelector(".back-home", { state: "attached", timeout: 5000 });
+  const css길 = path.join(집폴더, 앱, "style.css");
+  if (!fs.existsSync(css길)) {
+    검사(`${앱} — style.css 가 있는가`, false, css길);
+    continue;
+  }
+  const css = fs.readFileSync(css길, "utf8");
 
+  /*
+    @media (display-mode: standalone) ... { ... } 덩어리를 찾습니다.
+    중괄호 짝을 세어 덩어리 끝을 찾습니다 — 안쪽에도 중괄호가 있기 때문에
+    단순히 첫 } 까지 자르면 안 됩니다.
+  */
+  const 시작 = css.search(/@media[^{]*display-mode:\s*standalone/);
+  검사(`${앱} — 앱 모양일 때의 규칙이 있는가`, 시작 >= 0, 시작);
+  if (시작 < 0) continue;
+
+  let 깊이 = 0;
+  let 끝 = -1;
+  for (let k = css.indexOf("{", 시작); k < css.length; k += 1) {
+    if (css[k] === "{") 깊이 += 1;
+    else if (css[k] === "}") {
+      깊이 -= 1;
+      if (깊이 === 0) { 끝 = k; break; }
+    }
+  }
+  const 덩어리 = 끝 > 0 ? css.slice(시작, 끝 + 1) : "";
+
+  검사(`${앱} — 그 규칙이 돌아가는 줄을 가리키는가`,
+    /\.back-home/.test(덩어리), 덩어리.slice(0, 160));
+  검사(`${앱} — 그 규칙이 감추는 규칙인가`,
+    /display:\s*none/.test(덩어리), 덩어리.slice(0, 160));
+}
+
+/*
+  ★ 반대쪽은 진짜 브라우저로 봅니다.
+     '감추는 규칙이 있다' 만 확인하면, 실수로 늘 감춰버려도 통과합니다.
+     보통 브라우저로 열었을 때는 반드시 보여야 합니다.
+*/
+for (const 앱 of 앱들) {
+  const page = await browser.newPage();
+  try {
+    await page.goto(`${집}/${앱}/`, { waitUntil: "domcontentloaded" });
+    await page.waitForSelector(".back-home", { state: "attached", timeout: 5000 });
     const 결과 = await page.evaluate(() => ({
       앱모양인가: matchMedia("(display-mode: standalone)").matches,
       보임: getComputedStyle(document.querySelector(".back-home")).display !== "none",
     }));
-    검사(`${앱} — 앱 모양(standalone)으로 열렸는가`, 결과.앱모양인가, 결과);
-    검사(`${앱} — 돌아가는 줄이 감춰지는가`, !결과.보임, 결과);
+    검사(`${앱} — 보통 브라우저에서는 줄이 보이는가`, 결과.보임 && !결과.앱모양인가, 결과);
   } finally {
-    await ctx.close();
-    fs.rmSync(임시방, { recursive: true, force: true });
+    await page.close();
   }
 }
 

@@ -1,0 +1,416 @@
+/*
+  ============================================================
+  아침 브리핑 - style.css
+
+  색은 :root 에 모아두었습니다. 여기만 바꾸면 분위기가 달라집니다.
+  초록을 고른 이유 — 논문 앱은 파랑, 일본어 앱은 붉은색, 게임은 남색이라
+  첫 화면에 넷이 나란히 놓였을 때 서로 구별되게 하려고요.
+  ============================================================
+*/
+
+:root {
+  --bg:        #f6f8f6;   /* 배경 (아주 옅은 초록빛 회색) */
+  --surface:   #ffffff;   /* 카드 배경 */
+  --text:      #15201a;   /* 본문 글자 */
+  --text-soft: #52605a;   /* 덜 중요한 글자 */
+  --text-mute: #8a958f;   /* 가장 흐린 글자 */
+  --line:      #e0e8e3;   /* 경계선 */
+  --accent:    #14532d;   /* 강조색 (짙은 초록) */
+  --accent-bg: #e7f0ea;
+
+  /* 오름·내림 — 한국 증시 관습대로 오르면 빨강, 내리면 파랑 */
+  --up:        #c0392b;
+  --up-bg:     #fdeceb;
+  --down:      #1d5fa8;
+  --down-bg:   #e9f1fa;
+  --flat:      #6b7872;
+
+  /* 갈래별 색 (일정과 뉴스에 씁니다) */
+  --kr:        #1d5fa8;
+  --us:        #7a4bbd;
+  --coin:      #b8730f;
+  --holiday:   #8a958f;
+
+  --radius:    12px;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 0 0 48px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+               "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  /* 아이폰 노치와 아래 가로줄을 피합니다 */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+main { max-width: 680px; margin: 0 auto; padding: 0 16px; }
+
+/* ---------- 머리말 ---------- */
+.top {
+  position: sticky;      /* 스크롤해도 날짜가 위에 남아 있게 */
+  top: 0;
+  z-index: 10;
+  background: var(--accent);
+  color: #ffffff;
+  padding: calc(14px + env(safe-area-inset-top)) 16px 12px;
+  margin-bottom: 16px;
+}
+.top-row {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.top h1 { margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
+.when {
+  max-width: 680px;
+  margin: 2px auto 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.82);
+}
+.refresh {
+  flex-shrink: 0;
+  width: 34px; height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.refresh:active { transform: scale(0.94); }
+/* 불러오는 동안 빙글빙글 돕니다 */
+.refresh.spinning { animation: 돌기 0.9s linear infinite; }
+@keyframes 돌기 { to { transform: rotate(360deg); } }
+
+/* ---------- 덩어리 공통 ---------- */
+.block {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px 16px;
+  margin-bottom: 14px;
+}
+.block h2 {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.01em;
+}
+.block-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.block-head h2 { margin: 0; }
+.sub {
+  margin: 14px 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-soft);
+}
+.sub:first-child { margin-top: 0; }
+.quiet { background: none; border: none; padding: 4px 2px; }
+
+.loading { text-align: center; color: var(--text-mute); padding: 28px 0; }
+.empty-say { margin: 6px 0 0; font-size: 14px; color: var(--text-mute); }
+
+/* 자료를 못 가져왔을 때 */
+.trouble {
+  background: #fdf3ec;
+  border: 1px solid #f0d9c4;
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: #7a4a1e;
+}
+.trouble strong { display: block; margin-bottom: 4px; }
+
+/* ---------- 시세 ---------- */
+.price-grid {
+  display: grid;
+  /* 좁은 화면에서는 두 칸, 넓어지면 저절로 늘어납니다 */
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px;
+}
+.price {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 11px;
+  background: var(--bg);
+}
+.price .name { font-size: 12px; color: var(--text-soft); }
+.price .value {
+  font-size: 17px;
+  font-weight: 800;
+  /* 숫자 폭을 고르게 — 안 그러면 값이 바뀔 때 글자가 들썩입니다 */
+  font-variant-numeric: tabular-nums;
+  margin-top: 1px;
+}
+.price .move {
+  display: inline-block;
+  margin-top: 3px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.move.up   { color: var(--up);   background: var(--up-bg); }
+.move.down { color: var(--down); background: var(--down-bg); }
+.move.flat { color: var(--flat); background: var(--bg); }
+.move.unknown { color: var(--text-mute); background: var(--bg); font-weight: 500; }
+
+.note { margin: 10px 0 0; font-size: 12.5px; color: var(--text-mute); }
+
+/* ---------- 일정 ---------- */
+.sched { list-style: none; margin: 0; padding: 0; }
+.sched li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 0;
+  border-top: 1px solid var(--line);
+  font-size: 14.5px;
+}
+.sched li:first-child { border-top: none; }
+
+.when-chip {
+  flex-shrink: 0;
+  min-width: 62px;
+  font-size: 12.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-soft);
+}
+.when-chip.today { color: var(--up); }
+
+.sched .what { flex: 1; }
+.sched .what .why {
+  display: block;
+  font-size: 12.5px;
+  color: var(--text-mute);
+  line-height: 1.45;
+}
+/* 어디서 가져온 일정인지 — 의심스러우면 원문을 볼 수 있게 */
+.sched .from {
+  font-size: 11.5px;
+  color: var(--text-mute);
+}
+.sched .from a { color: var(--text-mute); }
+
+.tag {
+  flex-shrink: 0;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffffff;
+}
+.tag.한국 { background: var(--kr); }
+.tag.미국 { background: var(--us); }
+.tag.코인 { background: var(--coin); }
+.tag.휴장 { background: var(--holiday); }
+.tag.기타 { background: var(--text-mute); }
+
+/* ---------- 뉴스 ---------- */
+.tabs { display: flex; gap: 6px; margin-bottom: 10px; }
+.tab {
+  flex: 1;
+  padding: 7px 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-soft);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.tab.on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+
+.news { list-style: none; margin: 0; padding: 0; }
+.news li { border-top: 1px solid var(--line); }
+.news li:first-child { border-top: none; }
+.news a {
+  display: block;
+  padding: 9px 0;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+.news a:hover { color: var(--accent); }
+.news .meta {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--text-mute);
+}
+/* 관심 종목 이름이 제목에 들어 있으면 표시해 줍니다 */
+.news .hit {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+/* ---------- 관심 종목 고치기 ---------- */
+.small-btn {
+  padding: 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-soft);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.small-btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+.watch-edit {
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.hint { margin: 0 0 8px; font-size: 13px; color: var(--text-soft); }
+.watch-form { display: flex; gap: 6px; }
+.watch-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;   /* 16px 미만이면 아이폰이 화면을 확대해버립니다 */
+}
+.watch-form input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; padding: 0; }
+.chips li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 5px 3px 11px;
+  border-radius: 999px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-size: 13.5px;
+  font-weight: 700;
+}
+.chips button {
+  width: 20px; height: 20px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(20, 83, 45, 0.14);
+  color: var(--accent);
+  font: inherit;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ---------- 맨 아래 ---------- */
+summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-soft);
+  padding: 6px 0;
+}
+.source-body { font-size: 12.5px; color: var(--text-mute); line-height: 1.7; }
+.source-body .ok { color: var(--text-soft); }
+.source-body .bad { color: #a4552a; }
+.source-body h4 { margin: 10px 0 2px; font-size: 12.5px; color: var(--text-soft); }
+
+.caution {
+  margin: 14px 0 0;
+  padding: 11px 13px;
+  background: #fdf3ec;
+  border: 1px solid #f0d9c4;
+  border-radius: 10px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: #7a4a1e;
+}
+
+.back-home {
+  max-width: 680px;
+  margin: 18px auto 0;
+  padding: 0 16px;
+  text-align: center;
+  font-size: 14px;
+}
+.back-home a { color: var(--text-mute); text-decoration: none; }
+.back-home a:hover { color: var(--accent); }
+/* 설치한 앱으로 열었을 때는 돌아갈 곳이 없으니 감춥니다 */
+@media (display-mode: standalone), (display-mode: minimal-ui), (display-mode: fullscreen) {
+  .back-home { display: none; }
+}
+
+/* [hidden] 이 display 보다 세게 먹도록 — 안 그러면 flex·grid 가 이깁니다 */
+[hidden] { display: none !important; }
+
+/* ---------- 새 버전 알림 줄 ---------- */
+.sw-update {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: #1f2d26;
+  color: #ffffff;
+  font-size: 13.5px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+.sw-update button {
+  border: none;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.sw-update-btn { padding: 5px 13px; background: #4ade80; color: #10281b; }
+.sw-update-close { padding: 5px 7px; background: none; color: inherit; opacity: 0.6; }
+.sw-update-close:hover { opacity: 1; }

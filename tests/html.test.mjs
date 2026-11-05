@@ -198,7 +198,12 @@ const 앱폴더들 = fs.readdirSync(저장소, { withFileTypes: true })
                   fs.existsSync(path.join(저장소, 칸.name, "manifest.json")))
   .map((칸) => 칸.name)
   .sort();
-검사("앱 폴더를 세 개 찾았는가", 앱폴더들.length === 3, 앱폴더들);
+/*
+  앱이 늘어날 때마다 이 숫자를 고치게 만들면, 고치는 걸 잊고
+  검사만 빨개집니다. '하나 이상 찾았는가' 만 보고, 개수가 맞는지는
+  아래에서 첫 화면에 적힌 숫자와 맞춰봅니다.
+*/
+검사("앱 폴더를 찾았는가", 앱폴더들.length >= 1, 앱폴더들);
 
 const 첫화면 = new JSDOM(fs.readFileSync(path.join(저장소, "index.html"), "utf8")).window.document;
 

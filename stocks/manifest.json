@@ -1,0 +1,16 @@
+{
+  "name": "아침 브리핑",
+  "short_name": "아침브리핑",
+  "description": "매일 아침 주식·코인 뉴스와 주요 일정을 한 장으로 정리해 보여줍니다.",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f8f6",
+  "theme_color": "#14532d",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

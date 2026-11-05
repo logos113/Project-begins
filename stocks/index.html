@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  아침 브리핑 - index.html
+
+  이 파일은 화면의 "뼈대" 입니다. 빈 칸만 만들어 두고,
+  실제 내용은 app.js 가 data/latest.json 을 읽어서 채웁니다.
+
+  그 JSON 은 깃허브 일꾼이 매일 아침 만들어 올려둡니다
+  (.github/workflows/stocks-brief.yml).
+  ============================================================
+-->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <title>아침 브리핑</title>
+  <meta name="description" content="매일 아침 주식·코인 뉴스와 주요 일정을 한 장으로.">
+
+  <!-- 홈 화면에 추가했을 때 앱처럼 보이게 하는 설정들 -->
+  <meta name="apple-mobile-web-app-title" content="아침 브리핑">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-touch-icon-152.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#14532d">
+
+  <link rel="stylesheet" href="style.css?v=1">
+</head>
+
+<body>
+
+  <!-- ===== 머리말 ===== -->
+  <header class="top">
+    <div class="top-row">
+      <h1>아침 브리핑</h1>
+      <button id="refreshBtn" class="refresh" type="button" aria-label="새로 불러오기">↻</button>
+    </div>
+    <p class="when" id="when">불러오는 중…</p>
+  </header>
+
+  <main>
+    <!-- 불러오는 동안 / 실패했을 때 보이는 자리 -->
+    <p class="loading" id="loading">잠시만요, 오늘 아침 자료를 가져옵니다…</p>
+    <div class="trouble" id="trouble" hidden></div>
+
+    <!-- ===== 시세 ===== -->
+    <section class="block" id="priceBlock" hidden>
+      <h2>한눈에</h2>
+      <div class="price-grid" id="priceGrid"></div>
+      <p class="note" id="priceNote" hidden></p>
+    </section>
+
+    <!-- ===== 일정 ===== -->
+    <section class="block" id="scheduleBlock" hidden>
+      <h2>일정</h2>
+      <div id="todayBox" hidden>
+        <h3 class="sub">오늘</h3>
+        <ul class="sched" id="todayList"></ul>
+      </div>
+      <div id="weekBox" hidden>
+        <h3 class="sub">이번 주</h3>
+        <ul class="sched" id="weekList"></ul>
+      </div>
+      <div id="laterBox" hidden>
+        <h3 class="sub">그 다음</h3>
+        <ul class="sched" id="laterList"></ul>
+      </div>
+      <div id="bigBox" hidden>
+        <h3 class="sub">다음 FOMC · 금통위</h3>
+        <ul class="sched" id="bigList"></ul>
+      </div>
+      <p class="empty-say" id="schedEmpty" hidden>앞으로 2주 안에 잡힌 일정이 없습니다.</p>
+    </section>
+
+    <!-- ===== 관심 종목 =====
+         일꾼은 사용자가 어떤 종목을 보는지 모릅니다. 모아온 뉴스 중에서
+         여기 등록한 이름이 제목에 든 것을 앱이 골라 위로 올려줍니다.
+         (등록한 종목은 이 브라우저에만 저장됩니다) -->
+    <section class="block" id="watchBlock">
+      <div class="block-head">
+        <h2>관심 종목</h2>
+        <button id="watchToggle" class="small-btn" type="button" aria-expanded="false">고치기</button>
+      </div>
+
+      <div class="watch-edit" id="watchEdit" hidden>
+        <p class="hint">종목 이름을 넣어두면, 그 이름이 제목에 든 뉴스를 맨 위로 올려줍니다.</p>
+        <form id="watchForm" class="watch-form">
+          <input id="watchInput" type="text" placeholder="예: 삼성전자, 엔비디아, 리플"
+                 autocomplete="off" maxlength="20" aria-label="관심 종목 이름">
+          <button type="submit" class="small-btn primary">추가</button>
+        </form>
+        <ul class="chips" id="watchChips"></ul>
+      </div>
+
+      <ul class="news" id="watchNews"></ul>
+      <!-- 이 문구는 app.js 가 상황에 따라 바꿔 씁니다.
+           꾸밈(<strong> 같은 것)을 넣지 않은 이유 — 바꿔 쓴 뒤 되돌릴 때
+           글자만 되돌리게 되어 꾸밈이 사라집니다. 처음부터 평문으로 둡니다. -->
+      <p class="empty-say" id="watchEmpty">아직 등록한 종목이 없습니다. '고치기' 를 눌러 추가해보세요.</p>
+    </section>
+
+    <!-- ===== 뉴스 ===== -->
+    <section class="block" id="newsBlock" hidden>
+      <h2>뉴스</h2>
+      <div class="tabs" id="newsTabs" role="tablist">
+        <button class="tab on" type="button" role="tab" data-갈래="한국" aria-selected="true">한국</button>
+        <button class="tab" type="button" role="tab" data-갈래="미국" aria-selected="false">미국</button>
+        <button class="tab" type="button" role="tab" data-갈래="코인" aria-selected="false">코인</button>
+      </div>
+      <ul class="news" id="newsList"></ul>
+    </section>
+
+    <!-- ===== 맨 아래 — 출처와 당부 ===== -->
+    <section class="block quiet" id="footBlock" hidden>
+      <details id="sourceBox">
+        <summary>자료를 어디서 가져왔나</summary>
+        <div class="source-body" id="sourceBody"></div>
+      </details>
+
+      <p class="caution">
+        ⚠️ 이 화면은 <strong>뉴스와 일정을 모아 보여줄 뿐</strong>입니다.
+        사거나 팔라는 조언이 아니고, 숫자가 틀릴 수도 있습니다.
+        실제 판단은 증권사 화면과 원문을 확인하고 하세요.
+      </p>
+    </section>
+  </main>
+
+  <!-- 브라우저에서 열었을 때 목록 화면으로 돌아가는 줄.
+       설치한 앱으로 열었을 때는 style.css 가 이 줄을 감춥니다. -->
+  <p class="back-home"><a href="../">← Dr. Y's Archive</a></p>
+
+  <script src="app.js?v=1"></script>
+</body>
+</html>

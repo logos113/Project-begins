@@ -8,6 +8,7 @@
       /psychiatry/  →  오늘의 정신의학 논문
       /japanese/    →  오늘의 일본어 여행 회화
       /game/        →  점프! 로봇
+      /stocks/      →  아침 브리핑
 
   이 페이지는 그 셋으로 가는 갈림길이자 목록입니다.
   하는 일이 따로 없어서 CSS 파일을 따로 두지 않고 아래 <style> 안에 함께 적었습니다.
@@ -62,6 +63,7 @@
         같은 계열이되 충분히 진한 색으로 바꿨습니다 (5.58:1).
       */
       --game:      #8a6010;   /* 게임 색 */
+      --stocks:    #14532d;   /* 아침 브리핑 색 (짙은 초록) */
     }
 
     /* 기기를 다크 모드로 쓰고 있으면 색만 바꿉니다 */
@@ -77,6 +79,7 @@
         --paper:     #7fc0dd;
         --japan:     #e88a7d;
         --game:      #f0c46a;
+        --stocks:    #6bbf8a;
       }
     }
 
@@ -257,12 +260,15 @@
     .item.paper { border-left: 4px solid var(--paper); }
     .item.japan { border-left: 4px solid var(--japan); }
     .item.game  { border-left: 4px solid var(--game); }
+    .item.stocks { border-left: 4px solid var(--stocks); }
     .item.paper h2 { color: var(--paper); }
     .item.japan h2 { color: var(--japan); }
     .item.game  h2 { color: var(--game); }
+    .item.stocks h2 { color: var(--stocks); }
     .item.paper:hover { border-color: var(--paper); }
     .item.japan:hover { border-color: var(--japan); }
     .item.game:hover  { border-color: var(--game); }
+    .item.stocks:hover { border-color: var(--stocks); }
 
     /*
       마우스를 쓰는 기기에서만 떠오르는 효과를 줍니다.
@@ -327,6 +333,9 @@
         <a href="game/" aria-label="점프! 로봇" title="점프! 로봇">
           <img src="game/icons/game-icon-192.png" alt="" width="192" height="192">
         </a>
+        <a href="stocks/" aria-label="아침 브리핑" title="아침 브리핑">
+          <img src="stocks/icons/icon-192.png" alt="" width="192" height="192">
+        </a>
       </nav>
     </div>
   </header>
@@ -334,7 +343,7 @@
   <!-- ========== 2) 서가 ========== -->
   <main class="wrap">
     <section class="shelf" aria-labelledby="shelfLabel">
-      <h2 class="shelf-label" id="shelfLabel">만든 것 3</h2>
+      <h2 class="shelf-label" id="shelfLabel">만든 것 4</h2>
 
       <div class="items">
 
@@ -347,7 +356,7 @@
             2. href 를 새 폴더 이름으로 (예: "recipe/")
             3. src 를 그 폴더의 아이콘 파일로
             4. 제목·설명·아래 꼬리표(meta)를 고칩니다
-            5. 위 '만든 것 3' 의 숫자도 함께 올려주세요
+            5. 위 '만든 것 4' 의 숫자도 함께 올려주세요
 
           ※ alt 는 그림을 못 볼 때 대신 읽히는 글입니다.
              여기서는 바로 옆에 같은 이름이 글로 적혀 있으므로 비워 둡니다.
@@ -403,6 +412,24 @@
               <li>2026.09~</li>
               <li>보스전</li>
               <li>고쳐보기 좋음</li>
+              <li>설치 가능</li>
+            </ul>
+          </div>
+        </a>
+
+        <a class="item stocks" href="stocks/">
+          <img class="icon" src="stocks/icons/icon-192.png" alt="" width="192" height="192">
+          <div class="body">
+            <p class="eyebrow">Morning Brief</p>
+            <h2>아침 브리핑</h2>
+            <p class="desc">
+              주식·코인 뉴스와 그날의 주요 일정을 매일 아침 한 장으로 정리합니다.
+              지수와 환율, FOMC·금통위 같은 일정을 공식 출처에서 가져옵니다.
+            </p>
+            <ul class="meta">
+              <li>2026.11~</li>
+              <li>매일 아침 갱신</li>
+              <li>한국·미국·코인</li>
               <li>설치 가능</li>
             </ul>
           </div>

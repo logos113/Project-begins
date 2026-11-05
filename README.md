@@ -11,6 +11,7 @@
 | **오늘의 정신의학 논문** | `.../Project-begins/psychiatry/` | `psychiatry/` | [psychiatry/README.md](psychiatry/README.md) |
 | **오늘의 일본어 여행 회화** | `.../Project-begins/japanese/` | `japanese/` | [japanese/README.md](japanese/README.md) |
 | **점프! 로봇** (게임) | `.../Project-begins/game/` | `game/` | [game/README.md](game/README.md) |
+| **아침 브리핑** | `.../Project-begins/stocks/` | `stocks/` | [stocks/README.md](stocks/README.md) |
 
 앱을 어떻게 쓰고 어떻게 고치는지는 **각 폴더의 설명서**에 있습니다.
 이 문서는 세 앱에 **공통인 이야기**만 다룹니다 — 인터넷에 올리기, 홈 화면에 두기,
@@ -23,6 +24,7 @@
 /psychiatry/     오늘의 정신의학 논문
 /japanese/       오늘의 일본어 여행 회화
 /game/           점프! 로봇
+/stocks/         아침 브리핑
 /tests/          자동 검사 (세 앱 것이 모두 여기 있습니다)
 /tools/          아이콘 생성기, 스크린샷 도구
 ```
