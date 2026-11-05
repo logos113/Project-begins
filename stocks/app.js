@@ -15,7 +15,8 @@
 /* ---------- 화면에서 쓸 자리들 ---------- */
 const 그곳 = (이름) => document.getElementById(이름);
 
-const 때_자리      = 그곳("when");
+const 날짜_자리    = 그곳("whenDate");
+const 시각_자리    = 그곳("whenTime");
 const 불러오는중   = 그곳("loading");
 const 문제_자리    = 그곳("trouble");
 const 새로고침버튼 = 그곳("refreshBtn");
@@ -141,13 +142,23 @@ function 변동_칩(변동률, 수상한가) {
   return 만들기("span", `move ${결}`, `${화살} ${Math.abs(ㅂ).toFixed(2)}%`);
 }
 
-/* "2026-11-05T01:52:21Z" → "11월 5일 오전 10:52" */
+/* "2026-11-05" → "2026년 11월 5일 (목)" */
+function 날짜_읽기좋게(글) {
+  if (!글) return "";
+  const 때 = new Date(`${글}T12:00:00+09:00`);
+  if (Number.isNaN(때.getTime())) return 글;
+  return 때.toLocaleDateString("ko-KR", {
+    year: "numeric", month: "long", day: "numeric", weekday: "short",
+  });
+}
+
+/* "2026-11-05T01:52:21Z" → "오전 10:52" (한국 시간으로) */
 function 시각_읽기좋게(글) {
   if (!글) return "";
   const 때 = new Date(글);
   if (Number.isNaN(때.getTime())) return "";
-  return 때.toLocaleString("ko-KR", {
-    month: "long", day: "numeric", hour: "numeric", minute: "2-digit",
+  return 때.toLocaleTimeString("ko-KR", {
+    hour: "numeric", minute: "2-digit", timeZone: "Asia/Seoul",
   });
 }
 
@@ -167,6 +178,37 @@ function 얼마나_지났나(글) {
 /* ==========================================================
    그리기
    ========================================================== */
+
+/*
+  맨 위 전광판 — 언제 자료인지.
+
+  이 화면에서 가장 중요한 정보입니다. 아침 브리핑인데 어제 것을 보고 있으면
+  아무 소용이 없습니다. 그래서 날짜를 또렷하게 쓰고, 만든 지 오래되었으면
+  글자 색을 바꿔 눈에 띄게 합니다.
+
+  ※ 깃허브 일꾼은 정시를 약속하지 않습니다. 늦게 깨어나기도 하고,
+     주말에는 아예 새 뉴스가 없을 수도 있습니다. 그래서 '몇 시 자료인지'
+     를 숨기지 않고 그대로 보여줍니다.
+*/
+function 전광판_그리기() {
+  날짜_자리.textContent = 날짜_읽기좋게(브리핑.날짜);
+
+  const 시각 = 시각_읽기좋게(브리핑.만든시각);
+  const 지난것 = 얼마나_지났나(브리핑.만든시각);
+  시각_자리.textContent = [시각 ? `${시각} 기준` : "", 지난것].filter(Boolean).join(" · ");
+
+  /*
+    12시간이 넘었으면 색을 바꿔 알려줍니다.
+
+    아침 브리핑은 하루에 두 번 만들어집니다. 12시간이 넘었다는 것은
+    일꾼이 한 번은 건너뛰었다는 뜻입니다. 조용히 두면 어제 숫자를
+    오늘 것으로 알고 보게 됩니다.
+  */
+  const 지난시간 = Date.now() - new Date(브리핑.만든시각).getTime();
+  const 오래됐나 = Number.isFinite(지난시간) && 지난시간 > 12 * 60 * 60 * 1000;
+  시각_자리.classList.toggle("stale", 오래됐나);
+  if (오래됐나) 시각_자리.textContent += " · 새 자료가 아직 안 올라왔습니다";
+}
 
 function 시세_그리기(시세) {
   시세_자리.replaceChildren();
@@ -414,7 +456,7 @@ async function 브리핑_불러오기() {
     브리핑 = await 답.json();
 
     불러오는중.hidden = true;
-    때_자리.textContent = `${브리핑.날짜} · ${시각_읽기좋게(브리핑.만든시각)} 기준`;
+    전광판_그리기();
 
     시세_그리기(브리핑.시세 || {});
     일정_그리기(브리핑.일정 || {});

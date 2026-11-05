@@ -39,7 +39,13 @@
       <h1>아침 브리핑</h1>
       <button id="refreshBtn" class="refresh" type="button" aria-label="새로 불러오기">↻</button>
     </div>
-    <p class="when" id="when">불러오는 중…</p>
+    <!-- 기준 날짜와 시각. app.js 가 채웁니다.
+         두 줄로 나눈 이유 — 한 줄에 다 넣으니 좁은 휴대폰에서 접혔고,
+         무엇보다 '언제 자료인지' 가 이 화면에서 제일 중요한 정보입니다. -->
+    <p class="when">
+      <span class="when-date" id="whenDate">불러오는 중…</span>
+      <span class="when-time" id="whenTime"></span>
+    </p>
   </header>
 
   <main>
