@@ -1,0 +1,60 @@
+# ============================================================
+#  미국 CPI 발표일 출처 찾기 (한 번 쓰고 지울 워크플로)
+#
+#  BLS 의 cpi.htm 한 장이 막혔다고 '손으로 넣으세요' 로 결론냈는데
+#  성급했습니다. CPI 발표일을 내놓는 곳이 여럿이니 두드려봅니다.
+#  쓸 만한 곳을 찾으면 파서를 짜고, 이 파일은 지웁니다.
+# ============================================================
+
+name: CPI 발표일 출처 찾기
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cpi-probe.yml"
+      - "stocks/collect/cpi-probe.mjs"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cpi-probe
+  cancel-in-progress: false
+
+jobs:
+  # job 이름은 반드시 영문입니다
+  probe:
+    name: CPI 출처 두드려보기
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: 저장소 내려받기
+        uses: actions/checkout@v4
+
+      - name: Node 준비
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: 두드려보기
+        run: node stocks/collect/cpi-probe.mjs
+
+      - name: 결과 올리기
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add stocks/data/_cpi_probe.json
+          if git diff --cached --quiet; then
+            echo "바뀐 것이 없습니다"
+            exit 0
+          fi
+          git commit -m "정찰: CPI 발표일 출처 두드려보기"
+          for i in 1 2 3; do
+            git push && exit 0
+            git pull --rebase --autostash origin main || true
+            sleep 5
+          done
+          exit 1
