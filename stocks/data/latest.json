@@ -1,14 +1,14 @@
 {
  "날짜": "2026-11-05",
- "만든시각": "2026-11-05T03:45:32.159Z",
+ "만든시각": "2026-11-05T04:18:41.937Z",
  "시세": {
   "지수": [
    {
     "이름": "코스피",
     "갈래": "한국",
     "단위": "",
-    "종가": 5469.13,
-    "변동률": -3.78,
+    "종가": 5433.9,
+    "변동률": -4.4,
     "전날종가": 5683.8,
     "수상한가": false,
     "기준일": "2026-11-05",
@@ -19,8 +19,8 @@
     "이름": "코스닥",
     "갈래": "한국",
     "단위": "",
-    "종가": 688.9,
-    "변동률": -3.64,
+    "종가": 685.55,
+    "변동률": -4.11,
     "전날종가": 714.95,
     "수상한가": false,
     "기준일": "2026-11-05",
@@ -55,8 +55,8 @@
     "이름": "원/달러",
     "갈래": "환율",
     "단위": "원",
-    "종가": 1343.29,
-    "변동률": 0.03,
+    "종가": 1343.58,
+    "변동률": 0.05,
     "전날종가": 1342.9,
     "수상한가": false,
     "기준일": "2026-11-05",
@@ -67,27 +67,27 @@
   "코인": [
    {
     "이름": "비트코인",
-    "달러": 80684,
-    "원화": 108416491,
-    "변동률": 5.89
+    "달러": 80387,
+    "원화": 108012567,
+    "변동률": 4.74
    },
    {
     "이름": "이더리움",
-    "달러": 2430.43,
-    "원화": 3265806,
-    "변동률": 8.44
+    "달러": 2418.92,
+    "원화": 3250220,
+    "변동률": 6.95
    },
    {
     "이름": "리플",
     "달러": 1.31,
-    "원화": 1765.72,
-    "변동률": 4.69
+    "원화": 1754.4,
+    "변동률": 3.14
    },
    {
     "이름": "솔라나",
-    "달러": 96.85,
-    "원화": 130142,
-    "변동률": 6.84
+    "달러": 95.94,
+    "원화": 128915,
+    "변동률": 4.51
    }
   ],
   "못가져온것": []
@@ -174,6 +174,20 @@
  "뉴스": {
   "한국": [
    {
+    "제목": "서초구, 국토부에 '재초환 폐지' 건의문·주민 탄원서 전달",
+    "주소": "https://www.yna.co.kr/view/AKR20261105097200004",
+    "때": "2026-11-05T04:11:18.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "스튜디오드래곤 3분기 영업이익 151억원…작년 대비 44.4%↑",
+    "주소": "https://www.yna.co.kr/view/AKR20261105095900527",
+    "때": "2026-11-05T03:43:27.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
     "제목": "지난달 삼전닉스 44조 배당 결정…37개사 기업가치 제고 첫 공시",
     "주소": "https://www.yna.co.kr/view/AKR20261105086200008",
     "때": "2026-11-05T03:05:57.000Z",
@@ -230,13 +244,6 @@
     "갈래": "한국"
    },
    {
-    "제목": "\"오빠, 다이스키다요\"…한국남·일본녀 결혼 사상 최대 [김익환의 부처 핸즈업]",
-    "주소": "https://www.hankyung.com/article/202611057748i",
-    "때": "2026-11-05T03:00:03.000Z",
-    "출처": "한국경제 증권",
-    "갈래": "한국"
-   },
-   {
     "제목": "실험실 기술, 창업·투자로 잇는다…대전서 딥테크 축제",
     "주소": "https://www.yna.co.kr/view/AKR20261105072700017",
     "때": "2026-11-05T03:00:03.000Z",
@@ -249,16 +256,72 @@
     "때": "2026-11-05T03:00:00.000Z",
     "출처": "연합뉴스 증시",
     "갈래": "한국"
-   },
-   {
-    "제목": "직업계고 취업률 4년만에 반등…300인이상 기업 취업비중 5년째↑",
-    "주소": "https://www.yna.co.kr/view/AKR20261105085000530",
-    "때": "2026-11-05T03:00:00.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
    }
   ],
   "미국": [
+   {
+    "제목": "The economy brought Trump back to power. Now it's his downfall",
+    "주소": "https://www.cnbc.com/2026/11/04/2026-midterms-trump-economy-iran-war.html",
+    "때": "2026-11-05T04:13:28.000Z",
+    "출처": "CNBC 마켓",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Gift Nifty 50 parabolic surge hits RSI 80: Live levels",
+    "주소": "https://www.investing.com/news/stock-market-news/gift-nifty-50-vbottom-rally-hits-overbought-zone-live-levels-93CH-4990309",
+    "때": "2026-11-05T04:02:14.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Japan’s large-cap exporters: Will the U.S. midterm sweep bring tariff relief?",
+    "주소": "https://www.investing.com/news/stock-market-news/japans-largecap-exporters-will-the-us-midterm-sweep-bring-tariff-relief-93CH-5002135",
+    "때": "2026-11-05T03:59:06.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Asia stocks mixed as chip rout triggers KOSPI trading halt; China outperforms",
+    "주소": "https://www.investing.com/news/stock-market-news/asia-stocks-mixed-as-chip-rout-triggers-kospi-trading-halt-china-outperforms-5002134",
+    "때": "2026-11-05T03:54:42.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Inside the chip talent war: Trade secrets and rising Chinese rivals",
+    "주소": "https://www.cnbc.com/2026/11/05/semiconductor-china-korea-talents-rivalry.html",
+    "때": "2026-11-05T03:53:18.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Why is SoftBank stock sliding today?",
+    "주소": "https://www.investing.com/news/stock-market-news/why-is-softbank-stock-sliding-today-93CH-5002133",
+    "때": "2026-11-05T03:47:46.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Why is Sino Biopharmaceutical stock surging today?",
+    "주소": "https://www.investing.com/news/stock-market-news/why-is-sino-biopharmaceutical-stock-surging-today-93CH-5002132",
+    "때": "2026-11-05T03:47:42.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Why is Tencent stock surging today?",
+    "주소": "https://www.investing.com/news/stock-market-news/why-is-tencent-stock-surging-today-93CH-5002131",
+    "때": "2026-11-05T03:47:40.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "What does the Democratic midterm sweep mean for Softbank’s U.S. data center plans?",
+    "주소": "https://www.investing.com/news/stock-market-news/what-does-the-democratic-midterm-sweep-mean-for-softbanks-us-data-center-plans-93CH-5002120",
+    "때": "2026-11-05T03:38:43.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
    {
     "제목": "Australia’s 188-year-old retailer David Jones enters administration, faces sale",
     "주소": "https://www.investing.com/news/stock-market-news/australian-retailer-david-jones-enters-administration-and-faces-sale-media-reports-5001887",
@@ -279,72 +342,23 @@
     "때": "2026-11-05T03:15:51.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
-   },
-   {
-    "제목": "LIV Golf faces liquidation after BC Partners scraps rescue plan",
-    "주소": "https://www.cnbc.com/2026/11/05/liv-golf-liquidation-bc-partners.html",
-    "때": "2026-11-05T03:11:58.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Up 37% since March - this AI-picked IT services stock keeps climbing",
-    "주소": "https://www.investing.com/news/stock-market-news/up-37-since-march--this-aipicked-it-services-stock-keeps-climbing-5002093",
-    "때": "2026-11-05T03:04:52.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Stock futures are little changed after big rally following Democrats' decisive midterm wins",
-    "주소": "https://www.cnbc.com/2026/11/04/stock-market-today-live-updates.html",
-    "때": "2026-11-05T03:03:51.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Citi employee killed in shooting at Florida office, suspect dead",
-    "주소": "https://www.cnbc.com/2026/11/05/citi-employee-killed-in-shooting-at-florida-office-suspect-dead.html",
-    "때": "2026-11-05T03:00:33.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Why is Samsung Electronics stock plunging today?",
-    "주소": "https://www.investing.com/news/stock-market-news/why-is-samsung-electronics-stock-plunging-today-93CH-5002078",
-    "때": "2026-11-05T02:56:03.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Japan services PMI grows for fifth straight month in October",
-    "주소": "https://www.investing.com/news/stock-market-news/japan-services-pmi-grows-for-fifth-straight-month-in-october-93CH-5002077",
-    "때": "2026-11-05T02:55:59.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Up to 170% returns, up to 55% off: Invest in your edge this Early Black Friday",
-    "주소": "https://www.investing.com/news/stock-market-news/up-to-170-returns-up-to-55-off-invest-in-your-edge-this-early-black-friday-5002073",
-    "때": "2026-11-05T02:53:22.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Why is DBS stock falling today?",
-    "주소": "https://www.investing.com/news/stock-market-news/why-is-dbs-stock-falling-today-93CH-5002038",
-    "때": "2026-11-05T02:16:21.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "OpenAI, ready to IPO in 2027, now counts majority of sales from enterprises, Brockman says",
-    "주소": "https://www.investing.com/news/stock-market-news/openai-ready-to-ipo-in-2027-now-counts-majority-of-sales-from-enterprises-brockman-says-5002023",
-    "때": "2026-11-05T02:13:49.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
    }
   ],
   "코인": [
+   {
+    "제목": "Trump Media moves $342 million in bitcoin to Crypto.com, blockchain data show",
+    "주소": "https://www.coindesk.com/markets/2026/11/05/trump-media-moves-usd434-million-in-bitcoin-to-crypto-com-blockchain-data-show",
+    "때": "2026-11-05T04:11:33.000Z",
+    "출처": "CoinDesk",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Crédit Mutuel Arkéa confirms cyberattack after ZachXBT flags $133M in suspected losses",
+    "주소": "https://www.theblock.co/news/business/2026-11-04-french-bank-confirms-cyberattack-434372",
+    "때": "2026-11-05T04:01:16.000Z",
+    "출처": "The Block",
+    "갈래": "코인"
+   },
    {
     "제목": "India warns AI-powered hackers targeting crypto exchanges at ‘machine speed’",
     "주소": "https://cointelegraph.com/news/india-warns-ai-powered-hackers-targeting-crypto-exchanges-at-machine-speed?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
@@ -413,20 +427,6 @@
     "주소": "https://www.theblock.co/news/regulation/2026-11-04-democratic-sweep-congress-forces-crypto-industry-rethink-washington-strategy-434362",
     "때": "2026-11-04T21:54:49.000Z",
     "출처": "The Block",
-    "갈래": "코인"
-   },
-   {
-    "제목": "How Aussie Bitcoiners can avoid 2027’s shock CGT hike",
-    "주소": "https://cointelegraph.com/magazine/how-aussie-bitcoiners-can-avoid-2027s-shock-cgt-increase-part-1?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-    "때": "2026-11-04T21:30:00.000Z",
-    "출처": "Cointelegraph",
-    "갈래": "코인"
-   },
-   {
-    "제목": "Google Tells Schools They Can Reject AI—But They'll Lose Search, Too",
-    "주소": "https://decrypt.co/382572/google-schools-reject-ai-but-lose-search",
-    "때": "2026-11-04T21:16:03.000Z",
-    "출처": "Decrypt",
     "갈래": "코인"
    }
   ]
@@ -542,9 +542,9 @@
   },
   {
    "이름": "코인데스크 코리아",
-   "성공": false,
+   "성공": true,
    "개수": 0,
-   "까닭": "시간 초과"
+   "까닭": null
   }
  ]
 }
