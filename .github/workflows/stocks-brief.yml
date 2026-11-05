@@ -1,0 +1,105 @@
+# ============================================================
+#  매일 아침 주식·코인 브리핑 만들기
+#
+#  이 파일은 '깃허브 일꾼' 에게 시키는 일입니다.
+#  정해진 시각이 되면 깃허브가 빈 컴퓨터를 하나 띄우고,
+#  우리 저장소를 내려받아, 아래 적힌 명령을 차례로 실행한 뒤,
+#  결과를 다시 저장소에 올려놓고 사라집니다.
+#
+#  왜 이렇게 하나
+#    우리 앱은 서버가 없는 '정적 페이지' 입니다. 스스로 뉴스를 모을 수 없고,
+#    브라우저가 남의 사이트를 직접 읽는 것도 거의 다 막힙니다(CORS).
+#    그래서 일꾼이 대신 모아서 JSON 으로 놓아두고, 앱은 그것만 읽습니다.
+#
+#  공개 저장소라서 이 일꾼은 공짜로 무제한 돕니다.
+# ============================================================
+
+name: 아침 브리핑 만들기
+
+on:
+  # ---- 매일 정해진 시각에 ----
+  schedule:
+    # 깃허브는 영국 시간(UTC)으로 셉니다. 한국은 9시간 빠릅니다.
+    #   21:10 UTC = 다음날 06:10 한국시간
+    #   22:40 UTC = 다음날 07:40 한국시간 (미국 장 마감 뒤 숫자가 정리된 때)
+    #
+    # ※ 깃허브 일꾼은 '정확히 그 시각' 을 약속하지 않습니다.
+    #    일감이 몰리면 몇 분에서 수십 분까지 늦게 깨어납니다.
+    #    그래서 두 번 돌려 둡니다 — 한 번이 늦어도 다른 한 번이 채웁니다.
+    - cron: "10 21 * * *"
+    - cron: "40 22 * * *"
+
+  # ---- 손으로 누를 때 ----
+  # 깃허브 저장소 > Actions > '아침 브리핑 만들기' > Run workflow
+  workflow_dispatch:
+
+  # ---- 모으는 코드를 고쳐 올렸을 때 ----
+  # 고치자마자 한 번 돌려봐야 제대로 되는지 알 수 있습니다.
+  # 결과 파일(stocks/data/)은 여기 적지 않았습니다. 적으면 일꾼이
+  # 자기가 올린 결과를 보고 또 깨어나 끝없이 돕니다.
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/stocks-brief.yml"
+      - "stocks/collect/**"
+      - "stocks/calendar.json"
+
+# 일꾼이 저장소에 결과를 올려야 하므로 쓰기 권한을 줍니다.
+permissions:
+  contents: write
+
+# 두 번이 겹쳐 돌면 같은 파일을 서로 덮어씁니다. 하나씩 돌게 합니다.
+concurrency:
+  group: 아침-브리핑
+  cancel-in-progress: false
+
+jobs:
+  만들기:
+    runs-on: ubuntu-latest
+    # 뉴스 출처가 느려도 10분이면 충분합니다. 넘으면 뭔가 잘못된 것입니다.
+    timeout-minutes: 10
+
+    steps:
+      - name: 저장소 내려받기
+        uses: actions/checkout@v4
+
+      - name: Node 준비
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # 내려받아 설치할 것이 없습니다. 이 저장소는 라이브러리를 쓰지 않습니다.
+      # (RSS 읽기도 직접 짰습니다 — stocks/collect/rss.mjs)
+      - name: 브리핑 만들기
+        run: node stocks/collect/build.mjs
+
+      - name: 바뀐 것이 있으면 올리기
+        run: |
+          # 커밋하는 사람 이름 — 사람이 올린 것과 구별되게 해둡니다
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add stocks/data/
+
+          # 바뀐 것이 없으면 커밋하지 않습니다.
+          # (휴일에 뉴스가 하나도 안 바뀌면 빈 커밋이 쌓입니다)
+          if git diff --cached --quiet; then
+            echo "바뀐 것이 없습니다"
+            exit 0
+          fi
+
+          TODAY=$(TZ=Asia/Seoul date +%Y-%m-%d)
+          git commit -m "브리핑: ${TODAY} 아침 자료 갱신"
+
+          # 누가 먼저 올렸으면 그 위에 얹어서 다시 시도합니다
+          for i in 1 2 3; do
+            if git push; then
+              echo "올렸습니다"
+              exit 0
+            fi
+            echo "밀려서 다시 시도합니다 (${i}번째)"
+            git pull --rebase --autostash origin main || true
+            sleep 5
+          done
+          echo "세 번 시도했지만 올리지 못했습니다"
+          exit 1
