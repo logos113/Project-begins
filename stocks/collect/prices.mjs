@@ -70,26 +70,59 @@ async function stooq에서(심볼) {
   '어제보다 얼마나' 를 제대로 계산할 수 있습니다. 그래서 이쪽을 먼저 씁니다.
 */
 async function yahoo에서(심볼) {
+  /*
+    range 를 2d 로 둡니다.
+
+    처음에 5d 로 두었더니 코스피가 하루에 -8.95% 떨어진 것으로 나왔습니다.
+    야후가 주는 chartPreviousClose 는 '어제 종가' 가 아니라
+    '요청한 기간이 시작되기 직전의 종가' 입니다. 5일치를 달라고 했으니
+    5일 전과 비교한 값이 나온 것입니다.
+
+    그래서 두 가지를 함께 고쳤습니다.
+      - 기간을 2d 로 줄이고
+      - regularMarketPreviousClose(진짜 '어제 종가')를 먼저 봅니다
+  */
   const 답 = await 가져오기(
-    `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(심볼)}?interval=1d&range=5d`,
+    `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(심볼)}?interval=1d&range=2d`,
     "json",
   );
   const 알맹이 = 답?.chart?.result?.[0]?.meta;
   if (!알맹이) throw new Error("모양이 다름");
 
   const 종가 = Number(알맹이.regularMarketPrice);
-  const 전날 = Number(알맹이.chartPreviousClose ?? 알맹이.previousClose);
   if (!Number.isFinite(종가)) throw new Error("값 없음");
+
+  // 앞에 적은 것부터 씁니다. 뒤로 갈수록 '어제' 에서 멀어집니다.
+  const 전날후보 = [
+    알맹이.regularMarketPreviousClose,
+    알맹이.previousClose,
+    알맹이.chartPreviousClose,
+  ];
+  const 전날 = Number(전날후보.find((ㄱ) => Number.isFinite(Number(ㄱ)) && Number(ㄱ) !== 0));
+
+  const 변동률 = Number.isFinite(전날) && 전날 !== 0
+    ? Number((((종가 - 전날) / 전날) * 100).toFixed(2))
+    : null;
 
   return {
     종가,
-    변동률: Number.isFinite(전날) && 전날 !== 0
-      ? Number((((종가 - 전날) / 전날) * 100).toFixed(2))
-      : null,
+    변동률,
+    전날종가: Number.isFinite(전날) ? 전날 : null,
     기준일: 알맹이.regularMarketTime
       ? new Date(알맹이.regularMarketTime * 1000).toISOString().slice(0, 10)
       : null,
     출처: "Yahoo",
+    /*
+      ※ 확인용. 야후가 주는 세 가지 '전날 값' 을 그대로 적어둡니다.
+         어느 것이 진짜 어제 종가인지 재보려고 넣었습니다.
+         확인이 끝나면 뺍니다.
+    */
+    _원본: {
+      regularMarketPreviousClose: 알맹이.regularMarketPreviousClose ?? null,
+      previousClose: 알맹이.previousClose ?? null,
+      chartPreviousClose: 알맹이.chartPreviousClose ?? null,
+      regularMarketPrice: 알맹이.regularMarketPrice ?? null,
+    },
   };
 }
 
