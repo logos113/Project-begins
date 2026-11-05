@@ -18,6 +18,8 @@ import { 제목_열쇠, 기사_추리기, 갈래별_정리, 봐줄_시간, 버�
   from "../stocks/collect/news.mjs";
 import { 일정_모으기, 등록일정_고르기, 몇번째_요일, 마지막_요일, 한국날짜 }
   from "../stocks/collect/schedule.mjs";
+import { FOMC_파싱, 금통위_파싱, 말이되는_날짜인가 }
+  from "../stocks/collect/calendar-fetch.mjs";
 
 let 실패 = 0;
 const 검사 = (이름, 조건, 실제) => {
@@ -280,6 +282,123 @@ const 등록하고 = 일정_모으기("2026-11-05", [
 검사("영국 시간 낮 2시는 한국 날짜로 같은 날인가",
   한국날짜(new Date("2026-11-05T14:00:00Z")) === "2026-11-05",
   한국날짜(new Date("2026-11-05T14:00:00Z")));
+
+/* ==========================================================
+   6) FOMC · 금통위 일정 읽어내기
+   ------------------------------------------------------------
+   아래 HTML 은 지어낸 것이 아닙니다. 일꾼을 두 번 보내 실제로
+   떠온 조각입니다 (stocks/data/_probe.json). 그래서 '진짜 구조' 로
+   검사하는 셈입니다.
+
+   사이트가 개편되면 이 검사는 그대로 통과하는데 실제로는 깨집니다.
+   그건 검사로 막을 수 없는 종류라, 일꾼이 매일 '몇 개 읽었는지' 를
+   브리핑에 적어두고 숫자가 확 줄면 알아채게 해두었습니다.
+   ========================================================== */
+
+/* 연준 FOMC — 실제로 떠온 조각 그대로 */
+const FOMC조각 = `
+<div class="panel panel-default"><div class="panel-heading"><h4><a id="42828">2026 FOMC Meetings</a></h4></div>
+ <div class="row fomc-meeting" "> <div class="fomc-meeting__month col-xs-5 col-sm-3 col-md-2"><strong>January</strong></div>
+ <div class="fomc-meeting__date col-xs-4 col-sm-9 col-md-10 col-lg-1">27-28</div>
+ <div class="col-xs-12 col-md-4 col-lg-2"> <strong>Statement:</strong><br>
+ <a href="/monetarypolicy/files/monetary20260128a1.pdf">PDF</a> </div> </div>
+ <div class="fomc-meeting--shaded row fomc-meeting" "> <div class="fomc-meeting--shaded fomc-meeting__month col-xs-5 col-sm-3 col-md-2"><strong>March</strong></div>
+ <div class="fomc-meeting__date col-xs-4 col-sm-9 col-md-10 col-lg-1">17-18*</div> </div>
+ <div class="row fomc-meeting"> <div class="fomc-meeting__month"><strong>April</strong></div>
+ <div class="fomc-meeting__date">28-29</div> </div>
+<div class="panel-heading"><h4><a id="99">2027 FOMC Meetings</a></h4></div>
+ <div class="row fomc-meeting"> <div class="fomc-meeting__month"><strong>January</strong></div>
+ <div class="fomc-meeting__date">26-27</div> </div>
+`;
+
+const fomc = FOMC_파싱(FOMC조각, 2026);
+const fomc날짜 = fomc.일정.map((ㅇ) => ㅇ.날짜);
+
+검사("FOMC — 이틀 회의는 '둘째 날' 을 발표일로 잡는가",
+  fomc날짜.includes("2026-01-28"), fomc날짜);
+검사("FOMC — 별표(*) 회의도 날짜를 제대로 읽는가",
+  fomc날짜.includes("2026-03-18"), fomc날짜);
+검사("FOMC — 연도가 바뀌어도 제대로 나누는가",
+  fomc날짜.includes("2027-01-27"), fomc날짜);
+검사("FOMC — 네 번을 모두 읽었는가", fomc.일정.length === 4, fomc날짜);
+검사("FOMC — 버린 것이 없는가", fomc.버린개수 === 0, fomc.버린개수);
+
+/* 별표는 '경제전망도 함께 낸다' 는 표시입니다 */
+검사("FOMC — 별표 회의는 경제전망 안내가 붙는가",
+  fomc.일정.find((ㅇ) => ㅇ.날짜 === "2026-03-18").설명.includes("경제전망"),
+  fomc.일정.find((ㅇ) => ㅇ.날짜 === "2026-03-18")?.설명);
+검사("FOMC — 별표 없는 회의에는 안 붙는가",
+  !fomc.일정.find((ㅇ) => ㅇ.날짜 === "2026-01-28").설명.includes("경제전망"),
+  fomc.일정.find((ㅇ) => ㅇ.날짜 === "2026-01-28")?.설명);
+
+검사("FOMC — 어디서 가져왔는지 적는가",
+  fomc.일정.every((ㅇ) => ㅇ.출처 === "연준" && ㅇ.원문.includes("federalreserve.gov")),
+  fomc.일정[0]);
+
+/*
+  달을 넘기는 회의 — "January 31 - February 1" 같은 경우.
+  끝 날짜가 시작보다 작으면 다음 달로 넘어간 것입니다.
+*/
+const 달넘김 = FOMC_파싱(`
+<h4>2026 FOMC Meetings</h4>
+ <div class="fomc-meeting__month"><strong>January</strong></div>
+ <div class="fomc-meeting__date">31-1</div>
+`, 2026);
+검사("FOMC — 달을 넘기는 회의를 제대로 넘기는가",
+  달넘김.일정[0]?.날짜 === "2026-02-01", 달넘김.일정);
+
+/* 구조가 바뀌면 조용히 틀리지 말고 '못 읽었다' 고 해야 합니다 */
+const 깨진것 = FOMC_파싱("<div>구조가 통째로 바뀐 페이지</div>", 2026);
+검사("FOMC — 구조가 바뀌면 지어내지 않는가",
+  깨진것.일정.length === 0 && 깨진것.까닭, 깨진것);
+
+/* 월과 날짜 개수가 어긋나면 짝이 틀어진 것 — 통째로 버려야 합니다 */
+const 짝틀림 = FOMC_파싱(`
+<h4>2026 FOMC Meetings</h4>
+ <div class="fomc-meeting__month"><strong>January</strong></div>
+ <div class="fomc-meeting__month"><strong>March</strong></div>
+ <div class="fomc-meeting__date">27-28</div>
+`, 2026);
+검사("FOMC — 월과 날짜 짝이 안 맞으면 버리는가",
+  짝틀림.일정.length === 0 && 짝틀림.버린개수 > 0, 짝틀림);
+
+/* 한국은행 금통위 — 실제로 떠온 조각 그대로 */
+const 금통위조각 = `
+<h3> 2026년 </h3>
+<table><tbody>
+<tr> <th scope="row">01월 15일(목)</th> <td> <div class="fileGroupSet">
+ <a href="/portal/cmmn/file/fileDown.do?menuNo=200755&amp;atchFileId=f514048c&amp;fileSn=1">국문보도자료(2601).hwp</a>
+ </div> </td> </tr>
+<tr> <th scope="row">02월 26일(목)</th> <td> ... </td> </tr>
+<tr> <th scope="row">11월 26일(목)</th> <td> ... </td> </tr>
+</tbody></table>
+`;
+
+const 금통위 = 금통위_파싱(금통위조각, 2026);
+const 금통위날짜 = 금통위.일정.map((ㅇ) => ㅇ.날짜);
+검사("금통위 — 날짜를 모두 읽는가",
+  금통위날짜.join(",") === "2026-01-15,2026-02-26,2026-11-26", 금통위날짜);
+검사("금통위 — 연도를 제목에서 가져오는가",
+  금통위날짜.every((ㄷ) => ㄷ.startsWith("2026")), 금통위날짜);
+검사("금통위 — 어디서 가져왔는지 적는가",
+  금통위.일정.every((ㅇ) => ㅇ.출처 === "한국은행" && ㅇ.원문.includes("bok.or.kr")),
+  금통위.일정[0]);
+
+const 연도없음 = 금통위_파싱('<table><tr><th scope="row">01월 15일(목)</th></tr></table>', 2026);
+검사("금통위 — 연도를 못 찾으면 지어내지 않는가",
+  연도없음.일정.length === 0 && 연도없음.까닭, 연도없음);
+
+/* 말이 안 되는 날짜는 걸러야 합니다 */
+검사("2월 30일 같은 날짜는 거르는가", !말이되는_날짜인가(2026, 2, 30, 2026));
+검사("13월은 거르는가", !말이되는_날짜인가(2026, 13, 1, 2026));
+검사("너무 먼 해는 거르는가",
+  !말이되는_날짜인가(2035, 1, 1, 2026) && !말이되는_날짜인가(2020, 1, 1, 2026));
+검사("멀쩡한 날짜는 통과하는가",
+  말이되는_날짜인가(2026, 2, 28, 2026) && 말이되는_날짜인가(2027, 12, 31, 2026));
+
+const 이상한날 = 금통위_파싱("<h3>2026년</h3><th scope=\"row\">02월 30일(목)</th>", 2026);
+검사("금통위 — 2월 30일이 섞여 있으면 버리는가",
+  이상한날.일정.length === 0 && 이상한날.버린개수 === 1, 이상한날);
 
 console.log(실패 === 0
   ? "\n🎉 브리핑 자료 처리가 정상 동작합니다"

@@ -25,6 +25,7 @@ import { rss_여러곳_읽기 } from "./rss.mjs";
 import { 갈래별_정리 } from "./news.mjs";
 import { 지수_모으기, 코인_모으기 } from "./prices.mjs";
 import { 일정_모으기, 한국날짜 } from "./schedule.mjs";
+import { 공식일정_가져오기 } from "./calendar-fetch.mjs";
 
 const 여기 = path.dirname(new URL(import.meta.url).pathname);
 const 앱폴더 = path.join(여기, "..");
@@ -55,11 +56,12 @@ async function 만들기() {
   console.log(`[브리핑] ${오늘} 자료를 모읍니다`);
 
   /* --- 동시에 모읍니다. 하나씩 하면 그만큼 오래 걸립니다 --- */
-  const [뉴스결과, 지수결과, 코인결과, 등록된것] = await Promise.all([
+  const [뉴스결과, 지수결과, 코인결과, 등록된것, 공식일정] = await Promise.all([
     rss_여러곳_읽기(뉴스출처),
     지수_모으기(),
     코인_모으기(),
     등록일정_읽기(),
+    공식일정_가져오기(),       // FOMC·금통위를 공식 사이트에서 직접
   ]);
 
   /* --- 뉴스 정리 (오래된 것·겹치는 것 빼기는 news.mjs 가 합니다) --- */
@@ -78,8 +80,23 @@ async function 만들기() {
     까닭: 하나.까닭 || null,
   }));
 
-  /* --- 일정 --- */
-  const 일정 = 일정_모으기(오늘, 등록된것.일정, 14);
+  /*
+    --- 일정 ---
+
+    세 군데서 옵니다.
+      1) 규칙으로 계산되는 것      schedule.mjs (고용보고서·옵션만기 등)
+      2) 공식 사이트에서 긁어온 것  calendar-fetch.mjs (FOMC·금통위)
+      3) 손으로 적어둔 것          calendar.json (BLS 가 막아둔 미국 CPI 등)
+
+    2번과 3번이 겹치면 손으로 적은 쪽(3번)을 남깁니다.
+    사람이 일부러 고쳐둔 것이 긁어온 것보다 우선입니다.
+  */
+  const 손으로적은날 = new Set(등록된것.일정.map((ㅇ) => `${ㅇ.날짜}|${ㅇ.이름}`));
+  const 합친일정 = [
+    ...등록된것.일정,
+    ...공식일정.일정.filter((ㅇ) => !손으로적은날.has(`${ㅇ.날짜}|${ㅇ.이름}`)),
+  ];
+  const 일정 = 일정_모으기(오늘, 합친일정, 14);
 
   /* --- 한 장으로 합치기 --- */
   const 브리핑 = {
@@ -97,6 +114,8 @@ async function 만들기() {
       // calendar.json 이 비었으면 앱이 "직접 넣어주세요" 라고 안내할 수 있게 알려줍니다
       등록일정_있나: 등록된것.일정.length > 0,
       메모: 등록된것.메모,
+      // 공식 사이트에서 몇 개나 가져왔는지. 숫자가 확 줄면 구조가 바뀐 것입니다.
+      공식출처상태: 공식일정.상태,
     },
     뉴스,
     출처상태,
@@ -121,6 +140,9 @@ async function 만들기() {
   console.log(`[시세] 지수 ${지수결과.값들.length}개 · 코인 ${코인결과.값들.length}개`);
   for (const ㅁ of 브리핑.시세.못가져온것) console.log(`       - 못 가져옴: ${ㅁ.이름} (${ㅁ.까닭})`);
   console.log(`[일정] 오늘 ${브리핑.일정.오늘.length} · 이번주 ${브리핑.일정.이번주.length} · 다음주 ${브리핑.일정.다음주.length}`);
+  for (const ㅅ of 공식일정.상태) {
+    console.log(`       ${ㅅ.성공 ? "[O]" : "[X]"} ${ㅅ.이름}: ${ㅅ.개수}개${ㅅ.까닭 ? " — " + ㅅ.까닭 : ""}`);
+  }
   if (!브리핑.일정.등록일정_있나) {
     console.log("       (FOMC·금통위 같은 일정은 calendar.json 에 넣어야 나옵니다)");
   }
