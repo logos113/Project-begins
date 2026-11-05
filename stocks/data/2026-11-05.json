@@ -1,6 +1,6 @@
 {
  "날짜": "2026-11-05",
- "만든시각": "2026-11-05T07:47:12.922Z",
+ "만든시각": "2026-11-05T08:02:35.760Z",
  "시세": {
   "지수": [
    {
@@ -55,8 +55,8 @@
     "이름": "원/달러",
     "갈래": "환율",
     "단위": "원",
-    "종가": 1341.16,
-    "변동률": -0.13,
+    "종가": 1340.54,
+    "변동률": -0.18,
     "전날종가": 1342.9,
     "수상한가": false,
     "기준일": "2026-11-05",
@@ -67,27 +67,27 @@
   "코인": [
    {
     "이름": "비트코인",
-    "달러": 80367,
-    "원화": 107801132,
-    "변동률": 2.92
+    "달러": 80329,
+    "원화": 107676483,
+    "변동률": 2.84
    },
    {
     "이름": "이더리움",
-    "달러": 2414.52,
-    "원화": 3238731,
-    "변동률": 4.87
+    "달러": 2416.3,
+    "원화": 3238910,
+    "변동률": 4.93
    },
    {
     "이름": "리플",
     "달러": 1.31,
-    "원화": 1758.3,
-    "변동률": 2.84
+    "원화": 1760.98,
+    "변동률": 3.18
    },
    {
     "이름": "솔라나",
-    "달러": 95.86,
-    "원화": 128586,
-    "변동률": 3.01
+    "달러": 95.85,
+    "원화": 128485,
+    "변동률": 3.07
    }
   ],
   "못가져온것": []
@@ -174,96 +174,152 @@
  "뉴스": {
   "한국": [
    {
+    "제목": "李대통령 \"창업사회로 전환해야…대한민국을 창업 인큐베이터로\"(종합)",
+    "주소": "https://www.yna.co.kr/view/AKR20261105114651001",
+    "때": "2026-11-05T07:58:04.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "[IPO챗] 제이앤티지 \"ESS·수소용 탄소 소재 생산 확대\"",
+    "주소": "https://www.yna.co.kr/view/AKR20261105153100008",
+    "때": "2026-11-05T07:57:56.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "국고채 금리, 美 블루웨이브 파급 효과에 일제히 하락(종합)",
+    "주소": "https://www.yna.co.kr/view/AKR20261105151251008",
+    "때": "2026-11-05T07:55:40.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "한투증권, 3분기 영업익 3천487억원…전년 동기 대비 58% 감소(종합)",
+    "주소": "https://www.yna.co.kr/view/AKR20261105141051527",
+    "때": "2026-11-05T07:54:01.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "[일문일답] 이형일 \"가상자산 해외거래도 실효성있게 과세\"",
+    "주소": "https://www.yna.co.kr/view/AKR20261105140100002",
+    "때": "2026-11-05T07:51:41.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "화성시, '해외 첫 자매결연' 도시 中우장구와 협력 심화 협약",
+    "주소": "https://www.yna.co.kr/view/AKR20261105152900061",
+    "때": "2026-11-05T07:51:35.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "'지분경쟁' 한진칼, 나흘째 상승 마감…우선주엔 투자경보 발령",
+    "주소": "https://www.yna.co.kr/view/AKR20261105152500008",
+    "때": "2026-11-05T07:51:12.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "엘앤에프, 영업손실 265억원…\"올해 NCM 출하량 역대 최대 전망\"(종합)",
+    "주소": "https://www.yna.co.kr/view/AKR20261105138051527",
+    "때": "2026-11-05T07:50:02.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "코인거래소 프라뱅, 회원 개인정보 또 유출…\"조사 중\"",
+    "주소": "https://www.yna.co.kr/view/AKR20261105150500002",
+    "때": "2026-11-05T07:46:28.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "부산형 AI 기반 스마트 상수도 모델, 아프리카 첫 진출",
+    "주소": "https://www.yna.co.kr/view/AKR20261105150200051",
+    "때": "2026-11-05T07:46:12.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "미국 CCIA, 한국 플랫폼 규제·과징금에 문제 제기",
+    "주소": "https://www.yna.co.kr/view/AKR20261105146700017",
+    "때": "2026-11-05T07:44:38.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
     "제목": "춘천시, 민생경제 회복 총력…규제완화·상권 활성화 추진",
     "주소": "https://www.yna.co.kr/view/AKR20261105148200062",
     "때": "2026-11-05T07:40:46.000Z",
     "출처": "연합뉴스 경제",
     "갈래": "한국"
-   },
-   {
-    "제목": "국고채 금리 일제히 하락…3년물 연 3.669%",
-    "주소": "https://www.yna.co.kr/view/AKR20261105151200008",
-    "때": "2026-11-05T07:40:41.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "[표] 코스피 지수선물·옵션 시세표(5일)-3",
-    "주소": "https://www.yna.co.kr/view/AKR20261105148700008",
-    "때": "2026-11-05T07:30:43.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "[표] 코스피 지수선물·옵션 시세표(5일)-2",
-    "주소": "https://www.yna.co.kr/view/AKR20261105148900008",
-    "때": "2026-11-05T07:30:35.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "[표] 코스피 지수선물·옵션 시세표(5일)-1",
-    "주소": "https://www.yna.co.kr/view/AKR20261105148800008",
-    "때": "2026-11-05T07:30:15.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "\"반도체 안 담아서 오히려 좋아\"…조정장에 웃은 배당 ETF",
-    "주소": "https://www.hankyung.com/article/202611058856i",
-    "때": "2026-11-05T07:30:02.000Z",
-    "출처": "한국경제 증권",
-    "갈래": "한국"
-   },
-   {
-    "제목": "[IPO챗] 하나에어로 \"항공 구조물서 우주·무인기로 사업 확대\"",
-    "주소": "https://www.yna.co.kr/view/AKR20261105147400008",
-    "때": "2026-11-05T07:29:02.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "민주노총 \"초광역특구법은 '재벌 특혜법'…원점서 재논의해야\"",
-    "주소": "https://www.yna.co.kr/view/AKR20261105146200530",
-    "때": "2026-11-05T07:28:46.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "퇴직연금 믿을 곳 없네…반도체 채권혼합 ETF도 흔들",
-    "주소": "https://www.hankyung.com/article/202611058614i",
-    "때": "2026-11-05T07:25:14.000Z",
-    "출처": "한국경제 증권",
-    "갈래": "한국"
-   },
-   {
-    "제목": "블루쓰나미에 삼전닉스 급락…코스피 5300까지 '털썩'",
-    "주소": "https://www.hankyung.com/article/202611058533i",
-    "때": "2026-11-05T07:23:28.000Z",
-    "출처": "한국경제 증권",
-    "갈래": "한국"
-   },
-   {
-    "제목": "'블루웨이브 쇼크' 코스피·코스닥, 5%대 급락…반도체주 '추락'(종합)",
-    "주소": "https://www.yna.co.kr/view/AKR20261105134351008",
-    "때": "2026-11-05T07:19:09.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "LS글로벌, LS메탈 사업 인수…통합 'LS메탈플러스' 출범",
-    "주소": "https://www.yna.co.kr/view/AKR20261105144500003",
-    "때": "2026-11-05T07:17:29.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
    }
   ],
   "미국": [
+   {
+    "제목": "Why gamble on Blue Lagoon’s IPO when a travel leader trades near a 52-week low?",
+    "주소": "https://www.investing.com/news/stock-market-news/why-gamble-on-blue-lagoons-ipo-when-a-travel-leader-trades-near-a-52week-low-4999123",
+    "때": "2026-11-05T07:55:14.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Croda International reports third quarter sales rise",
+    "주소": "https://www.investing.com/news/stock-market-news/croda-international-reports-third-quarter-sales-rise-93CH-5002460",
+    "때": "2026-11-05T07:51:20.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "BPER Banca posts mixed third quarter results",
+    "주소": "https://www.investing.com/news/stock-market-news/bper-banca-posts-mixed-third-quarter-results-93CH-5002459",
+    "때": "2026-11-05T07:50:40.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Hikma Pharmaceuticals narrows profit guidance, upgrades branded unit",
+    "주소": "https://www.investing.com/news/stock-market-news/hikma-pharmaceuticals-narrows-profit-guidance-upgrades-branded-unit-93CH-5002450",
+    "때": "2026-11-05T07:44:59.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Unite Group restructures leadership team to cut costs",
+    "주소": "https://www.investing.com/news/stock-market-news/unite-group-restructures-leadership-team-to-cut-costs-93CH-5002448",
+    "때": "2026-11-05T07:44:31.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
    {
     "제목": "Stock futures mixed after big rally following Democrats' decisive midterm wins",
     "주소": "https://www.cnbc.com/2026/11/04/stock-market-today-live-updates.html",
     "때": "2026-11-05T07:43:32.000Z",
     "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Skanska reports property impairments of SEK 861m in third quarter",
+    "주소": "https://www.investing.com/news/stock-market-news/skanska-reports-property-impairments-of-sek-861m-in-third-quarter-93CH-5002445",
+    "때": "2026-11-05T07:39:33.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Nexi reports Q3 revenue growth of 1.3%, misses EBITDA target",
+    "주소": "https://www.investing.com/news/stock-market-news/nexi-reports-q3-revenue-growth-of-13-misses-ebitda-target-93CH-5002443",
+    "때": "2026-11-05T07:37:38.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Nemetschek misses organic growth expectations in third quarter",
+    "주소": "https://www.investing.com/news/stock-market-news/nemetschek-misses-organic-growth-expectations-in-third-quarter-93CH-5002442",
+    "때": "2026-11-05T07:37:01.000Z",
+    "출처": "Investing 경제지표",
     "갈래": "미국"
    },
    {
@@ -281,66 +337,10 @@
     "갈래": "미국"
    },
    {
-    "제목": "Helios Towers raises 2027 tenancy outlook after Q3 beat",
-    "주소": "https://www.investing.com/news/stock-market-news/helios-towers-raises-2027-tenancy-outlook-after-q3-beat-93CH-5002434",
-    "때": "2026-11-05T07:32:48.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
     "제목": "Nintendo Switch 2 sales plunge 41% as price hikes and memory crunch bite",
     "주소": "https://www.cnbc.com/2026/11/05/nintendo-earnings-switch-2-sales.html",
     "때": "2026-11-05T07:30:58.000Z",
     "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Toyota posts profit surge and lifts annual outlook as hybrid sales shine",
-    "주소": "https://www.investing.com/news/stock-market-news/toyota-profit-surges-34-first-rise-in-six-quarters-5002210",
-    "때": "2026-11-05T07:30:42.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "SUSS Q3 orders reach €223.5m, beating forecasts",
-    "주소": "https://www.investing.com/news/stock-market-news/suss-q3-orders-reach-2235m-beating-forecasts-93CH-5002420",
-    "때": "2026-11-05T07:27:41.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Asia stocks mixed as chip rout triggers KOSPI trading halt; China outperforms",
-    "주소": "https://www.investing.com/news/stock-market-news/asia-stocks-mixed-as-chip-rout-triggers-kospi-trading-halt-china-outperforms-5002134",
-    "때": "2026-11-05T07:27:24.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Arkema reports third quarter results in line with estimates",
-    "주소": "https://www.investing.com/news/stock-market-news/arkema-reports-third-quarter-results-in-line-with-estimates-93CH-5002417",
-    "때": "2026-11-05T07:25:36.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Australia’s oldest retailer David Jones enters administration as economic pressures mount",
-    "주소": "https://www.investing.com/news/stock-market-news/australian-retailer-david-jones-enters-administration-and-faces-sale-media-reports-5001887",
-    "때": "2026-11-05T07:24:22.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Engie reports 9-month results, raises full-year guidance",
-    "주소": "https://www.investing.com/news/stock-market-news/engie-reports-9month-results-raises-fullyear-guidance-93CH-5002411",
-    "때": "2026-11-05T07:22:05.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "PVA TePla reports Q3 beat on orders, confirms 2026 guidance",
-    "주소": "https://www.investing.com/news/stock-market-news/pva-tepla-reports-q3-beat-on-orders-confirms-2026-guidance-93CH-5002409",
-    "때": "2026-11-05T07:20:33.000Z",
-    "출처": "Investing 경제지표",
     "갈래": "미국"
    }
   ],
