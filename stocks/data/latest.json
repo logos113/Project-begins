@@ -1,14 +1,14 @@
 {
  "날짜": "2026-11-05",
- "만든시각": "2026-11-05T03:36:44.866Z",
+ "만든시각": "2026-11-05T03:39:42.595Z",
  "시세": {
   "지수": [
    {
     "이름": "코스피",
     "갈래": "한국",
     "단위": "",
-    "종가": 5470.53,
-    "변동률": -3.75,
+    "종가": 5469.95,
+    "변동률": -3.76,
     "전날종가": 5683.8,
     "수상한가": false,
     "기준일": "2026-11-05",
@@ -19,8 +19,8 @@
     "이름": "코스닥",
     "갈래": "한국",
     "단위": "",
-    "종가": 687.8,
-    "변동률": -3.8,
+    "종가": 688.65,
+    "변동률": -3.68,
     "전날종가": 714.95,
     "수상한가": false,
     "기준일": "2026-11-05",
@@ -67,27 +67,27 @@
   "코인": [
    {
     "이름": "비트코인",
-    "달러": 80667,
-    "원화": 108401625,
-    "변동률": 5.62
+    "달러": 80733,
+    "원화": 108489564,
+    "변동률": 5.93
    },
    {
     "이름": "이더리움",
-    "달러": 2430.73,
-    "원화": 3266452,
-    "변동률": 8.29
+    "달러": 2432.6,
+    "원화": 3268954,
+    "변동률": 8.53
    },
    {
     "이름": "리플",
     "달러": 1.31,
-    "원화": 1761.49,
-    "변동률": 4.22
+    "원화": 1764.89,
+    "변동률": 4.58
    },
    {
     "이름": "솔라나",
-    "달러": 96.66,
-    "원화": 129888,
-    "변동률": 6.25
+    "달러": 96.87,
+    "원화": 130178,
+    "변동률": 6.77
    }
   ],
   "못가져온것": []
@@ -212,6 +212,27 @@
   ],
   "미국": [
    {
+    "제목": "Australia’s 188-year-old retailer David Jones enters administration, faces sale",
+    "주소": "https://www.investing.com/news/stock-market-news/australian-retailer-david-jones-enters-administration-and-faces-sale-media-reports-5001887",
+    "때": "2026-11-05T03:30:23.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Why is SK Hynix stock sliding today?",
+    "주소": "https://www.investing.com/news/stock-market-news/why-is-sk-hynix-stock-sliding-today-93CH-5002108",
+    "때": "2026-11-05T03:22:20.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Softbank’s $5.4 bln takeover of ABB robotics unit blocked by China- FT",
+    "주소": "https://www.investing.com/news/stock-market-news/softbanks-54-bln-takeover-of-abb-robotics-unit-blocked-by-china-ft-5002105",
+    "때": "2026-11-05T03:15:51.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
     "제목": "LIV Golf faces liquidation after BC Partners scraps rescue plan",
     "주소": "https://www.cnbc.com/2026/11/05/liv-golf-liquidation-bc-partners.html",
     "때": "2026-11-05T03:11:58.000Z",
@@ -272,27 +293,6 @@
     "주소": "https://www.investing.com/news/stock-market-news/openai-ready-to-ipo-in-2027-now-counts-majority-of-sales-from-enterprises-brockman-says-5002023",
     "때": "2026-11-05T02:13:49.000Z",
     "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Australia’s 188-year-old retailer David Jones enters administration, faces sale",
-    "주소": "https://www.investing.com/news/stock-market-news/australian-retailer-david-jones-enters-administration-and-faces-sale-media-reports-5001887",
-    "때": "2026-11-05T02:12:47.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Goldman flags fresh state buying in China stocks, awaits volume recovery",
-    "주소": "https://www.investing.com/news/stock-market-news/goldman-flags-fresh-state-buying-in-china-stocks-awaits-volume-recovery-5002027",
-    "때": "2026-11-05T02:09:37.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Prediction markets cement their status after forecasting Democratic sweep of Congress",
-    "주소": "https://www.cnbc.com/2026/11/04/prediction-markets-2026-midterms-election-results.html",
-    "때": "2026-11-05T02:07:35.000Z",
-    "출처": "CNBC 주요뉴스",
     "갈래": "미국"
    }
   ],
