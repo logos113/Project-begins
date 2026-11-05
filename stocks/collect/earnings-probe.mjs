@@ -40,23 +40,14 @@ const 머리말 = {
 const 내일 = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
 
 const 볼곳 = [
-  // 1차에서 타임아웃이었습니다. 느린 것일 수 있어 넉넉히 기다려 봅니다.
-  { 이름: "나스닥 실적캘린더(재시도)",
-    주소: `https://api.nasdaq.com/api/calendar/earnings?date=${내일}`,
-    json: true, 기다림: 40000 },
-
-  // 무료로 실적 일정을 보여주는 곳으로 알려진 데들
-  { 이름: "stockanalysis 실적",
-    주소: "https://stockanalysis.com/markets/earnings/", json: false },
-  { 이름: "야후 실적 캘린더(화면)",
-    주소: `https://finance.yahoo.com/calendar/earnings?day=${내일}`, json: false },
-
-  // 키가 필요한지 확인만 — 필요하다고 하면 그 자체가 답입니다
-  { 이름: "Finnhub (키 없이)",
-    주소: `https://finnhub.io/api/v1/calendar/earnings?from=${내일}&to=${내일}`, json: true },
-  { 이름: "DART 한국공시 (키 없이)",
-    주소: "https://opendart.fss.or.kr/api/list.json?bgn_de=20261105&end_de=20261112",
-    json: true },
+  /*
+    야후 실적 캘린더 화면만 열렸습니다(1MB HTML).
+    여기서 '그날 실적 발표하는 기업' 을 뽑아낼 수 있는지 봅니다.
+    React 로 그리는 화면이라 데이터가 HTML 안에 JSON 으로 박혀 있을 수도,
+    아니면 표로 그려져 있을 수도, 아니면 브라우저에서만 채워질 수도 있습니다.
+  */
+  { 이름: "야후 실적 캘린더", json: false, 기다림: 30000,
+    주소: `https://finance.yahoo.com/calendar/earnings?day=${내일}` },
 ];
 
 async function 두드리기(하나) {
@@ -75,6 +66,26 @@ async function 두드리기(하나) {
       종류: 답.headers.get("content-type") || null,
       길이: 글.length,
     };
+
+    if (답.ok && !하나.json) {
+      /*
+        종목 심볼이 HTML 안에 실제로 들어 있는지 봅니다.
+        들어 있으면 긁어낼 수 있고, 없으면 브라우저에서만 채워지는
+        화면이라 일꾼으로는 가져올 수 없습니다.
+      */
+      한칸.표개수 = (글.match(/<table/gi) || []).length;
+      한칸.tr개수 = (글.match(/<tr[\s>]/gi) || []).length;
+      // /quote/AAPL 같은 종목 링크
+      const 종목링크 = [...글.matchAll(/\/quote\/([A-Z][A-Z.\-]{0,6})[\/?"]/g)]
+        .map((ㄱ) => ㄱ[1]);
+      한칸.종목링크수 = 종목링크.length;
+      한칸.종목보기 = [...new Set(종목링크)].slice(0, 15);
+      // 화면에 박아둔 JSON 덩어리가 있는지
+      한칸.root앱있나 = /root\.App\.main|__NEXT_DATA__|application\/json/.test(글);
+      // 'Earnings Date' 같은 글자 둘레
+      const i = 글.search(/Earnings\s*(Date|Call)/i);
+      한칸.실적글둘레 = i >= 0 ? 글.slice(Math.max(0, i - 150), i + 350).replace(/\s+/g, " ") : null;
+    }
 
     if (답.ok && 하나.json) {
       try {
