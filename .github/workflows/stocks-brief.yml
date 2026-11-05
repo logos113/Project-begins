@@ -50,11 +50,20 @@ permissions:
 
 # 두 번이 겹쳐 돌면 같은 파일을 서로 덮어씁니다. 하나씩 돌게 합니다.
 concurrency:
-  group: 아침-브리핑
+  group: stocks-brief
   cancel-in-progress: false
 
 jobs:
-  만들기:
+  # ⚠️ job 이름(build)은 반드시 영문이어야 합니다.
+  #
+  #    깃허브는 job 이름에 영문·숫자·하이픈·밑줄만 받습니다.
+  #    한국어를 쓰면 워크플로가 '잘못된 파일' 로 취급되어 아예 실행되지
+  #    않습니다. 에러도 안 보이고 그냥 아무 일도 안 일어납니다.
+  #    (실제로 '만들기' 라고 적었다가 40분을 기다렸습니다)
+  #
+  #    화면에 보이는 이름은 아래 name: 으로 한국어를 줄 수 있습니다.
+  build:
+    name: 브리핑 만들기
     runs-on: ubuntu-latest
     # 뉴스 출처가 느려도 10분이면 충분합니다. 넘으면 뭔가 잘못된 것입니다.
     timeout-minutes: 10
