@@ -1,0 +1,550 @@
+{
+ "날짜": "2026-11-06",
+ "만든시각": "2026-11-06T01:32:04.627Z",
+ "시세": {
+  "지수": [
+   {
+    "이름": "코스피",
+    "갈래": "한국",
+    "단위": "",
+    "종가": 4975.08,
+    "변동률": -12.47,
+    "전날종가": 5683.8,
+    "수상한가": false,
+    "기준일": "2026-11-06",
+    "출처": "Yahoo",
+    "거래일수": 9
+   },
+   {
+    "이름": "코스닥",
+    "갈래": "한국",
+    "단위": "",
+    "종가": 635.44,
+    "변동률": -11.12,
+    "전날종가": 714.95,
+    "수상한가": false,
+    "기준일": "2026-11-06",
+    "출처": "Yahoo",
+    "거래일수": 9
+   },
+   {
+    "이름": "S&P 500",
+    "갈래": "미국",
+    "단위": "",
+    "종가": 7353.73,
+    "변동률": -4.36,
+    "전날종가": 7688.62,
+    "수상한가": false,
+    "기준일": "2026-11-05",
+    "출처": "Yahoo",
+    "거래일수": 10
+   },
+   {
+    "이름": "나스닥",
+    "갈래": "미국",
+    "단위": "",
+    "종가": 24315,
+    "변동률": -5.52,
+    "전날종가": 25736.51,
+    "수상한가": false,
+    "기준일": "2026-11-05",
+    "출처": "Yahoo",
+    "거래일수": 10
+   },
+   {
+    "이름": "원/달러",
+    "갈래": "환율",
+    "단위": "원",
+    "종가": 1356.38,
+    "변동률": 1.22,
+    "전날종가": 1340.07,
+    "수상한가": false,
+    "기준일": "2026-11-06",
+    "출처": "Yahoo",
+    "거래일수": 10
+   }
+  ],
+  "코인": [
+   {
+    "이름": "비트코인",
+    "달러": 75951,
+    "원화": 103081106,
+    "변동률": -5.58
+   },
+   {
+    "이름": "이더리움",
+    "달러": 2231,
+    "원화": 3027927,
+    "변동률": -7.7
+   },
+   {
+    "이름": "리플",
+    "달러": 1.21,
+    "원화": 1645.97,
+    "변동률": -6.76
+   },
+   {
+    "이름": "솔라나",
+    "달러": 89.68,
+    "원화": 121719,
+    "변동률": -6.28
+   }
+  ],
+  "못가져온것": []
+ },
+ "일정": {
+  "오늘": [
+   {
+    "날짜": "2026-11-06",
+    "갈래": "미국",
+    "이름": "미국 고용보고서",
+    "설명": "비농업 신규고용·실업률. 밤 10시 30분(한국시간) 발표",
+    "출처": "규칙",
+    "요일": "금",
+    "남은날": 0,
+    "오늘인가": true,
+    "이번주인가": true
+   }
+  ],
+  "이번주": [
+   {
+    "날짜": "2026-11-12",
+    "갈래": "한국",
+    "이름": "옵션 만기일",
+    "설명": "코스피200 옵션 만기",
+    "출처": "규칙",
+    "요일": "목",
+    "남은날": 6,
+    "오늘인가": false,
+    "이번주인가": true
+   }
+  ],
+  "다음주": [],
+  "등록일정_있나": false,
+  "메모": null,
+  "다가오는_큰일정": [
+   {
+    "날짜": "2026-11-26",
+    "갈래": "한국",
+    "이름": "금통위 (기준금리 결정)",
+    "설명": "한국은행 통화정책방향 결정회의. 오전 중 발표",
+    "출처": "한국은행",
+    "원문": "https://www.bok.or.kr/portal/singl/crncyPolicyDrcMtg/listYear.do?mtgSe=A&menuNo=200755",
+    "요일": "목",
+    "남은날": 20,
+    "오늘인가": false,
+    "이번주인가": false
+   },
+   {
+    "날짜": "2026-12-09",
+    "갈래": "미국",
+    "이름": "FOMC 결과 발표",
+    "설명": "기준금리 결정 + 경제전망(점도표). 한국시간 다음날 새벽",
+    "출처": "연준",
+    "원문": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+    "요일": "수",
+    "남은날": 33,
+    "오늘인가": false,
+    "이번주인가": false
+   }
+  ],
+  "공식출처상태": [
+   {
+    "이름": "FOMC (연준)",
+    "성공": true,
+    "개수": 25,
+    "버린개수": 32,
+    "까닭": null
+   },
+   {
+    "이름": "금통위 (한국은행)",
+    "성공": true,
+    "개수": 8,
+    "버린개수": 0,
+    "까닭": null
+   },
+   {
+    "이름": "미국 CPI (BLS)",
+    "성공": false,
+    "개수": 0,
+    "까닭": "BLS 가 막아두었습니다(403). 위장해서 들어가지 않습니다 — calendar.json 에 손으로 넣어주세요"
+   }
+  ]
+ },
+ "뉴스": {
+  "한국": [
+   {
+    "제목": "피노, 1830억 원 규모 유증 단행…이차전지 소재 사업 체질 개선",
+    "주소": "https://www.mk.co.kr/news/stock/12200277",
+    "때": "2026-11-06T01:29:44.000Z",
+    "출처": "매일경제 증권",
+    "갈래": "한국"
+   },
+   {
+    "제목": "집 안가보고 잡던 원베일리도 14.5억 ‘뚝’, 강남 아파트 시련의 계절 왔다",
+    "주소": "https://www.mk.co.kr/news/economy/12200273",
+    "때": "2026-11-06T01:28:42.000Z",
+    "출처": "매일경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "울주군, 중국 쿤산시와 우호교류도시 수립의향서 체결",
+    "주소": "https://www.yna.co.kr/view/AKR20261106064300057",
+    "때": "2026-11-06T01:28:16.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "에브리봇, 中 CMS증권 주관 DDT 설명회 참석…국내 기관투자자 대거 관심",
+    "주소": "https://www.mk.co.kr/news/stock/12200263",
+    "때": "2026-11-06T01:24:44.000Z",
+    "출처": "매일경제 증권",
+    "갈래": "한국"
+   },
+   {
+    "제목": "\"70달러가 1달러 됐다\"…'블루 쓰나미'에 트럼프 코인 폭락",
+    "주소": "https://www.hankyung.com/article/2026110602507",
+    "때": "2026-11-06T01:13:31.000Z",
+    "출처": "한국경제 증권",
+    "갈래": "한국"
+   },
+   {
+    "제목": "[MK시그널] 마라톤 페트롤리엄 매도신호 포착, 수익률 25.6% 달성",
+    "주소": "https://www.mk.co.kr/news/stock/12200243",
+    "때": "2026-11-06T01:13:14.000Z",
+    "출처": "매일경제 증권",
+    "갈래": "한국"
+   },
+   {
+    "제목": "성광벤드 3분기 영업손실 12억원…적자 전환",
+    "주소": "https://www.yna.co.kr/view/AKR20261106063700527",
+    "때": "2026-11-06T01:13:03.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "\"울고 싶다\" \"연봉 날아갈 판\"…삼전닉스 등 증시 폭락에 개미들 패닉",
+    "주소": "https://www.yna.co.kr/view/AKR20261106060700008",
+    "때": "2026-11-06T01:09:53.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "'그래서 돈 언제 버나'…진짜 공포는 AI 데이터센터 지연",
+    "주소": "https://www.hankyung.com/article/202611060230i",
+    "때": "2026-11-06T01:01:06.000Z",
+    "출처": "한국경제 증권",
+    "갈래": "한국"
+   },
+   {
+    "제목": "평창군, 외국인 계절근로자 산불예방 정보 '언어 장벽' 낮춘다",
+    "주소": "https://www.yna.co.kr/view/AKR20261106058500062",
+    "때": "2026-11-06T01:00:56.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "빗썸, 국회 입법박람회서 보이스피싱 예방 교육 책무 제안",
+    "주소": "https://www.yna.co.kr/view/AKR20261106059200002",
+    "때": "2026-11-06T01:00:41.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "창고43, 서브 브랜드 '창고43 온' 출시…현대百 중동점에 1호점",
+    "주소": "https://www.yna.co.kr/view/AKR20261106058900030",
+    "때": "2026-11-06T01:00:13.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   }
+  ],
+  "미국": [
+   {
+    "제목": "Stock futures fall after Nasdaq correction; Japan's Nikkei 225 enters bear market: Live updates",
+    "주소": "https://www.cnbc.com/2026/11/05/stock-market-today-live-updates.html",
+    "때": "2026-11-06T01:30:42.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "IRS announces new federal income tax brackets for 2027",
+    "주소": "https://www.cnbc.com/2026/11/05/2027-federal-tax-brackets.html",
+    "때": "2026-11-06T01:21:08.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Analysts and investors react to AI market rout",
+    "주소": "https://www.investing.com/news/stock-market-news/analysts-and-investors-react-to-ai-market-rout-5006243",
+    "때": "2026-11-06T01:12:25.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Nasdaq sell-off batters Asian chip stocks as SK Hynix, Samsung, Softbank, TSMC tumble",
+    "주소": "https://www.cnbc.com/2026/11/06/tech-stocks-sk-hynix-samsung-softbank.html",
+    "때": "2026-11-06T01:11:35.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "U.S. stock futures rise after AI rout batters Wall St; payrolls data in focus",
+    "주소": "https://www.investing.com/news/stock-market-news/us-stock-futures-rise-after-ai-rout-batters-wall-st-payrolls-data-in-focus-5006240",
+    "때": "2026-11-06T01:08:07.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Here&#x2019;s what&#x2019;s driving Iren&#x2019;s stock higher after a brutal selloff",
+    "주소": "https://www.marketwatch.com/story/heres-whats-driving-irens-stock-higher-after-a-brutal-selloff-0ced09b0?mod=mw_rss_topstories",
+    "때": "2026-11-06T01:07:00.000Z",
+    "출처": "MarketWatch",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Cloudflare&#x2019;s stock mounts a big comeback after fastest sales surge in nearly 4 years",
+    "주소": "https://www.marketwatch.com/story/cloudflares-stock-mounts-a-big-comeback-after-fastest-sales-surge-in-nearly-4-years-d80d994d?mod=mw_rss_topstories",
+    "때": "2026-11-06T01:06:00.000Z",
+    "출처": "MarketWatch",
+    "갈래": "미국"
+   },
+   {
+    "제목": "IRS unveils higher capital gains tax brackets for 2027",
+    "주소": "https://www.cnbc.com/2026/11/05/capital-gains-tax-2027-federal.html",
+    "때": "2026-11-06T01:00:10.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Nasdaq posts biggest daily drop in 19 months on fears of AI regulations",
+    "주소": "https://www.investing.com/news/stock-market-news/sp-500-futures-steady-after-midterm-rally-nasdaq-lags-on-chip-weakness-5003237",
+    "때": "2026-11-06T00:54:48.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Friday's big stock stories: What’s likely to move the market in the next trading session",
+    "주소": "https://www.cnbc.com/2026/11/05/fridays-big-stock-stories-whats-likely-to-move-the-market.html",
+    "때": "2026-11-06T00:50:48.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "South Korea’s KOSPI halts trade after 8% wipeout on AI losses",
+    "주소": "https://www.investing.com/news/stock-market-news/south-koreas-kospi-halts-trade-after-8-wipeout-on-ai-losses-5006208",
+    "때": "2026-11-06T00:47:44.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Exclusive-AI backlash could threaten Anthropic IPO timing, potential investors say",
+    "주소": "https://www.investing.com/news/stock-market-news/exclusiveai-backlash-could-threaten-anthropic-ipo-timing-potential-investors-say-5006110",
+    "때": "2026-11-06T00:42:41.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   }
+  ],
+  "코인": [
+   {
+    "제목": "Bitcoin developer proposes ‘landmines’ to make quantum thieves lose their own BTC",
+    "주소": "https://www.coindesk.com/tech/2026/11/05/bitcoin-developer-proposes-landmines-to-make-quantum-thieves-lose-their-own-btc",
+    "때": "2026-11-06T01:30:00.000Z",
+    "출처": "CoinDesk",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Core Scientific to quit Bitcoin mining by year-end as AI business surges",
+    "주소": "https://cointelegraph.com/news/core-scientific-to-quit-bitcoin-mining-by-year-end-as-ai-business-surges?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "때": "2026-11-06T00:19:49.000Z",
+    "출처": "Cointelegraph",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Claude Gets Personal Finance—Anthony Pompliano Accuses Anthropic of Copying His Startup",
+    "주소": "https://decrypt.co/382689/claude-personal-finance-anthony-pompliano-anthropic",
+    "때": "2026-11-05T23:06:02.000Z",
+    "출처": "Decrypt",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Here’s what happened in crypto today",
+    "주소": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "때": "2026-11-05T23:03:41.000Z",
+    "출처": "Cointelegraph",
+    "갈래": "코인"
+   },
+   {
+    "제목": "American Bitcoin’s $126M profit masks mining pressure as rivals turn to AI",
+    "주소": "https://cointelegraph.com/news/american-bitcoins-126m-profit-masks-mining-pressure-ai?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "때": "2026-11-05T22:43:18.000Z",
+    "출처": "Cointelegraph",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Asian crypto exchanges batten down the hatches as hacks surge: Asia Express",
+    "주소": "https://cointelegraph.com/magazine/asian-crypto-exchanges-bunker-down-as-hacks-surge-asia-express?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "때": "2026-11-05T22:18:42.000Z",
+    "출처": "Cointelegraph",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Bitcoin Fixes This? Paraguay President Resigns After Bank Lockout Hits 60% of Country",
+    "주소": "https://decrypt.co/382676/paraguay-president-resigns-bank-lockout-bitcoin-fixes-this",
+    "때": "2026-11-05T22:16:03.000Z",
+    "출처": "Decrypt",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Hyperliquid Strategies files to become CFTC-registered FCM, posts $13.3 million in quaterly revenue",
+    "주소": "https://www.theblock.co/news/markets/2026-11-05-hyperliquid-strategies-files-become-cftc-registered-fcm-posts-13-3-million-quaterly-revenue-435455",
+    "때": "2026-11-05T22:09:14.000Z",
+    "출처": "The Block",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Crypto ally French Hill wins reelection but set to lose House chair",
+    "주소": "https://cointelegraph.com/news/crypto-ally-french-hill-wins-reelection-arkansas?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "때": "2026-11-05T21:39:19.000Z",
+    "출처": "Cointelegraph",
+    "갈래": "코인"
+   },
+   {
+    "제목": "OpenAI Promises to Foot AI’s Power Bill After Voter Revolt. Who Enforces It?",
+    "주소": "https://decrypt.co/382674/openai-promises-foot-ai-power-bill-after-voter-revolt",
+    "때": "2026-11-05T21:36:03.000Z",
+    "출처": "Decrypt",
+    "갈래": "코인"
+   },
+   {
+    "제목": "DOJ Creates 'Super Intelligence' Task Force to Guard Against AI Abuse",
+    "주소": "https://decrypt.co/382672/doj-creates-super-intelligence-task-force-to-guard-against-ai-abuse",
+    "때": "2026-11-05T20:46:02.000Z",
+    "출처": "Decrypt",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Mercado Bitcoin Said Its Hack Was Contained, But Blockchain Data Tells a Different Story",
+    "주소": "https://decrypt.co/382670/mercado-bitcoin-hack-contained-blockchain-data",
+    "때": "2026-11-05T20:16:03.000Z",
+    "출처": "Decrypt",
+    "갈래": "코인"
+   }
+  ]
+ },
+ "출처상태": [
+  {
+   "이름": "연합뉴스 경제",
+   "성공": true,
+   "개수": 120,
+   "까닭": null
+  },
+  {
+   "이름": "연합뉴스 증시",
+   "성공": true,
+   "개수": 120,
+   "까닭": null
+  },
+  {
+   "이름": "한국경제 증권",
+   "성공": true,
+   "개수": 50,
+   "까닭": null
+  },
+  {
+   "이름": "한국경제 경제",
+   "성공": true,
+   "개수": 50,
+   "까닭": null
+  },
+  {
+   "이름": "매일경제 증권",
+   "성공": true,
+   "개수": 50,
+   "까닭": null
+  },
+  {
+   "이름": "매일경제 경제",
+   "성공": true,
+   "개수": 50,
+   "까닭": null
+  },
+  {
+   "이름": "이데일리 증권",
+   "성공": false,
+   "개수": 0,
+   "까닭": "fetch failed"
+  },
+  {
+   "이름": "머니투데이 증권",
+   "성공": false,
+   "개수": 0,
+   "까닭": "fetch failed"
+  },
+  {
+   "이름": "CNBC 마켓",
+   "성공": true,
+   "개수": 30,
+   "까닭": null
+  },
+  {
+   "이름": "CNBC 주요뉴스",
+   "성공": true,
+   "개수": 30,
+   "까닭": null
+  },
+  {
+   "이름": "MarketWatch",
+   "성공": true,
+   "개수": 10,
+   "까닭": null
+  },
+  {
+   "이름": "MarketWatch 시황",
+   "성공": true,
+   "개수": 30,
+   "까닭": null
+  },
+  {
+   "이름": "Yahoo Finance",
+   "성공": false,
+   "개수": 0,
+   "까닭": "응답 404"
+  },
+  {
+   "이름": "Investing 경제지표",
+   "성공": true,
+   "개수": 10,
+   "까닭": null
+  },
+  {
+   "이름": "CoinDesk",
+   "성공": true,
+   "개수": 25,
+   "까닭": null
+  },
+  {
+   "이름": "Cointelegraph",
+   "성공": true,
+   "개수": 30,
+   "까닭": null
+  },
+  {
+   "이름": "Decrypt",
+   "성공": true,
+   "개수": 37,
+   "까닭": null
+  },
+  {
+   "이름": "The Block",
+   "성공": true,
+   "개수": 20,
+   "까닭": null
+  },
+  {
+   "이름": "코인데스크 코리아",
+   "성공": true,
+   "개수": 0,
+   "까닭": null
+  }
+ ]
+}
