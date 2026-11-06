@@ -1,31 +1,31 @@
 {
  "날짜": "2026-11-06",
- "만든시각": "2026-11-06T01:32:04.627Z",
+ "만든시각": "2026-11-06T02:49:20.901Z",
  "시세": {
   "지수": [
    {
     "이름": "코스피",
     "갈래": "한국",
     "단위": "",
-    "종가": 4975.08,
-    "변동률": -12.47,
-    "전날종가": 5683.8,
+    "종가": 5164.03,
+    "변동률": -4.08,
+    "전날종가": 5383.8,
     "수상한가": false,
     "기준일": "2026-11-06",
     "출처": "Yahoo",
-    "거래일수": 9
+    "거래일수": 10
    },
    {
     "이름": "코스닥",
     "갈래": "한국",
     "단위": "",
-    "종가": 635.44,
-    "변동률": -11.12,
-    "전날종가": 714.95,
+    "종가": 653.87,
+    "변동률": -3.62,
+    "전날종가": 678.41,
     "수상한가": false,
     "기준일": "2026-11-06",
     "출처": "Yahoo",
-    "거래일수": 9
+    "거래일수": 10
    },
    {
     "이름": "S&P 500",
@@ -55,8 +55,8 @@
     "이름": "원/달러",
     "갈래": "환율",
     "단위": "원",
-    "종가": 1356.38,
-    "변동률": 1.22,
+    "종가": 1357.17,
+    "변동률": 1.28,
     "전날종가": 1340.07,
     "수상한가": false,
     "기준일": "2026-11-06",
@@ -67,27 +67,27 @@
   "코인": [
    {
     "이름": "비트코인",
-    "달러": 75951,
-    "원화": 103081106,
-    "변동률": -5.58
+    "달러": 76120,
+    "원화": 103328619,
+    "변동률": -5.56
    },
    {
     "이름": "이더리움",
-    "달러": 2231,
-    "원화": 3027927,
-    "변동률": -7.7
+    "달러": 2240.02,
+    "원화": 3040695,
+    "변동률": -7.83
    },
    {
     "이름": "리플",
-    "달러": 1.21,
-    "원화": 1645.97,
-    "변동률": -6.76
+    "달러": 1.22,
+    "원화": 1652.24,
+    "변동률": -6.87
    },
    {
     "이름": "솔라나",
-    "달러": 89.68,
-    "원화": 121719,
-    "변동률": -6.28
+    "달러": 90.24,
+    "원화": 122491,
+    "변동률": -6.42
    }
   ],
   "못가져온것": []
@@ -174,96 +174,159 @@
  "뉴스": {
   "한국": [
    {
-    "제목": "피노, 1830억 원 규모 유증 단행…이차전지 소재 사업 체질 개선",
-    "주소": "https://www.mk.co.kr/news/stock/12200277",
-    "때": "2026-11-06T01:29:44.000Z",
+    "제목": "[속보] 증권사 신용융자 담보비율 140% 유지 의무 3개월 면제",
+    "주소": "https://www.mk.co.kr/news/stock/12200359",
+    "때": "2026-11-06T02:44:52.000Z",
     "출처": "매일경제 증권",
     "갈래": "한국"
    },
    {
-    "제목": "집 안가보고 잡던 원베일리도 14.5억 ‘뚝’, 강남 아파트 시련의 계절 왔다",
-    "주소": "https://www.mk.co.kr/news/economy/12200273",
-    "때": "2026-11-06T01:28:42.000Z",
+    "제목": "[속보] F4 \"증시 변동성 확대하면 시장안정 추가 조치\"",
+    "주소": "https://www.yna.co.kr/view/AKR20261106089800002",
+    "때": "2026-11-06T02:43:49.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "\"강남 소형 아파트도 하락 거래…가격 조정 압력 양상\"",
+    "주소": "https://www.yna.co.kr/view/AKR20261106082600003",
+    "때": "2026-11-06T02:43:07.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "부산시·BNK금융·기보, 기후테크 기업에 150억 금융지원",
+    "주소": "https://www.mk.co.kr/news/economy/12200358",
+    "때": "2026-11-06T02:40:31.000Z",
     "출처": "매일경제 경제",
     "갈래": "한국"
    },
    {
-    "제목": "울주군, 중국 쿤산시와 우호교류도시 수립의향서 체결",
-    "주소": "https://www.yna.co.kr/view/AKR20261106064300057",
-    "때": "2026-11-06T01:28:16.000Z",
+    "제목": "뉴발란스, 990시리즈 7번째 모델 공개…쿠션감·반발력 강화",
+    "주소": "https://www.yna.co.kr/view/AKR20261106088100030",
+    "때": "2026-11-06T02:40:26.000Z",
     "출처": "연합뉴스 경제",
     "갈래": "한국"
    },
    {
-    "제목": "에브리봇, 中 CMS증권 주관 DDT 설명회 참석…국내 기관투자자 대거 관심",
-    "주소": "https://www.mk.co.kr/news/stock/12200263",
-    "때": "2026-11-06T01:24:44.000Z",
-    "출처": "매일경제 증권",
-    "갈래": "한국"
-   },
-   {
-    "제목": "\"70달러가 1달러 됐다\"…'블루 쓰나미'에 트럼프 코인 폭락",
-    "주소": "https://www.hankyung.com/article/2026110602507",
-    "때": "2026-11-06T01:13:31.000Z",
-    "출처": "한국경제 증권",
-    "갈래": "한국"
-   },
-   {
-    "제목": "[MK시그널] 마라톤 페트롤리엄 매도신호 포착, 수익률 25.6% 달성",
-    "주소": "https://www.mk.co.kr/news/stock/12200243",
-    "때": "2026-11-06T01:13:14.000Z",
-    "출처": "매일경제 증권",
-    "갈래": "한국"
-   },
-   {
-    "제목": "성광벤드 3분기 영업손실 12억원…적자 전환",
-    "주소": "https://www.yna.co.kr/view/AKR20261106063700527",
-    "때": "2026-11-06T01:13:03.000Z",
+    "제목": "\"AI붕괴 아니다…수급 불안에 낙폭 확대\"…증시급락 전문가 긴급진단",
+    "주소": "https://www.yna.co.kr/view/AKR20261106085200008",
+    "때": "2026-11-06T02:39:42.000Z",
     "출처": "연합뉴스 증시",
     "갈래": "한국"
    },
    {
-    "제목": "\"울고 싶다\" \"연봉 날아갈 판\"…삼전닉스 등 증시 폭락에 개미들 패닉",
-    "주소": "https://www.yna.co.kr/view/AKR20261106060700008",
-    "때": "2026-11-06T01:09:53.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "'그래서 돈 언제 버나'…진짜 공포는 AI 데이터센터 지연",
-    "주소": "https://www.hankyung.com/article/202611060230i",
-    "때": "2026-11-06T01:01:06.000Z",
-    "출처": "한국경제 증권",
-    "갈래": "한국"
-   },
-   {
-    "제목": "평창군, 외국인 계절근로자 산불예방 정보 '언어 장벽' 낮춘다",
-    "주소": "https://www.yna.co.kr/view/AKR20261106058500062",
-    "때": "2026-11-06T01:00:56.000Z",
+    "제목": "[AI픽] 한국 '별 따러 가자', 한·아세안 AI 창업대회 2위",
+    "주소": "https://www.yna.co.kr/view/AKR20261106086600017",
+    "때": "2026-11-06T02:38:23.000Z",
     "출처": "연합뉴스 경제",
     "갈래": "한국"
    },
    {
-    "제목": "빗썸, 국회 입법박람회서 보이스피싱 예방 교육 책무 제안",
-    "주소": "https://www.yna.co.kr/view/AKR20261106059200002",
-    "때": "2026-11-06T01:00:41.000Z",
+    "제목": "3년 만에 최고 성장률…에어비앤비 “다시 성장 상태”",
+    "주소": "https://www.hankyung.com/article/202611060599i",
+    "때": "2026-11-06T02:37:18.000Z",
+    "출처": "한국경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "노무라 \"코스피 3개월 목표치 7,500∼8,000…단기 변동성 반영\"",
+    "주소": "https://www.yna.co.kr/view/AKR20261106081800008",
+    "때": "2026-11-06T02:33:50.000Z",
     "출처": "연합뉴스 증시",
     "갈래": "한국"
    },
    {
-    "제목": "창고43, 서브 브랜드 '창고43 온' 출시…현대百 중동점에 1호점",
-    "주소": "https://www.yna.co.kr/view/AKR20261106058900030",
-    "때": "2026-11-06T01:00:13.000Z",
+    "제목": "유한킴벌리, '마이베이비 탑투토워시' 출시…저자극 테스트 완료",
+    "주소": "https://www.yna.co.kr/view/AKR20261106085700030",
+    "때": "2026-11-06T02:32:41.000Z",
     "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "AI·반도체 호황 벌써 끝?…美 '블루웨이브 쇼크' 일파만파",
+    "주소": "https://www.yna.co.kr/view/AKR20261106084500008",
+    "때": "2026-11-06T02:32:32.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "요즘 가구 안 팔린다는데…'1.8억짜리 책상' 들여오는 이유",
+    "주소": "https://www.hankyung.com/article/202611058250g",
+    "때": "2026-11-06T02:31:33.000Z",
+    "출처": "한국경제 경제",
     "갈래": "한국"
    }
   ],
   "미국": [
    {
+    "제목": "Nasdaq sell-off batters Asian chip stocks as SK Hynix, Samsung, Softbank, TSMC tumble",
+    "주소": "https://www.cnbc.com/2026/11/06/tech-stocks-sk-hynix-samsung-softbank.html",
+    "때": "2026-11-06T02:40:15.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Trump-backed World Liberty Financial launches WLFI token buyback program",
+    "주소": "https://www.investing.com/news/stock-market-news/trumpbacked-world-liberty-financial-launches-wlfi-token-buyback-program-5006317",
+    "때": "2026-11-06T02:24:21.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Johnson & Johnson wins FDA approval for Rybrevant cancer treatment",
+    "주소": "https://www.investing.com/news/stock-market-news/johnson--johnson-wins-fda-approval-for-rybrevant-cancer-treatment-5006314",
+    "때": "2026-11-06T02:17:17.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Why is SK Hynix stock crashing today?",
+    "주소": "https://www.investing.com/news/stock-market-news/why-is-sk-hynix-stock-crashing-today-93CH-5006304",
+    "때": "2026-11-06T02:11:51.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Why is TSMC stock plunging today?",
+    "주소": "https://www.investing.com/news/stock-market-news/why-is-tsmc-stock-plunging-today-93CH-5006303",
+    "때": "2026-11-06T02:11:47.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "AI data center firm IREN delays Microsoft AI deliveries, plans $15 billion spending push",
+    "주소": "https://www.investing.com/news/stock-market-news/ai-data-center-firm-iren-delays-microsoft-ai-deliveries-plans-15-billion-spending-push-5006291",
+    "때": "2026-11-06T02:07:09.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Japan’s Nikkei nears bear market as AI rout batters tech valuations",
+    "주소": "https://www.investing.com/news/stock-market-news/japans-nikkei-nears-bear-market-as-ai-rout-batters-tech-valuations-5006297",
+    "때": "2026-11-06T02:03:00.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Why is Samsung Electronics stock plunging today?",
+    "주소": "https://www.investing.com/news/stock-market-news/why-is-samsung-electronics-stock-plunging-today-93CH-5006286",
+    "때": "2026-11-06T01:59:43.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
     "제목": "Stock futures fall after Nasdaq correction; Japan's Nikkei 225 enters bear market: Live updates",
     "주소": "https://www.cnbc.com/2026/11/05/stock-market-today-live-updates.html",
-    "때": "2026-11-06T01:30:42.000Z",
+    "때": "2026-11-06T01:54:43.000Z",
     "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Analysts and investors react to AI market rout",
+    "주소": "https://www.investing.com/news/stock-market-news/analysts-and-investors-react-to-ai-market-rout-5006243",
+    "때": "2026-11-06T01:30:25.000Z",
+    "출처": "Investing 경제지표",
     "갈래": "미국"
    },
    {
@@ -274,77 +337,21 @@
     "갈래": "미국"
    },
    {
-    "제목": "Analysts and investors react to AI market rout",
-    "주소": "https://www.investing.com/news/stock-market-news/analysts-and-investors-react-to-ai-market-rout-5006243",
-    "때": "2026-11-06T01:12:25.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Nasdaq sell-off batters Asian chip stocks as SK Hynix, Samsung, Softbank, TSMC tumble",
-    "주소": "https://www.cnbc.com/2026/11/06/tech-stocks-sk-hynix-samsung-softbank.html",
-    "때": "2026-11-06T01:11:35.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
     "제목": "U.S. stock futures rise after AI rout batters Wall St; payrolls data in focus",
     "주소": "https://www.investing.com/news/stock-market-news/us-stock-futures-rise-after-ai-rout-batters-wall-st-payrolls-data-in-focus-5006240",
     "때": "2026-11-06T01:08:07.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
-   },
-   {
-    "제목": "Here&#x2019;s what&#x2019;s driving Iren&#x2019;s stock higher after a brutal selloff",
-    "주소": "https://www.marketwatch.com/story/heres-whats-driving-irens-stock-higher-after-a-brutal-selloff-0ced09b0?mod=mw_rss_topstories",
-    "때": "2026-11-06T01:07:00.000Z",
-    "출처": "MarketWatch",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Cloudflare&#x2019;s stock mounts a big comeback after fastest sales surge in nearly 4 years",
-    "주소": "https://www.marketwatch.com/story/cloudflares-stock-mounts-a-big-comeback-after-fastest-sales-surge-in-nearly-4-years-d80d994d?mod=mw_rss_topstories",
-    "때": "2026-11-06T01:06:00.000Z",
-    "출처": "MarketWatch",
-    "갈래": "미국"
-   },
-   {
-    "제목": "IRS unveils higher capital gains tax brackets for 2027",
-    "주소": "https://www.cnbc.com/2026/11/05/capital-gains-tax-2027-federal.html",
-    "때": "2026-11-06T01:00:10.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Nasdaq posts biggest daily drop in 19 months on fears of AI regulations",
-    "주소": "https://www.investing.com/news/stock-market-news/sp-500-futures-steady-after-midterm-rally-nasdaq-lags-on-chip-weakness-5003237",
-    "때": "2026-11-06T00:54:48.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Friday's big stock stories: What’s likely to move the market in the next trading session",
-    "주소": "https://www.cnbc.com/2026/11/05/fridays-big-stock-stories-whats-likely-to-move-the-market.html",
-    "때": "2026-11-06T00:50:48.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
-    "제목": "South Korea’s KOSPI halts trade after 8% wipeout on AI losses",
-    "주소": "https://www.investing.com/news/stock-market-news/south-koreas-kospi-halts-trade-after-8-wipeout-on-ai-losses-5006208",
-    "때": "2026-11-06T00:47:44.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Exclusive-AI backlash could threaten Anthropic IPO timing, potential investors say",
-    "주소": "https://www.investing.com/news/stock-market-news/exclusiveai-backlash-could-threaten-anthropic-ipo-timing-potential-investors-say-5006110",
-    "때": "2026-11-06T00:42:41.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
    }
   ],
   "코인": [
+   {
+    "제목": "Hyperliquid treasury firm seeking U.S. regulatory nod as a domestic futures platform",
+    "주소": "https://www.coindesk.com/policy/2026/11/05/hyperliquid-treasury-firm-seeking-u-s-regulatory-nod-as-a-domestic-futures-platform",
+    "때": "2026-11-06T02:24:23.000Z",
+    "출처": "CoinDesk",
+    "갈래": "코인"
+   },
    {
     "제목": "Bitcoin developer proposes ‘landmines’ to make quantum thieves lose their own BTC",
     "주소": "https://www.coindesk.com/tech/2026/11/05/bitcoin-developer-proposes-landmines-to-make-quantum-thieves-lose-their-own-btc",
@@ -419,13 +426,6 @@
     "제목": "DOJ Creates 'Super Intelligence' Task Force to Guard Against AI Abuse",
     "주소": "https://decrypt.co/382672/doj-creates-super-intelligence-task-force-to-guard-against-ai-abuse",
     "때": "2026-11-05T20:46:02.000Z",
-    "출처": "Decrypt",
-    "갈래": "코인"
-   },
-   {
-    "제목": "Mercado Bitcoin Said Its Hack Was Contained, But Blockchain Data Tells a Different Story",
-    "주소": "https://decrypt.co/382670/mercado-bitcoin-hack-contained-blockchain-data",
-    "때": "2026-11-05T20:16:03.000Z",
     "출처": "Decrypt",
     "갈래": "코인"
    }
