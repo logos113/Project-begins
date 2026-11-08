@@ -1,0 +1,538 @@
+{
+ "날짜": "2026-11-08",
+ "만든시각": "2026-11-08T00:33:19.869Z",
+ "시세": {
+  "지수": [
+   {
+    "이름": "코스피",
+    "갈래": "한국",
+    "단위": "",
+    "종가": 5059.69,
+    "변동률": -6.02,
+    "전날종가": 5383.8,
+    "수상한가": false,
+    "기준일": "2026-11-06",
+    "출처": "Yahoo",
+    "거래일수": 10
+   },
+   {
+    "이름": "코스닥",
+    "갈래": "한국",
+    "단위": "",
+    "종가": 644.27,
+    "변동률": -5.03,
+    "전날종가": 678.41,
+    "수상한가": false,
+    "기준일": "2026-11-06",
+    "출처": "Yahoo",
+    "거래일수": 10
+   },
+   {
+    "이름": "S&P 500",
+    "갈래": "미국",
+    "단위": "",
+    "종가": 7376.86,
+    "변동률": 0.31,
+    "전날종가": 7353.73,
+    "수상한가": false,
+    "기준일": "2026-11-06",
+    "출처": "Yahoo",
+    "거래일수": 10
+   },
+   {
+    "이름": "나스닥",
+    "갈래": "미국",
+    "단위": "",
+    "종가": 24579.43,
+    "변동률": 1.09,
+    "전날종가": 24315,
+    "수상한가": false,
+    "기준일": "2026-11-06",
+    "출처": "Yahoo",
+    "거래일수": 10
+   },
+   {
+    "이름": "원/달러",
+    "갈래": "환율",
+    "단위": "원",
+    "종가": 1356.34,
+    "변동률": 1.21,
+    "전날종가": 1340.07,
+    "수상한가": false,
+    "기준일": "2026-11-06",
+    "출처": "Yahoo",
+    "거래일수": 10
+   }
+  ],
+  "코인": [
+   {
+    "이름": "비트코인",
+    "달러": 75701,
+    "원화": 103241566,
+    "변동률": -0.21
+   },
+   {
+    "이름": "이더리움",
+    "달러": 2234.3,
+    "원화": 3047143,
+    "변동률": -0.23
+   },
+   {
+    "이름": "리플",
+    "달러": 1.16,
+    "원화": 1582.81,
+    "변동률": -1.6
+   },
+   {
+    "이름": "솔라나",
+    "달러": 89.4,
+    "원화": 121930,
+    "변동률": -0.85
+   }
+  ],
+  "못가져온것": []
+ },
+ "일정": {
+  "오늘": [],
+  "이번주": [
+   {
+    "날짜": "2026-11-12",
+    "갈래": "한국",
+    "이름": "옵션 만기일",
+    "설명": "코스피200 옵션 만기",
+    "출처": "규칙",
+    "요일": "목",
+    "남은날": 4,
+    "오늘인가": false,
+    "이번주인가": true
+   }
+  ],
+  "다음주": [],
+  "등록일정_있나": false,
+  "메모": null,
+  "다가오는_큰일정": [
+   {
+    "날짜": "2026-11-26",
+    "갈래": "한국",
+    "이름": "금통위 (기준금리 결정)",
+    "설명": "한국은행 통화정책방향 결정회의. 오전 중 발표",
+    "출처": "한국은행",
+    "원문": "https://www.bok.or.kr/portal/singl/crncyPolicyDrcMtg/listYear.do?mtgSe=A&menuNo=200755",
+    "요일": "목",
+    "남은날": 18,
+    "오늘인가": false,
+    "이번주인가": false
+   },
+   {
+    "날짜": "2026-12-09",
+    "갈래": "미국",
+    "이름": "FOMC 결과 발표",
+    "설명": "기준금리 결정 + 경제전망(점도표). 한국시간 다음날 새벽",
+    "출처": "연준",
+    "원문": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+    "요일": "수",
+    "남은날": 31,
+    "오늘인가": false,
+    "이번주인가": false
+   }
+  ],
+  "공식출처상태": [
+   {
+    "이름": "FOMC (연준)",
+    "성공": true,
+    "개수": 25,
+    "버린개수": 32,
+    "까닭": null
+   },
+   {
+    "이름": "금통위 (한국은행)",
+    "성공": true,
+    "개수": 8,
+    "버린개수": 0,
+    "까닭": null
+   },
+   {
+    "이름": "미국 CPI (BLS)",
+    "성공": false,
+    "개수": 0,
+    "까닭": "BLS 가 막아두었습니다(403). 위장해서 들어가지 않습니다 — calendar.json 에 손으로 넣어주세요"
+   }
+  ]
+ },
+ "뉴스": {
+  "한국": [
+   {
+    "제목": "CJ푸드빌 빕스, 잠실에 '그릴 다이닝' 매장 개점…연내 8곳 확대",
+    "주소": "https://www.yna.co.kr/view/AKR20261108014200030",
+    "때": "2026-11-08T00:15:11.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "\"제조업 파업에 근로손실일수 45% 증가…N% 성과배분 요구 확산\"",
+    "주소": "https://www.yna.co.kr/view/AKR20261108013000003",
+    "때": "2026-11-08T00:09:51.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "광주송정역·금호타이어공장 일대 '반도체 관문도시' 조성",
+    "주소": "https://www.yna.co.kr/view/AKR20261106086200054",
+    "때": "2026-11-08T00:02:01.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "'군포 복합물류터미널 이전 촉구' 범시민추진위 출범",
+    "주소": "https://www.yna.co.kr/view/AKR20261106145700061",
+    "때": "2026-11-08T00:00:05.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "'232억 펀드 불완전판매' 증권사 임원 감봉…법원 \"과도한 제재\"",
+    "주소": "https://www.yna.co.kr/view/AKR20261106182900004",
+    "때": "2026-11-08T00:00:02.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "무보, '수출성장 플래닛' 기업 21곳 신규 선발…맞춤형 지원",
+    "주소": "https://www.yna.co.kr/view/AKR20261108012300003",
+    "때": "2026-11-07T23:54:48.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "경기 아파트값 상승률 8주째 서울 상회…주도지역 서울→경기",
+    "주소": "https://www.yna.co.kr/view/AKR20261108006100003",
+    "때": "2026-11-07T23:47:05.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "세븐일레븐, 소용량 '원핸드 간편식' 확대…'스몰 밀' 소비 겨냥",
+    "주소": "https://www.yna.co.kr/view/AKR20261108011100030",
+    "때": "2026-11-07T23:35:48.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "양산시 3년간 수의계약 1만4천건·특정업체 136건…\"쏠림 심각\"",
+    "주소": "https://www.yna.co.kr/view/AKR20261106108500052",
+    "때": "2026-11-07T23:35:00.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "농지 전수조사 이후 농지 경매 낙찰률·낙찰가율 동반 하락",
+    "주소": "https://www.yna.co.kr/view/AKR20261107051300030",
+    "때": "2026-11-07T23:28:21.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "\"안방 넘어 세계로\"…서부경남 지자체, 농특산물 수출 다각화",
+    "주소": "https://www.yna.co.kr/view/AKR20261106127500052",
+    "때": "2026-11-07T23:25:00.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "미국발 AI 데이터센터 불안…국내 업계 \"사업 추진 문제없어\"",
+    "주소": "https://www.yna.co.kr/view/AKR20261106091800017",
+    "때": "2026-11-07T23:13:00.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   }
+  ],
+  "미국": [
+   {
+    "제목": "How to invest in AI amid AI spending worries?",
+    "주소": "https://www.investing.com/news/stock-market-news/how-to-invest-in-ai-amid-ai-spending-worries-5010090",
+    "때": "2026-11-07T23:53:16.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Trump offers UFC chief Dana White press secretary job",
+    "주소": "https://www.cnbc.com/2026/11/07/trump-ufc-dana-white-press-secretary-offer.html",
+    "때": "2026-11-07T23:13:38.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Binance CFO Kaiser Ng steps down, Justin Yek named new finance chief",
+    "주소": "https://www.investing.com/news/stock-market-news/binance-cfo-kaiser-ng-steps-down-justin-yek-named-new-finance-chief-5009978",
+    "때": "2026-11-07T22:48:56.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Polish gunman who killed 6 people in Krakow has 'ultranationalistic' views, minister says",
+    "주소": "https://www.cnbc.com/2026/11/07/krakow-poland-shooting.html",
+    "때": "2026-11-07T22:39:10.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Israel’s president taps opposition candidate Eisenkot to form a government, in setback for Netanyahu",
+    "주소": "https://www.cnbc.com/2026/11/07/israel-eisenkot-netanyahu.html",
+    "때": "2026-11-07T22:36:37.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Risk of Iran war escalation remains high despite Democratic sweep in U.S. midterm elections",
+    "주소": "https://www.cnbc.com/2026/11/07/iran-war-midterm-election-oil-price-trump.html",
+    "때": "2026-11-07T22:17:52.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Trump targets Slotkin in call for DOJ probe of alleged Democratic threats to Republicans",
+    "주소": "https://www.cnbc.com/2026/11/07/trump-doj-democrats-alleged-threats-slotkin.html",
+    "때": "2026-11-07T21:59:10.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Russia stocks lower at close of trade; MOEX Russia Index unchanged",
+    "주소": "https://www.investing.com/news/stock-market-news/russia-stocks-lower-at-close-of-trade-moex-russia-index-unchanged-5010054",
+    "때": "2026-11-07T21:20:03.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Equity positioning suffered one of its sharpest weekly drops on record: DB",
+    "주소": "https://www.investing.com/news/stock-market-news/equity-positioning-suffered-one-of-its-sharpest-weekly-drops-on-record-db-5010048",
+    "때": "2026-11-07T21:07:06.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "CoreWeave seeks truce with Texas Governor-elect Hinojosa",
+    "주소": "https://www.investing.com/news/stock-market-news/coreweave-seeks-truce-with-texas-governorelect-hinojosa-5010044",
+    "때": "2026-11-07T20:59:29.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "This retired professor has reinvented himself &#x2014; as a Taylor Swift scholar",
+    "주소": "https://www.marketwatch.com/story/this-retired-professor-has-reinvented-himself-as-a-taylor-swift-scholar-88456c8d?mod=mw_rss_topstories",
+    "때": "2026-11-07T20:48:00.000Z",
+    "출처": "MarketWatch",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Second-guessing my adviser: Is an annuity the right move in this market?",
+    "주소": "https://www.marketwatch.com/story/my-adviser-recommended-an-annuity-is-it-the-right-move-in-this-market-environment-00edbbf6?mod=mw_rss_topstories",
+    "때": "2026-11-07T20:36:00.000Z",
+    "출처": "MarketWatch",
+    "갈래": "미국"
+   }
+  ],
+  "코인": [
+   {
+    "제목": "Binance CFO steps down nine days after record hack; co-CEO says transition was planned six months ago",
+    "주소": "https://www.theblock.co/news/business/2026-11-07-binance-cfo-steps-down-nine-days-after-record-hack-co-ceo-says-transition-was-planned-six-months-ago-435992",
+    "때": "2026-11-07T21:57:58.000Z",
+    "출처": "The Block",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Ex-FBI agent pleads guilty to stealing $2.47 million in crypto from wallets tied to 35 investigations",
+    "주소": "https://www.theblock.co/news/regulation/2026-11-07-ex-fbi-agent-pleads-guilty-to-stealing-2-47-million-in-crypto-from-wallets-tied-to-35-investigations-435988",
+    "때": "2026-11-07T20:59:47.000Z",
+    "출처": "The Block",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Binance users in some European countries told to pull crypto before fees kick in, with accounts closing by year end",
+    "주소": "https://www.coindesk.com/business/2026/11/07/binance-users-in-some-european-countries-told-to-pull-crypto-before-fees-kick-in-with-accounts-closing-by-year-end",
+    "때": "2026-11-07T19:13:16.000Z",
+    "출처": "CoinDesk",
+    "갈래": "코인"
+   },
+   {
+    "제목": "U.S. Treasury moves to cut off crypto exchange MEXC over $16 billion in alleged illicit flows",
+    "주소": "https://www.coindesk.com/business/2026/11/07/u-s-treasury-moves-to-cut-off-crypto-exchange-mexc-over-usd16-billion-in-alleged-illicit-flows",
+    "때": "2026-11-07T17:36:46.000Z",
+    "출처": "CoinDesk",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Apple Completes the Set: Every Magnificent Seven Stock Opts Out of OKX-ICE Venue",
+    "주소": "https://decrypt.co/382768/apple-meta-every-magnificent-seven-stock-opts-out-okx-ice-venue",
+    "때": "2026-11-07T17:01:03.000Z",
+    "출처": "Decrypt",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Gnosis Pay breach exposes card numbers, home addresses and linked crypto wallets",
+    "주소": "https://www.coindesk.com/business/2026/11/07/gnosis-pay-breach-exposes-card-numbers-home-addresses-and-linked-crypto-wallets",
+    "때": "2026-11-07T16:51:00.000Z",
+    "출처": "CoinDesk",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Bitcoin ETFs flip negative for 2026 after $1.28 billion outflow week, worst since June",
+    "주소": "https://www.theblock.co/news/markets/2026-11-07-bitcoin-etfs-flip-negative-for-2026-after-1-28-billion-outflow-week-worst-since-june-435984",
+    "때": "2026-11-07T16:46:02.000Z",
+    "출처": "The Block",
+    "갈래": "코인"
+   },
+   {
+    "제목": "AI Chip Stocks Bounce After Global Rout—But Is the Bubble Starting to Burst?",
+    "주소": "https://decrypt.co/382770/ai-chip-stocks-bounce-global-rout-bubble-starting-burst",
+    "때": "2026-11-07T16:01:02.000Z",
+    "출처": "Decrypt",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Here’s what happened in crypto today",
+    "주소": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "때": "2026-11-07T14:22:00.000Z",
+    "출처": "Cointelegraph",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Ex-FBI counterintelligence agent stole almost $2.5M in crypto",
+    "주소": "https://cointelegraph.com/news/ex-fbi-counterintelligence-agent-stole-almost-25m-in-crypto?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "때": "2026-11-07T14:16:00.000Z",
+    "출처": "Cointelegraph",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Sony Axing Game Discs Will Have Outsized Impact on Low-Income Gamers, Experts Say",
+    "주소": "https://decrypt.co/382714/sony-axing-game-discs-will-have-outsized-impact-on-low-income-gamers-experts-say",
+    "때": "2026-11-07T14:01:02.000Z",
+    "출처": "Decrypt",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Bitcoin holders have received eCash — What can you do with it?",
+    "주소": "https://cointelegraph.com/magazine/bitcoin-holders-have-received-ecash-what-can-you-with-it?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "때": "2026-11-07T13:30:00.000Z",
+    "출처": "Cointelegraph",
+    "갈래": "코인"
+   }
+  ]
+ },
+ "출처상태": [
+  {
+   "이름": "연합뉴스 경제",
+   "성공": true,
+   "개수": 120,
+   "까닭": null
+  },
+  {
+   "이름": "연합뉴스 증시",
+   "성공": true,
+   "개수": 120,
+   "까닭": null
+  },
+  {
+   "이름": "한국경제 증권",
+   "성공": true,
+   "개수": 50,
+   "까닭": null
+  },
+  {
+   "이름": "한국경제 경제",
+   "성공": true,
+   "개수": 50,
+   "까닭": null
+  },
+  {
+   "이름": "매일경제 증권",
+   "성공": true,
+   "개수": 50,
+   "까닭": null
+  },
+  {
+   "이름": "매일경제 경제",
+   "성공": true,
+   "개수": 50,
+   "까닭": null
+  },
+  {
+   "이름": "이데일리 증권",
+   "성공": false,
+   "개수": 0,
+   "까닭": "fetch failed"
+  },
+  {
+   "이름": "머니투데이 증권",
+   "성공": false,
+   "개수": 0,
+   "까닭": "fetch failed"
+  },
+  {
+   "이름": "CNBC 마켓",
+   "성공": true,
+   "개수": 30,
+   "까닭": null
+  },
+  {
+   "이름": "CNBC 주요뉴스",
+   "성공": true,
+   "개수": 30,
+   "까닭": null
+  },
+  {
+   "이름": "MarketWatch",
+   "성공": true,
+   "개수": 10,
+   "까닭": null
+  },
+  {
+   "이름": "MarketWatch 시황",
+   "성공": true,
+   "개수": 30,
+   "까닭": null
+  },
+  {
+   "이름": "Yahoo Finance",
+   "성공": false,
+   "개수": 0,
+   "까닭": "응답 404"
+  },
+  {
+   "이름": "Investing 경제지표",
+   "성공": true,
+   "개수": 10,
+   "까닭": null
+  },
+  {
+   "이름": "CoinDesk",
+   "성공": true,
+   "개수": 25,
+   "까닭": null
+  },
+  {
+   "이름": "Cointelegraph",
+   "성공": true,
+   "개수": 30,
+   "까닭": null
+  },
+  {
+   "이름": "Decrypt",
+   "성공": true,
+   "개수": 39,
+   "까닭": null
+  },
+  {
+   "이름": "The Block",
+   "성공": true,
+   "개수": 20,
+   "까닭": null
+  },
+  {
+   "이름": "코인데스크 코리아",
+   "성공": true,
+   "개수": 0,
+   "까닭": null
+  }
+ ]
+}
