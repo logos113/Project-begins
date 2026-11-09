@@ -1,14 +1,14 @@
 {
  "날짜": "2026-11-09",
- "만든시각": "2026-11-09T00:51:31.956Z",
+ "만든시각": "2026-11-09T01:57:31.550Z",
  "시세": {
   "지수": [
    {
     "이름": "코스피",
     "갈래": "한국",
     "단위": "",
-    "종가": 5039.44,
-    "변동률": -0.4,
+    "종가": 5092.99,
+    "변동률": 0.66,
     "전날종가": 5059.69,
     "수상한가": false,
     "기준일": "2026-11-09",
@@ -19,8 +19,8 @@
     "이름": "코스닥",
     "갈래": "한국",
     "단위": "",
-    "종가": 636.39,
-    "변동률": -1.22,
+    "종가": 637.55,
+    "변동률": -1.04,
     "전날종가": 644.27,
     "수상한가": false,
     "기준일": "2026-11-09",
@@ -55,8 +55,8 @@
     "이름": "원/달러",
     "갈래": "환율",
     "단위": "원",
-    "종가": 1360.38,
-    "변동률": 0.3,
+    "종가": 1359.5,
+    "변동률": 0.23,
     "전날종가": 1356.34,
     "수상한가": false,
     "기준일": "2026-11-09",
@@ -67,27 +67,27 @@
   "코인": [
    {
     "이름": "비트코인",
-    "달러": 75060,
-    "원화": 102092052,
-    "변동률": -0.83
+    "달러": 75096,
+    "원화": 102111559,
+    "변동률": -0.75
    },
    {
     "이름": "이더리움",
-    "달러": 2141.16,
-    "원화": 2912265,
-    "변동률": -4.11
+    "달러": 2141.98,
+    "원화": 2912552,
+    "변동률": -4.02
    },
    {
     "이름": "리플",
     "달러": 1.12,
-    "원화": 1523.39,
-    "변동률": -3.53
+    "원화": 1517.9,
+    "변동률": -3.64
    },
    {
     "이름": "솔라나",
-    "달러": 87.16,
-    "원화": 118544,
-    "변동률": -2.43
+    "달러": 87.83,
+    "원화": 119420,
+    "변동률": -1.38
    }
   ],
   "못가져온것": []
@@ -162,91 +162,147 @@
  "뉴스": {
   "한국": [
    {
-    "제목": "“주당 8000원에 더 산다”…김동선 추가 공개매수에 한화M&S 9%대 강세",
-    "주소": "https://www.mk.co.kr/news/stock/12202078",
-    "때": "2026-11-09T00:46:49.000Z",
-    "출처": "매일경제 증권",
-    "갈래": "한국"
-   },
-   {
-    "제목": "목표 못 채운 김동선, 270억 더 쏟는다…한화M&S 지분 80% 눈앞",
-    "주소": "https://www.mk.co.kr/news/business/12202073",
-    "때": "2026-11-09T00:43:45.000Z",
-    "출처": "매일경제 증권",
-    "갈래": "한국"
-   },
-   {
-    "제목": "[바이오스냅] 알테오젠·리가켐·제일약품, 바이오유럽 참가",
-    "주소": "https://www.yna.co.kr/view/AKR20261109024900017",
-    "때": "2026-11-09T00:41:44.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "한샘, 23일까지 '쌤위크'…소파·식탁 등 최대 50% 특가",
-    "주소": "https://www.yna.co.kr/view/AKR20261109040300030",
-    "때": "2026-11-09T00:39:44.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "살짝 다쳐도 “8주 이상 치료받겠다”…車보험 ‘8주룰’ 도입후 매일 570건 신청",
-    "주소": "https://www.mk.co.kr/news/economy/12202070",
-    "때": "2026-11-09T00:39:09.000Z",
+    "제목": "車 안 탄 날만큼 보험료 깎아준다…롯데손보, 최대 15% 할인",
+    "주소": "https://www.mk.co.kr/news/economy/12202156",
+    "때": "2026-11-09T01:56:17.000Z",
     "출처": "매일경제 경제",
     "갈래": "한국"
    },
    {
-    "제목": "[특징주] 한화M&S, 김동선 사장 추가 공개매수에 장초반 9% 상승",
-    "주소": "https://www.yna.co.kr/view/AKR20261109039100008",
-    "때": "2026-11-09T00:38:08.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "[단독] “회사 건강검진비에 세금 뗀다고?”…국세청, 삼성 계열사에 “이것도 월급”",
-    "주소": "https://www.mk.co.kr/news/economy/12202068",
-    "때": "2026-11-09T00:37:57.000Z",
-    "출처": "매일경제 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "하이트진로, 17일 소맥 '테라&참이슬' 캔 한정 출시",
-    "주소": "https://www.yna.co.kr/view/AKR20261109040200030",
-    "때": "2026-11-09T00:37:36.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "코스피, 장초반 보합세로 '5천선' 사수전…코스닥 하락(종합)",
-    "주소": "https://www.yna.co.kr/view/AKR20261109029651008",
-    "때": "2026-11-09T00:35:59.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "美 반도체 반등에도 코스피 ‘흔들’…장중 다시 5000선 밑으로",
-    "주소": "https://www.mk.co.kr/news/stock/12202067",
-    "때": "2026-11-09T00:35:37.000Z",
+    "제목": "예치 보상 제공하는 인젝티브 현물 ETF 나스닥 상장",
+    "주소": "https://www.mk.co.kr/news/stock/12202155",
+    "때": "2026-11-09T01:55:47.000Z",
     "출처": "매일경제 증권",
     "갈래": "한국"
    },
    {
-    "제목": "소비자원, 부원장에 박종배 전 공정위 서울사무소장 임명",
-    "주소": "https://www.yna.co.kr/view/AKR20261109032000030",
-    "때": "2026-11-09T00:31:37.000Z",
+    "제목": "코인 과세 “다음에, 다음에 또 다음에”…정부가 자초한 ‘합리적 불신’ [기자24시]",
+    "주소": "https://www.mk.co.kr/news/economy/12202134",
+    "때": "2026-11-09T01:41:15.000Z",
+    "출처": "매일경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "해양교통안전공단-수산자원공단, '어선 안전조업' 협약",
+    "주소": "https://www.yna.co.kr/view/AKR20261109057400051",
+    "때": "2026-11-09T01:39:42.000Z",
     "출처": "연합뉴스 경제",
     "갈래": "한국"
    },
    {
-    "제목": "[테크스냅] 네이버페이, 불법사금융 예방 캠페인 실시",
-    "주소": "https://www.yna.co.kr/view/AKR20261109036000017",
-    "때": "2026-11-09T00:31:26.000Z",
+    "제목": "가족 신변 위협하고 흉기 소지…악성 불법추심, 가중 처벌한다",
+    "주소": "https://www.yna.co.kr/view/AKR20261109057000004",
+    "때": "2026-11-09T01:39:31.000Z",
     "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "가덕도신공항 부지조성 실시설계 착수…내년 상반기 본공사 착공",
+    "주소": "https://www.yna.co.kr/view/AKR20261109051600003",
+    "때": "2026-11-09T01:37:56.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "김동선 “한화M&S 8000원에 삽니다”…개인자금 투입해 또 공개매수",
+    "주소": "https://www.mk.co.kr/news/business/12202122",
+    "때": "2026-11-09T01:35:35.000Z",
+    "출처": "매일경제 증권",
+    "갈래": "한국"
+   },
+   {
+    "제목": "“젠슨 황 불륜 정도면 주가도 위험”…AI 낙관론자마저 엔비디아 ‘매도압력’",
+    "주소": "https://www.mk.co.kr/news/stock/12202114",
+    "때": "2026-11-09T01:31:50.000Z",
+    "출처": "매일경제 증권",
+    "갈래": "한국"
+   },
+   {
+    "제목": "마이크론 PER 3.8배…S&P 500 구성종목 중 498위",
+    "주소": "https://www.yna.co.kr/view/AKR20261109049800009",
+    "때": "2026-11-09T01:30:27.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "국힘 부산의원들, 산업은행 본점 조속한 부산이전 촉구",
+    "주소": "https://www.yna.co.kr/view/AKR20261109055300051",
+    "때": "2026-11-09T01:30:16.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "[연합뉴스 이 시각 헤드라인] - 10:30",
+    "주소": "https://www.yna.co.kr/view/AKR20261109051300011",
+    "때": "2026-11-09T01:30:01.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "5100선 올라섰던 코스피, 어디로?…삼전닉스 상승에도 외국인은 ‘팔자’",
+    "주소": "https://www.mk.co.kr/news/stock/12202111",
+    "때": "2026-11-09T01:29:16.000Z",
+    "출처": "매일경제 증권",
     "갈래": "한국"
    }
   ],
   "미국": [
+   {
+    "제목": "RBA’s Hunter sees limited AI productivity gains so far",
+    "주소": "https://www.investing.com/news/stock-market-news/rbas-hunter-sees-limited-ai-productivity-gains-so-far-93CH-5010406",
+    "때": "2026-11-09T01:47:53.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "China wholesale inflation hits over four-year high as consumer measure slows",
+    "주소": "https://www.cnbc.com/2026/11/09/china-wholesale-inflation-rises-consumer.html",
+    "때": "2026-11-09T01:40:11.000Z",
+    "출처": "CNBC 마켓",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Stock futures rise slightly as investors eye AI trade, brace for more data and earnings: Live updates",
+    "주소": "https://www.cnbc.com/2026/11/08/stock-market-today-live-updates.html",
+    "때": "2026-11-09T01:25:52.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "&#x2018;My life could be cut short&#x2019;: I&#x2019;m 55, married and have a brain tumor. Should I splash out on a $210,000 Porsche?",
+    "주소": "https://www.marketwatch.com/story/my-life-could-be-cut-short-im-55-married-with-4-3-million-and-have-a-brain-tumor-should-i-buy-a-210-000-custom-porsche-ed825ada?mod=mw_rss_topstories",
+    "때": "2026-11-09T01:21:00.000Z",
+    "출처": "MarketWatch",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Berkshire Hathaway speeds up stock buybacks, though profit falls",
+    "주소": "https://www.investing.com/news/stock-market-news/berkshire-hathaway-speeds-up-stock-buybacks-though-profit-falls-5010390",
+    "때": "2026-11-09T01:00:53.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "How a digital bank’s collapse toppled Paraguay’s president",
+    "주소": "https://www.investing.com/news/stock-market-news/how-a-digital-banks-collapse-toppled-paraguays-president-5010316",
+    "때": "2026-11-09T01:00:41.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "National Australia Bank names Ian Saines as next chair",
+    "주소": "https://www.investing.com/news/stock-market-news/national-australia-bank-names-ian-saines-as-next-chair-5010345",
+    "때": "2026-11-09T00:56:07.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Wall St futures mixed amid AI spending concerns; inflation data awaited",
+    "주소": "https://www.investing.com/news/stock-market-news/wall-st-futures-mixed-amid-ai-spending-concerns-inflation-data-awaited-5010386",
+    "때": "2026-11-09T00:50:09.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
    {
     "제목": "The S&P 500 could be dangerously exposed to AI. Here are some simple alternatives.",
     "주소": "https://www.marketwatch.com/story/the-s-p-500-has-become-a-big-ai-bet-here-are-some-simple-alternatives-3c7574a4?mod=mw_rss_topstories",
@@ -262,13 +318,6 @@
     "갈래": "미국"
    },
    {
-    "제목": "Stock futures rise slightly as investors eye AI trade, brace for more data and earnings: Live updates",
-    "주소": "https://www.cnbc.com/2026/11/08/stock-market-today-live-updates.html",
-    "때": "2026-11-09T00:27:40.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
     "제목": "&#x2018;It feels like he&#x2019;s quietly building a separate life&#x2019;: My husband inherited $500,000, but he refuses to spend it on our home",
     "주소": "https://www.marketwatch.com/story/it-feels-like-hes-quietly-building-a-separate-life-my-husband-inherited-500-000-but-he-refuses-to-spend-it-on-our-home-06535cff?mod=mw_rss_topstories",
     "때": "2026-11-09T00:02:00.000Z",
@@ -280,55 +329,6 @@
     "주소": "https://www.investing.com/news/stock-market-news/japan-tobacco-says-all-jt-group-entities-in-russia-under-temporary-administration-5010361",
     "때": "2026-11-09T00:00:24.000Z",
     "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Funeral homes are finding new life hosting weddings and golf outings, as the traditional burial business dies out",
-    "주소": "https://www.marketwatch.com/story/funeral-homes-are-finding-new-life-hosting-weddings-and-golf-outings-as-the-traditional-burial-business-dies-out-15831d13?mod=mw_rss_topstories",
-    "때": "2026-11-09T00:00:00.000Z",
-    "출처": "MarketWatch",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Trump calls Nvidia’s Huang ’honorable,’ says he has not discussed allegations with him",
-    "주소": "https://www.investing.com/news/stock-market-news/trump-calls-nvidias-huang-honorable-says-he-has-not-discussed-allegations-with-him-5010358",
-    "때": "2026-11-08T23:54:21.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "How much in Roth conversions can you do in 2027 with the new tax brackets?",
-    "주소": "https://www.marketwatch.com/story/how-much-roth-conversion-can-you-do-in-2027-with-the-new-tax-brackets-a2f940c8?mod=mw_rss_topstories",
-    "때": "2026-11-08T23:50:00.000Z",
-    "출처": "MarketWatch",
-    "갈래": "미국"
-   },
-   {
-    "제목": "I&#x2019;m 65 and worth more than $5.6 million. Can I afford a $200,000 camper?",
-    "주소": "https://www.marketwatch.com/story/im-65-and-worth-more-than-5-6-million-can-i-buy-a-200-000-camper-even-though-the-price-feels-crazy-high-55f668f8?mod=mw_rss_topstories",
-    "때": "2026-11-08T23:49:00.000Z",
-    "출처": "MarketWatch",
-    "갈래": "미국"
-   },
-   {
-    "제목": "This retired professor has reinvented himself &#x2014; as a Taylor Swift scholar",
-    "주소": "https://www.marketwatch.com/story/this-retired-professor-has-reinvented-himself-as-a-taylor-swift-scholar-88456c8d?mod=mw_rss_topstories",
-    "때": "2026-11-08T23:35:00.000Z",
-    "출처": "MarketWatch",
-    "갈래": "미국"
-   },
-   {
-    "제목": "You follow the rules for smart stock trading. But are they the right rules?",
-    "주소": "https://www.marketwatch.com/story/you-follow-the-rules-for-smart-stock-trading-but-are-they-the-right-rules-9bfe5846?mod=mw_rss_topstories",
-    "때": "2026-11-08T23:15:00.000Z",
-    "출처": "MarketWatch",
-    "갈래": "미국"
-   },
-   {
-    "제목": "A new setback for the AI trade: Nvidia&#x2019;s board is probing CEO Huang&#x2019;s relationship with alleged spy",
-    "주소": "https://www.marketwatch.com/story/nvidias-board-will-probe-ceo-jensen-huangs-relationship-with-an-alleged-spy-heres-what-to-know-86656cd9?mod=mw_rss_topstories",
-    "때": "2026-11-08T23:05:00.000Z",
-    "출처": "MarketWatch",
     "갈래": "미국"
    }
   ],
