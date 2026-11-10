@@ -1,14 +1,14 @@
 {
  "날짜": "2026-11-10",
- "만든시각": "2026-11-10T03:33:30.769Z",
+ "만든시각": "2026-11-10T04:18:29.736Z",
  "시세": {
   "지수": [
    {
     "이름": "코스피",
     "갈래": "한국",
     "단위": "",
-    "종가": 5228.13,
-    "변동률": 4.17,
+    "종가": 5207.4,
+    "변동률": 3.76,
     "전날종가": 5018.85,
     "수상한가": false,
     "기준일": "2026-11-10",
@@ -19,8 +19,8 @@
     "이름": "코스닥",
     "갈래": "한국",
     "단위": "",
-    "종가": 661.8,
-    "변동률": 3.57,
+    "종가": 659.7,
+    "변동률": 3.24,
     "전날종가": 638.97,
     "수상한가": false,
     "기준일": "2026-11-10",
@@ -55,8 +55,8 @@
     "이름": "원/달러",
     "갈래": "환율",
     "단위": "원",
-    "종가": 1345.28,
-    "변동률": -1.28,
+    "종가": 1344.47,
+    "변동률": -1.34,
     "전날종가": 1362.7,
     "수상한가": false,
     "기준일": "2026-11-10",
@@ -67,27 +67,27 @@
   "코인": [
    {
     "이름": "비트코인",
-    "달러": 74569,
-    "원화": 100302205,
-    "변동률": -0.55
+    "달러": 74476,
+    "원화": 100124945,
+    "변동률": -0.59
    },
    {
     "이름": "이더리움",
-    "달러": 2115.97,
-    "원화": 2846155,
-    "변동률": -1.27
+    "달러": 2111.64,
+    "원화": 2838883,
+    "변동률": -1.43
    },
    {
     "이름": "리플",
-    "달러": 1.092,
-    "원화": 1468.94,
-    "변동률": -1.58
+    "달러": 1.091,
+    "원화": 1466.38,
+    "변동률": -1.84
    },
    {
     "이름": "솔라나",
-    "달러": 85.65,
-    "원화": 115201,
-    "변동률": -2.44
+    "달러": 85.85,
+    "원화": 115414,
+    "변동률": -1.81
    }
   ],
   "못가져온것": []
@@ -161,6 +161,13 @@
  },
  "뉴스": {
   "한국": [
+   {
+    "제목": "'7억 연봉' 은행연합회 차기 회장 후보 이번주 나오나…첫 회추위 개최",
+    "주소": "https://www.hankyung.com/article/202611107226i",
+    "때": "2026-11-10T03:55:48.000Z",
+    "출처": "한국경제 경제",
+    "갈래": "한국"
+   },
    {
     "제목": "\"'틈새라면 빨계떡' 캡사이신 최다…2위 '신라면 더 레드'\"",
     "주소": "https://www.yna.co.kr/view/AKR20261109103000030",
@@ -237,21 +244,77 @@
     "때": "2026-11-10T02:50:29.000Z",
     "출처": "연합뉴스 증시",
     "갈래": "한국"
-   },
-   {
-    "제목": "\"北, 바이낸스 해킹 자금 세탁위해 밈 코인까지 발행\"",
-    "주소": "https://www.yna.co.kr/view/AKR20261110089100002",
-    "때": "2026-11-10T02:49:00.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
    }
   ],
   "미국": [
    {
+    "제목": "Billionaire tax measure on California ballot defeated",
+    "주소": "https://www.investing.com/news/stock-market-news/billionaire-tax-measure-on-california-ballot-defeated-5014025",
+    "때": "2026-11-10T04:12:55.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "SoftBank Group shares surge 13% as Asian tech stocks track Wall Street rebound",
+    "주소": "https://www.cnbc.com/2026/11/10/ai-softbank-sk-hynix-samsung-wall-street-tech-stocks.html",
+    "때": "2026-11-10T03:58:46.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "China exports, imports soar past expectations in October — surplus narrows sharply",
+    "주소": "https://www.cnbc.com/2026/11/10/china-trade-october-exports-imports-surplus-.html",
+    "때": "2026-11-10T03:56:15.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Asia stocks rally as Korean chips surge and oil retreat lifts sentiment",
+    "주소": "https://www.investing.com/news/stock-market-news/asia-stocks-rally-as-korean-chips-surge-and-oil-retreat-lifts-sentiment-5014024",
+    "때": "2026-11-10T03:52:32.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Trump’s close ties to Nvidia’s Huang scrutinized after foreign intelligence concerns",
+    "주소": "https://www.investing.com/news/stock-market-news/trumps-close-ties-to-nvidias-huang-scrutinized-after-foreign-intelligence-concerns-5012979",
+    "때": "2026-11-10T03:48:39.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "New Zealand PM Luxon meets Opportunity’s Wong ahead of possible pact",
+    "주소": "https://www.investing.com/news/stock-market-news/new-zealand-pmluxon-meets-opportunitys-wong-ahead-of-possible-pact-5014018",
+    "때": "2026-11-10T03:42:43.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "&#x2018;We had the worst fight&#x2019;: I want my husband to retire at 65, but I don&#x2019;t want to lose his $280,000 salary. Is that unreasonable?",
+    "주소": "https://www.marketwatch.com/story/we-had-the-worst-fight-weve-ever-had-i-want-my-husband-to-retire-at-65-but-i-dont-want-to-lose-his-280-000-salary-48511469?mod=mw_rss_topstories",
+    "때": "2026-11-10T03:38:00.000Z",
+    "출처": "MarketWatch",
+    "갈래": "미국"
+   },
+   {
     "제목": "S&P 500 futures are little changed as traders brace for crucial consumer inflation report: Live updates",
     "주소": "https://www.cnbc.com/2026/11/09/stock-market-today-live-updates.html",
-    "때": "2026-11-10T03:13:00.000Z",
+    "때": "2026-11-10T03:33:27.000Z",
     "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Trump says FBI investigating Nvidia CEO Huang over Chinese scandal",
+    "주소": "https://www.investing.com/news/stock-market-news/trump-says-fbi-investigating-nvidia-ceo-huang-over-chinese-scandal-5014009",
+    "때": "2026-11-10T03:20:47.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Exclusive-Anthropic sends out, then retracts details of IPO filing, emails show",
+    "주소": "https://www.investing.com/news/stock-market-news/exclusiveanthropic-aims-to-raise-up-to-693-billion-in-blockbuster-ipo-5013861",
+    "때": "2026-11-10T03:18:24.000Z",
+    "출처": "Investing 경제지표",
     "갈래": "미국"
    },
    {
@@ -262,77 +325,21 @@
     "갈래": "미국"
    },
    {
-    "제목": "China exports, imports soar past expectations in October — surplus narrows sharply",
-    "주소": "https://www.cnbc.com/2026/11/10/china-trade-october-exports-imports-surplus-.html",
-    "때": "2026-11-10T02:55:48.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
     "제목": "Why is Monadelphous stock surging today?",
     "주소": "https://www.investing.com/news/stock-market-news/why-is-monadelphous-stock-surging-today-93CH-5013964",
     "때": "2026-11-10T02:43:08.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
-   },
-   {
-    "제목": "Anthropic retracts IPO details after sending filing to bankers - Reuters",
-    "주소": "https://www.investing.com/news/stock-market-news/anthropic-retracts-ipo-details-after-sending-filing-to-bankers--reuters-5013961",
-    "때": "2026-11-10T02:38:30.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "WuXi AppTec shares gain after U.S. removes company from military list",
-    "주소": "https://www.investing.com/news/stock-market-news/wuxi-apptec-shares-gain-after-us-removes-company-from-military-list-5013958",
-    "때": "2026-11-10T02:36:11.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Exclusive-Anthropic sends out, then retracts details of IPO filing, emails show",
-    "주소": "https://www.investing.com/news/stock-market-news/exclusiveanthropic-aims-to-raise-up-to-693-billion-in-blockbuster-ipo-5013861",
-    "때": "2026-11-10T02:30:54.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Why is New Zealand Dollar U.S. Dollar pair gaining today?",
-    "주소": "https://www.investing.com/news/stock-market-news/why-is-new-zealand-dollar-us-dollar-pair-gaining-today-93CH-5013946",
-    "때": "2026-11-10T02:30:50.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Why is Qantas Airways stock rallying today?",
-    "주소": "https://www.investing.com/news/stock-market-news/why-is-qantas-airways-stock-rallying-today-93CH-5013945",
-    "때": "2026-11-10T02:30:35.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "New Zealand’s Luxon set to retain power with narrow majority",
-    "주소": "https://www.investing.com/news/stock-market-news/new-zealands-luxon-set-to-retain-power-with-narrow-majority-93CH-5013943",
-    "때": "2026-11-10T02:30:20.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Why is WuXi AppTec stock rallying today?",
-    "주소": "https://www.investing.com/news/stock-market-news/why-is-wuxi-apptec-stock-rallying-today-93CH-5013920",
-    "때": "2026-11-10T02:12:48.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "GFL Environmental rejects $22 billion buyout offer from PE funds- Globe",
-    "주소": "https://www.investing.com/news/stock-market-news/gfl-environmental-rejects-22-billion-buyout-offer-from-pe-funds-globe-93CH-5013910",
-    "때": "2026-11-10T02:00:29.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
    }
   ],
   "코인": [
+   {
+    "제목": "Trump Media swings to $410 million profit in Q3, driven by crypto gains",
+    "주소": "https://www.theblock.co/news/business/2026-11-09-trump-media-q3-profit-436964",
+    "때": "2026-11-10T03:36:43.000Z",
+    "출처": "The Block",
+    "갈래": "코인"
+   },
    {
     "제목": "Bitcoin faces U.S. CPI test as analysts warn inflation relief may not be enough",
     "주소": "https://www.coindesk.com/markets/2026/11/10/bitcoin-faces-u-s-cpi-test-as-analysts-warn-inflation-relief-may-not-be-enough",
@@ -408,13 +415,6 @@
     "주소": "https://cointelegraph.com/news/north-korean-hackers-memecoins-launder-binance-hack-elliptic?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
     "때": "2026-11-09T20:26:34.000Z",
     "출처": "Cointelegraph",
-    "갈래": "코인"
-   },
-   {
-    "제목": "Google Takes Aim at Nvidia With New AI Chips Built for Privacy and Massive Memory",
-    "주소": "https://decrypt.co/382874/google-nvidia-new-ai-chips-privacy-massive-memory-ai",
-    "때": "2026-11-09T20:16:02.000Z",
-    "출처": "Decrypt",
     "갈래": "코인"
    }
   ]
