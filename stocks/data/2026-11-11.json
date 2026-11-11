@@ -1,26 +1,26 @@
 {
  "날짜": "2026-11-11",
- "만든시각": "2026-11-11T01:14:10.859Z",
+ "만든시각": "2026-11-11T02:14:38.480Z",
  "시세": {
   "지수": [
    {
     "이름": "코스피",
     "갈래": "한국",
     "단위": "",
-    "종가": 5248.45,
-    "변동률": 4.57,
-    "전날종가": 5018.85,
+    "종가": 5293.45,
+    "변동률": 1.04,
+    "전날종가": 5239.13,
     "수상한가": false,
     "기준일": "2026-11-11",
     "출처": "Yahoo",
-    "거래일수": 9
+    "거래일수": 10
    },
    {
     "이름": "코스닥",
     "갈래": "한국",
     "단위": "",
-    "종가": 691.96,
-    "변동률": 8.29,
+    "종가": 697.1,
+    "변동률": 9.1,
     "전날종가": 638.97,
     "수상한가": false,
     "기준일": "2026-11-11",
@@ -55,8 +55,8 @@
     "이름": "원/달러",
     "갈래": "환율",
     "단위": "원",
-    "종가": 1338.28,
-    "변동률": -0.41,
+    "종가": 1335.68,
+    "변동률": -0.61,
     "전날종가": 1343.84,
     "수상한가": false,
     "기준일": "2026-11-11",
@@ -67,27 +67,27 @@
   "코인": [
    {
     "이름": "비트코인",
-    "달러": 73340,
-    "원화": 98151271,
-    "변동률": -2.4
+    "달러": 73359,
+    "원화": 98086701,
+    "변동률": -2.05
    },
    {
     "이름": "이더리움",
-    "달러": 2042.63,
-    "원화": 2733654,
-    "변동률": -4.07
+    "달러": 2048.86,
+    "원화": 2739506,
+    "변동률": -3.44
    },
    {
     "이름": "리플",
-    "달러": 1.048,
-    "원화": 1402.98,
-    "변동률": -4.86
+    "달러": 1.05,
+    "원화": 1403.76,
+    "변동률": -4.38
    },
    {
     "이름": "솔라나",
-    "달러": 82.92,
-    "원화": 110970,
-    "변동률": -4.29
+    "달러": 83.07,
+    "원화": 111078,
+    "변동률": -3.39
    }
   ],
   "못가져온것": []
@@ -162,96 +162,145 @@
  "뉴스": {
   "한국": [
    {
-    "제목": "정점식 \"與 부동산정책 엇박자…총선서 살려달라는 연기일 뿐\"",
-    "주소": "https://www.yna.co.kr/view/AKR20261111057500001",
-    "때": "2026-11-11T01:08:33.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "고객 몰래 대출·환전금 가로챈 하나은행 직원 징역 3년",
-    "주소": "https://www.yna.co.kr/view/AKR20261111047500051",
-    "때": "2026-11-11T01:07:28.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "관악구, 30일까지 착한가격업소 영수증 이벤트",
-    "주소": "https://www.yna.co.kr/view/AKR20261111058800004",
-    "때": "2026-11-11T01:06:31.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "부산 10월 취업자수 작년보다 8천명 늘어",
-    "주소": "https://www.yna.co.kr/view/AKR20261111057900051",
-    "때": "2026-11-11T01:05:50.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "[MK시그널] 페이사인 매도신호 포착, 수익률 114.2% 달성",
-    "주소": "https://www.mk.co.kr/news/stock/12205097",
-    "때": "2026-11-11T01:04:53.000Z",
+    "제목": "“물가 오른다기에 금 사뒀는데”…美 ‘물가 충격’에 국내 금값도 하락세",
+    "주소": "https://www.mk.co.kr/news/stock/12205170",
+    "때": "2026-11-11T02:14:18.000Z",
     "출처": "매일경제 증권",
     "갈래": "한국"
    },
    {
-    "제목": "아세안+3에 자연재해 등 위기 때 쓰는 단기자금지원제도 도입",
-    "주소": "https://www.yna.co.kr/view/AKR20261110177400002",
-    "때": "2026-11-11T01:00:04.000Z",
+    "제목": "'1조2천억' 여수 돔구장 유치 추진…재원확보·운영방안 불확실",
+    "주소": "https://www.yna.co.kr/view/AKR20261111080500054",
+    "때": "2026-11-11T02:11:53.000Z",
     "출처": "연합뉴스 경제",
     "갈래": "한국"
    },
    {
-    "제목": "가리봉 옛 시장에 공공임대주택 181호…주민 편의시설도 조성",
-    "주소": "https://www.yna.co.kr/view/AKR20261110168000004",
-    "때": "2026-11-11T01:00:04.000Z",
+    "제목": "코스피, 방향성 탐색하다 1% 내외 강세…코스닥 4%대 급등",
+    "주소": "https://www.yna.co.kr/view/AKR20261111080000008",
+    "때": "2026-11-11T02:11:25.000Z",
     "출처": "연합뉴스 경제",
     "갈래": "한국"
    },
    {
-    "제목": "한국고용정보원, 진천군과 '지역 맞춤형 AI 청년일자리' 협약",
-    "주소": "https://www.yna.co.kr/view/AKR20261111038300530",
-    "때": "2026-11-11T01:00:03.000Z",
+    "제목": "충북 가계대출 1년 새 5.8%↑…증가율 전국 2위",
+    "주소": "https://www.yna.co.kr/view/AKR20261111077500064",
+    "때": "2026-11-11T02:11:16.000Z",
     "출처": "연합뉴스 경제",
     "갈래": "한국"
    },
    {
-    "제목": "LG전자 E-페이퍼 디스플레이, 모바일 앱으로 손쉽게 관리",
-    "주소": "https://www.yna.co.kr/view/AKR20261111040100003",
-    "때": "2026-11-11T01:00:02.000Z",
+    "제목": "HUG, 인허가·PF보증 심사 동시 진행…심사 기간 2개월 단축",
+    "주소": "https://www.yna.co.kr/view/AKR20261111080200003",
+    "때": "2026-11-11T02:10:27.000Z",
     "출처": "연합뉴스 경제",
     "갈래": "한국"
    },
    {
-    "제목": "20만원 빌리면 당일 40만원 요구…연 3만6500% 불법사금융 검거",
-    "주소": "https://www.yna.co.kr/view/AKR20261111044900061",
-    "때": "2026-11-11T01:00:01.000Z",
+    "제목": "개인사업자 대출, 카카오뱅크로 최대 5건 한 번에 갈아탄다",
+    "주소": "https://www.mk.co.kr/news/economy/12205158",
+    "때": "2026-11-11T02:09:27.000Z",
+    "출처": "매일경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "굴패각, 발전소 탈황제로 활용…2만t 공급계약 체결",
+    "주소": "https://www.yna.co.kr/view/AKR20261111078200030",
+    "때": "2026-11-11T02:08:29.000Z",
     "출처": "연합뉴스 경제",
     "갈래": "한국"
    },
    {
-    "제목": "키움운용 \"'삼성전자&SK하이닉스채권혼합50' 주당 160원 월분배금\"",
-    "주소": "https://www.yna.co.kr/view/AKR20261111056000008",
-    "때": "2026-11-11T00:59:27.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "에브리봇, 실버타운 서비스로봇 도입하나…현장서 가능성 점검",
-    "주소": "https://www.mk.co.kr/news/stock/12205090",
-    "때": "2026-11-11T00:56:10.000Z",
+    "제목": "데이터센터 못 지으면 한국으로 오세요…랠리 펼친 네이버, 시총 20위 ‘각축’",
+    "주소": "https://www.mk.co.kr/news/stock/12205151",
+    "때": "2026-11-11T02:06:02.000Z",
     "출처": "매일경제 증권",
+    "갈래": "한국"
+   },
+   {
+    "제목": "한국 갯벌 통합 관리 '세계자연유산 보전원' 신안서 착공",
+    "주소": "https://www.yna.co.kr/view/AKR20261111041600051",
+    "때": "2026-11-11T02:00:08.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "'딸기 수출길 넓힌다' 농진청, 베트남 농약 안전사용지침 보급",
+    "주소": "https://www.yna.co.kr/view/AKR20261111052400055",
+    "때": "2026-11-11T02:00:07.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "한국기술교육대, 태국서 ILO와 포럼…협력프로그램 성과 공유",
+    "주소": "https://www.yna.co.kr/view/AKR20261111054600530",
+    "때": "2026-11-11T02:00:06.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "CPTPP 협정 궁금하다면…산업통상부 릴레이 세미나",
+    "주소": "https://www.yna.co.kr/view/AKR20261111037800003",
+    "때": "2026-11-11T02:00:05.000Z",
+    "출처": "연합뉴스 경제",
     "갈래": "한국"
    }
   ],
   "미국": [
    {
+    "제목": "One reason Children&#x2019;s Place is filing for bankruptcy? Not enough children.",
+    "주소": "https://www.marketwatch.com/story/one-reason-the-childrens-place-is-going-bankrupt-not-enough-children-b275eab0?mod=mw_rss_topstories",
+    "때": "2026-11-11T01:54:00.000Z",
+    "출처": "MarketWatch",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Stock futures rise slightly as market tries to recover from Nvidia-led decline: Live updates",
+    "주소": "https://www.cnbc.com/2026/11/10/stock-market-today-live-updates.html",
+    "때": "2026-11-11T01:52:11.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Five US states join FTC suit against Hims & Hers over privacy practices",
+    "주소": "https://www.investing.com/news/stock-market-news/five-us-states-join-ftc-suit-over-alleged-hims--hers-unlawful-practices-5016982",
+    "때": "2026-11-11T01:48:34.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "What could drive India’s Nifty higher? BofA outlines key risks",
+    "주소": "https://www.investing.com/news/stock-market-news/what-could-drive-indias-nifty-higher-bofa-outlines-key-risks-5017483",
+    "때": "2026-11-11T01:37:47.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "US lawmakers push China chip rules after Nvidia CEO allegations",
+    "주소": "https://www.investing.com/news/stock-market-news/schumer-says-congress-must-have-answers-on-trump-defense-of-nvidia-ceo-5016683",
+    "때": "2026-11-11T01:18:53.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "SoftBank shares tumble after $7 bln quarterly loss",
+    "주소": "https://www.investing.com/news/stock-market-news/softbank-shares-tumble-after-7-bln-quarterly-loss-5017452",
+    "때": "2026-11-11T01:14:08.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
     "제목": "CoreWeave&#x2019;s stock pops as new financing playbook eases debt concerns",
     "주소": "https://www.marketwatch.com/story/coreweaves-stock-pops-as-new-financing-playbook-eases-debt-concerns-70241525?mod=mw_rss_topstories",
     "때": "2026-11-11T01:12:00.000Z",
     "출처": "MarketWatch",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Exclusive-Microsoft presses Trump to scuttle ban on Chinese data center tech",
+    "주소": "https://www.investing.com/news/stock-market-news/exclusivemicrosoft-presses-trump-to-scuttle-expected-ban-on-chinese-data-center-technology-5014745",
+    "때": "2026-11-11T01:06:40.000Z",
+    "출처": "Investing 경제지표",
     "갈래": "미국"
    },
    {
@@ -281,58 +330,16 @@
     "때": "2026-11-11T00:30:00.000Z",
     "출처": "MarketWatch",
     "갈래": "미국"
-   },
-   {
-    "제목": "Stock futures rise slightly as market tries to recover from Nvidia-led decline: Live updates",
-    "주소": "https://www.cnbc.com/2026/11/10/stock-market-today-live-updates.html",
-    "때": "2026-11-11T00:22:00.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Petrobras Q3 profit rises 34% but misses expectations",
-    "주소": "https://www.investing.com/news/stock-market-news/petrobras-q3-profit-rises-34-but-misses-expectations-93CH-5017371",
-    "때": "2026-11-11T00:09:32.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "OpenAI posts steep losses even as quarterly revenue rises to $10 billion, WSJ reports",
-    "주소": "https://www.investing.com/news/stock-market-news/openai-posts-steep-losses-even-as-quarterly-revenue-rises-to-10-billion-wsj-reports-5017353",
-    "때": "2026-11-11T00:06:26.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Should a widow leave her late partner&#x2019;s home to her stepkids &#x2014; or cut off contact with them?",
-    "주소": "https://www.marketwatch.com/story/she-can-always-change-her-mind-should-a-widow-leave-the-family-home-to-her-stepchildren-649b06af?mod=mw_rss_topstories",
-    "때": "2026-11-11T00:00:00.000Z",
-    "출처": "MarketWatch",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Consumer prices rose 0.4% in October, more than expected, complicating Fed's inflation fight",
-    "주소": "https://www.cnbc.com/2026/11/10/cpi-inflation-report-october-2026.html",
-    "때": "2026-11-10T23:53:58.000Z",
-    "출처": "CNBC 마켓",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Hegseth impeachment effort torpedoed in House",
-    "주소": "https://www.cnbc.com/2026/11/10/pete-hegseth-impeachment-massie-iran.html",
-    "때": "2026-11-10T23:46:41.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Jim Cramer says Anthropic's explosive growth could justify a record-breaking IPO",
-    "주소": "https://www.cnbc.com/2026/11/10/anthropic-ipo-revenue-growth-cramer.html",
-    "때": "2026-11-10T23:46:35.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
    }
   ],
   "코인": [
+   {
+    "제목": "LNbits rushes emergency patch after reported Bitcoin wallet thefts",
+    "주소": "https://cointelegraph.com/news/lnbits-rushes-emergency-patch-after-reported-bitcoin-wallet-thefts?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "때": "2026-11-11T01:16:58.000Z",
+    "출처": "Cointelegraph",
+    "갈래": "코인"
+   },
    {
     "제목": "CFTC warns Kalshi of imminent charges over notification of contracts: Politico",
     "주소": "https://cointelegraph.com/news/cftc-warns-kalshi-imminent-charges-over-contracts?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
@@ -408,13 +415,6 @@
     "주소": "https://www.coindesk.com/policy/2026/11/10/warren-what-is-white-house-doing-to-prevent-a-repeat-of-teleprompter-s-trump-bets",
     "때": "2026-11-10T20:36:33.000Z",
     "출처": "CoinDesk",
-    "갈래": "코인"
-   },
-   {
-    "제목": "Kimber Digital Securities gains broker-dealer status for tokenized assets",
-    "주소": "https://cointelegraph.com/news/kimber-digital-securities-broker-dealer-tokenization?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-    "때": "2026-11-10T20:26:02.000Z",
-    "출처": "Cointelegraph",
     "갈래": "코인"
    }
   ]
