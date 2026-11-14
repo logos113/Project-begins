@@ -1,31 +1,31 @@
 {
  "날짜": "2026-11-14",
- "만든시각": "2026-11-14T01:26:47.577Z",
+ "만든시각": "2026-11-14T02:41:28.322Z",
  "시세": {
   "지수": [
    {
     "이름": "코스피",
     "갈래": "한국",
     "단위": "",
-    "종가": 5342.73,
-    "변동률": -0.61,
-    "전날종가": 5375.36,
+    "종가": 5290.53,
+    "변동률": -0.98,
+    "전날종가": 5342.73,
     "수상한가": false,
-    "기준일": "2026-11-12",
+    "기준일": "2026-11-13",
     "출처": "Yahoo",
-    "거래일수": 9
+    "거래일수": 10
    },
    {
     "이름": "코스닥",
     "갈래": "한국",
     "단위": "",
-    "종가": 696.53,
-    "변동률": -1.22,
-    "전날종가": 705.1,
+    "종가": 699.66,
+    "변동률": 0.45,
+    "전날종가": 696.53,
     "수상한가": false,
-    "기준일": "2026-11-12",
+    "기준일": "2026-11-13",
     "출처": "Yahoo",
-    "거래일수": 9
+    "거래일수": 10
    },
    {
     "이름": "S&P 500",
@@ -67,27 +67,27 @@
   "코인": [
    {
     "이름": "비트코인",
-    "달러": 68255,
-    "원화": 91141890,
-    "변동률": -3.88
+    "달러": 67437,
+    "원화": 90049852,
+    "변동률": -4.04
    },
    {
     "이름": "이더리움",
-    "달러": 1928.93,
-    "원화": 2575732,
-    "변동률": -4.12
+    "달러": 1902.12,
+    "원화": 2539935,
+    "변동률": -4.63
    },
    {
     "이름": "리플",
-    "달러": 1.008,
-    "원화": 1345.72,
-    "변동률": -2.31
+    "달러": 0.997712,
+    "원화": 1332.26,
+    "변동률": -2.37
    },
    {
     "이름": "솔라나",
-    "달러": 77.36,
-    "원화": 103302,
-    "변동률": -5.01
+    "달러": 75.71,
+    "원화": 101102,
+    "변동률": -5.8
    }
   ],
   "못가져온것": []
@@ -174,6 +174,41 @@
  "뉴스": {
   "한국": [
    {
+    "제목": "모두의창업 또 정보 유출에 참가자 '부글'…\"경위·보상 밝혀야\"",
+    "주소": "https://www.yna.co.kr/view/AKR20261114026000030",
+    "때": "2026-11-14T02:14:56.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "“10년 모은 4억이 1억으로…” 반도체 레버리지 투자에 무너진 30대 직장인의 눈물",
+    "주소": "https://www.mk.co.kr/news/stock/12208838",
+    "때": "2026-11-14T02:05:44.000Z",
+    "출처": "매일경제 증권",
+    "갈래": "한국"
+   },
+   {
+    "제목": "성남시, 내달 10일 채용박람회…참여기업 20개사 모집",
+    "주소": "https://www.yna.co.kr/view/AKR20261113134700061",
+    "때": "2026-11-14T02:00:00.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "“차에서 내리다 손목 부러졌어요”…보험 전문가도 보험금 거절당했다, 왜? [어쩌다 세상이]",
+    "주소": "https://www.mk.co.kr/news/economy/12208824",
+    "때": "2026-11-14T01:42:09.000Z",
+    "출처": "매일경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "[연합뉴스 이 시각 헤드라인] - 10:30",
+    "주소": "https://www.yna.co.kr/view/AKR20261114025200011",
+    "때": "2026-11-14T01:30:00.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
     "제목": "AI 기판 수요에…이수페타시스, 한주 새 42% ‘껑충’ [이주의 Bull기둥]",
     "주소": "https://www.mk.co.kr/news/stock/12208811",
     "때": "2026-11-14T01:02:44.000Z",
@@ -221,48 +256,69 @@
     "때": "2026-11-14T00:19:23.000Z",
     "출처": "연합뉴스 경제",
     "갈래": "한국"
-   },
-   {
-    "제목": "'기금 만들고 보조금 주고'…경기 지자체, 기업 투자유치에 사활",
-    "주소": "https://www.yna.co.kr/view/AKR20261113123700061",
-    "때": "2026-11-14T00:09:00.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "\"824만 싱글족 필수템\"…불티나게 팔린 '틈새 가구' 정체 [트렌드+]",
-    "주소": "https://www.hankyung.com/article/202611134743g",
-    "때": "2026-11-14T00:03:07.000Z",
-    "출처": "한국경제 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "로보택시 다음은 오토바이…中 자율주행 기업, 8000만대 시장 노린다",
-    "주소": "https://www.hankyung.com/article/202610053827i",
-    "때": "2026-11-14T00:00:06.000Z",
-    "출처": "한국경제 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "[IPO챗] 내주 영광와이케이엠씨 등 3개사 코스닥 입성",
-    "주소": "https://www.yna.co.kr/view/AKR20261113076800008",
-    "때": "2026-11-14T00:00:03.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "[다음주 경제] 2천조원 넘긴 가계부채, 얼마나 더 늘었을까",
-    "주소": "https://www.yna.co.kr/view/AKR20261114014500002",
-    "때": "2026-11-13T23:58:18.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
    }
   ],
   "미국": [
    {
     "제목": "FAA lifts ground stop after four hours, but flight cancellations will stretch into the weekend",
     "주소": "https://www.cnbc.com/2026/11/13/faa-ground-stop.html",
-    "때": "2026-11-14T01:21:50.000Z",
+    "때": "2026-11-14T02:33:48.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "US flight shutdown exposes deepening air traffic network crisis",
+    "주소": "https://www.investing.com/news/stock-market-news/us-flight-shutdown-exposes-deepening-air-traffic-network-crisis-5026935",
+    "때": "2026-11-14T02:24:18.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Democratic US senators order Musk to preserve records on Ukraine Starlink access",
+    "주소": "https://www.investing.com/news/stock-market-news/democrats-senators-order-musk-to-preserve-spacex-records-over-ukraine-starlink-accesswsj-reports-5026793",
+    "때": "2026-11-14T02:18:18.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "FAA lifts nationwide ground stop after outage disrupts thousands of flights",
+    "주소": "https://www.investing.com/news/stock-market-news/faa-orders-nationwide-ground-stop-citing-extraordinary-safety-concerns-5026489",
+    "때": "2026-11-14T02:17:00.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Trump not expected to raise Alice Huang case with China’s Xi, US officials say",
+    "주소": "https://www.investing.com/news/stock-market-news/trump-not-expected-to-raise-alice-huang-case-with-chinas-xi-us-officials-say-5026922",
+    "때": "2026-11-14T02:06:41.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Free speech nonprofit says US to end efforts to curb Facebook group and app reporting ICE activity",
+    "주소": "https://www.investing.com/news/stock-market-news/free-speech-nonprofit-says-us-to-end-efforts-to-curb-facebook-group-and-app-reporting-ice-activity-5026821",
+    "때": "2026-11-14T02:06:21.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "FAA lifts rare nationwide ground stop; flights may take days to recover",
+    "주소": "https://www.marketwatch.com/story/faa-declares-rare-widespread-ground-outage-bdc46393?mod=mw_rss_topstories",
+    "때": "2026-11-14T02:00:00.000Z",
+    "출처": "MarketWatch",
+    "갈래": "미국"
+   },
+   {
+    "제목": "14 dividend stocks selected for long-term growth",
+    "주소": "https://www.marketwatch.com/story/14-dividend-stocks-selected-for-long-term-growth-0a095c0d?mod=mw_rss_topstories",
+    "때": "2026-11-14T01:58:00.000Z",
+    "출처": "MarketWatch",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Trump doesn’t plan to raise Nvidia, spy issue during China trip: U.S. officials",
+    "주소": "https://www.cnbc.com/2026/11/13/trump-nvidia-huang-china.html",
+    "때": "2026-11-14T01:34:11.000Z",
     "출처": "CNBC 주요뉴스",
     "갈래": "미국"
    },
@@ -281,65 +337,9 @@
     "갈래": "미국"
    },
    {
-    "제목": "Democratic senators order Musk to preserve records over Ukraine Starlink access, WSJ reports",
-    "주소": "https://www.investing.com/news/stock-market-news/democrats-senators-order-musk-to-preserve-spacex-records-over-ukraine-starlink-accesswsj-reports-5026793",
-    "때": "2026-11-14T01:06:18.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Trump doesn’t plan to raise Nvidia, spy issue during China trip: U.S. officials",
-    "주소": "https://www.cnbc.com/2026/11/13/trump-nvidia-huang-china.html",
-    "때": "2026-11-14T01:04:32.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
     "제목": "S&P 500, Nasdaq end lower as Nvidia uncertainty weighs on tech shares",
     "주소": "https://www.investing.com/news/stock-market-news/nasdaq-futures-dip-as-nvidia-tumult-keeps-investors-on-edge-5024713",
     "때": "2026-11-14T00:48:19.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "FAA declares rare nationwide ground stop on flights, with more than 10,000 delayed so far",
-    "주소": "https://www.marketwatch.com/story/faa-declares-rare-widespread-ground-outage-bdc46393?mod=mw_rss_topstories",
-    "때": "2026-11-14T00:40:00.000Z",
-    "출처": "MarketWatch",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Exclusive-Ex-Nvidia CEO misled top lawyer on affair with Chinese businesswoman, sources say",
-    "주소": "https://www.investing.com/news/stock-market-news/exclusiveexnvidia-ceo-misled-top-lawyer-on-affair-with-chinese-businesswoman-sources-say-5026828",
-    "때": "2026-11-14T00:30:22.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Free speech nonprofit says US to end efforts to curb Facebook group and app reporting ICE activity",
-    "주소": "https://www.investing.com/news/stock-market-news/free-speech-nonprofit-says-us-to-end-efforts-to-curb-facebook-group-and-app-reporting-ice-activity-5026821",
-    "때": "2026-11-14T00:19:33.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "New York sued over law requiring social media ’warning label’",
-    "주소": "https://www.investing.com/news/stock-market-news/new-york-sued-over-law-requiring-social-media-warning-label-5026808",
-    "때": "2026-11-14T00:18:36.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Nvidia is done with Jensen Huang. The fallout in Washington is just beginning",
-    "주소": "https://www.cnbc.com/2026/11/13/nvidia-jensen-huang-washington-congress.html",
-    "때": "2026-11-13T23:54:36.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Soros Fund ramps up Intel stake to over $340 million in third quarter",
-    "주소": "https://www.investing.com/news/stock-market-news/soros-fund-ramps-up-intel-stake-to-over-340-million-in-third-quarter-5026774",
-    "때": "2026-11-13T23:42:21.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
    }
@@ -542,9 +542,9 @@
   },
   {
    "이름": "코인데스크 코리아",
-   "성공": false,
+   "성공": true,
    "개수": 0,
-   "까닭": "시간 초과"
+   "까닭": null
   }
  ]
 }
