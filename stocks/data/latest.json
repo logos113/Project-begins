@@ -1,14 +1,14 @@
 {
  "날짜": "2026-11-16",
- "만든시각": "2026-11-16T00:59:46.998Z",
+ "만든시각": "2026-11-16T02:23:10.003Z",
  "시세": {
   "지수": [
    {
     "이름": "코스피",
     "갈래": "한국",
     "단위": "",
-    "종가": 5271.37,
-    "변동률": -0.36,
+    "종가": 5153.19,
+    "변동률": -2.6,
     "전날종가": 5290.53,
     "수상한가": false,
     "기준일": "2026-11-16",
@@ -19,8 +19,8 @@
     "이름": "코스닥",
     "갈래": "한국",
     "단위": "",
-    "종가": 689.67,
-    "변동률": -1.43,
+    "종가": 673.42,
+    "변동률": -3.75,
     "전날종가": 699.66,
     "수상한가": false,
     "기준일": "2026-11-16",
@@ -55,8 +55,8 @@
     "이름": "원/달러",
     "갈래": "환율",
     "단위": "원",
-    "종가": 1333.03,
-    "변동률": -0.06,
+    "종가": 1334.92,
+    "변동률": 0.09,
     "전날종가": 1333.78,
     "수상한가": false,
     "기준일": "2026-11-16",
@@ -67,27 +67,27 @@
   "코인": [
    {
     "이름": "비트코인",
-    "달러": 64905,
-    "원화": 86542237,
-    "변동률": 2.25
+    "달러": 65030,
+    "원화": 86823433,
+    "변동률": 1.06
    },
    {
     "이름": "이더리움",
-    "달러": 1814.17,
-    "원화": 2418947,
-    "변동률": 4.14
+    "달러": 1823.32,
+    "원화": 2434369,
+    "변동률": 1.41
    },
    {
     "이름": "리플",
-    "달러": 0.963738,
-    "원화": 1285.01,
-    "변동률": 4.43
+    "달러": 0.967713,
+    "원화": 1292.02,
+    "변동률": 2.12
    },
    {
     "이름": "솔라나",
-    "달러": 71.89,
-    "원화": 95860,
-    "변동률": 3.45
+    "달러": 72.26,
+    "원화": 96474,
+    "변동률": 2.11
    }
   ],
   "못가져온것": []
@@ -174,173 +174,173 @@
  "뉴스": {
   "한국": [
    {
-    "제목": "비보존제약, 비마약성 진통제 ‘어나프라주’ 11만 바이알 추가 발주",
-    "주소": "https://www.mk.co.kr/news/stock/12209681",
-    "때": "2026-11-16T00:53:03.000Z",
+    "제목": "토스, 실제 사용량에 맞춰 휴대전화 요금제 추천",
+    "주소": "https://www.yna.co.kr/view/AKR20261116068700017",
+    "때": "2026-11-16T02:16:29.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "밀려드는 AI 글라스…내년 상반기 애플 ‘시리 안경’도 나온다",
+    "주소": "https://www.mk.co.kr/news/stock/12209772",
+    "때": "2026-11-16T02:11:13.000Z",
     "출처": "매일경제 증권",
     "갈래": "한국"
    },
    {
-    "제목": "코리아에셋證, 이삭의집 후원 1주년 기념 ‘이삭 페스테벌’ 개최",
-    "주소": "https://www.mk.co.kr/news/stock/12209679",
-    "때": "2026-11-16T00:52:11.000Z",
+    "제목": "동작구, '찾아가는 재개발 주민 설명회' 개최",
+    "주소": "https://www.yna.co.kr/view/AKR20261116069900004",
+    "때": "2026-11-16T02:11:06.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "국토부, 자동차보험 부정수급 방지 등 정책 성과 33건 특별포상",
+    "주소": "https://www.yna.co.kr/view/AKR20261116059500003",
+    "때": "2026-11-16T02:01:30.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "울산서 동북아 항만국장회의…친환경·디지털 전환 논의",
+    "주소": "https://www.yna.co.kr/view/AKR20261116040600051",
+    "때": "2026-11-16T02:00:03.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "해수부, 아시아·태평양 국가에 '한국 AI 항만 정책' 소개",
+    "주소": "https://www.yna.co.kr/view/AKR20261116048400051",
+    "때": "2026-11-16T02:00:02.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "코스피·코스닥, 3%대 하락으로 낙폭 확대…외국인 '팔자'",
+    "주소": "https://www.yna.co.kr/view/AKR20261116064400008",
+    "때": "2026-11-16T01:56:39.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "국립횡성숲체원, 경계선 지능 청년 산림복지 일자리 지원 추진",
+    "주소": "https://www.yna.co.kr/view/AKR20261116064000062",
+    "때": "2026-11-16T01:53:29.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "칼시, 엔비디아 4.6배 무기한 선물에 개미들 몰려",
+    "주소": "https://www.yna.co.kr/view/AKR20261116055000009",
+    "때": "2026-11-16T01:47:39.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "北 김수키, 국회의원실까지 사칭해 해킹…“세미나 참석비 드려요”",
+    "주소": "https://www.mk.co.kr/news/stock/12209737",
+    "때": "2026-11-16T01:47:00.000Z",
     "출처": "매일경제 증권",
     "갈래": "한국"
    },
    {
-    "제목": "“AI 부정행위, 우리가 잡는다”…열화상·전파탐지株 폭등",
-    "주소": "https://www.mk.co.kr/news/stock/12209670",
-    "때": "2026-11-16T00:47:55.000Z",
-    "출처": "매일경제 증권",
+    "제목": "“버거 주고 커피 할인”…은행권, 나라사랑카드 장병 고객 유치전",
+    "주소": "https://www.mk.co.kr/news/economy/12209731",
+    "때": "2026-11-16T01:43:06.000Z",
+    "출처": "매일경제 경제",
     "갈래": "한국"
    },
    {
-    "제목": "한화투자증권, 연금 계좌 개설·자산 이전 이벤트 실시",
-    "주소": "https://www.yna.co.kr/view/AKR20261116043400008",
-    "때": "2026-11-16T00:47:02.000Z",
+    "제목": "정은보 거래소 이사장, 세계거래소연맹 연차총회 참석",
+    "주소": "https://www.yna.co.kr/view/AKR20261116058900008",
+    "때": "2026-11-16T01:42:20.000Z",
     "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "서울중수청, '대부업체 부당지원' 명륜당 압수수색…첫 강제수사",
-    "주소": "https://www.yna.co.kr/view/AKR20261116042200004",
-    "때": "2026-11-16T00:46:17.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "[특징주] 현대해상, 3분기 실적 실망감·저가매수세에 혼조세",
-    "주소": "https://www.yna.co.kr/view/AKR20261116043100008",
-    "때": "2026-11-16T00:46:12.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "토뱅, 솔라나·체이널리시스와 블록체인 글로벌 송금 검증",
-    "주소": "https://www.yna.co.kr/view/AKR20261116041100002",
-    "때": "2026-11-16T00:45:55.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "좁은 도로에 막혔던 울릉공항 직원 사택, 건립 길 열렸다",
-    "주소": "https://www.yna.co.kr/view/AKR20261116043200053",
-    "때": "2026-11-16T00:45:46.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "영국계 운용사 AVI \"다우기술의 중앙일보 인수 반대\"",
-    "주소": "https://www.yna.co.kr/view/AKR20261116038700008",
-    "때": "2026-11-16T00:44:05.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "한유원 상임감사에 백혜숙 국정기획위원 취임",
-    "주소": "https://www.yna.co.kr/view/AKR20261116039300030",
-    "때": "2026-11-16T00:43:07.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "[특징주] 미스토홀딩스, 3분기 부진한 실적에 장초반 9%대↓",
-    "주소": "https://www.yna.co.kr/view/AKR20261116039000008",
-    "때": "2026-11-16T00:40:34.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "지그재그·에이블리 등 커머스 플랫폼, 대규모 연말 쇼핑 행사",
-    "주소": "https://www.yna.co.kr/view/AKR20261116035600030",
-    "때": "2026-11-16T00:40:27.000Z",
-    "출처": "연합뉴스 경제",
     "갈래": "한국"
    }
   ],
   "미국": [
    {
-    "제목": "Australia’s IDP rebuffs Blackstone’s third buyout attempt at $564.5 million valuation",
-    "주소": "https://www.investing.com/news/stock-market-news/australias-idp-rebuffs-blackstones-third-buyout-attempt-at-5645-million-valuation-5028181",
-    "때": "2026-11-16T00:42:56.000Z",
-    "출처": "Investing 경제지표",
+    "제목": "$180 million Van Gogh tests the art market and collector confidence",
+    "주소": "https://www.cnbc.com/2026/11/14/180-million-van-gogh-tests-the-art-market-and-collector-confidence-.html",
+    "때": "2026-11-16T02:22:04.000Z",
+    "출처": "CNBC 주요뉴스",
     "갈래": "미국"
    },
    {
-    "제목": "IDP Education rejects Blackstone’s $564.5 million takeover bid for third time",
-    "주소": "https://www.investing.com/news/stock-market-news/idp-education-rejects-blackstones-5645-million-takeover-bid-for-third-time-5028249",
-    "때": "2026-11-16T00:41:02.000Z",
-    "출처": "Investing 경제지표",
+    "제목": "China’s slowdown deepens in October as industrial output, retail sales, investment miss estimates",
+    "주소": "https://www.cnbc.com/2026/11/16/china-retail-sales-october-industrial-output-investment.html",
+    "때": "2026-11-16T02:14:03.000Z",
+    "출처": "CNBC 주요뉴스",
     "갈래": "미국"
    },
    {
     "제목": "Stock futures tick higher as traders brace for Nvidia earnings, Anthropic IPO this week: Live updates",
     "주소": "https://www.cnbc.com/2026/11/15/stock-market-today-live-updates.html",
-    "때": "2026-11-16T00:26:50.000Z",
+    "때": "2026-11-16T02:02:13.000Z",
     "출처": "CNBC 주요뉴스",
     "갈래": "미국"
    },
    {
-    "제목": "Thousands of US flights canceled, delayed for third day in a row",
-    "주소": "https://www.investing.com/news/stock-market-news/us-air-travel-disruptions-continue-into-third-day-5028023",
-    "때": "2026-11-16T00:12:58.000Z",
+    "제목": "+24%, +16%, +14%: our AI called these stocks and they surged in just two weeks",
+    "주소": "https://www.investing.com/news/stock-market-news/24-16-14-our-ai-called-these-stocks-and-they-surged-in-just-two-weeks-5028311",
+    "때": "2026-11-16T02:01:41.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
    },
    {
-    "제목": "SK Hynix to spend $1 billion over five years to support chip suppliers",
-    "주소": "https://www.investing.com/news/stock-market-news/sk-hynix-to-spend-1-billion-over-five-years-to-support-chip-suppliers-5028220",
-    "때": "2026-11-16T00:12:29.000Z",
+    "제목": "Nvidia results, Anthropic IPO pose tests for tumultuous AI trade",
+    "주소": "https://www.investing.com/news/stock-market-news/nvidia-results-anthropic-ipo-pose-tests-for-tumultuous-ai-trade-5028310",
+    "때": "2026-11-16T02:00:38.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
    },
    {
-    "제목": "Japan's economy unexpectedly contracts in third-quarter as elevated energy costs bite",
-    "주소": "https://www.cnbc.com/2026/11/16/japan-q3-gdp-energy-oil-prices.html",
-    "때": "2026-11-16T00:11:25.000Z",
+    "제목": "Megaspeed says Alice Huang left the company in August 2025",
+    "주소": "https://www.investing.com/news/stock-market-news/megaspeed-says-alice-huang-left-company-in-august-2025-5027761",
+    "때": "2026-11-16T02:00:23.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Tech world's calls for Jensen Huang to return to Nvidia are growing",
+    "주소": "https://www.cnbc.com/2026/11/16/nvidia-jensen-huang-return-tech.html",
+    "때": "2026-11-16T01:54:56.000Z",
     "출처": "CNBC 주요뉴스",
     "갈래": "미국"
    },
    {
-    "제목": "&#x2018;It leaves me with a sour taste&#x2019;: My elderly mother gave our cousin $800 for a car repair. Should I be worried?",
-    "주소": "https://www.marketwatch.com/story/it-leaves-me-with-a-sour-taste-my-elderly-mother-gave-our-cousin-800-for-a-car-repair-should-i-be-worried-88dbd188?mod=mw_rss_topstories",
-    "때": "2026-11-15T23:30:00.000Z",
-    "출처": "MarketWatch",
-    "갈래": "미국"
-   },
-   {
-    "제목": "I've owned this stock for a decade. AI slowdown fears gave me an opportunity to buy more",
-    "주소": "https://www.cnbc.com/2026/11/15/caterpillar-buy-kevin-simpson.html",
-    "때": "2026-11-15T23:11:26.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Intel sued by shareholders following 29% stock plunge",
-    "주소": "https://www.investing.com/news/stock-market-news/intel-sued-by-shareholders-following-29-stock-plunge-5028171",
-    "때": "2026-11-15T23:06:23.000Z",
+    "제목": "Why is IDP Education stock sliding today?",
+    "주소": "https://www.investing.com/news/stock-market-news/why-is-idp-education-stock-sliding-today-93CH-5028308",
+    "때": "2026-11-16T01:48:51.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
    },
    {
-    "제목": "Should a widow leave her late partner&#x2019;s home to her stepkids &#x2014; or cut off contact with them?",
-    "주소": "https://www.marketwatch.com/story/she-can-always-change-her-mind-should-a-widow-leave-the-family-home-to-her-stepchildren-649b06af?mod=mw_rss_topstories",
-    "때": "2026-11-15T23:00:00.000Z",
-    "출처": "MarketWatch",
-    "갈래": "미국"
-   },
-   {
-    "제목": "UBS says emerging markets are ‘more agile than fragile,’ forecasts 2027 gains",
-    "주소": "https://www.investing.com/news/stock-market-news/ubs-says-emerging-markets-are-more-agile-than-fragile-forecasts-2027-gains-5028161",
-    "때": "2026-11-15T22:45:35.000Z",
+    "제목": "Why is Mizuho Financial stock surging today?",
+    "주소": "https://www.investing.com/news/stock-market-news/why-is-mizuho-financial-stock-surging-today-93CH-5028307",
+    "때": "2026-11-16T01:48:47.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
    },
    {
-    "제목": "'We slept here': Flight delays linger but schedule is back on track for Monday",
-    "주소": "https://www.cnbc.com/2026/11/15/flight-delays-ground-faa-stop.html",
-    "때": "2026-11-15T22:33:26.000Z",
-    "출처": "CNBC 주요뉴스",
+    "제목": "U.S. stock futures little changed as investors await Nvidia earnings",
+    "주소": "https://www.investing.com/news/stock-market-news/us-stock-futures-little-changed-as-investors-await-nvidia-earnings-5028292",
+    "때": "2026-11-16T01:35:37.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Jio Platforms begins talks with Indian firms for satellite launch- Mint",
+    "주소": "https://www.investing.com/news/stock-market-news/jio-platforms-begins-talks-with-indian-firms-for-satellite-launch-mint-93CH-5028269",
+    "때": "2026-11-16T01:14:53.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "UK PM Burnham to call for reset of Britain’s EU relationship- Sky News",
+    "주소": "https://www.investing.com/news/stock-market-news/uk-pm-burnham-to-call-for-reset-of-britains-eu-relationship-sky-news-93CH-5028267",
+    "때": "2026-11-16T01:10:56.000Z",
+    "출처": "Investing 경제지표",
     "갈래": "미국"
    }
   ],
@@ -446,15 +446,15 @@
   },
   {
    "이름": "한국경제 증권",
-   "성공": false,
-   "개수": 0,
-   "까닭": "응답 403"
+   "성공": true,
+   "개수": 50,
+   "까닭": null
   },
   {
    "이름": "한국경제 경제",
-   "성공": false,
-   "개수": 0,
-   "까닭": "응답 403"
+   "성공": true,
+   "개수": 50,
+   "까닭": null
   },
   {
    "이름": "매일경제 증권",
