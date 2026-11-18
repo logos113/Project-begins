@@ -1,17 +1,17 @@
 {
- "날짜": "2026-11-17",
- "만든시각": "2026-11-17T04:46:49.124Z",
+ "날짜": "2026-11-18",
+ "만든시각": "2026-11-18T02:52:59.746Z",
  "시세": {
   "지수": [
    {
     "이름": "코스피",
     "갈래": "한국",
     "단위": "",
-    "종가": 5009.16,
-    "변동률": -1.79,
-    "전날종가": 5100.5,
+    "종가": 4978.28,
+    "변동률": 0.2,
+    "전날종가": 4968.48,
     "수상한가": false,
-    "기준일": "2026-11-17",
+    "기준일": "2026-11-18",
     "출처": "Yahoo",
     "거래일수": 10
    },
@@ -19,11 +19,11 @@
     "이름": "코스닥",
     "갈래": "한국",
     "단위": "",
-    "종가": 655.97,
-    "변동률": -1.45,
-    "전날종가": 665.65,
+    "종가": 650.88,
+    "변동률": 0.13,
+    "전날종가": 650.06,
     "수상한가": false,
-    "기준일": "2026-11-17",
+    "기준일": "2026-11-18",
     "출처": "Yahoo",
     "거래일수": 10
    },
@@ -31,11 +31,11 @@
     "이름": "S&P 500",
     "갈래": "미국",
     "단위": "",
-    "종가": 7416.59,
-    "변동률": -1.92,
-    "전날종가": 7561.67,
+    "종가": 7340.53,
+    "변동률": -1.03,
+    "전날종가": 7416.59,
     "수상한가": false,
-    "기준일": "2026-11-16",
+    "기준일": "2026-11-17",
     "출처": "Yahoo",
     "거래일수": 10
    },
@@ -43,11 +43,11 @@
     "이름": "나스닥",
     "갈래": "미국",
     "단위": "",
-    "종가": 24509.76,
-    "변동률": -2.49,
-    "전날종가": 25136.27,
+    "종가": 24328.38,
+    "변동률": -0.74,
+    "전날종가": 24509.76,
     "수상한가": false,
-    "기준일": "2026-11-16",
+    "기준일": "2026-11-17",
     "출처": "Yahoo",
     "거래일수": 10
    },
@@ -55,11 +55,11 @@
     "이름": "원/달러",
     "갈래": "환율",
     "단위": "원",
-    "종가": 1337.58,
-    "변동률": 0.32,
-    "전날종가": 1333.25,
+    "종가": 1329.18,
+    "변동률": -0.49,
+    "전날종가": 1335.67,
     "수상한가": false,
-    "기준일": "2026-11-17",
+    "기준일": "2026-11-18",
     "출처": "Yahoo",
     "거래일수": 10
    }
@@ -67,27 +67,27 @@
   "코인": [
    {
     "이름": "비트코인",
-    "달러": 64981,
-    "원화": 86893361,
-    "변동률": 0.28
+    "달러": 64172,
+    "원화": 85307382,
+    "변동률": -0.46
    },
    {
     "이름": "이더리움",
-    "달러": 1830.51,
-    "원화": 2447763,
-    "변동률": 0.74
+    "달러": 1798.32,
+    "원화": 2390595,
+    "변동률": -0.87
    },
    {
     "이름": "리플",
-    "달러": 0.964406,
-    "원화": 1289.61,
-    "변동률": 0.62
+    "달러": 0.97201,
+    "원화": 1292.14,
+    "변동률": 1.71
    },
    {
     "이름": "솔라나",
-    "달러": 72.86,
-    "원화": 97430,
-    "변동률": 1.89
+    "달러": 74.23,
+    "원화": 98672,
+    "변동률": 3.54
    }
   ],
   "못가져온것": []
@@ -103,7 +103,7 @@
     "설명": "추수감사절",
     "출처": "규칙",
     "요일": "목",
-    "남은날": 9,
+    "남은날": 8,
     "오늘인가": false,
     "이번주인가": false
    },
@@ -115,7 +115,7 @@
     "출처": "한국은행",
     "원문": "https://www.bok.or.kr/portal/singl/crncyPolicyDrcMtg/listYear.do?mtgSe=A&menuNo=200755",
     "요일": "목",
-    "남은날": 9,
+    "남은날": 8,
     "오늘인가": false,
     "이번주인가": false
    }
@@ -131,7 +131,7 @@
     "출처": "한국은행",
     "원문": "https://www.bok.or.kr/portal/singl/crncyPolicyDrcMtg/listYear.do?mtgSe=A&menuNo=200755",
     "요일": "목",
-    "남은날": 9,
+    "남은날": 8,
     "오늘인가": false,
     "이번주인가": false
    },
@@ -143,7 +143,7 @@
     "출처": "연준",
     "원문": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
     "요일": "수",
-    "남은날": 22,
+    "남은날": 21,
     "오늘인가": false,
     "이번주인가": false
    }
@@ -174,258 +174,258 @@
  "뉴스": {
   "한국": [
    {
-    "제목": "급락장 속 한달새 9% 오른 셀트리온, 목표주가도 줄상향",
-    "주소": "https://www.mk.co.kr/news/stock/12211108",
-    "때": "2026-11-17T04:38:33.000Z",
-    "출처": "매일경제 증권",
+    "제목": "오세훈 \"국가유산청이 세운4구역 막으려 시행령 바꿔…행정농단\"",
+    "주소": "https://www.yna.co.kr/view/AKR20261118090700004",
+    "때": "2026-11-18T02:47:21.000Z",
+    "출처": "연합뉴스 경제",
     "갈래": "한국"
    },
    {
-    "제목": "美 사모투자사 터톤 “국민연금, 韓 밸류업서 적극적 역할을”",
-    "주소": "https://www.mk.co.kr/news/stock/12211107",
-    "때": "2026-11-17T04:37:42.000Z",
-    "출처": "매일경제 증권",
-    "갈래": "한국"
-   },
-   {
-    "제목": "신세계免, 이어령 '디지로그' 재해석한 미디어아트 전시",
-    "주소": "https://www.hankyung.com/article/202611171755g",
-    "때": "2026-11-17T04:36:11.000Z",
-    "출처": "한국경제 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "예약 없이 오마카세…제주 드림타워, '워크인 스시 오마카세' 출시",
-    "주소": "https://www.hankyung.com/article/202611171773i",
-    "때": "2026-11-17T04:33:54.000Z",
-    "출처": "한국경제 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "[2027 대전망] 2000억 굴리는 강남 전문가 \"내년엔 ○○○ 비중 늘려라\"",
-    "주소": "https://www.hankyung.com/article/202611170631i",
-    "때": "2026-11-17T04:33:04.000Z",
-    "출처": "한국경제 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "캠핀스키, 동남아 럭셔리 호텔 5곳 앞세워 '한국 고객' 공략",
-    "주소": "https://www.hankyung.com/article/202611171757i",
-    "때": "2026-11-17T04:28:46.000Z",
-    "출처": "한국경제 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "미국계 투자회사 터톤캐피탈 \"코리아디스카운트 핵심은 기업 지배구조\"",
-    "주소": "https://www.yna.co.kr/view/AKR20261117086900008",
-    "때": "2026-11-17T04:26:40.000Z",
+    "제목": "디즈니, 어닝 서프라이즈에도 허리띠 졸라매기…\"성장위한 투자\"",
+    "주소": "https://www.yna.co.kr/view/AKR20261118068500075",
+    "때": "2026-11-18T02:46:11.000Z",
     "출처": "연합뉴스 증시",
     "갈래": "한국"
    },
    {
-    "제목": "디에스엠, 3분기 영업손실 42억…전년비 18.5% 축소",
-    "주소": "https://www.hankyung.com/article/202611171740g",
-    "때": "2026-11-17T04:23:10.000Z",
-    "출처": "한국경제 경제",
+    "제목": "국고채 금리 대체로 하락…3년물 장중 연 3.722%",
+    "주소": "https://www.yna.co.kr/view/AKR20261118093300008",
+    "때": "2026-11-18T02:41:09.000Z",
+    "출처": "연합뉴스 증시",
     "갈래": "한국"
    },
    {
-    "제목": "\"오마카세도 예약 없이\"…제주 드림타워, 스시 13코스 출시",
-    "주소": "https://www.hankyung.com/article/202611171742g",
-    "때": "2026-11-17T04:18:05.000Z",
-    "출처": "한국경제 경제",
+    "제목": "AI·자율주행 핵심 '위치정보' 키운다…스타트업 13곳 시상",
+    "주소": "https://www.yna.co.kr/view/AKR20261118087200017",
+    "때": "2026-11-18T02:41:03.000Z",
+    "출처": "연합뉴스 경제",
     "갈래": "한국"
    },
    {
-    "제목": "파라타항공, 인천~LA 노선 판매 시작…내년 5월 첫 취항",
-    "주소": "https://www.hankyung.com/article/202611171720g",
-    "때": "2026-11-17T04:07:46.000Z",
-    "출처": "한국경제 경제",
+    "제목": "JP모건·현대카드, 인간 개입 없는 'AI 금융 거래' 실험",
+    "주소": "https://www.yna.co.kr/view/AKR20261118084800009",
+    "때": "2026-11-18T02:36:10.000Z",
+    "출처": "연합뉴스 증시",
     "갈래": "한국"
    },
    {
-    "제목": "\"죽으란 법은 없네\"…한국서 찬밥 신세였는데 유럽서 '반전' [권용훈의 트렌드워치]",
-    "주소": "https://www.hankyung.com/article/202611171058i",
-    "때": "2026-11-17T04:00:07.000Z",
-    "출처": "한국경제 경제",
+    "제목": "충북 고액·상습 체납자 427명 명단공개…미납액 217억원",
+    "주소": "https://www.yna.co.kr/view/AKR20261118089500064",
+    "때": "2026-11-18T02:31:41.000Z",
+    "출처": "연합뉴스 경제",
     "갈래": "한국"
    },
    {
-    "제목": "기업 성과와 현지 변화 잇는다…코이카, '임팩트 투게더' 개최",
-    "주소": "https://www.yna.co.kr/view/AKR20261117066700371",
-    "때": "2026-11-17T04:00:04.000Z",
+    "제목": "AI 안경에 수능 분쟁 우려…10만명 ‘감독관 보험’ 도움될까",
+    "주소": "https://www.mk.co.kr/news/economy/12212216",
+    "때": "2026-11-18T02:30:07.000Z",
+    "출처": "매일경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "삼성바이오 노조, 한국노총 가입…조합원 88% 찬성",
+    "주소": "https://www.yna.co.kr/view/AKR20261118026200017",
+    "때": "2026-11-18T02:29:15.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "3%대 급반등하다 '뚝'…코스피, 보합권에서 등락",
+    "주소": "https://www.yna.co.kr/view/AKR20261118087600008",
+    "때": "2026-11-18T02:28:59.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "강릉 AI데이터센터 유치 행정사무조사 가결…도의회 여야 충돌",
+    "주소": "https://www.yna.co.kr/view/AKR20261118086700062",
+    "때": "2026-11-18T02:24:42.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "10월 대구 수출 36% 급증…경북도 13% 늘었다",
+    "주소": "https://www.yna.co.kr/view/AKR20261118087000053",
+    "때": "2026-11-18T02:23:06.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "\"KIC 직원 98% 본사 지방 이전 반대\"…노조 설문조사",
+    "주소": "https://www.yna.co.kr/view/AKR20261118085600002",
+    "때": "2026-11-18T02:20:22.000Z",
     "출처": "연합뉴스 경제",
     "갈래": "한국"
    }
   ],
   "미국": [
    {
-    "제목": "Third U.S. carrier arrives, stoking concerns about renewed conflicts with Iran",
-    "주소": "https://www.cnbc.com/2026/11/17/iran-war-trump-hormuz-oil-.html",
-    "때": "2026-11-17T04:34:24.000Z",
+    "제목": "Trump withdraws Heidi Overton as nominee to lead Food and Drug Administration, sources say",
+    "주소": "https://www.cnbc.com/2026/11/18/trump-withdraws-heidi-overton-as-nominee-to-lead-fda-sources-say.html",
+    "때": "2026-11-18T02:31:29.000Z",
     "출처": "CNBC 주요뉴스",
     "갈래": "미국"
    },
    {
-    "제목": "US probes why a router installation sparked mass flight grounding",
-    "주소": "https://www.investing.com/news/stock-market-news/us-probes-why-a-router-installation-sparked-mass-flight-grounding-5030697",
-    "때": "2026-11-17T04:30:34.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Stock futures are little changed after Nvidia pressures tech to start the week: Live updates",
-    "주소": "https://www.cnbc.com/2026/11/16/stock-market-today-live-updates.html",
-    "때": "2026-11-17T04:27:57.000Z",
+    "제목": "China’s Xi calls for removing trade and investment barriers ahead of his meeting with Trump and Putin",
+    "주소": "https://www.cnbc.com/2026/11/18/china-xi-trade-investment-barriers.html",
+    "때": "2026-11-18T02:23:20.000Z",
     "출처": "CNBC 주요뉴스",
     "갈래": "미국"
    },
    {
-    "제목": "Why is Advantest stock sliding today?",
-    "주소": "https://www.investing.com/news/stock-market-news/why-is-advantest-stock-sliding-today-93CH-5031584",
-    "때": "2026-11-17T04:07:37.000Z",
+    "제목": "+48%, +31%, +24%: Which AI-picked stocks are climbing while tech wobbles?",
+    "주소": "https://www.investing.com/news/stock-market-news/48-31-24-which-aipicked-stocks-are-climbing-while-tech-wobbles-5034531",
+    "때": "2026-11-18T02:13:27.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
    },
    {
-    "제목": "Asia stocks slide as U.S. tightens AI chip curbs ahead of Nvidia results",
-    "주소": "https://www.investing.com/news/stock-market-news/asia-stocks-slide-as-us-tightens-ai-chip-curbs-ahead-of-nvidia-results-5031571",
-    "때": "2026-11-17T03:55:58.000Z",
+    "제목": "LeBron James sues startup over viral AI ad allegedly exploiting his likeness",
+    "주소": "https://www.cnbc.com/2026/11/18/lebron-james-startup-ai-lawsuit.html",
+    "때": "2026-11-18T02:02:02.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "CoreWeave&#x2019;s stock pops &#x2014; even as Nvidia talks up a &#x2018;disciplined&#x2019; approach to financing",
+    "주소": "https://www.marketwatch.com/story/coreweaves-stock-pops-even-as-nvidia-talks-up-a-disciplined-approach-to-financing-e7f00876?mod=mw_rss_topstories",
+    "때": "2026-11-18T01:59:00.000Z",
+    "출처": "MarketWatch",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Stock futures rise as Nvidia gains on earnings beat and solid outlook: Live updates",
+    "주소": "https://www.cnbc.com/2026/11/17/stock-market-today-live-updates.html",
+    "때": "2026-11-18T01:50:12.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Medicare Part B premiums rise due higher healthcare spending",
+    "주소": "https://www.marketwatch.com/story/medicare-part-b-premiums-rise-due-higher-healthcare-spending-f2daba13?mod=mw_rss_topstories",
+    "때": "2026-11-18T01:45:00.000Z",
+    "출처": "MarketWatch",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Salesforce starts fresh round of job cuts, Business Insider reports",
+    "주소": "https://www.investing.com/news/stock-market-news/salesforce-starts-fresh-round-of-job-cuts-business-insider-reports-5034500",
+    "때": "2026-11-18T01:40:11.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
    },
    {
-    "제목": "How Trump and Xi went from tariff war to trade truce",
-    "주소": "https://www.investing.com/news/stock-market-news/how-trump-and-xi-went-from-tariff-war-to-trade-truce-5031569",
-    "때": "2026-11-17T03:54:23.000Z",
+    "제목": "Nvidia says ’no’ to rehiring Huang and WSJ reports SEC is probing the chipmaker",
+    "주소": "https://www.investing.com/news/stock-market-news/nvidia-board-forms-committee-for-national-security-and-export-control-oversight-5032154",
+    "때": "2026-11-18T01:37:09.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
    },
    {
-    "제목": "Nvidia rules out Huang comeback as campaign for his return grows",
-    "주소": "https://www.investing.com/news/stock-market-news/silicon-valley-leaders-back-call-for-jensen-huangs-return-to-nvidia-5029956",
-    "때": "2026-11-17T03:42:21.000Z",
+    "제목": "Reliance seeks manufacturing partners for its 1,600-satellite network - Bloomberg",
+    "주소": "https://www.investing.com/news/stock-market-news/reliance-seeks-manufacturing-partners-for-its-1600satellite-network--bloomberg-5034495",
+    "때": "2026-11-18T01:32:04.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
    },
    {
-    "제목": "Novartis wins FDA approval for Cosentyx in polymyalgia rheumatica",
-    "주소": "https://www.investing.com/news/stock-market-news/novartis-wins-fda-approval-for-cosentyx-in-polymyalgia-rheumatica-5031556",
-    "때": "2026-11-17T03:37:39.000Z",
-    "출처": "Investing 경제지표",
+    "제목": "OpenAI bugging case defendant Alfozan set for trial in January",
+    "주소": "https://www.cnbc.com/2026/11/17/openai-spy-alfozan-trial-saudi.html",
+    "때": "2026-11-18T01:31:37.000Z",
+    "출처": "CNBC 주요뉴스",
     "갈래": "미국"
    },
    {
-    "제목": "Why is Xpeng HK stock rallying today?",
-    "주소": "https://www.investing.com/news/stock-market-news/why-is-xpeng-hk-stock-rallying-today-93CH-5031544",
-    "때": "2026-11-17T03:19:51.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Why is Baidu HK stock sliding today?",
-    "주소": "https://www.investing.com/news/stock-market-news/why-is-baidu-hk-stock-sliding-today-93CH-5031543",
-    "때": "2026-11-17T03:19:49.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "A 450% revenue beat, a 20%+ gain: the biotech our AI models picked first",
-    "주소": "https://www.investing.com/news/stock-market-news/a-450-revenue-beat-a-20-gain-the-biotech-our-ai-models-picked-first-5031514",
-    "때": "2026-11-17T02:48:19.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Four US activist hedge funds exit Dick’s Sporting Goods in third quarter amid profit woes",
-    "주소": "https://www.investing.com/news/stock-market-news/four-us-activist-hedge-funds-exit-dicks-sporting-goods-in-third-quarter-amid-profit-woes-5031506",
-    "때": "2026-11-17T02:42:22.000Z",
-    "출처": "Investing 경제지표",
+    "제목": "Nvidia&#x2019;s stock rises as blowout numbers help ease CEO transition fears",
+    "주소": "https://www.marketwatch.com/story/nvidias-stock-rises-as-blowout-numbers-help-ease-ceo-transition-fears-2f20d38a?mod=mw_rss_topstories",
+    "때": "2026-11-18T01:28:00.000Z",
+    "출처": "MarketWatch",
     "갈래": "미국"
    }
   ],
   "코인": [
    {
-    "제목": "Trezor customer data exposed in 3rd partner breach this year",
-    "주소": "https://cointelegraph.com/news/trezor-customer-data-exposed-in-3rd-partner-breach-this-year?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-    "때": "2026-11-17T03:46:22.000Z",
-    "출처": "Cointelegraph",
-    "갈래": "코인"
-   },
-   {
-    "제목": "Hackers inject credit card, crypto-stealing malware into 178 major websites",
-    "주소": "https://cointelegraph.com/news/hackers-inject-malware-into-178-major-websites?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-    "때": "2026-11-17T01:02:05.000Z",
-    "출처": "Cointelegraph",
-    "갈래": "코인"
-   },
-   {
-    "제목": "Nvidia shares fall 4% as board reportedly rules out Huang return",
-    "주소": "https://cointelegraph.com/news/nvidia-shares-fall-4-as-board-reportedly-rules-out-huang-return?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-    "때": "2026-11-16T23:50:41.000Z",
-    "출처": "Cointelegraph",
-    "갈래": "코인"
-   },
-   {
-    "제목": "CFTC backs blockchain-based derivatives infrastructure as Backpack, tZERO win approvals",
-    "주소": "https://www.theblock.co/news/regulation/2026-11-16-cftc-blockchain-derivatives-exchange-approval-backpack-tzero-441591",
-    "때": "2026-11-16T23:27:15.000Z",
+    "제목": "Coinbase AI defense blocks $4.7 million from being sent to deepfake Elon Musk scam",
+    "주소": "https://www.theblock.co/news/defi/2026-11-17-coinbase-ai-defense-deepfake-elon-musk-442918",
+    "때": "2026-11-18T02:47:51.000Z",
     "출처": "The Block",
     "갈래": "코인"
    },
    {
-    "제목": "Custodia Bank loses Supreme Court bid for direct Fed payment access",
-    "주소": "https://cointelegraph.com/news/custodia-bank-loses-supreme-court-bid-for-direct-fed-payment-access?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-    "때": "2026-11-16T22:54:57.000Z",
+    "제목": "What’s happening to crypto startup valuations?",
+    "주소": "https://www.theblock.co/newsletters/the-funding/2026-11-17-crypto-startup-valuations-442903",
+    "때": "2026-11-18T02:40:00.000Z",
+    "출처": "The Block",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Ledger hardware implant saga reaches Dubai’s Virgin Megastore",
+    "주소": "https://cointelegraph.com/news/ledger-hardware-implant-saga-reaches-dubais-virgin-megastore?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "때": "2026-11-18T02:39:52.000Z",
     "출처": "Cointelegraph",
     "갈래": "코인"
    },
    {
-    "제목": "German lawmakers back crypto freezes outside criminal cases",
-    "주소": "https://cointelegraph.com/news/german-lawmakers-back-crypto-freezes-outside-criminal-cases?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-    "때": "2026-11-16T22:46:44.000Z",
+    "제목": "CFTC nominee questions public benefit of prediction markets as legal fight grows",
+    "주소": "https://www.coindesk.com/policy/2026/11/17/nominee-says-u-s-cftc-must-think-hard-about-public-benefit-of-prediction-markets",
+    "때": "2026-11-18T00:46:25.000Z",
+    "출처": "CoinDesk",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Nvidia board rejects Huang comeback despite record $116B quarter",
+    "주소": "https://cointelegraph.com/markets/nvidia-board-rejects-huang-comeback-amid-record-116b-quarter?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "때": "2026-11-18T00:16:43.000Z",
     "출처": "Cointelegraph",
     "갈래": "코인"
    },
    {
-    "제목": "Alibaba's Qwen 4 Max Leads China's AI Agent Race—But You Can't Download It",
-    "주소": "https://decrypt.co/383395/alibaba-qwen-4-max-leads-china-ai-agent-race-cant-download-it",
-    "때": "2026-11-16T22:46:02.000Z",
+    "제목": "Trump’s CFTC picks face Senate scrutiny as prediction market turf war heats up",
+    "주소": "https://www.theblock.co/news/regulation/2026-11-17-trumps-cftc-picks-face-senate-scrutiny-as-prediction-market-turf-war-heats-up-442909",
+    "때": "2026-11-17T23:32:46.000Z",
+    "출처": "The Block",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Why Microsoft Thinks Smaller, Cheaper AI Can Beat Claude and GPT",
+    "주소": "https://decrypt.co/383468/why-microsoft-thinks-smaller-cheaper-ai-beat-claude-gpt",
+    "때": "2026-11-17T23:16:03.000Z",
     "출처": "Decrypt",
     "갈래": "코인"
    },
    {
-    "제목": "Binance hack may push institutions to outside custody, FalconX exec says",
-    "주소": "https://cointelegraph.com/news/binance-hack-institutional-crypto-custody-falconx?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-    "때": "2026-11-16T22:19:41.000Z",
-    "출처": "Cointelegraph",
-    "갈래": "코인"
-   },
-   {
-    "제목": "Bitcoin Wallet Maker Trezor Says Customer Data Was Exposed Again",
-    "주소": "https://decrypt.co/383397/bitcoin-wallet-trezor-third-party-breach-customer-data",
-    "때": "2026-11-16T22:18:03.000Z",
+    "제목": "Nvidia Board Shuts Down Jensen Huang Comeback, Launches Search for New CEO",
+    "주소": "https://decrypt.co/383513/nvidia-board-shuts-down-jensen-huang-comeback",
+    "때": "2026-11-17T22:39:53.000Z",
     "출처": "Decrypt",
     "갈래": "코인"
    },
    {
     "제목": "Here’s what happened in crypto today",
     "주소": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-    "때": "2026-11-16T22:07:36.000Z",
+    "때": "2026-11-17T22:37:51.000Z",
     "출처": "Cointelegraph",
     "갈래": "코인"
    },
    {
-    "제목": "Former Robinhood engineer pleads guilty to insider trading scheme on Hyperliquid",
-    "주소": "https://www.coindesk.com/markets/2026/11/16/former-robinhood-engineer-pleads-guilty-to-insider-trading-scheme-on-hyperliquid",
-    "때": "2026-11-16T21:51:04.000Z",
-    "출처": "CoinDesk",
+    "제목": "Robinhood shrugs off Kalshi equities threat as Mizuho sees 86% HOOD upside",
+    "주소": "https://www.theblock.co/news/business/2026-11-17-robinhoods-non-sports-prediction-market-share-doubles-mizuho-442904",
+    "때": "2026-11-17T22:23:29.000Z",
+    "출처": "The Block",
     "갈래": "코인"
    },
    {
-    "제목": "Bitcoin's $2 Billion Liquidation Weekend Leaves Traders Watching $60,000",
-    "주소": "https://decrypt.co/383366/bitcoin-2-billion-liquidation-weekend-traders-watching-60000",
-    "때": "2026-11-16T21:46:03.000Z",
+    "제목": "CFTC halts some Kalshi Trump mention markets over manipulation concerns",
+    "주소": "https://cointelegraph.com/news/cftc-kalshi-trump-mention-markets-review?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "때": "2026-11-17T22:20:04.000Z",
+    "출처": "Cointelegraph",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Nvidia Shares Rise After Earnings Beat in First Report Since Jensen Huang's Exit",
+    "주소": "https://decrypt.co/383505/nvidia-shares-rise-earnings-beat-first-report-jensen-huang-exit",
+    "때": "2026-11-17T22:18:18.000Z",
     "출처": "Decrypt",
     "갈래": "코인"
    }
@@ -531,7 +531,7 @@
   {
    "이름": "Decrypt",
    "성공": true,
-   "개수": 39,
+   "개수": 37,
    "까닭": null
   },
   {
@@ -542,9 +542,9 @@
   },
   {
    "이름": "코인데스크 코리아",
-   "성공": false,
+   "성공": true,
    "개수": 0,
-   "까닭": "시간 초과"
+   "까닭": null
   }
  ]
 }
