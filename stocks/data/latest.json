@@ -1,14 +1,14 @@
 {
  "날짜": "2026-11-18",
- "만든시각": "2026-11-18T02:52:59.746Z",
+ "만든시각": "2026-11-18T03:50:58.701Z",
  "시세": {
   "지수": [
    {
     "이름": "코스피",
     "갈래": "한국",
     "단위": "",
-    "종가": 4978.28,
-    "변동률": 0.2,
+    "종가": 4996.82,
+    "변동률": 0.57,
     "전날종가": 4968.48,
     "수상한가": false,
     "기준일": "2026-11-18",
@@ -19,8 +19,8 @@
     "이름": "코스닥",
     "갈래": "한국",
     "단위": "",
-    "종가": 650.88,
-    "변동률": 0.13,
+    "종가": 653.4,
+    "변동률": 0.51,
     "전날종가": 650.06,
     "수상한가": false,
     "기준일": "2026-11-18",
@@ -55,8 +55,8 @@
     "이름": "원/달러",
     "갈래": "환율",
     "단위": "원",
-    "종가": 1329.18,
-    "변동률": -0.49,
+    "종가": 1329.88,
+    "변동률": -0.43,
     "전날종가": 1335.67,
     "수상한가": false,
     "기준일": "2026-11-18",
@@ -67,27 +67,27 @@
   "코인": [
    {
     "이름": "비트코인",
-    "달러": 64172,
-    "원화": 85307382,
-    "변동률": -0.46
+    "달러": 64450,
+    "원화": 85672197,
+    "변동률": -0.78
    },
    {
     "이름": "이더리움",
-    "달러": 1798.32,
-    "원화": 2390595,
-    "변동률": -0.87
+    "달러": 1805.01,
+    "원화": 2399373,
+    "변동률": -1.38
    },
    {
     "이름": "리플",
-    "달러": 0.97201,
-    "원화": 1292.14,
-    "변동률": 1.71
+    "달러": 0.979043,
+    "원화": 1301.43,
+    "변동률": 1.44
    },
    {
     "이름": "솔라나",
-    "달러": 74.23,
-    "원화": 98672,
-    "변동률": 3.54
+    "달러": 74.87,
+    "원화": 99526,
+    "변동률": 3.2
    }
   ],
   "못가져온것": []
@@ -174,173 +174,173 @@
  "뉴스": {
   "한국": [
    {
-    "제목": "오세훈 \"국가유산청이 세운4구역 막으려 시행령 바꿔…행정농단\"",
-    "주소": "https://www.yna.co.kr/view/AKR20261118090700004",
-    "때": "2026-11-18T02:47:21.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "디즈니, 어닝 서프라이즈에도 허리띠 졸라매기…\"성장위한 투자\"",
-    "주소": "https://www.yna.co.kr/view/AKR20261118068500075",
-    "때": "2026-11-18T02:46:11.000Z",
+    "제목": "[표] 코스닥시장 3분기 누적 순이익 상·하위 20개사",
+    "주소": "https://www.yna.co.kr/view/AKR20261118095900008",
+    "때": "2026-11-18T03:00:23.000Z",
     "출처": "연합뉴스 증시",
     "갈래": "한국"
    },
    {
-    "제목": "국고채 금리 대체로 하락…3년물 장중 연 3.722%",
-    "주소": "https://www.yna.co.kr/view/AKR20261118093300008",
-    "때": "2026-11-18T02:41:09.000Z",
+    "제목": "[표] 유가증권시장 3분기 누적 순이익 상·하위 20개사",
+    "주소": "https://www.yna.co.kr/view/AKR20261118091300008",
+    "때": "2026-11-18T03:00:22.000Z",
     "출처": "연합뉴스 증시",
     "갈래": "한국"
    },
    {
-    "제목": "AI·자율주행 핵심 '위치정보' 키운다…스타트업 13곳 시상",
-    "주소": "https://www.yna.co.kr/view/AKR20261118087200017",
-    "때": "2026-11-18T02:41:03.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "JP모건·현대카드, 인간 개입 없는 'AI 금융 거래' 실험",
-    "주소": "https://www.yna.co.kr/view/AKR20261118084800009",
-    "때": "2026-11-18T02:36:10.000Z",
+    "제목": "[표] 코스닥시장 3분기 누적 영업이익 상·하위 20개사",
+    "주소": "https://www.yna.co.kr/view/AKR20261118095800008",
+    "때": "2026-11-18T03:00:22.000Z",
     "출처": "연합뉴스 증시",
     "갈래": "한국"
    },
    {
-    "제목": "충북 고액·상습 체납자 427명 명단공개…미납액 217억원",
-    "주소": "https://www.yna.co.kr/view/AKR20261118089500064",
-    "때": "2026-11-18T02:31:41.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "AI 안경에 수능 분쟁 우려…10만명 ‘감독관 보험’ 도움될까",
-    "주소": "https://www.mk.co.kr/news/economy/12212216",
-    "때": "2026-11-18T02:30:07.000Z",
-    "출처": "매일경제 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "삼성바이오 노조, 한국노총 가입…조합원 88% 찬성",
-    "주소": "https://www.yna.co.kr/view/AKR20261118026200017",
-    "때": "2026-11-18T02:29:15.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "3%대 급반등하다 '뚝'…코스피, 보합권에서 등락",
-    "주소": "https://www.yna.co.kr/view/AKR20261118087600008",
-    "때": "2026-11-18T02:28:59.000Z",
+    "제목": "[표] 유가증권시장 3분기 누적 영업이익 상·하위 20개사",
+    "주소": "https://www.yna.co.kr/view/AKR20261118091400008",
+    "때": "2026-11-18T03:00:21.000Z",
     "출처": "연합뉴스 증시",
     "갈래": "한국"
    },
    {
-    "제목": "강릉 AI데이터센터 유치 행정사무조사 가결…도의회 여야 충돌",
-    "주소": "https://www.yna.co.kr/view/AKR20261118086700062",
-    "때": "2026-11-18T02:24:42.000Z",
+    "제목": "공정위, 한신공영에 시정명령…금융업 손자회사 지배금지 위반",
+    "주소": "https://www.yna.co.kr/view/AKR20261117134800002",
+    "때": "2026-11-18T03:00:20.000Z",
     "출처": "연합뉴스 경제",
     "갈래": "한국"
    },
    {
-    "제목": "10월 대구 수출 36% 급증…경북도 13% 늘었다",
-    "주소": "https://www.yna.co.kr/view/AKR20261118087000053",
-    "때": "2026-11-18T02:23:06.000Z",
+    "제목": "매출 1조 넘는 해외사업자, 국내대리인 둬야…공정위 가이드라인",
+    "주소": "https://www.yna.co.kr/view/AKR20261118034900002",
+    "때": "2026-11-18T03:00:19.000Z",
     "출처": "연합뉴스 경제",
     "갈래": "한국"
    },
    {
-    "제목": "\"KIC 직원 98% 본사 지방 이전 반대\"…노조 설문조사",
-    "주소": "https://www.yna.co.kr/view/AKR20261118085600002",
-    "때": "2026-11-18T02:20:22.000Z",
+    "제목": "대전 부사동, 야구 경기일 방문 2.5배로 늘어…주변으로도 발길",
+    "주소": "https://www.yna.co.kr/view/AKR20261118037700002",
+    "때": "2026-11-18T03:00:15.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "반도체 호조로 3분기 충북 광공업생산 30%↑…소매판매 13곳↓",
+    "주소": "https://www.yna.co.kr/view/AKR20261118062900002",
+    "때": "2026-11-18T03:00:10.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "증시 한파에 '빚투·영끌' 주춤… 3분기 가계빚 증가폭 6개 분기만에 최소 기록",
+    "주소": "https://www.hankyung.com/article/202611184192i",
+    "때": "2026-11-18T03:00:07.000Z",
+    "출처": "한국경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "불법사금융 피해자 절반 이상 20·30대…1년 새 비중 6%p↑",
+    "주소": "https://www.yna.co.kr/view/AKR20261118077000004",
+    "때": "2026-11-18T03:00:06.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "3분기 가계부채 증가폭 1년반 만에 최소…카드 외상은 급증",
+    "주소": "https://www.yna.co.kr/view/AKR20261118077900002",
+    "때": "2026-11-18T03:00:06.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "미혼 남성 44%는 '결혼해야 한다' 생각…여성은 30%에 그쳐",
+    "주소": "https://www.yna.co.kr/view/AKR20261118091600002",
+    "때": "2026-11-18T03:00:02.000Z",
     "출처": "연합뉴스 경제",
     "갈래": "한국"
    }
   ],
   "미국": [
    {
-    "제목": "Trump withdraws Heidi Overton as nominee to lead Food and Drug Administration, sources say",
-    "주소": "https://www.cnbc.com/2026/11/18/trump-withdraws-heidi-overton-as-nominee-to-lead-fda-sources-say.html",
-    "때": "2026-11-18T02:31:29.000Z",
+    "제목": "Putin says EU is losing industry, falling behind competition ahead of meeting with Trump, Xi",
+    "주소": "https://www.cnbc.com/2026/11/18/putin-apec-eu-trump-xi-meeting.html",
+    "때": "2026-11-18T03:49:04.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Democrat Mary Peltola wins Alaska Senate election",
+    "주소": "https://www.cnbc.com/2026/11/18/alaska-senate-mary-peltola-wins-election.html",
+    "때": "2026-11-18T03:46:10.000Z",
     "출처": "CNBC 주요뉴스",
     "갈래": "미국"
    },
    {
     "제목": "China’s Xi calls for removing trade and investment barriers ahead of his meeting with Trump and Putin",
     "주소": "https://www.cnbc.com/2026/11/18/china-xi-trade-investment-barriers.html",
-    "때": "2026-11-18T02:23:20.000Z",
+    "때": "2026-11-18T03:30:51.000Z",
     "출처": "CNBC 주요뉴스",
     "갈래": "미국"
    },
    {
-    "제목": "+48%, +31%, +24%: Which AI-picked stocks are climbing while tech wobbles?",
-    "주소": "https://www.investing.com/news/stock-market-news/48-31-24-which-aipicked-stocks-are-climbing-while-tech-wobbles-5034531",
-    "때": "2026-11-18T02:13:27.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "LeBron James sues startup over viral AI ad allegedly exploiting his likeness",
-    "주소": "https://www.cnbc.com/2026/11/18/lebron-james-startup-ai-lawsuit.html",
-    "때": "2026-11-18T02:02:02.000Z",
+    "제목": "Three things to watch as Trump, Xi and Putin meet in China",
+    "주소": "https://www.cnbc.com/2026/11/18/apec-trump-xi-putin-shenzhen.html",
+    "때": "2026-11-18T03:25:32.000Z",
     "출처": "CNBC 주요뉴스",
     "갈래": "미국"
    },
    {
-    "제목": "CoreWeave&#x2019;s stock pops &#x2014; even as Nvidia talks up a &#x2018;disciplined&#x2019; approach to financing",
-    "주소": "https://www.marketwatch.com/story/coreweaves-stock-pops-even-as-nvidia-talks-up-a-disciplined-approach-to-financing-e7f00876?mod=mw_rss_topstories",
-    "때": "2026-11-18T01:59:00.000Z",
-    "출처": "MarketWatch",
+    "제목": "Nike aims to design half of its China sportswear products locally",
+    "주소": "https://www.investing.com/news/stock-market-news/nike-aims-to-design-half-of-its-china-sportswear-products-locally-5034602",
+    "때": "2026-11-18T03:19:14.000Z",
+    "출처": "Investing 경제지표",
     "갈래": "미국"
    },
    {
-    "제목": "Stock futures rise as Nvidia gains on earnings beat and solid outlook: Live updates",
-    "주소": "https://www.cnbc.com/2026/11/17/stock-market-today-live-updates.html",
-    "때": "2026-11-18T01:50:12.000Z",
+    "제목": "JPMorgan is working on AI agent transactions that don’t involve humans",
+    "주소": "https://www.cnbc.com/2026/11/18/jpmorgan-hyundai-card-ai-agents-payments.html",
+    "때": "2026-11-18T03:17:55.000Z",
     "출처": "CNBC 주요뉴스",
     "갈래": "미국"
    },
    {
-    "제목": "Medicare Part B premiums rise due higher healthcare spending",
-    "주소": "https://www.marketwatch.com/story/medicare-part-b-premiums-rise-due-higher-healthcare-spending-f2daba13?mod=mw_rss_topstories",
-    "때": "2026-11-18T01:45:00.000Z",
-    "출처": "MarketWatch",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Salesforce starts fresh round of job cuts, Business Insider reports",
-    "주소": "https://www.investing.com/news/stock-market-news/salesforce-starts-fresh-round-of-job-cuts-business-insider-reports-5034500",
-    "때": "2026-11-18T01:40:11.000Z",
+    "제목": "Jensen Huang agrees to testify before Senate, Politico reports",
+    "주소": "https://www.investing.com/news/stock-market-news/jensen-huang-agrees-to-testify-before-senate-politico-reports-5034604",
+    "때": "2026-11-18T03:13:05.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
    },
    {
-    "제목": "Nvidia says ’no’ to rehiring Huang and WSJ reports SEC is probing the chipmaker",
-    "주소": "https://www.investing.com/news/stock-market-news/nvidia-board-forms-committee-for-national-security-and-export-control-oversight-5032154",
-    "때": "2026-11-18T01:37:09.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Reliance seeks manufacturing partners for its 1,600-satellite network - Bloomberg",
-    "주소": "https://www.investing.com/news/stock-market-news/reliance-seeks-manufacturing-partners-for-its-1600satellite-network--bloomberg-5034495",
-    "때": "2026-11-18T01:32:04.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "OpenAI bugging case defendant Alfozan set for trial in January",
-    "주소": "https://www.cnbc.com/2026/11/17/openai-spy-alfozan-trial-saudi.html",
-    "때": "2026-11-18T01:31:37.000Z",
+    "제목": "Trump withdraws Heidi Overton as nominee to lead Food and Drug Administration, sources say",
+    "주소": "https://www.cnbc.com/2026/11/18/trump-withdraws-heidi-overton-as-nominee-to-lead-fda-sources-say.html",
+    "때": "2026-11-18T03:09:36.000Z",
     "출처": "CNBC 주요뉴스",
     "갈래": "미국"
    },
    {
-    "제목": "Nvidia&#x2019;s stock rises as blowout numbers help ease CEO transition fears",
-    "주소": "https://www.marketwatch.com/story/nvidias-stock-rises-as-blowout-numbers-help-ease-ceo-transition-fears-2f20d38a?mod=mw_rss_topstories",
-    "때": "2026-11-18T01:28:00.000Z",
-    "출처": "MarketWatch",
+    "제목": "Nvidia China access restrictions: these stocks are most exposed",
+    "주소": "https://www.investing.com/news/stock-market-news/nvidia-china-access-restrictions-these-stocks-are-most-exposed-93CH-5034603",
+    "때": "2026-11-18T03:08:56.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Asia tech shares turn mixed after Nvidia beat as China chip curbs cloud optimism",
+    "주소": "https://www.investing.com/news/stock-market-news/asia-tech-shares-turn-mixed-after-nvidia-beat-as-china-chip-curbs-cloud-optimism-5034585",
+    "때": "2026-11-18T02:55:47.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Zelenskyy says Starshield speed curbs still in place over 'occupied territories' of Ukraine",
+    "주소": "https://www.cnbc.com/2026/11/18/ukraine-starshield-starlink-musk-spacex.html",
+    "때": "2026-11-18T02:50:16.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Amazon’s Bezos says he helped pick Pattinson as Bond",
+    "주소": "https://www.investing.com/news/stock-market-news/amazons-bezos-says-he-helped-pick-pattinson-as-bond-5034420",
+    "때": "2026-11-18T02:48:20.000Z",
+    "출처": "Investing 경제지표",
     "갈래": "미국"
    }
   ],
