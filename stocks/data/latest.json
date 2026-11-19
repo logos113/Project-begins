@@ -1,14 +1,14 @@
 {
  "날짜": "2026-11-19",
- "만든시각": "2026-11-19T02:32:38.491Z",
+ "만든시각": "2026-11-19T03:51:11.723Z",
  "시세": {
   "지수": [
    {
     "이름": "코스피",
     "갈래": "한국",
     "단위": "",
-    "종가": 5002.72,
-    "변동률": -1.28,
+    "종가": 5016.62,
+    "변동률": -1,
     "전날종가": 5067.44,
     "수상한가": false,
     "기준일": "2026-11-19",
@@ -19,8 +19,8 @@
     "이름": "코스닥",
     "갈래": "한국",
     "단위": "",
-    "종가": 654.96,
-    "변동률": -1.18,
+    "종가": 655.75,
+    "변동률": -1.07,
     "전날종가": 662.81,
     "수상한가": false,
     "기준일": "2026-11-19",
@@ -55,8 +55,8 @@
     "이름": "원/달러",
     "갈래": "환율",
     "단위": "원",
-    "종가": 1330.58,
-    "변동률": -0.18,
+    "종가": 1330.31,
+    "변동률": -0.2,
     "전날종가": 1333.01,
     "수상한가": false,
     "기준일": "2026-11-19",
@@ -67,27 +67,27 @@
   "코인": [
    {
     "이름": "비트코인",
-    "달러": 62646,
-    "원화": 83347488,
-    "변동률": -2.8
+    "달러": 63110,
+    "원화": 83958827,
+    "변동률": -2.09
    },
    {
     "이름": "이더리움",
-    "달러": 1771.38,
-    "원화": 2356728,
-    "변동률": -1.92
+    "달러": 1787.29,
+    "원화": 2377711,
+    "변동률": -0.98
    },
    {
     "이름": "리플",
-    "달러": 0.961117,
-    "원화": 1278.72,
-    "변동률": -1.44
+    "달러": 0.967752,
+    "원화": 1287.45,
+    "변동률": -1.19
    },
    {
     "이름": "솔라나",
-    "달러": 73.26,
-    "원화": 97471,
-    "변동률": -1.82
+    "달러": 74.09,
+    "원화": 98569,
+    "변동률": -1.03
    }
   ],
   "못가져온것": []
@@ -186,177 +186,191 @@
  "뉴스": {
   "한국": [
    {
-    "제목": "HLB그룹, 조직개편·임원 인사…미래전략부문·AX혁신팀 신설",
-    "주소": "https://www.yna.co.kr/view/AKR20261119080300017",
-    "때": "2026-11-19T02:28:35.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "경매·소송 뛰어든 세관, 체납액 110억원 징수…역대 최대",
-    "주소": "https://www.yna.co.kr/view/AKR20261119074300002",
-    "때": "2026-11-19T02:27:55.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "[단독]韓, 美 국채 폭락하던 9월에 중장기물 114억달러 샀다",
-    "주소": "https://www.hankyung.com/article/202611196519i",
-    "때": "2026-11-19T02:26:43.000Z",
-    "출처": "한국경제 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "세무사회 \"수습 실무교육서 AI 차단한 평가체계 도입\"",
-    "주소": "https://www.yna.co.kr/view/AKR20261119074200002",
-    "때": "2026-11-19T02:25:03.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "이달 ETF 시총변화…머니마켓액티브는 '쑥', 지수 추종은 '뚝'",
-    "주소": "https://www.yna.co.kr/view/AKR20261119077200008",
-    "때": "2026-11-19T02:22:24.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "현대건설, 협력사 차세대 경영인 역량 강화 돕는다",
-    "주소": "https://www.yna.co.kr/view/AKR20261119075500003",
-    "때": "2026-11-19T02:21:27.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "외국인 유학생 학업·취업·정주 연계 모색…'SCH 이민정책포럼'",
-    "주소": "https://www.yna.co.kr/view/AKR20261119075800371",
-    "때": "2026-11-19T02:17:49.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "[반려동물] 댕댕이 패딩 입혀보고 유산균 체험…돌아온 '펫 박람회'",
-    "주소": "https://www.yna.co.kr/view/AKR20261119075000030",
-    "때": "2026-11-19T02:15:43.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "칼라일 “AI 시대 PEF 경쟁력, AUM 아닌 데이터에” [GAII 2026 Live]",
-    "주소": "https://www.mk.co.kr/news/stock/12213436",
-    "때": "2026-11-19T02:08:44.000Z",
+    "제목": "부동산 전략, 금리가 모든 것 결정…‘고급자산’ 저가매수기회 왔다 [GAII 2026 Live]",
+    "주소": "https://www.mk.co.kr/news/stock/12213494",
+    "때": "2026-11-19T03:22:48.000Z",
     "출처": "매일경제 증권",
     "갈래": "한국"
    },
    {
-    "제목": "\"\"바닥 어디냐\"…증권주, 업황 둔화·과징금 이중고에 '추락' [분석+]",
-    "주소": "https://www.hankyung.com/article/2026111962616",
-    "때": "2026-11-19T02:02:26.000Z",
-    "출처": "한국경제 증권",
+    "제목": "퍼미라 “AI 시대 ‘사업 재설계’가 PE 성패 가른다” [GAII 2026 Live]",
+    "주소": "https://www.mk.co.kr/news/stock/12213493",
+    "때": "2026-11-19T03:07:52.000Z",
+    "출처": "매일경제 증권",
     "갈래": "한국"
    },
    {
-    "제목": "앤트로픽 오늘밤 나스닥 입성…증시 짓누르던 수급불안 풀릴까",
-    "주소": "https://www.yna.co.kr/view/AKR20261119069900008",
-    "때": "2026-11-19T02:01:45.000Z",
+    "제목": "'AI 주치의' 믿었다가 치료 차질…처방약 임의변경 절반 부작용",
+    "주소": "https://www.yna.co.kr/view/AKR20261118125000030",
+    "때": "2026-11-19T03:00:12.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "얽히고설킨 전선 정비한다…중소도시 10곳에 200억원",
+    "주소": "https://www.yna.co.kr/view/AKR20261119047800017",
+    "때": "2026-11-19T03:00:07.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "금감원, 8기 옴부즈맨 위촉…불합리한 금융 관행 개선",
+    "주소": "https://www.yna.co.kr/view/AKR20261119060300002",
+    "때": "2026-11-19T03:00:04.000Z",
     "출처": "연합뉴스 증시",
     "갈래": "한국"
    },
    {
-    "제목": "한화오션, 초대형 원유운반선 2척 3천642억원에 수주",
-    "주소": "https://www.yna.co.kr/view/AKR20261119071600003",
-    "때": "2026-11-19T02:00:51.000Z",
+    "제목": "3분기 주가 하락에 순대외금융자산 2천807억달러↑…역대 최대폭",
+    "주소": "https://www.yna.co.kr/view/AKR20261119075100002",
+    "때": "2026-11-19T03:00:02.000Z",
     "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "작년 10대 그룹 내부거래 185조…쿠팡, 금액 기준 '톱5' 진입",
+    "주소": "https://www.yna.co.kr/view/AKR20261119074000002",
+    "때": "2026-11-19T03:00:02.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "850여개 핀테크 지원사업 한눈에…AI가 맞춤사업 추천도",
+    "주소": "https://www.yna.co.kr/view/AKR20261119079400002",
+    "때": "2026-11-19T03:00:01.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "워킹맘 고용률 66% 역대 최고…영유아 엄마 28%는 경력단절 겪어",
+    "주소": "https://www.yna.co.kr/view/AKR20261119079100002",
+    "때": "2026-11-19T03:00:01.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "저축성보험 만기 후 3년까지 연금 전환된다…1년 전 사전예약도",
+    "주소": "https://www.yna.co.kr/view/AKR20261119078700002",
+    "때": "2026-11-19T03:00:01.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "핀테크 지원사업, AI가 맞춤 추천…금융위, ‘핀톡24’ 출시",
+    "주소": "https://www.mk.co.kr/news/economy/12213421",
+    "때": "2026-11-19T03:00:00.000Z",
+    "출처": "매일경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "“해외 안가는데 환율 뭔 상관?”…생활비 16만원 절약효과 있다는데",
+    "주소": "https://www.mk.co.kr/news/economy/12213429",
+    "때": "2026-11-19T03:00:00.000Z",
+    "출처": "매일경제 경제",
     "갈래": "한국"
    }
   ],
   "미국": [
    {
-    "제목": "Sunrise Energy Metals shares slump 10% to seven-month low despite FIRB approval",
-    "주소": "https://www.investing.com/news/stock-market-news/sunrise-energy-metals-shares-slump-10-to-sevenmonth-low-despite-firb-approval-5037559",
-    "때": "2026-11-19T02:13:38.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Grand Theft Auto VI draws rave reviews as gamers enter Vice City",
-    "주소": "https://www.investing.com/news/stock-market-news/gamers-get-ready-to-enter-vice-city-as-grand-theft-auto-vi-begins-globalrollout-5035485",
-    "때": "2026-11-19T02:12:23.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Why is the Australian Dollar sliding today?",
-    "주소": "https://www.investing.com/news/stock-market-news/why-is-the-australian-dollar-sliding-today-93CH-5037556",
-    "때": "2026-11-19T02:07:48.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Trump says he referred to ex-Nvidia boss Huang’s situation ’briefly’ in talk with Xi",
-    "주소": "https://www.investing.com/news/stock-market-news/trump-says-he-referred-to-exnvidia-boss-huangs-situation-briefly-in-talk-with-xi-5037541",
-    "때": "2026-11-19T01:54:33.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Japan’s Datasection slumps on big guidance cut amid U.S.-China chip access row",
-    "주소": "https://www.investing.com/news/stock-market-news/japans-datasection-slumps-on-big-guidance-cut-amid-uschina-chip-access-row-5037539",
-    "때": "2026-11-19T01:53:20.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Samsung Electronics downplays concerns about neocloud firms and AI bubble",
-    "주소": "https://www.investing.com/news/stock-market-news/samsung-electronics-downplays-concerns-about-neocloud-firms-and-ai-bubble-5035189",
-    "때": "2026-11-19T01:42:40.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Wall Street futures climb ahead of Anthropic’s $1.5 trillion mega IPO",
-    "주소": "https://www.investing.com/news/stock-market-news/wall-street-futures-climb-ahead-of-anthropics-15-trillion-mega-ipo-5037518",
-    "때": "2026-11-19T01:37:29.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Nasdaq-100 futures surge as traders gear up for Anthropic’s highly anticipated debut: Live updates",
-    "주소": "https://www.cnbc.com/2026/11/18/stock-market-today-live-updates.html",
-    "때": "2026-11-19T01:34:10.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Anthropic IPO raises over $81 billion in largest offering on record, topping SpaceX",
-    "주소": "https://www.cnbc.com/2026/11/18/anthropic-ipo-ai-offering-price.html",
-    "때": "2026-11-19T01:13:20.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Palo Alto Networks&#x2019; stock gets a fresh AI-fueled boost from earnings",
-    "주소": "https://www.marketwatch.com/story/palo-alto-networks-stock-soars-as-earnings-show-ai-has-upped-the-stakes-for-cybersecurity-308e34b8?mod=mw_rss_topstories",
-    "때": "2026-11-19T01:02:00.000Z",
+    "제목": "&#x2018;It&#x2019;s downright dirty&#x2019;: My brother took over our ailing mother&#x2019;s life and finances. What can I do?",
+    "주소": "https://www.marketwatch.com/story/it-is-heartbreaking-exhausting-and-downright-dirty-my-brother-took-over-our-ailing-mothers-life-and-finances-what-can-i-do-b4d48817?mod=mw_rss_topstories",
+    "때": "2026-11-19T03:45:00.000Z",
     "출처": "MarketWatch",
     "갈래": "미국"
    },
    {
-    "제목": "Musk says he felt ’pretty foolish’ about scale of midterm spending after Republican rout",
-    "주소": "https://www.investing.com/news/stock-market-news/musk-says-he-felt-pretty-foolish-about-scale-of-midterm-spending-after-republican-rout-5037471",
-    "때": "2026-11-19T01:00:37.000Z",
+    "제목": "My husband is happily retired at 64 and thinks I should keep working. Is he being fair?",
+    "주소": "https://www.marketwatch.com/story/my-husband-is-happily-retired-at-64-and-thinks-i-should-keep-working-is-he-being-fair-325c5f38?mod=mw_rss_topstories",
+    "때": "2026-11-19T03:45:00.000Z",
+    "출처": "MarketWatch",
+    "갈래": "미국"
+   },
+   {
+    "제목": "'Parasite' backer and other South Korean media, gaming and travel stocks rally on China trade deal",
+    "주소": "https://www.cnbc.com/2026/11/19/china-south-korea-trade-deal-films-gaming.html",
+    "때": "2026-11-19T03:43:38.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Why is Tencent shares slumped to a near 3-yr low today, here’s why",
+    "주소": "https://www.investing.com/news/stock-market-news/why-is-tencent-shares-slumped-to-a-near-3yr-low-today-heres-why-93CH-5037660",
+    "때": "2026-11-19T03:38:49.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
    },
    {
     "제목": "&#x2018;I&#x2019;ve been a stay-at-home mom&#x2019;: I&#x2019;m 50 and have a chronic illness. My husband lost his job. Should he raid his 401(k)?",
     "주소": "https://www.marketwatch.com/story/ive-been-a-stay-at-home-mom-im-50-and-have-a-chronic-illness-my-husband-lost-his-job-should-he-raid-his-401-k-63e59123?mod=mw_rss_topstories",
-    "때": "2026-11-19T01:00:00.000Z",
+    "때": "2026-11-19T03:30:00.000Z",
     "출처": "MarketWatch",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Nasdaq-100 futures surge as traders gear up for Anthropic’s highly anticipated debut: Live updates",
+    "주소": "https://www.cnbc.com/2026/11/18/stock-market-today-live-updates.html",
+    "때": "2026-11-19T03:21:47.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "+27%, +20%, +17%: Which companies benefit when the Fed rattles the market",
+    "주소": "https://www.investing.com/news/stock-market-news/27-20-17-which-companies-benefit-when-the-fed-rattles-the-market-5037632",
+    "때": "2026-11-19T03:08:48.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Grand Theft Auto VI draws rave reviews as gamers enter Vice City",
+    "주소": "https://www.investing.com/news/stock-market-news/gamers-get-ready-to-enter-vice-city-as-grand-theft-auto-vi-begins-globalrollout-5035485",
+    "때": "2026-11-19T03:06:20.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Tencent shares hit 2-1/2 yr low on Q3 earnings miss",
+    "주소": "https://www.investing.com/news/stock-market-news/tencent-shares-hit-212-yr-low-on-q3-earnings-miss-5037629",
+    "때": "2026-11-19T03:05:36.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "As Meta bets big on Muse AI agent, early safety mishaps surface",
+    "주소": "https://www.investing.com/news/stock-market-news/as-meta-bets-big-on-muse-ai-agent-early-safety-mishaps-surface-5035458",
+    "때": "2026-11-19T02:54:58.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Oppenheimer names AI-driven software company its top small-cap stock pick",
+    "주소": "https://www.investing.com/news/stock-market-news/oppenheimer-names-aidriven-software-company-its-top-smallcap-stock-pick-5037613",
+    "때": "2026-11-19T02:54:45.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Musk says Jensen Huang is irreplaceable, regrets midterm spending",
+    "주소": "https://www.cnbc.com/2026/11/19/elon-musk-jensen-huang-midterms.html",
+    "때": "2026-11-19T02:49:35.000Z",
+    "출처": "CNBC 주요뉴스",
     "갈래": "미국"
    }
   ],
   "코인": [
+   {
+    "제목": "CZ says tokenized Anthropic is coming to BNB Chain on IPO day",
+    "주소": "https://www.coindesk.com/markets/2026/11/19/cz-says-tokenized-anthropic-is-coming-to-bnb-chain-on-ipo-day",
+    "때": "2026-11-19T03:40:48.000Z",
+    "출처": "CoinDesk",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Kraken parent Payward to acquire Tribe Capital to expand private-market offerings",
+    "주소": "https://www.theblock.co/news/business/2026-11-18-kraken-parent-payward-tribe-capital-443522",
+    "때": "2026-11-19T03:18:53.000Z",
+    "출처": "The Block",
+    "갈래": "코인"
+   },
    {
     "제목": "Standard Chartered, StraitsX, OCBC complete trial of tokenized deposit interoperability",
     "주소": "https://www.theblock.co/news/web3/2026-11-18-standard-chartered-straitsx-ocbc-tokenized-deposit-poc-442964",
@@ -426,20 +440,6 @@
     "때": "2026-11-18T21:46:03.000Z",
     "출처": "Decrypt",
     "갈래": "코인"
-   },
-   {
-    "제목": "Palmer Luckey Says He’s Building an Offshore Haven for Industry—And 'Illegal' Medicine",
-    "주소": "https://decrypt.co/383576/palmer-luckey-offshore-haven-industry-illegal-medicine",
-    "때": "2026-11-18T21:16:02.000Z",
-    "출처": "Decrypt",
-    "갈래": "코인"
-   },
-   {
-    "제목": "Ledger warns Berlin customers as hardware wallet tampering investigation expands",
-    "주소": "https://cointelegraph.com/news/ledger-warns-berlin-customers-hardware-wallet-investigation?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-    "때": "2026-11-18T21:13:58.000Z",
-    "출처": "Cointelegraph",
-    "갈래": "코인"
    }
   ]
  },
@@ -458,15 +458,15 @@
   },
   {
    "이름": "한국경제 증권",
-   "성공": true,
-   "개수": 50,
-   "까닭": null
+   "성공": false,
+   "개수": 0,
+   "까닭": "응답 403"
   },
   {
    "이름": "한국경제 경제",
-   "성공": true,
-   "개수": 50,
-   "까닭": null
+   "성공": false,
+   "개수": 0,
+   "까닭": "응답 403"
   },
   {
    "이름": "매일경제 증권",
@@ -556,7 +556,7 @@
    "이름": "코인데스크 코리아",
    "성공": false,
    "개수": 0,
-   "까닭": "시간 초과"
+   "까닭": "응답 415"
   }
  ]
 }
