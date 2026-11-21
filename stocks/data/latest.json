@@ -1,31 +1,31 @@
 {
  "날짜": "2026-11-21",
- "만든시각": "2026-11-21T02:11:56.144Z",
+ "만든시각": "2026-11-21T03:27:46.317Z",
  "시세": {
   "지수": [
    {
     "이름": "코스피",
     "갈래": "한국",
     "단위": "",
-    "종가": 5137.89,
-    "변동률": 1.39,
-    "전날종가": 5067.44,
+    "종가": 4869.96,
+    "변동률": -5.21,
+    "전날종가": 5137.89,
     "수상한가": false,
-    "기준일": "2026-11-19",
+    "기준일": "2026-11-20",
     "출처": "Yahoo",
-    "거래일수": 9
+    "거래일수": 10
    },
    {
     "이름": "코스닥",
     "갈래": "한국",
     "단위": "",
-    "종가": 684.81,
-    "변동률": 3.32,
-    "전날종가": 662.81,
+    "종가": 645.68,
+    "변동률": -5.71,
+    "전날종가": 684.81,
     "수상한가": false,
-    "기준일": "2026-11-19",
+    "기준일": "2026-11-20",
     "출처": "Yahoo",
-    "거래일수": 9
+    "거래일수": 10
    },
    {
     "이름": "S&P 500",
@@ -67,27 +67,27 @@
   "코인": [
    {
     "이름": "비트코인",
-    "달러": 58927,
-    "원화": 79325049,
-    "변동률": -4
+    "달러": 58303,
+    "원화": 78484895,
+    "변동률": -6.05
    },
    {
     "이름": "이더리움",
-    "달러": 1623.47,
-    "원화": 2185452,
-    "변동률": -6.27
+    "달러": 1610.01,
+    "원화": 2167328,
+    "변동률": -7.69
    },
    {
     "이름": "리플",
-    "달러": 0.908762,
-    "원화": 1223.34,
-    "변동률": -4.35
+    "달러": 0.895513,
+    "원화": 1205.5,
+    "변동률": -6.56
    },
    {
     "이름": "솔라나",
-    "달러": 68.65,
-    "원화": 92409,
-    "변동률": -4.39
+    "달러": 67.89,
+    "원화": 91391,
+    "변동률": -6.67
    }
   ],
   "못가져온것": []
@@ -198,6 +198,20 @@
  "뉴스": {
   "한국": [
    {
+    "제목": "역대 최대 IPO 성공한 앤트로픽…오픈AI도 증시 입성 탄력 받나",
+    "주소": "https://www.mk.co.kr/news/stock/12215211",
+    "때": "2026-11-21T02:41:05.000Z",
+    "출처": "매일경제 증권",
+    "갈래": "한국"
+   },
+   {
+    "제목": "나스닥 5% 폭락…시험대 오른 국내 증시, 반등 열쇠는 [다음주 주요 변수 미리보기]",
+    "주소": "https://www.hankyung.com/article/202611200923i",
+    "때": "2026-11-21T02:00:08.000Z",
+    "출처": "한국경제 증권",
+    "갈래": "한국"
+   },
+   {
     "제목": "서행하는 앞차에 하이빔 날렸는데…“알고 보니 똑똑한 운전자였습니다”",
     "주소": "https://www.mk.co.kr/news/economy/12215197",
     "때": "2026-11-21T01:48:43.000Z",
@@ -266,23 +280,30 @@
     "때": "2026-11-21T00:00:16.000Z",
     "출처": "한국경제 경제",
     "갈래": "한국"
-   },
-   {
-    "제목": "웃돈 주고 샀는데 가짜?…애플·BMW 의심에 기업들 '초비상' [김리안의 에네르기파WAR]",
-    "주소": "https://www.hankyung.com/article/202611209672i",
-    "때": "2026-11-21T00:00:10.000Z",
-    "출처": "한국경제 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "[IPO챗] 내주 엠비디 코스닥 입성…4개사 수요예측",
-    "주소": "https://www.yna.co.kr/view/AKR20261120071600008",
-    "때": "2026-11-21T00:00:04.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
    }
   ],
   "미국": [
+   {
+    "제목": "Tech outages are rattling Americans so much that they&#x2019;re stockpiling cash and supplies",
+    "주소": "https://www.marketwatch.com/story/why-are-these-tech-outages-rattling-americans-so-much-that-theyre-stockpiling-cash-and-supplies-07516bdd?mod=mw_rss_topstories",
+    "때": "2026-11-21T03:20:00.000Z",
+    "출처": "MarketWatch",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Analysis-Wall Street banks set for banner year as Anthropic, SpaceX IPOs generate $1 billion in fees",
+    "주소": "https://www.investing.com/news/stock-market-news/analysiswall-street-banks-set-for-banner-year-as-anthropic-spacex-ipos-generate-1-billion-in-fees-5042444",
+    "때": "2026-11-21T02:12:22.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Singaporean extradited to face US charges over global insider trading scheme",
+    "주소": "https://www.investing.com/news/stock-market-news/singaporean-extradited-to-face-us-charges-over-global-insider-trading-scheme-5042823",
+    "때": "2026-11-21T02:06:58.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
    {
     "제목": "US was warned of telecom security risks years before Salt Typhoon",
     "주소": "https://www.investing.com/news/stock-market-news/us-was-warned-of-telecom-security-risks-years-before-salt-typhoon-5043030",
@@ -294,13 +315,6 @@
     "제목": "UBS flags resilient commodity investment case despite easing oil supply premium",
     "주소": "https://www.investing.com/news/stock-market-news/ubs-flags-resilient-commodity-investment-case-despite-easing-oil-supply-premium-5043001",
     "때": "2026-11-21T01:28:01.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Singaporean extradited to face US charges over global insider trading scheme",
-    "주소": "https://www.investing.com/news/stock-market-news/singaporean-extradited-to-face-us-charges-over-global-insider-trading-scheme-5042823",
-    "때": "2026-11-21T00:30:31.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
    },
@@ -350,20 +364,6 @@
     "제목": "S&P 500 and Dow close in correction; Nasdaq erases 2026 gain as AI rout picks up steam",
     "주소": "https://www.cnbc.com/2026/11/19/stock-market-today-live-updates.html",
     "때": "2026-11-20T23:46:18.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Databricks in early talks to raise funds at $225 billion valuation, WSJ reports",
-    "주소": "https://www.investing.com/news/stock-market-news/databricks-in-early-talks-to-raise-funds-at-225-billion-valuation-wsj-reports-5042898",
-    "때": "2026-11-20T23:42:23.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Nvidia stock plunges 14%, wraps up longest weekly losing streak since 2008 financial crisis",
-    "주소": "https://www.cnbc.com/2026/11/20/nvidias-7-week-losing-streak-is-longest-since-2008-financial-crisis.html",
-    "때": "2026-11-20T22:59:33.000Z",
     "출처": "CNBC 주요뉴스",
     "갈래": "미국"
    }
