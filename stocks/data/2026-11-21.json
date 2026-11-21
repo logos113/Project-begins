@@ -1,0 +1,574 @@
+{
+ "날짜": "2026-11-21",
+ "만든시각": "2026-11-21T02:11:56.144Z",
+ "시세": {
+  "지수": [
+   {
+    "이름": "코스피",
+    "갈래": "한국",
+    "단위": "",
+    "종가": 5137.89,
+    "변동률": 1.39,
+    "전날종가": 5067.44,
+    "수상한가": false,
+    "기준일": "2026-11-19",
+    "출처": "Yahoo",
+    "거래일수": 9
+   },
+   {
+    "이름": "코스닥",
+    "갈래": "한국",
+    "단위": "",
+    "종가": 684.81,
+    "변동률": 3.32,
+    "전날종가": 662.81,
+    "수상한가": false,
+    "기준일": "2026-11-19",
+    "출처": "Yahoo",
+    "거래일수": 9
+   },
+   {
+    "이름": "S&P 500",
+    "갈래": "미국",
+    "단위": "",
+    "종가": 6910.39,
+    "변동률": -3.7,
+    "전날종가": 7175.83,
+    "수상한가": false,
+    "기준일": "2026-11-20",
+    "출처": "Yahoo",
+    "거래일수": 10
+   },
+   {
+    "이름": "나스닥",
+    "갈래": "미국",
+    "단위": "",
+    "종가": 22617.73,
+    "변동률": -5.28,
+    "전날종가": 23879.2,
+    "수상한가": false,
+    "기준일": "2026-11-20",
+    "출처": "Yahoo",
+    "거래일수": 10
+   },
+   {
+    "이름": "원/달러",
+    "갈래": "환율",
+    "단위": "원",
+    "종가": 1334.79,
+    "변동률": 0.33,
+    "전날종가": 1330.4,
+    "수상한가": false,
+    "기준일": "2026-11-20",
+    "출처": "Yahoo",
+    "거래일수": 10
+   }
+  ],
+  "코인": [
+   {
+    "이름": "비트코인",
+    "달러": 58927,
+    "원화": 79325049,
+    "변동률": -4
+   },
+   {
+    "이름": "이더리움",
+    "달러": 1623.47,
+    "원화": 2185452,
+    "변동률": -6.27
+   },
+   {
+    "이름": "리플",
+    "달러": 0.908762,
+    "원화": 1223.34,
+    "변동률": -4.35
+   },
+   {
+    "이름": "솔라나",
+    "달러": 68.65,
+    "원화": 92409,
+    "변동률": -4.39
+   }
+  ],
+  "못가져온것": []
+ },
+ "일정": {
+  "오늘": [],
+  "이번주": [
+   {
+    "날짜": "2026-11-26",
+    "갈래": "휴장",
+    "이름": "미국 증시 휴장",
+    "설명": "추수감사절",
+    "출처": "규칙",
+    "요일": "목",
+    "남은날": 5,
+    "오늘인가": false,
+    "이번주인가": true
+   },
+   {
+    "날짜": "2026-11-26",
+    "갈래": "한국",
+    "이름": "금통위 (기준금리 결정)",
+    "설명": "한국은행 통화정책방향 결정회의. 오전 중 발표",
+    "출처": "한국은행",
+    "원문": "https://www.bok.or.kr/portal/singl/crncyPolicyDrcMtg/listYear.do?mtgSe=A&menuNo=200755",
+    "요일": "목",
+    "남은날": 5,
+    "오늘인가": false,
+    "이번주인가": true
+   }
+  ],
+  "다음주": [
+   {
+    "날짜": "2026-12-04",
+    "갈래": "미국",
+    "이름": "미국 고용보고서",
+    "설명": "비농업 신규고용·실업률. 밤 10시 30분(한국시간) 발표",
+    "출처": "규칙",
+    "요일": "금",
+    "남은날": 13,
+    "오늘인가": false,
+    "이번주인가": false
+   }
+  ],
+  "등록일정_있나": false,
+  "메모": null,
+  "다가오는_큰일정": [
+   {
+    "날짜": "2026-11-26",
+    "갈래": "한국",
+    "이름": "금통위 (기준금리 결정)",
+    "설명": "한국은행 통화정책방향 결정회의. 오전 중 발표",
+    "출처": "한국은행",
+    "원문": "https://www.bok.or.kr/portal/singl/crncyPolicyDrcMtg/listYear.do?mtgSe=A&menuNo=200755",
+    "요일": "목",
+    "남은날": 5,
+    "오늘인가": false,
+    "이번주인가": true
+   },
+   {
+    "날짜": "2026-12-09",
+    "갈래": "미국",
+    "이름": "FOMC 결과 발표",
+    "설명": "기준금리 결정 + 경제전망(점도표). 한국시간 다음날 새벽",
+    "출처": "연준",
+    "원문": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+    "요일": "수",
+    "남은날": 18,
+    "오늘인가": false,
+    "이번주인가": false
+   },
+   {
+    "날짜": "2027-01-27",
+    "갈래": "미국",
+    "이름": "FOMC 결과 발표",
+    "설명": "기준금리 결정. 한국시간 다음날 새벽",
+    "출처": "연준",
+    "원문": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+    "요일": "수",
+    "남은날": 67,
+    "오늘인가": false,
+    "이번주인가": false
+   }
+  ],
+  "공식출처상태": [
+   {
+    "이름": "FOMC (연준)",
+    "성공": true,
+    "개수": 25,
+    "버린개수": 32,
+    "까닭": null
+   },
+   {
+    "이름": "금통위 (한국은행)",
+    "성공": true,
+    "개수": 8,
+    "버린개수": 0,
+    "까닭": null
+   },
+   {
+    "이름": "미국 CPI (BLS)",
+    "성공": false,
+    "개수": 0,
+    "까닭": "BLS 가 막아두었습니다(403). 위장해서 들어가지 않습니다 — calendar.json 에 손으로 넣어주세요"
+   }
+  ]
+ },
+ "뉴스": {
+  "한국": [
+   {
+    "제목": "서행하는 앞차에 하이빔 날렸는데…“알고 보니 똑똑한 운전자였습니다”",
+    "주소": "https://www.mk.co.kr/news/economy/12215197",
+    "때": "2026-11-21T01:48:43.000Z",
+    "출처": "매일경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "[연합뉴스 이 시각 헤드라인] - 10:30",
+    "주소": "https://www.yna.co.kr/view/AKR20261121024500011",
+    "때": "2026-11-21T01:30:00.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "노동장관, 'AI 커닝' 사태 속 첫 국가자격시험 현장 점검",
+    "주소": "https://www.yna.co.kr/view/AKR20261121023800530",
+    "때": "2026-11-21T01:12:05.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "\"설악산 호텔 손님 절반이 외국인\"…한국 여행 지도가 바뀐다 [권용훈의 트렌드워치]",
+    "주소": "https://www.hankyung.com/article/202611209535i",
+    "때": "2026-11-21T01:00:04.000Z",
+    "출처": "한국경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "[바이오사이언스] 바이오의약품 임상 승인 203건…분기마다 증가",
+    "주소": "https://www.yna.co.kr/view/AKR20261120156900017",
+    "때": "2026-11-21T01:00:03.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "춘천바이오산업진흥원, '칩 위의 실험실' 산업화 생산기반 확충",
+    "주소": "https://www.yna.co.kr/view/AKR20261120113700062",
+    "때": "2026-11-21T00:35:00.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "이재용의 원픽…\"될 사람이 됐다\" 엔비디아 뚫은 30년 삼성맨 [강경주의 테크X]",
+    "주소": "https://www.hankyung.com/article/2026112004536",
+    "때": "2026-11-21T00:30:03.000Z",
+    "출처": "한국경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "국장서 당해놓고 또?…‘반도체 3배’ 이어 ‘엔비디아’ 쓸어 담는 서학개미",
+    "주소": "https://www.mk.co.kr/news/stock/12215178",
+    "때": "2026-11-21T00:24:56.000Z",
+    "출처": "매일경제 증권",
+    "갈래": "한국"
+   },
+   {
+    "제목": "마오타이 안 팔리자 위스키에 꽂힌 中…칭다오맥주까지 가세한 '위스키 전쟁'",
+    "주소": "https://www.hankyung.com/article/202610080252i",
+    "때": "2026-11-21T00:00:18.000Z",
+    "출처": "한국경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "앤트로픽 상장 열풍, 코인 시장으로…공모주도 토큰으로 산다",
+    "주소": "https://www.hankyung.com/article/202611209908i",
+    "때": "2026-11-21T00:00:16.000Z",
+    "출처": "한국경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "웃돈 주고 샀는데 가짜?…애플·BMW 의심에 기업들 '초비상' [김리안의 에네르기파WAR]",
+    "주소": "https://www.hankyung.com/article/202611209672i",
+    "때": "2026-11-21T00:00:10.000Z",
+    "출처": "한국경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "[IPO챗] 내주 엠비디 코스닥 입성…4개사 수요예측",
+    "주소": "https://www.yna.co.kr/view/AKR20261120071600008",
+    "때": "2026-11-21T00:00:04.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   }
+  ],
+  "미국": [
+   {
+    "제목": "US was warned of telecom security risks years before Salt Typhoon",
+    "주소": "https://www.investing.com/news/stock-market-news/us-was-warned-of-telecom-security-risks-years-before-salt-typhoon-5043030",
+    "때": "2026-11-21T01:54:24.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "UBS flags resilient commodity investment case despite easing oil supply premium",
+    "주소": "https://www.investing.com/news/stock-market-news/ubs-flags-resilient-commodity-investment-case-despite-easing-oil-supply-premium-5043001",
+    "때": "2026-11-21T01:28:01.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Singaporean extradited to face US charges over global insider trading scheme",
+    "주소": "https://www.investing.com/news/stock-market-news/singaporean-extradited-to-face-us-charges-over-global-insider-trading-scheme-5042823",
+    "때": "2026-11-21T00:30:31.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Waymo recalls self-driving cars over closed freeway lanes, manual traffic control",
+    "주소": "https://www.investing.com/news/stock-market-news/waymo-recalls-selfdriving-cars-over-closed-freeway-lanes-manual-traffic-control-5042522",
+    "때": "2026-11-21T00:24:35.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "’Black Friday’ brings consumer spending into focus for AI-rocked market",
+    "주소": "https://www.investing.com/news/stock-market-news/black-friday-brings-consumer-spending-into-focus-for-airocked-market-5041258",
+    "때": "2026-11-21T00:24:21.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Missouri judge approves Bayer’s $7.25 billion Roundup settlement",
+    "주소": "https://www.investing.com/news/stock-market-news/missouri-judge-approves-bayers-725-billion-roundup-settlement-5042643",
+    "때": "2026-11-21T00:12:19.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Ford, Honda, Stellantis, VW sue New Jersey to block ’extortionate’ vehicle repair law",
+    "주소": "https://www.investing.com/news/stock-market-news/ford-honda-stellantis-vw-sue-new-jersey-to-blockvehicle-repair-law-5042513",
+    "때": "2026-11-21T00:06:26.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Wonder explores sale of Grubhub, Wall Street Journal reports",
+    "주소": "https://www.investing.com/news/stock-market-news/wonder-explores-sale-of-grubhub-wall-street-journal-reports-5042912",
+    "때": "2026-11-21T00:00:22.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "US judge rejects CFTC emergency bid to block New York from policing Kalshi",
+    "주소": "https://www.investing.com/news/stock-market-news/us-judge-rejects-cftc-emergency-bid-to-block-new-york-from-policing-kalshi-5042918",
+    "때": "2026-11-20T23:54:36.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "S&P 500 and Dow close in correction; Nasdaq erases 2026 gain as AI rout picks up steam",
+    "주소": "https://www.cnbc.com/2026/11/19/stock-market-today-live-updates.html",
+    "때": "2026-11-20T23:46:18.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Databricks in early talks to raise funds at $225 billion valuation, WSJ reports",
+    "주소": "https://www.investing.com/news/stock-market-news/databricks-in-early-talks-to-raise-funds-at-225-billion-valuation-wsj-reports-5042898",
+    "때": "2026-11-20T23:42:23.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Nvidia stock plunges 14%, wraps up longest weekly losing streak since 2008 financial crisis",
+    "주소": "https://www.cnbc.com/2026/11/20/nvidias-7-week-losing-streak-is-longest-since-2008-financial-crisis.html",
+    "때": "2026-11-20T22:59:33.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   }
+  ],
+  "코인": [
+   {
+    "제목": "Kalshi races to get ahead of New York order that could shut down exchange",
+    "주소": "https://www.coindesk.com/policy/2026/11/20/kalshi-races-to-get-ahead-of-new-york-order-that-could-shut-down-exchange",
+    "때": "2026-11-20T22:51:14.000Z",
+    "출처": "CoinDesk",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Fairmint plans tokenized stock venue on Canton, Ethereum under SEC experiment",
+    "주소": "https://www.coindesk.com/business/2026/11/20/fairmint-plans-tokenized-stock-venue-on-canton-ethereum-under-sec-experiment",
+    "때": "2026-11-20T22:05:31.000Z",
+    "출처": "CoinDesk",
+    "갈래": "코인"
+   },
+   {
+    "제목": "DCG’s Zcash miner Fortitude clears vote for Nasdaq listing as ZEC retreats from all-time high",
+    "주소": "https://www.theblock.co/news/business/2026-11-20-dcgs-zcash-miner-fortitude-clears-vote-nasdaq-listing-zec-retreats-all-time-high-444784",
+    "때": "2026-11-20T21:40:01.000Z",
+    "출처": "The Block",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Claude Claims Historic Math Breakthrough One Day After Anthropic IPO",
+    "주소": "https://decrypt.co/383747/claude-historic-math-breakthrough-anthropic-ipo",
+    "때": "2026-11-20T21:36:02.000Z",
+    "출처": "Decrypt",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Nvidia Shares Sink to 52-Week Low After Report SEC Is Probing Accounting",
+    "주소": "https://decrypt.co/383744/nvidia-shares-sink-52-week-low-sec-probing-accounting",
+    "때": "2026-11-20T20:36:54.000Z",
+    "출처": "Decrypt",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Rep. Casten seeks to curb prediction market insider trading with DOJ whistleblower program",
+    "주소": "https://www.theblock.co/news/regulation/2026-11-20-rep-casten-seeks-curb-prediction-market-insider-trading-doj-whistleblower-program-444779",
+    "때": "2026-11-20T19:41:52.000Z",
+    "출처": "The Block",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Wrapped Monero token crashes 99.8% amid suspected $13.5M exploit",
+    "주소": "https://cointelegraph.com/news/wrapped-monero-token-crashes-998-amid-suspected-135m-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "때": "2026-11-20T19:37:27.000Z",
+    "출처": "Cointelegraph",
+    "갈래": "코인"
+   },
+   {
+    "제목": "SBF’s 'The Altruists' Plot Twist: FTX’s Anthropic Shares Would Be Worth $43 Billion",
+    "주소": "https://decrypt.co/383739/sbf-altruists-ftx-anthropic-shares-worth-43-billion",
+    "때": "2026-11-20T19:36:03.000Z",
+    "출처": "Decrypt",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Cathie Wood Bets $91M on Anthropic IPO While Paring Crypto Exposure",
+    "주소": "https://decrypt.co/383737/cathie-wood-bets-91m-anthropic-ipo-paring-crypto-exposure",
+    "때": "2026-11-20T18:46:03.000Z",
+    "출처": "Decrypt",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Sky Protocol sees $2 billion in stablecoin withdrawals, disputes illicit fund claims",
+    "주소": "https://cointelegraph.com/news/sky-protocol-sees-2b-in-stablecoin-withdrawals-disputes-illicit-fund-claims?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "때": "2026-11-20T18:37:10.000Z",
+    "출처": "Cointelegraph",
+    "갈래": "코인"
+   },
+   {
+    "제목": "Binance hack laundering ramps up as $149 million in bitcoin mixed through coinjoins: Elliptic",
+    "주소": "https://www.theblock.co/news/markets/2026-11-20-binance-hack-laundering-ramps-up-149-million-bitcoin-mixed-coinjoins-elliptic-444758",
+    "때": "2026-11-20T18:22:39.000Z",
+    "출처": "The Block",
+    "갈래": "코인"
+   },
+   {
+    "제목": "JPMorgan says bitcoin price correction widens gap to estimated $86,000 production cost",
+    "주소": "https://www.theblock.co/news/markets/2026-11-20-jpmorgan-bitcoin-price-correction-gap-86000-production-cost-444763",
+    "때": "2026-11-20T18:17:39.000Z",
+    "출처": "The Block",
+    "갈래": "코인"
+   }
+  ]
+ },
+ "출처상태": [
+  {
+   "이름": "연합뉴스 경제",
+   "성공": true,
+   "개수": 120,
+   "까닭": null
+  },
+  {
+   "이름": "연합뉴스 증시",
+   "성공": true,
+   "개수": 120,
+   "까닭": null
+  },
+  {
+   "이름": "한국경제 증권",
+   "성공": true,
+   "개수": 50,
+   "까닭": null
+  },
+  {
+   "이름": "한국경제 경제",
+   "성공": true,
+   "개수": 50,
+   "까닭": null
+  },
+  {
+   "이름": "매일경제 증권",
+   "성공": true,
+   "개수": 50,
+   "까닭": null
+  },
+  {
+   "이름": "매일경제 경제",
+   "성공": true,
+   "개수": 50,
+   "까닭": null
+  },
+  {
+   "이름": "이데일리 증권",
+   "성공": false,
+   "개수": 0,
+   "까닭": "fetch failed"
+  },
+  {
+   "이름": "머니투데이 증권",
+   "성공": true,
+   "개수": 100,
+   "까닭": null
+  },
+  {
+   "이름": "CNBC 마켓",
+   "성공": true,
+   "개수": 30,
+   "까닭": null
+  },
+  {
+   "이름": "CNBC 주요뉴스",
+   "성공": true,
+   "개수": 30,
+   "까닭": null
+  },
+  {
+   "이름": "MarketWatch",
+   "성공": true,
+   "개수": 10,
+   "까닭": null
+  },
+  {
+   "이름": "MarketWatch 시황",
+   "성공": true,
+   "개수": 30,
+   "까닭": null
+  },
+  {
+   "이름": "Yahoo Finance",
+   "성공": false,
+   "개수": 0,
+   "까닭": "응답 404"
+  },
+  {
+   "이름": "Investing 경제지표",
+   "성공": true,
+   "개수": 10,
+   "까닭": null
+  },
+  {
+   "이름": "CoinDesk",
+   "성공": true,
+   "개수": 25,
+   "까닭": null
+  },
+  {
+   "이름": "Cointelegraph",
+   "성공": true,
+   "개수": 30,
+   "까닭": null
+  },
+  {
+   "이름": "Decrypt",
+   "성공": true,
+   "개수": 37,
+   "까닭": null
+  },
+  {
+   "이름": "The Block",
+   "성공": true,
+   "개수": 20,
+   "까닭": null
+  },
+  {
+   "이름": "코인데스크 코리아",
+   "성공": false,
+   "개수": 0,
+   "까닭": "시간 초과"
+  }
+ ]
+}
