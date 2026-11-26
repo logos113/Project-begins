@@ -1,14 +1,14 @@
 {
  "날짜": "2026-11-26",
- "만든시각": "2026-11-26T03:32:35.056Z",
+ "만든시각": "2026-11-26T04:22:16.430Z",
  "시세": {
   "지수": [
    {
     "이름": "코스피",
     "갈래": "한국",
     "단위": "",
-    "종가": 4734.18,
-    "변동률": 0.78,
+    "종가": 4756.41,
+    "변동률": 1.25,
     "전날종가": 4697.51,
     "수상한가": false,
     "기준일": "2026-11-26",
@@ -19,8 +19,8 @@
     "이름": "코스닥",
     "갈래": "한국",
     "단위": "",
-    "종가": 660.19,
-    "변동률": 1.47,
+    "종가": 663.74,
+    "변동률": 2.01,
     "전날종가": 650.64,
     "수상한가": false,
     "기준일": "2026-11-26",
@@ -55,8 +55,8 @@
     "이름": "원/달러",
     "갈래": "환율",
     "단위": "원",
-    "종가": 1343.88,
-    "변동률": 0.09,
+    "종가": 1342.28,
+    "변동률": -0.03,
     "전날종가": 1342.65,
     "수상한가": false,
     "기준일": "2026-11-26",
@@ -67,27 +67,27 @@
   "코인": [
    {
     "이름": "비트코인",
-    "달러": 60626,
-    "원화": 81468686,
-    "변동률": 2.02
+    "달러": 60897,
+    "원화": 81772589,
+    "변동률": 2.77
    },
    {
     "이름": "이더리움",
-    "달러": 1693.22,
-    "원화": 2275337,
-    "변동률": 1.78
+    "달러": 1701.04,
+    "원화": 2284148,
+    "변동률": 2.25
    },
    {
     "이름": "리플",
-    "달러": 0.955458,
-    "원화": 1283.93,
-    "변동률": 3.84
+    "달러": 0.959297,
+    "원화": 1288.14,
+    "변동률": 4.07
    },
    {
     "이름": "솔라나",
-    "달러": 71,
-    "원화": 95405,
-    "변동률": 2.65
+    "달러": 71.17,
+    "원화": 95566,
+    "변동률": 2.83
    }
   ],
   "못가져온것": []
@@ -210,91 +210,126 @@
  "뉴스": {
   "한국": [
    {
+    "제목": "SC제일은행, 서울 종로·여의도 WM센터 잇따라 개설…“글로벌 자산관리 강화”",
+    "주소": "https://www.mk.co.kr/news/economy/12219243",
+    "때": "2026-11-26T04:19:16.000Z",
+    "출처": "매일경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "신현송 \"반도체 올해 영업익 700조원…국민경제 파급 시간문제\"(종합)",
+    "주소": "https://www.yna.co.kr/view/AKR20261126098451002",
+    "때": "2026-11-26T04:10:53.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "신현송 \"내년 4.1% 성장 자신\"…인상 반대 2명에도 긴축 페달",
+    "주소": "https://www.yna.co.kr/view/AKR20261126105100002",
+    "때": "2026-11-26T04:09:39.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "유디엠텍, 21억원 제3자배정 유상증자",
+    "주소": "https://www.yna.co.kr/view/AKR20261126098700008",
+    "때": "2026-11-26T04:04:37.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "신현송 한은 총재 “물가 상승률, 2028년 목표 수준에 수렴”…추가인상 시사",
+    "주소": "https://www.mk.co.kr/news/economy/12219235",
+    "때": "2026-11-26T03:59:21.000Z",
+    "출처": "매일경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "통화정책방향 기자간담회 하는 한국은행 총재",
+    "주소": "https://www.hankyung.com/article/202611262079i",
+    "때": "2026-11-26T03:47:40.000Z",
+    "출처": "한국경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "中관영지 \"자본시장 안정화로 글로벌 금융 영향력 높일 수 있어\"",
+    "주소": "https://www.yna.co.kr/view/AKR20261126103400083",
+    "때": "2026-11-26T03:44:58.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
+    "제목": "퇴직연금 디폴트옵션, 어디가 제일 잘하나…미래에셋證, 업계 1위",
+    "주소": "https://www.mk.co.kr/news/stock/12219232",
+    "때": "2026-11-26T03:34:39.000Z",
+    "출처": "매일경제 증권",
+    "갈래": "한국"
+   },
+   {
+    "제목": "한은 총재 “올해 명목GDP 3000조원 상회…반도체 영업익 700조원”",
+    "주소": "https://www.mk.co.kr/news/economy/12219230",
+    "때": "2026-11-26T03:34:27.000Z",
+    "출처": "매일경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "은행·증권사, 가상자산 보관업 진출 쉬워진다…현물 ETF 기반도 마련 [디지털자산법 대해부②]",
+    "주소": "https://www.hankyung.com/article/202611260728i",
+    "때": "2026-11-26T03:29:48.000Z",
+    "출처": "한국경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "[단독] 자기자본 1000억 규제 땐 코인원·디지털엑스 인가 '비상' [디지털자산법 대해부①]",
+    "주소": "https://www.hankyung.com/article/202611261838i",
+    "때": "2026-11-26T03:22:08.000Z",
+    "출처": "한국경제 경제",
+    "갈래": "한국"
+   },
+   {
     "제목": "한은 총재 \"반도체 시총 2천조, 수익 3배밖에 안돼…설명 불가\"",
     "주소": "https://www.yna.co.kr/view/AKR20261126102000002",
     "때": "2026-11-26T03:18:18.000Z",
     "출처": "연합뉴스 증시",
     "갈래": "한국"
-   },
-   {
-    "제목": "춘천시 카자흐스탄 방문해 태권도 교류·체육시설 벤치마킹",
-    "주소": "https://www.yna.co.kr/view/AKR20261126093000062",
-    "때": "2026-11-26T03:15:03.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "한은 총재 \"잠재성장률 추정치 높이는 방향…내달 발표\"",
-    "주소": "https://www.yna.co.kr/view/AKR20261126100700002",
-    "때": "2026-11-26T03:04:29.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "올해 수도권 소형 아파트 7% 상승…중대형 오름폭 웃돌아",
-    "주소": "https://www.yna.co.kr/view/AKR20261126099900003",
-    "때": "2026-11-26T03:00:47.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "물가에 가계 실질소비 '제자리'…쓸 돈 13분기 만에 줄었다",
-    "주소": "https://www.yna.co.kr/view/AKR20261126077400002",
-    "때": "2026-11-26T03:00:15.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "동물실험 대체·암환자 심리지원…공공데이터·AI 활용대회 대상",
-    "주소": "https://www.yna.co.kr/view/AKR20261126025600530",
-    "때": "2026-11-26T03:00:13.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "내년 노인일자리 역대 최대 118만개…내일부터 참여자 모집",
-    "주소": "https://www.yna.co.kr/view/AKR20261126033200530",
-    "때": "2026-11-26T03:00:11.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "내달 노동감독 지방 위임…서울 경비업·경기 식품제조 중점감독",
-    "주소": "https://www.yna.co.kr/view/AKR20261126040800530",
-    "때": "2026-11-26T03:00:11.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "디딤돌대출·보금자리론 등 금융공공데이터 추가 개방",
-    "주소": "https://www.yna.co.kr/view/AKR20261126067800002",
-    "때": "2026-11-26T03:00:09.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "국세청장 후보자, 비거주 1주택에 \"국민 눈높이 미흡…죄송하다\"",
-    "주소": "https://www.yna.co.kr/view/AKR20261126099800002",
-    "때": "2026-11-26T03:00:09.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "우본, 한국 '수출 1조 달러 달성' 기념우표 발행",
-    "주소": "https://www.yna.co.kr/view/AKR20261126041500017",
-    "때": "2026-11-26T03:00:07.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "실질소득 10분기만에 감소 전환…자영업자 고금리·물가 타격",
-    "주소": "https://www.yna.co.kr/view/AKR20261126073500002",
-    "때": "2026-11-26T03:00:06.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
    }
   ],
   "미국": [
+   {
+    "제목": "Hedge funds are no longer just for the rich. They’re wooing everyday investors",
+    "주소": "https://www.cnbc.com/2026/11/26/hedge-funds-retail-investors.html",
+    "때": "2026-11-26T04:20:18.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "How Trump’s latest tariff moves hand India an edge over rival Asian exporters",
+    "주소": "https://www.cnbc.com/2026/11/26/trump-us-tariff-india-trade.html",
+    "때": "2026-11-26T04:12:18.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Judge blocks FCC early-renewal process for Disney-owned ABC stations, for now",
+    "주소": "https://www.cnbc.com/2026/11/26/fcc-disney-abc-stations-judge-block.html",
+    "때": "2026-11-26T04:00:15.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "South Korea upgrades growth forecast, raises benchmark rates to highest in two years",
+    "주소": "https://www.cnbc.com/2026/11/26/bok-rate-decision-korea-gdp-inflation.html",
+    "때": "2026-11-26T03:32:53.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Exclusive-Alice Huang-linked firms listed $270 million in AI servers in China, records show",
+    "주소": "https://www.investing.com/news/stock-market-news/exclusivealice-huanglinked-firms-listed-270-million-in-ai-servers-in-china-records-show-5049792",
+    "때": "2026-11-26T03:24:25.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
    {
     "제목": "S&P warns Nvidia credit rating could be cut over 'rising' management and governance risk",
     "주소": "https://www.cnbc.com/2026/11/26/nvidia-market-governance-risk.html",
@@ -341,41 +376,6 @@
     "제목": "U.S. judge blocks FCC from revoking Disney’s ABC TV licenses",
     "주소": "https://www.investing.com/news/stock-market-news/us-judge-blocks-fcc-from-revoking-disneys-abc-tv-licenses-5051928",
     "때": "2026-11-26T02:45:06.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Nvidia chips reach Chinese-owned U.S. firms despite export curbs, CBS reports",
-    "주소": "https://www.investing.com/news/stock-market-news/nvidia-chips-reach-chineseowned-us-firms-despite-export-curbs-cbs-reports-5051925",
-    "때": "2026-11-26T02:41:46.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Air cargo demand from AI data centres shows no sign of slowing, SATS CEO says",
-    "주소": "https://www.investing.com/news/stock-market-news/air-cargo-demand-from-ai-data-centres-shows-no-sign-of-slowing-sats-ceo-says-5051923",
-    "때": "2026-11-26T02:36:36.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "SpaceX wins FCC approval to deploy 1 million orbital data center satellites",
-    "주소": "https://www.cnbc.com/2026/11/25/spacex-fcc-satellite-approval.html",
-    "때": "2026-11-26T02:35:39.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Asian tech stocks jump as bargain buyers boost battered AI trade",
-    "주소": "https://www.investing.com/news/stock-market-news/asian-tech-stocks-jump-as-bargain-buyers-boost-battered-ai-trade-5051918",
-    "때": "2026-11-26T02:33:16.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Black Friday: unlock the AI picks up as much as 93% since entry",
-    "주소": "https://www.investing.com/news/stock-market-news/black-friday-unlock-the-ai-picks-up-as-much-as-93-since-entry-5051893",
-    "때": "2026-11-26T02:05:06.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
    }
@@ -578,9 +578,9 @@
   },
   {
    "이름": "코인데스크 코리아",
-   "성공": true,
+   "성공": false,
    "개수": 0,
-   "까닭": null
+   "까닭": "시간 초과"
   }
  ]
 }
