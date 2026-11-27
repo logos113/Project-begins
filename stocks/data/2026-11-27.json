@@ -1,14 +1,14 @@
 {
  "날짜": "2026-11-27",
- "만든시각": "2026-11-27T03:38:08.397Z",
+ "만든시각": "2026-11-27T04:31:24.635Z",
  "시세": {
   "지수": [
    {
     "이름": "코스피",
     "갈래": "한국",
     "단위": "",
-    "종가": 4861.24,
-    "변동률": 3.18,
+    "종가": 4886.81,
+    "변동률": 3.73,
     "전날종가": 4711.21,
     "수상한가": false,
     "기준일": "2026-11-27",
@@ -19,8 +19,8 @@
     "이름": "코스닥",
     "갈래": "한국",
     "단위": "",
-    "종가": 695.76,
-    "변동률": 6.11,
+    "종가": 698.01,
+    "변동률": 6.45,
     "전날종가": 655.71,
     "수상한가": false,
     "기준일": "2026-11-27",
@@ -55,8 +55,8 @@
     "이름": "원/달러",
     "갈래": "환율",
     "단위": "원",
-    "종가": 1339.63,
-    "변동률": -0.25,
+    "종가": 1340.48,
+    "변동률": -0.19,
     "전날종가": 1342.97,
     "수상한가": false,
     "기준일": "2026-11-27",
@@ -67,27 +67,27 @@
   "코인": [
    {
     "이름": "비트코인",
-    "달러": 61504,
-    "원화": 82440177,
-    "변동률": 1.46
+    "달러": 61400,
+    "원화": 82336915,
+    "변동률": 0.69
    },
    {
     "이름": "이더리움",
-    "달러": 1727.77,
-    "원화": 2315917,
-    "변동률": 2.01
+    "달러": 1729.12,
+    "원화": 2318727,
+    "변동률": 1.62
    },
    {
     "이름": "리플",
-    "달러": 0.963351,
-    "원화": 1291.29,
-    "변동률": 0.83
+    "달러": 0.958822,
+    "원화": 1285.77,
+    "변동률": 0.22
    },
    {
     "이름": "솔라나",
-    "달러": 72.93,
-    "원화": 97760,
-    "변동률": 2.74
+    "달러": 72.71,
+    "원화": 97508,
+    "변동률": 2.19
    }
   ],
   "못가져온것": []
@@ -185,6 +185,41 @@
  "뉴스": {
   "한국": [
    {
+    "제목": "산업연 “반도체 호황으로 더 걷힌 법인세, 비반도체 산업에 투자해야”",
+    "주소": "https://www.mk.co.kr/news/economy/12220080",
+    "때": "2026-11-27T04:28:44.000Z",
+    "출처": "매일경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "“신고하면 최대 30억원”…건보공단, ‘가짜 직장가입자’ 전쟁 선포",
+    "주소": "https://www.mk.co.kr/news/economy/12220070",
+    "때": "2026-11-27T04:09:14.000Z",
+    "출처": "매일경제 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "송미령 농식품장관 \"청년농 협업 경영 모델 지원\"",
+    "주소": "https://www.yna.co.kr/view/AKR20261127063200030",
+    "때": "2026-11-27T04:00:01.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "농진청장 \"K-라이스벨트 사업 후 아프리카 농가 생산 두배 증가\"",
+    "주소": "https://www.yna.co.kr/view/AKR20261127079400030",
+    "때": "2026-11-27T04:00:00.000Z",
+    "출처": "연합뉴스 경제",
+    "갈래": "한국"
+   },
+   {
+    "제목": "엔비디아발 'AI 조정' 잦아드나…코스피·코스닥 일제히 급등",
+    "주소": "https://www.yna.co.kr/view/AKR20261127078300008",
+    "때": "2026-11-27T03:39:14.000Z",
+    "출처": "연합뉴스 증시",
+    "갈래": "한국"
+   },
+   {
     "제목": "與정년연장특위 노사합의 불발…10개월만 회동에도 접점 못찾아(종합)",
     "주소": "https://www.yna.co.kr/view/AKR20261127069251001",
     "때": "2026-11-27T03:18:14.000Z",
@@ -232,44 +267,65 @@
     "때": "2026-11-27T02:42:42.000Z",
     "출처": "연합뉴스 증시",
     "갈래": "한국"
-   },
-   {
-    "제목": "런정페이 화웨이 창업자 \"미국 제재 덕에 자립\"",
-    "주소": "https://www.yna.co.kr/view/AKR20261127077100009",
-    "때": "2026-11-27T02:41:22.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "'우주산업 육성' 뉴스페이스 펀드, 목표치 2천억원 돌파",
-    "주소": "https://www.yna.co.kr/view/AKR20261127054400017",
-    "때": "2026-11-27T02:33:12.000Z",
-    "출처": "연합뉴스 증시",
-    "갈래": "한국"
-   },
-   {
-    "제목": "산업장관 \"노동특례, 첨단 연구개발 인력 한정…오해 없어야\"",
-    "주소": "https://www.yna.co.kr/view/AKR20261127076100003",
-    "때": "2026-11-27T02:32:18.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "벤처기업협회 회원사 2만개 돌파…기업 교류·맞춤형 지원 확대",
-    "주소": "https://www.yna.co.kr/view/AKR20261127075300030",
-    "때": "2026-11-27T02:29:40.000Z",
-    "출처": "연합뉴스 경제",
-    "갈래": "한국"
-   },
-   {
-    "제목": "[오전시황] 증안펀드 기대에 코스닥 5%대 급등...코스피도 4800선 회복",
-    "주소": "https://www.hankyung.com/article/202611274438i",
-    "때": "2026-11-27T02:28:21.000Z",
-    "출처": "한국경제 증권",
-    "갈래": "한국"
    }
   ],
   "미국": [
+   {
+    "제목": "Why is the Australian Dollar climbing today?",
+    "주소": "https://www.investing.com/news/stock-market-news/why-is-the-australian-dollar-climbing-today-93CH-5052853",
+    "때": "2026-11-27T04:24:35.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Japan’s Jera in talks with Anthropic, Meta, Amazon on data centers- Nikkei",
+    "주소": "https://www.investing.com/news/stock-market-news/japans-jera-in-talks-with-anthropic-meta-amazon-on-data-centers-nikkei-93CH-5052852",
+    "때": "2026-11-27T04:24:27.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "SpaceX shares jump on alternative trading platform after Musk says he will expand share donations",
+    "주소": "https://www.cnbc.com/2026/11/27/spacex-shares-musk-donations.html",
+    "때": "2026-11-27T04:20:55.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "This 170-year historical study says ‘major market collapse’ is coming",
+    "주소": "https://www.cnbc.com/2026/11/27/ai-bubble-burst-market-study.html",
+    "때": "2026-11-27T04:07:07.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
+   {
+    "제목": "US Marlboro maker Altria explores Imperial cash bid, possible carve-up",
+    "주소": "https://www.investing.com/news/stock-market-news/marlboro-maker-altria-explores-takeover-of-uks-imperial-brands-5052558",
+    "때": "2026-11-27T04:06:20.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Asian stocks rise as tech rebound, easing U.S. trade concerns lift sentiment",
+    "주소": "https://www.investing.com/news/stock-market-news/asian-stocks-rise-as-tech-rebound-easing-us-trade-concerns-lift-sentiment-5052839",
+    "때": "2026-11-27T03:47:27.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Singapore yet to confirm if Nvidia has halted advanced chip shipments- deputy PM",
+    "주소": "https://www.investing.com/news/stock-market-news/singapore-yet-to-confirm-if-nvidia-has-halted-advanced-chip-shipments-deputy-pm-5052834",
+    "때": "2026-11-27T03:44:19.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
+   {
+    "제목": "Stock futures tick higher as Wall Street gets set to wrap up a volatile holiday week: Live updates",
+    "주소": "https://www.cnbc.com/2026/11/26/stock-market-today-live-updates.html",
+    "때": "2026-11-27T03:40:42.000Z",
+    "출처": "CNBC 주요뉴스",
+    "갈래": "미국"
+   },
    {
     "제목": "Two Italians killed in Kuwait drone attack; Trump says Iran war ends ‘whenever I want it’",
     "주소": "https://www.cnbc.com/2026/11/27/us-iran-war-trump-hormuz-italian-killed-trump.html",
@@ -297,65 +353,23 @@
     "때": "2026-11-27T02:36:09.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
-   },
-   {
-    "제목": "U.S. AI chip curbs stall billions in Asia data center deals, Bloomberg reports",
-    "주소": "https://www.investing.com/news/stock-market-news/us-ai-chip-curbs-stall-billions-in-asia-data-center-deals-bloomberg-reports-5052819",
-    "때": "2026-11-27T02:35:54.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Stock futures tick higher as Wall Street gets set to wrap up a volatile holiday week: Live updates",
-    "주소": "https://www.cnbc.com/2026/11/26/stock-market-today-live-updates.html",
-    "때": "2026-11-27T02:27:38.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Japan Tobacco shares surge on report of Imperial Brands takeover",
-    "주소": "https://www.investing.com/news/stock-market-news/japan-tobacco-shares-surge-on-report-of-imperial-brands-takeover-5052817",
-    "때": "2026-11-27T02:22:49.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Black Friday is here: 60% off InvestingPro and its AI stock picks end soon",
-    "주소": "https://www.investing.com/news/stock-market-news/black-friday-is-here-60-off-investingpro-and-its-ai-stock-picks-end-soon-5052816",
-    "때": "2026-11-27T02:20:58.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "China industrial profits growth surges to a 5-month high of 20.1% in October",
-    "주소": "https://www.cnbc.com/2026/11/27/china-industrial-profits-october.html",
-    "때": "2026-11-27T02:04:09.000Z",
-    "출처": "CNBC 주요뉴스",
-    "갈래": "미국"
-   },
-   {
-    "제목": "+54%, +41%, +41%: Asia’s AI-picked strategies leading their markets in 2026",
-    "주소": "https://www.investing.com/news/stock-market-news/54-41-41-asias-aipicked-strategies-leading-their-markets-in-2026-5052809",
-    "때": "2026-11-27T01:59:53.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "Why is 3P Learning stock surging today?",
-    "주소": "https://www.investing.com/news/stock-market-news/why-is-3p-learning-stock-surging-today-93CH-5052808",
-    "때": "2026-11-27T01:46:49.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "I hate that Jensen Huang is back at Nvidia, but I love what it&#x2019;s done for my 401(k). Am I a hypocrite?",
-    "주소": "https://www.marketwatch.com/story/i-hate-that-jensen-huang-is-back-at-nvidia-but-i-love-what-its-done-for-my-401-k-am-i-a-hypocrite-f63c0303?mod=mw_rss_topstories",
-    "때": "2026-11-27T01:15:00.000Z",
-    "출처": "MarketWatch",
-    "갈래": "미국"
    }
   ],
   "코인": [
+   {
+    "제목": "Ethereum's much-awaited Glamsterdam upgrade cleared for December test. Here's what to know",
+    "주소": "https://www.coindesk.com/tech/2026/11/27/ethereum-s-much-awaited-glamsterdam-upgrade-cleared-for-december-test-here-s-what-to-know",
+    "때": "2026-11-27T04:29:47.000Z",
+    "출처": "CoinDesk",
+    "갈래": "코인"
+   },
+   {
+    "제목": "China, Japan, South Korea and ASEAN to form working group on digital payments, crypto regulation",
+    "주소": "https://www.theblock.co/news/regulation/2026-11-26-china-japan-south-korea-asean-digital-payments-447029",
+    "때": "2026-11-27T04:18:40.000Z",
+    "출처": "The Block",
+    "갈래": "코인"
+   },
    {
     "제목": "JPMorgan flags bitcoin ‘capitulation,’ Democrats push back on SEC’s crypto plans, and more",
     "주소": "https://www.theblock.co/newsletters/the-daily/2026-11-26-jpmorgan-bitcoin-capitulation-democrats-sec-crypto-plans-more-news-447025",
@@ -425,20 +439,6 @@
     "때": "2026-11-26T21:01:03.000Z",
     "출처": "Decrypt",
     "갈래": "코인"
-   },
-   {
-    "제목": "Japan weighs tighter oversight of DeFi, self-custodial wallets",
-    "주소": "https://cointelegraph.com/news/japan-tighter-oversight-defi-self-custodial-wallets?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-    "때": "2026-11-26T20:05:18.000Z",
-    "출처": "Cointelegraph",
-    "갈래": "코인"
-   },
-   {
-    "제목": "Before the Sell-Off, AI Stocks Showed Dot-Com-Level Bubble Signals: Study",
-    "주소": "https://decrypt.co/384066/before-the-sell-off-ai-stocks-showed-dot-com-level-bubble-signals-study",
-    "때": "2026-11-26T19:01:02.000Z",
-    "출처": "Decrypt",
-    "갈래": "코인"
    }
   ]
  },
@@ -457,15 +457,15 @@
   },
   {
    "이름": "한국경제 증권",
-   "성공": true,
-   "개수": 50,
-   "까닭": null
+   "성공": false,
+   "개수": 0,
+   "까닭": "응답 403"
   },
   {
    "이름": "한국경제 경제",
-   "성공": true,
-   "개수": 50,
-   "까닭": null
+   "성공": false,
+   "개수": 0,
+   "까닭": "응답 403"
   },
   {
    "이름": "매일경제 증권",
