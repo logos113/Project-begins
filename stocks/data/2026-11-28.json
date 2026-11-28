@@ -1,6 +1,6 @@
 {
  "날짜": "2026-11-28",
- "만든시각": "2026-11-28T03:17:23.383Z",
+ "만든시각": "2026-11-28T04:14:07.591Z",
  "시세": {
   "지수": [
    {
@@ -55,39 +55,39 @@
     "이름": "원/달러",
     "갈래": "환율",
     "단위": "원",
-    "종가": 1343.53,
-    "변동률": 0.04,
-    "전날종가": 1342.97,
+    "종가": 1333.9,
+    "변동률": -0.72,
+    "전날종가": 1343.53,
     "수상한가": false,
-    "기준일": "2026-11-27",
+    "기준일": "2026-11-28",
     "출처": "Yahoo",
-    "거래일수": 10
+    "거래일수": 11
    }
   ],
   "코인": [
    {
     "이름": "비트코인",
-    "달러": 59929,
-    "원화": 79913263,
-    "변동률": -2.53
+    "달러": 59985,
+    "원화": 79988225,
+    "변동률": -2.37
    },
    {
     "이름": "이더리움",
-    "달러": 1663.26,
-    "원화": 2217906,
-    "변동률": -3.71
+    "달러": 1664.14,
+    "원화": 2219085,
+    "변동률": -3.78
    },
    {
     "이름": "리플",
-    "달러": 0.949088,
-    "원화": 1265.58,
-    "변동률": -1.45
+    "달러": 0.950021,
+    "원화": 1266.82,
+    "변동률": -1.02
    },
    {
     "이름": "솔라나",
-    "달러": 71.73,
-    "원화": 95651,
-    "변동률": -1.47
+    "달러": 71.61,
+    "원화": 95492,
+    "변동률": -1.4
    }
   ],
   "못가져온것": []
@@ -193,6 +193,13 @@
     "갈래": "한국"
    },
    {
+    "제목": "코스피 5000선 뚫을까…증안펀드·젠슨 황에 쏠린 눈[다음주 주요변수 미리보기]",
+    "주소": "https://www.hankyung.com/article/202611275312i",
+    "때": "2026-11-28T03:00:04.000Z",
+    "출처": "한국경제 증권",
+    "갈래": "한국"
+   },
+   {
     "제목": "춘천시 골목상권 살리기 총력…야시장에 7만9천명 발길",
     "주소": "https://www.yna.co.kr/view/AKR20261127141500062",
     "때": "2026-11-28T02:10:00.000Z",
@@ -261,16 +268,16 @@
     "때": "2026-11-28T00:39:16.000Z",
     "출처": "연합뉴스 증시",
     "갈래": "한국"
-   },
-   {
-    "제목": "\"코딩은 클로드, 일상 업무는 딥시크\"…美 기업들의 반전 [차이나 워치]",
-    "주소": "https://www.hankyung.com/article/202611263467i",
-    "때": "2026-11-28T00:34:02.000Z",
-    "출처": "한국경제 경제",
-    "갈래": "한국"
    }
   ],
   "미국": [
+   {
+    "제목": "Are recent outages bad for software?",
+    "주소": "https://www.investing.com/news/stock-market-news/are-recent-outages-bad-for-software-5054117",
+    "때": "2026-11-28T03:09:47.000Z",
+    "출처": "Investing 경제지표",
+    "갈래": "미국"
+   },
    {
     "제목": "Glass Lewis backs Vail Resorts board in proxy fight with activist Oasis",
     "주소": "https://www.investing.com/news/stock-market-news/glass-lewis-backs-vail-resorts-board-in-proxy-fight-with-activist-oasis-5053937",
@@ -331,13 +338,6 @@
     "제목": "US shoppers confront uphill battle in Black Friday discount quest",
     "주소": "https://www.investing.com/news/stock-market-news/us-shoppers-confront-uphill-battle-in-black-friday-discount-quest-5054041",
     "때": "2026-11-28T00:18:23.000Z",
-    "출처": "Investing 경제지표",
-    "갈래": "미국"
-   },
-   {
-    "제목": "2027 smartphone market outlook: Apple to outperform as shipments fall 5%",
-    "주소": "https://www.investing.com/news/stock-market-news/2027-smartphone-market-outlook-apple-to-outperform-as-shipments-fall-5-5054028",
-    "때": "2026-11-28T00:03:22.000Z",
     "출처": "Investing 경제지표",
     "갈래": "미국"
    },
@@ -554,9 +554,9 @@
   },
   {
    "이름": "코인데스크 코리아",
-   "성공": true,
+   "성공": false,
    "개수": 0,
-   "까닭": null
+   "까닭": "응답 415"
   }
  ]
 }
